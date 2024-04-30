@@ -3,6 +3,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushB
 from PyQt6.QtGui import QFont
 from PyQt6.QtCore import Qt
 
+# Mathematical Functions
 from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log2, log10
 
 input = ''
