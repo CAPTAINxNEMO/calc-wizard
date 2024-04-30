@@ -3,7 +3,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushB
 from PyQt6.QtGui import QFont
 from PyQt6.QtCore import Qt
 
-from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log10, factorial, pow
+from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log2, log10
 
 input = ''
 
@@ -124,7 +124,12 @@ def calculatorMode():
         cosineButton.setVisible(True)
         tangentButton.setVisible(True)
         angleButton.setVisible(True)
+        baseTenLogButton.setVisible(True)
+        baseTwoLogButton.setVisible(True)
+        naturalLogButton.setVisible(True)
         inverseButton.setVisible(True)
+        squareButton.setVisible(True)
+        exponentButton.setVisible(True)
         piButton.setVisible(True)
         eulerButton.setVisible(True)
     else:                                                   # Basic Mode
@@ -139,8 +144,16 @@ def calculatorMode():
         tangentInverseButton.setVisible(False)
         angleButton.setVisible(False)
         angleButton.setChecked(False)
+        baseTenLogButton.setVisible(False)
+        baseTwoLogButton.setVisible(False)
+        naturalLogButton.setVisible(False)
+        powerTenButton.setVisible(False)
+        powerTwoButton.setVisible(False)
+        powerEulerButton.setVisible(False)
         inverseButton.setVisible(False)
         inverseButton.setChecked(False)
+        squareButton.setVisible(False)
+        exponentButton.setVisible(False)
         piButton.setVisible(False)
         eulerButton.setVisible(False)
 calculatorModeButton.clicked.connect(calculatorMode)
@@ -313,6 +326,30 @@ def clear():
         elif inputField.text().endswith('tan⁻¹('):
             inputField.setText(inputField.text().replace('tan⁻¹(', ''))
             input = input.replace('atan(', '')
+        elif inputField.text().endswith('log⏨('):
+            inputField.setText(inputField.text().replace('log⏨(', ''))
+            input = input.replace('log10(', '')
+        elif inputField.text().endswith('log₂('):
+            inputField.setText(inputField.text().replace('log₂(', ''))
+            input = input.replace('log2(', '')
+        elif inputField.text().endswith('ln('):
+            inputField.setText(inputField.text().replace('ln(', ''))
+            input = input.replace('log(', '')
+        elif inputField.text().endswith('10^'):
+            inputField.setText(inputField.text().replace('10^', ''))
+            input = input.replace('10**', '')
+        elif inputField.text().endswith('2^'):
+            inputField.setText(inputField.text().replace('2^', ''))
+            input = input.replace('2**', '')
+        elif inputField.text().endswith('e^'):
+            inputField.setText(inputField.text().replace('e^', ''))
+            input = input.replace('e**', '')
+        elif inputField.text().endswith('²'):
+            inputField.setText(inputField.text().replace('²', ''))
+            input = input.replace('**(2)', '')
+        elif inputField.text().endswith('^'):
+            inputField.setText(inputField.text().replace('^', ''))
+            input = input.replace('**', '')
         else:
             inputFieldText = inputField.text()
             inputFieldText = inputFieldText[:-1]
@@ -519,6 +556,82 @@ def angle():
         angleButton.setText('RAD')
 angleButton.clicked.connect(angle)
 
+# Logarithm
+# Base 10 Log
+baseTenLogButton = QPushButton('log⏨', window)
+baseTenLogButton.setFixedSize(90, 90)
+baseTenLogButton.move(120, 480)
+baseTenLogButton.setFont(numberPadFont)
+baseTenLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+baseTenLogButton.setVisible(False)
+def baseTenLog():
+    global input
+    inputField.setText(inputField.text() + 'log⏨(')
+    input += 'log10('
+baseTenLogButton.clicked.connect(baseTenLog)
+# Base 2 Log
+baseTwoLogButton = QPushButton('log₂', window)
+baseTwoLogButton.setFixedSize(90, 90)
+baseTwoLogButton.move(210, 480)
+baseTwoLogButton.setFont(numberPadFont)
+baseTwoLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+baseTwoLogButton.setVisible(False)
+def baseTwoLog():
+    global input
+    inputField.setText(inputField.text() + 'log₂(')
+    input += 'log2('
+baseTwoLogButton.clicked.connect(baseTwoLog)
+# Natural Log
+naturalLogButton = QPushButton('ln', window)
+naturalLogButton.setFixedSize(90, 90)
+naturalLogButton.move(300, 480)
+naturalLogButton.setFont(numberPadFont)
+naturalLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+naturalLogButton.setVisible(False)
+def naturalLog():
+    global input
+    inputField.setText(inputField.text() + 'ln(')
+    input += 'log('
+naturalLogButton.clicked.connect(naturalLog)
+
+# Logarithm Buttons Inverse
+# Exponents of 10
+powerTenButton = QPushButton('10ˣ', window)
+powerTenButton.setFixedSize(90, 90)
+powerTenButton.move(120, 480)
+powerTenButton.setFont(numberPadFont)
+powerTenButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+powerTenButton.setVisible(False)
+def powerTen():
+    global input
+    inputField.setText(inputField.text() + '10^')
+    input += '10**'
+powerTenButton.clicked.connect(powerTen)
+# Exponent of 2
+powerTwoButton = QPushButton('2ˣ', window)
+powerTwoButton.setFixedSize(90, 90)
+powerTwoButton.move(210, 480)
+powerTwoButton.setFont(numberPadFont)
+powerTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+powerTwoButton.setVisible(False)
+def powerTwo():
+    global input
+    inputField.setText(inputField.text() + '2^')
+    input += '2**'
+powerTwoButton.clicked.connect(powerTwo)
+# Exponents of e
+powerEulerButton = QPushButton('eˣ', window)
+powerEulerButton.setFixedSize(90, 90)
+powerEulerButton.move(300, 480)
+powerEulerButton.setFont(numberPadFont)
+powerEulerButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+powerEulerButton.setVisible(False)
+def powerEuler():
+    global input
+    inputField.setText(inputField.text() + 'e^')
+    input += 'e**'
+powerEulerButton.clicked.connect(powerEuler)
+
 # Inverse Button
 inverseButton = QPushButton('INV', window)
 inverseButton.setFixedSize(90, 90)
@@ -532,17 +645,57 @@ def inverse():
         sineButton.setVisible(False)
         cosineButton.setVisible(False)
         tangentButton.setVisible(False)
+        baseTenLogButton.setVisible(False)
+        baseTwoLogButton.setVisible(False)
+        naturalLogButton.setVisible(False)
         sineInverseButton.setVisible(True)
         cosineInverseButton.setVisible(True)
         tangentInverseButton.setVisible(True)
+        powerTenButton.setVisible(True)
+        powerTwoButton.setVisible(True)
+        powerEulerButton.setVisible(True)
     else:
         sineButton.setVisible(True)
         cosineButton.setVisible(True)
         tangentButton.setVisible(True)
+        baseTenLogButton.setVisible(True)
+        baseTwoLogButton.setVisible(True)
+        naturalLogButton.setVisible(True)
         sineInverseButton.setVisible(False)
         cosineInverseButton.setVisible(False)
         tangentInverseButton.setVisible(False)
+        powerTenButton.setVisible(False)
+        powerTwoButton.setVisible(False)
+        powerEulerButton.setVisible(False)
 inverseButton.clicked.connect(inverse)
+
+# Square [x²]
+squareButton = QPushButton('x²', window)
+squareButton.setFixedSize(90, 90)
+squareButton.move(30, 660)
+squareButton.setFont(numberPadFont)
+squareButton.setStyleSheet('border: 2px solid; background-color: rgb(191, 255, 0)')
+squareButton.setVisible(False)
+def square():
+    global input
+    if inputField.text():
+        inputField.setText(inputField.text() + '²')
+        input += '**(2)'
+squareButton.clicked.connect(square)
+
+# Exponent
+exponentButton = QPushButton('^', window)
+exponentButton.setFixedSize(90, 90)
+exponentButton.move(30, 750)
+exponentButton.setFont(numberPadFont)
+exponentButton.setStyleSheet('border: 2px solid; background-color: rgb(191, 255, 0)')
+exponentButton.setVisible(False)
+def exponent():
+    global input
+    if inputField.text():
+        inputField.setText(inputField.text() + '^')
+        input += '**'
+exponentButton.clicked.connect(exponent)
 
 # Constants [π | e]
 # pi [π]
