@@ -3,6 +3,8 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushB
 from PyQt6.QtGui import QFont
 from PyQt6.QtCore import Qt
 
+from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log10, factorial, pow
+
 input = ''
 
 CalcWizard = QApplication([])
@@ -15,37 +17,46 @@ window.setFixedSize(600, 960)
 
 # Font Attributes
 # Main Label & Switch Button Font
-mainLabel_switchButtonFont = QFont('Aptos')
+mainLabel_switchButtonFont = QFont()
 mainLabel_switchButtonFont.setPixelSize(52)
 mainLabel_switchButtonFont.setBold(True)
 # Input Field Font
-inputFieldFont = QFont('Aptos')
+inputFieldFont = QFont()
 inputFieldFont.setPixelSize(28)
 inputFieldFont.setBold(False)
 # Output Field Font
-outputFieldFont = QFont('Aptos')
+outputFieldFont = QFont()
 outputFieldFont.setPixelSize(28)
 outputFieldFont.setBold(True)
 # Paste Button Font
-pasteButtonFont = QFont('Aptos')
+pasteButtonFont = QFont()
 pasteButtonFont.setPixelSize(20)
 pasteButtonFont.setBold(True)
-# Advanced & Basic Buttons Font
-advanced_basicButtonFont = QFont('Aptos')
-advanced_basicButtonFont.setPixelSize(48)
-advanced_basicButtonFont.setBold(True)
+# Calculator Mode Button Font
+calculatorModeButtonFont = QFont()
+calculatorModeButtonFont.setPixelSize(48)
+calculatorModeButtonFont.setBold(True)
 # Number Pad Font
-numberPadFont = QFont('Aptos')
+numberPadFont = QFont()
 numberPadFont.setPixelSize(36)
 numberPadFont.setBold(True)
 # Result Buttons Font
-resultButtonsFont = QFont('Aptos')
+resultButtonsFont = QFont()
 resultButtonsFont.setPixelSize(60)
 resultButtonsFont.setBold(True)
 # Operator Buttons Font
-operatorButtonFont = QFont('Aptos')
+operatorButtonFont = QFont()
 operatorButtonFont.setPixelSize(44)
 operatorButtonFont.setBold(True)
+# Trigonometry Buttons Font
+trigonometryButtonFont = QFont()
+trigonometryButtonFont.setPixelSize(28)
+trigonometryButtonFont.setBold(True)
+# Constant Buttons Font
+constantButtonFont = QFont()
+constantButtonFont.setPixelSize(36)
+constantButtonFont.setBold(True)
+constantButtonFont.setItalic(True)
 
 # Switch between Modes Button
 switchButton = QPushButton('⇄', window)
@@ -97,32 +108,45 @@ outputField.setStyleSheet('border: 2px solid; padding-right: 15px')
 outputField.setPlaceholderText('Output')
 outputField.setReadOnly(True)
 
-# Advanced Mode Button
-advancedButton = QPushButton('∞', window)
-advancedButton.setFixedSize(90, 90)
-advancedButton.move(30, 390)
-advancedButton.setFont(advanced_basicButtonFont)
-advancedButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 255)')
-advancedButton.setVisible(True)
-def advancedMode():
-    advancedButton.setVisible(False)
-    basicButton.setVisible(True)
-advancedButton.clicked.connect(advancedMode)
-
-# Basic Mode Button
-basicButton = QPushButton('±', window)
-basicButton.setFixedSize(90, 90)
-basicButton.move(30, 390)
-basicButton.setFont(advanced_basicButtonFont)
-basicButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 255)')
-basicButton.setVisible(False)
-def basicMode():
-    advancedButton.setVisible(True)
-    basicButton.setVisible(False)
-basicButton.clicked.connect(basicMode)
+# Calculator Mode Button
+calculatorModeButton = QPushButton('∞', window)
+calculatorModeButton.setFixedSize(90, 90)
+calculatorModeButton.move(30, 390)
+calculatorModeButton.setFont(calculatorModeButtonFont)
+calculatorModeButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 255)')
+calculatorModeButton.setCheckable(True)
+def calculatorMode():
+    if calculatorModeButton.isChecked():                    # Advanced Mode
+        calculatorModeButton.setText('±')
+        openBracketButton.setVisible(True)
+        closeBracketButton.setVisible(True)
+        sineButton.setVisible(True)
+        cosineButton.setVisible(True)
+        tangentButton.setVisible(True)
+        angleButton.setVisible(True)
+        inverseButton.setVisible(True)
+        piButton.setVisible(True)
+        eulerButton.setVisible(True)
+    else:                                                   # Basic Mode
+        calculatorModeButton.setText('∞')
+        openBracketButton.setVisible(False)
+        closeBracketButton.setVisible(False)
+        sineButton.setVisible(False)
+        cosineButton.setVisible(False)
+        tangentButton.setVisible(False)
+        sineInverseButton.setVisible(False)
+        cosineInverseButton.setVisible(False)
+        tangentInverseButton.setVisible(False)
+        angleButton.setVisible(False)
+        angleButton.setChecked(False)
+        inverseButton.setVisible(False)
+        inverseButton.setChecked(False)
+        piButton.setVisible(False)
+        eulerButton.setVisible(False)
+calculatorModeButton.clicked.connect(calculatorMode)
 
 # Number Pad
-# Nine (9)
+# Nine [9]
 nineButton = QPushButton('9', window)
 nineButton.setFixedSize(90, 90)
 nineButton.move(300, 570)
@@ -133,7 +157,7 @@ def nine():
     inputField.setText(inputField.text() + '9')
     input += '9'
 nineButton.clicked.connect(nine)
-# Eight (8)
+# Eight [8]
 eightButton = QPushButton('8', window)
 eightButton.setFixedSize(90, 90)
 eightButton.move(210, 570)
@@ -144,7 +168,7 @@ def eight():
     inputField.setText(inputField.text() + '8')
     input += '8'
 eightButton.clicked.connect(eight)
-# Seven (7)
+# Seven [7]
 sevenButton = QPushButton('7', window)
 sevenButton.setFixedSize(90, 90)
 sevenButton.move(120, 570)
@@ -155,7 +179,7 @@ def seven():
     inputField.setText(inputField.text() + '7')
     input += '7'
 sevenButton.clicked.connect(seven)
-# Six (6)
+# Six [6]
 sixButton = QPushButton('6', window)
 sixButton.setFixedSize(90, 90)
 sixButton.move(300, 660)
@@ -166,7 +190,7 @@ def six():
     inputField.setText(inputField.text() + '6')
     input += '6'
 sixButton.clicked.connect(six)
-# Five (5)
+# Five [5]
 fiveButton = QPushButton('5', window)
 fiveButton.setFixedSize(90, 90)
 fiveButton.move(210, 660)
@@ -177,7 +201,7 @@ def five():
     inputField.setText(inputField.text() + '5')
     input += '5'
 fiveButton.clicked.connect(five)
-# Four (4)
+# Four [4]
 fourButton = QPushButton('4', window)
 fourButton.setFixedSize(90, 90)
 fourButton.move(120, 660)
@@ -188,7 +212,7 @@ def four():
     inputField.setText(inputField.text() + '4')
     input += '4'
 fourButton.clicked.connect(four)
-# Three (3)
+# Three [3]
 threeButton = QPushButton('3', window)
 threeButton.setFixedSize(90, 90)
 threeButton.move(300, 750)
@@ -199,7 +223,7 @@ def three():
     inputField.setText(inputField.text() + '3')
     input += '3'
 threeButton.clicked.connect(three)
-# Two (2)
+# Two [2]
 twoButton = QPushButton('2', window)
 twoButton.setFixedSize(90, 90)
 twoButton.move(210, 750)
@@ -210,7 +234,7 @@ def two():
     inputField.setText(inputField.text() + '2')
     input += '2'
 twoButton.clicked.connect(two)
-# One (1)
+# One [1]
 oneButton = QPushButton('1', window)
 oneButton.setFixedSize(90, 90)
 oneButton.move(120, 750)
@@ -221,7 +245,7 @@ def one():
     inputField.setText(inputField.text() + '1')
     input += '1'
 oneButton.clicked.connect(one)
-# Zero (0)
+# Zero [0]
 zeroButton = QPushButton('0', window)
 zeroButton.setFixedSize(90, 90)
 zeroButton.move(210, 840)
@@ -233,7 +257,7 @@ def zero():
     input += '0'
 zeroButton.clicked.connect(zero)
 
-# Point (.)
+# Point [.]
 pointButton = QPushButton('.', window)
 pointButton.setFixedSize(90, 90)
 pointButton.move(300, 840)
@@ -262,7 +286,7 @@ def allClear():
     outputField.setText('')
     input = ''
 allClearButton.clicked.connect(allClear)
-# Clear (Backspace)
+# Clear [Backspace]
 clearButton = QPushButton('C', window)
 clearButton.setFixedSize(90, 90)
 clearButton.move(480, 480)
@@ -271,14 +295,33 @@ clearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)
 def clear():
     global input
     if inputField.text():
-        inputFieldText = inputField.text()
-        inputFieldText = inputFieldText[:-1]
-        inputField.setText(inputFieldText)
-        input = input[:-1]
+        if inputField.text().endswith('sin('):
+            inputField.setText(inputField.text().replace('sin(', ''))
+            input = input.replace('sin(', '')
+        elif inputField.text().endswith('cos('):
+            inputField.setText(inputField.text().replace('cos(', ''))
+            input = input.replace('cos(', '')
+        elif inputField.text().endswith('tan('):
+            inputField.setText(inputField.text().replace('tan(', ''))
+            input = input.replace('tan(', '')
+        elif inputField.text().endswith('sin⁻¹('):
+            inputField.setText(inputField.text().replace('sin⁻¹(', ''))
+            input = input.replace('asin(', '')
+        elif inputField.text().endswith('cos⁻¹('):
+            inputField.setText(inputField.text().replace('cos⁻¹(', ''))
+            input = input.replace('acos(', '')
+        elif inputField.text().endswith('tan⁻¹('):
+            inputField.setText(inputField.text().replace('tan⁻¹(', ''))
+            input = input.replace('atan(', '')
+        else:
+            inputFieldText = inputField.text()
+            inputFieldText = inputFieldText[:-1]
+            inputField.setText(inputFieldText)
+            input = input[:-1]
 clearButton.clicked.connect(clear)
 
-# Operators (+ | - | × | ÷)
-# Plus (+)
+# Operators [+ | - | × | ÷]
+# Plus [+]
 plusButton = QPushButton('+', window)
 plusButton.setFixedSize(90, 90)
 plusButton.move(390, 660)
@@ -290,7 +333,7 @@ def plus():
         inputField.setText(inputField.text() + '+')
         input += '+'
 plusButton.clicked.connect(plus)
-# Minus (-)
+# Minus [-]
 minusButton = QPushButton('-', window)
 minusButton.setFixedSize(90, 90)
 minusButton.move(480, 660)
@@ -302,7 +345,7 @@ def minus():
         inputField.setText(inputField.text() + '-')
         input += '-'
 minusButton.clicked.connect(minus)
-# Multiply (×)
+# Multiply [×]
 multiplyButton = QPushButton('×', window)
 multiplyButton.setFixedSize(90, 90)
 multiplyButton.move(390, 750)
@@ -314,7 +357,7 @@ def multiply():
         inputField.setText(inputField.text() + '×')
         input += '*'
 multiplyButton.clicked.connect(multiply)
-# Divide (÷)
+# Divide [÷]
 divideButton = QPushButton('÷', window)
 divideButton.setFixedSize(90, 90)
 divideButton.move(480, 750)
@@ -327,7 +370,7 @@ def divide():
         input += '/'
 divideButton.clicked.connect(divide)
 
-# Percent (%)
+# Percent [%]
 percentButton = QPushButton('%', window)
 percentButton.setFixedSize(90, 90)
 percentButton.move(30, 570)
@@ -340,7 +383,194 @@ def percent():
         input += '/100'
 percentButton.clicked.connect(percent)
 
-# Result (=)
+# Brackets
+# Open Bracket [(]
+openBracketButton = QPushButton('(', window)
+openBracketButton.setFixedSize(90, 90)
+openBracketButton.move(390, 570)
+openBracketButton.setFont(operatorButtonFont)
+openBracketButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 191)')
+openBracketButton.setVisible(False)
+def openBracket():
+    global input
+    inputField.setText(inputField.text() + '(')
+    input += '('
+openBracketButton.clicked.connect(openBracket)
+# Close Bracket [)]
+closeBracketButton = QPushButton(')', window)
+closeBracketButton.setFixedSize(90, 90)
+closeBracketButton.move(480, 570)
+closeBracketButton.setFont(operatorButtonFont)
+closeBracketButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 191)')
+closeBracketButton.setVisible(False)
+def closeBracket():
+    global input
+    if inputField.text():
+        inputField.setText(inputField.text() + ')')
+        if angleButton.isChecked():
+            input += '))'
+        else:
+            input += ')'
+closeBracketButton.clicked.connect(closeBracket)
+
+# Trigonometry
+# Sine
+sineButton = QPushButton('sin', window)
+sineButton.setFixedSize(90, 90)
+sineButton.move(120, 390)
+sineButton.setFont(trigonometryButtonFont)
+sineButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+sineButton.setVisible(False)
+def sine():
+    global input
+    inputField.setText(inputField.text() + 'sin(')
+    if angleButton.isChecked():
+        input += 'sin(radians('
+    else:
+        input += 'sin('
+sineButton.clicked.connect(sine)
+# Cosine
+cosineButton = QPushButton('cos', window)
+cosineButton.setFixedSize(90, 90)
+cosineButton.move(210, 390)
+cosineButton.setFont(trigonometryButtonFont)
+cosineButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+cosineButton.setVisible(False)
+def cosine():
+    global input
+    inputField.setText(inputField.text() + 'cos(')
+    if angleButton.isChecked():
+        input += 'cos(radians('
+    else:
+        input += 'cos('
+cosineButton.clicked.connect(cosine)
+# Tangent
+tangentButton = QPushButton('tan', window)
+tangentButton.setFixedSize(90, 90)
+tangentButton.move(300, 390)
+tangentButton.setFont(trigonometryButtonFont)
+tangentButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+tangentButton.setVisible(False)
+def tangent():
+    global input
+    inputField.setText(inputField.text() + 'tan(')
+    if angleButton.isChecked():
+        input += 'tan(radians('
+    else:
+        input += 'tan('
+tangentButton.clicked.connect(tangent)
+# Sine Inverse
+sineInverseButton = QPushButton('sin⁻¹', window)
+sineInverseButton.setFixedSize(90, 90)
+sineInverseButton.move(120, 390)
+sineInverseButton.setFont(trigonometryButtonFont)
+sineInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+sineInverseButton.setVisible(False)
+def sineInverse():
+    global input
+    inputField.setText(inputField.text() + 'sin⁻¹(')
+    if angleButton.isChecked():
+        input += 'asin(radians('
+    else:
+        input += 'asin('
+sineInverseButton.clicked.connect(sineInverse)
+# Cosine Inverse
+cosineInverseButton = QPushButton('cos⁻¹', window)
+cosineInverseButton.setFixedSize(90, 90)
+cosineInverseButton.move(210, 390)
+cosineInverseButton.setFont(trigonometryButtonFont)
+cosineInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+cosineInverseButton.setVisible(False)
+def cosineInverse():
+    global input
+    inputField.setText(inputField.text() + 'cos⁻¹(')
+    if angleButton.isChecked():
+        input += 'acos(radians('
+    else:
+        input += 'acos('
+cosineInverseButton.clicked.connect(cosineInverse)
+# Tangent Inverse
+tangentInverseButton = QPushButton('tan⁻¹', window)
+tangentInverseButton.setFixedSize(90, 90)
+tangentInverseButton.move(300, 390)
+tangentInverseButton.setFont(trigonometryButtonFont)
+tangentInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+tangentInverseButton.setVisible(False)
+def tangentInverse():
+    global input
+    inputField.setText(inputField.text() + 'tan⁻¹(')
+    if angleButton.isChecked():
+        input += 'atan(radians('
+    else:
+        input += 'atan('
+tangentInverseButton.clicked.connect(tangentInverse)
+# Angle Button
+angleButton = QPushButton('RAD', window)
+angleButton.setFixedSize(180, 90)
+angleButton.move(390, 390)
+angleButton.setFont(numberPadFont)
+angleButton.setStyleSheet('border: 2px solid; background-color: rgb(200, 180, 160)')
+angleButton.setVisible(False)
+angleButton.setCheckable(True)
+def angle():
+    if angleButton.isChecked():
+        angleButton.setText('DEG')
+    else:
+        angleButton.setText('RAD')
+angleButton.clicked.connect(angle)
+
+# Inverse Button
+inverseButton = QPushButton('INV', window)
+inverseButton.setFixedSize(90, 90)
+inverseButton.move(30, 480)
+inverseButton.setFont(numberPadFont)
+inverseButton.setStyleSheet('border: 2px solid; background-color: rgb(128, 128, 128)')
+inverseButton.setVisible(False)
+inverseButton.setCheckable(True)
+def inverse():
+    if inverseButton.isChecked():
+        sineButton.setVisible(False)
+        cosineButton.setVisible(False)
+        tangentButton.setVisible(False)
+        sineInverseButton.setVisible(True)
+        cosineInverseButton.setVisible(True)
+        tangentInverseButton.setVisible(True)
+    else:
+        sineButton.setVisible(True)
+        cosineButton.setVisible(True)
+        tangentButton.setVisible(True)
+        sineInverseButton.setVisible(False)
+        cosineInverseButton.setVisible(False)
+        tangentInverseButton.setVisible(False)
+inverseButton.clicked.connect(inverse)
+
+# Constants [π | e]
+# pi [π]
+piButton = QPushButton('π', window)
+piButton.setFixedSize(90, 90)
+piButton.move(30, 840)
+piButton.setFont(constantButtonFont)
+piButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 180)')
+piButton.setVisible(False)
+def piCharacter():
+    global input
+    inputField.setText(inputField.text() + 'π')
+    input += 'pi'
+piButton.clicked.connect(piCharacter)
+# Euler's Number [e]
+eulerButton = QPushButton('e', window)
+eulerButton.setFixedSize(90, 90)
+eulerButton.move(120, 840)
+eulerButton.setFont(constantButtonFont)
+eulerButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 180)')
+eulerButton.setVisible(False)
+def eulerNumber():
+    global input
+    inputField.setText(inputField.text() + 'e')
+    input += 'e'
+eulerButton.clicked.connect(eulerNumber)
+
+# Result [=]
 resultButton = QPushButton('=', window)
 resultButton.setFixedSize(180, 90)
 resultButton.move(390, 840)
@@ -352,7 +582,10 @@ def result():
         if inputField.text():
             outputField.setText(str(eval(input)))
     except Exception as err:
-        QMessageBox.critical(window, 'Error', f'An error occurred: {str(err)}')
+        errorMessage = str(err)
+        errorMessage = errorMessage.replace('(<string>, line 1)', '')
+        QMessageBox.critical(window, 'Error', f'An error occurred: {errorMessage}')
+    print(input)
 resultButton.clicked.connect(result)
 
 window.show()
