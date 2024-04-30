@@ -584,7 +584,7 @@ def result():
     except Exception as err:
         errorMessage = str(err)
         errorMessage = errorMessage.replace('(<string>, line 1)', '')
-        QMessageBox.critical(window, 'Error', f'An error occurred: {errorMessage}')
+        QMessageBox.critical(window, 'Error', f'An error occurred: {errorMessage}\nScript: {input}')
     print(input)
 resultButton.clicked.connect(result)
 
