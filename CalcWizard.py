@@ -1,20 +1,28 @@
 # GUI
-from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QMessageBox
+from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QWidget, QLabel, QLineEdit, QPushButton, QMessageBox
 from PyQt6.QtGui import QFont
 from PyQt6.QtCore import Qt
-
 # Mathematical Functions
 from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log2, log10
 
 input = ''
 
 CalcWizard = QApplication([])
-
 # Window Attributes
 window = QMainWindow()
 window.setWindowTitle('CalcWizard')
 window.setGeometry(660, 60, 600, 960)
 window.setFixedSize(600, 960)
+
+# QStackedWidget Instance
+stackedWidget = QStackedWidget(window)
+window.setCentralWidget(stackedWidget)
+# Calculator Widget
+calculatorWidget = QWidget()
+stackedWidget.addWidget(calculatorWidget)
+# Conversions Widget
+conversionsWidget = QWidget()
+stackedWidget.addWidget(conversionsWidget)
 
 # Font Attributes
 # Main Label & Switch Button Font
@@ -59,24 +67,23 @@ constantButtonFont.setPixelSize(36)
 constantButtonFont.setBold(True)
 constantButtonFont.setItalic(True)
 
-# Switch between Modes Button
-switchButton = QPushButton('⇄', window)
-switchButton.setFixedSize(60, 60)
-switchButton.move(510, 30)
-switchButton.setFont(mainLabel_switchButtonFont)
-def switchMode():
-    print('Placeholder')
-switchButton.clicked.connect(switchMode)
-
+# Calculator Page
+# Switch to Conversions Button
+switchToConversionsButton = QPushButton('⇄', calculatorWidget)
+switchToConversionsButton.setFixedSize(60, 60)
+switchToConversionsButton.move(510, 30)
+switchToConversionsButton.setFont(mainLabel_switchButtonFont)
+def switchToConversions():
+    stackedWidget.setCurrentWidget(conversionsWidget)
+switchToConversionsButton.clicked.connect(switchToConversions)
 # Calculator Page Main Label
-calculatorLabel = QLabel('CALCULATOR', window)
+calculatorLabel = QLabel('CALCULATOR', calculatorWidget)
 calculatorLabel.setFixedSize(540, 60)
 calculatorLabel.move(30, 120)
 calculatorLabel.setFont(mainLabel_switchButtonFont)
 calculatorLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
 # Input Field
-inputField = QLineEdit(window)
+inputField = QLineEdit(calculatorWidget)
 inputField.setPlaceholderText('Input')
 inputField.setFixedSize(540, 60)
 inputField.move(30, 210)
@@ -84,9 +91,8 @@ inputField.setFont(inputFieldFont)
 inputField.setAlignment(Qt.AlignmentFlag.AlignRight)
 inputField.setStyleSheet('border: 2px solid; padding-right: 15px')
 inputField.setReadOnly(True)
-
 # Paste Output to Input
-pasteButton = QPushButton('↑', window)
+pasteButton = QPushButton('↑', calculatorWidget)
 pasteButton.setFixedSize(30, 30)
 pasteButton.move(540, 270)
 pasteButton.setFont(pasteButtonFont)
@@ -98,9 +104,8 @@ def paste():
         input = str(outputField.text())
         outputField.setText('')
 pasteButton.clicked.connect(paste)
-
 # Output Field
-outputField = QLineEdit(window)
+outputField = QLineEdit(calculatorWidget)
 outputField.setFixedSize(540, 60)
 outputField.move(30, 300)
 outputField.setFont(outputFieldFont)
@@ -108,9 +113,8 @@ outputField.setAlignment(Qt.AlignmentFlag.AlignRight)
 outputField.setStyleSheet('border: 2px solid; padding-right: 15px')
 outputField.setPlaceholderText('Output')
 outputField.setReadOnly(True)
-
 # Calculator Mode Button
-calculatorModeButton = QPushButton('∞', window)
+calculatorModeButton = QPushButton('∞', calculatorWidget)
 calculatorModeButton.setFixedSize(90, 90)
 calculatorModeButton.move(30, 390)
 calculatorModeButton.setFont(calculatorModeButtonFont)
@@ -158,10 +162,9 @@ def calculatorMode():
         piButton.setVisible(False)
         eulerButton.setVisible(False)
 calculatorModeButton.clicked.connect(calculatorMode)
-
 # Number Pad
 # Nine [9]
-nineButton = QPushButton('9', window)
+nineButton = QPushButton('9', calculatorWidget)
 nineButton.setFixedSize(90, 90)
 nineButton.move(300, 570)
 nineButton.setFont(numberPadFont)
@@ -172,7 +175,7 @@ def nine():
     input += '9'
 nineButton.clicked.connect(nine)
 # Eight [8]
-eightButton = QPushButton('8', window)
+eightButton = QPushButton('8', calculatorWidget)
 eightButton.setFixedSize(90, 90)
 eightButton.move(210, 570)
 eightButton.setFont(numberPadFont)
@@ -183,7 +186,7 @@ def eight():
     input += '8'
 eightButton.clicked.connect(eight)
 # Seven [7]
-sevenButton = QPushButton('7', window)
+sevenButton = QPushButton('7', calculatorWidget)
 sevenButton.setFixedSize(90, 90)
 sevenButton.move(120, 570)
 sevenButton.setFont(numberPadFont)
@@ -194,7 +197,7 @@ def seven():
     input += '7'
 sevenButton.clicked.connect(seven)
 # Six [6]
-sixButton = QPushButton('6', window)
+sixButton = QPushButton('6', calculatorWidget)
 sixButton.setFixedSize(90, 90)
 sixButton.move(300, 660)
 sixButton.setFont(numberPadFont)
@@ -205,7 +208,7 @@ def six():
     input += '6'
 sixButton.clicked.connect(six)
 # Five [5]
-fiveButton = QPushButton('5', window)
+fiveButton = QPushButton('5', calculatorWidget)
 fiveButton.setFixedSize(90, 90)
 fiveButton.move(210, 660)
 fiveButton.setFont(numberPadFont)
@@ -216,7 +219,7 @@ def five():
     input += '5'
 fiveButton.clicked.connect(five)
 # Four [4]
-fourButton = QPushButton('4', window)
+fourButton = QPushButton('4', calculatorWidget)
 fourButton.setFixedSize(90, 90)
 fourButton.move(120, 660)
 fourButton.setFont(numberPadFont)
@@ -227,7 +230,7 @@ def four():
     input += '4'
 fourButton.clicked.connect(four)
 # Three [3]
-threeButton = QPushButton('3', window)
+threeButton = QPushButton('3', calculatorWidget)
 threeButton.setFixedSize(90, 90)
 threeButton.move(300, 750)
 threeButton.setFont(numberPadFont)
@@ -238,7 +241,7 @@ def three():
     input += '3'
 threeButton.clicked.connect(three)
 # Two [2]
-twoButton = QPushButton('2', window)
+twoButton = QPushButton('2', calculatorWidget)
 twoButton.setFixedSize(90, 90)
 twoButton.move(210, 750)
 twoButton.setFont(numberPadFont)
@@ -249,7 +252,7 @@ def two():
     input += '2'
 twoButton.clicked.connect(two)
 # One [1]
-oneButton = QPushButton('1', window)
+oneButton = QPushButton('1', calculatorWidget)
 oneButton.setFixedSize(90, 90)
 oneButton.move(120, 750)
 oneButton.setFont(numberPadFont)
@@ -260,7 +263,7 @@ def one():
     input += '1'
 oneButton.clicked.connect(one)
 # Zero [0]
-zeroButton = QPushButton('0', window)
+zeroButton = QPushButton('0', calculatorWidget)
 zeroButton.setFixedSize(90, 90)
 zeroButton.move(210, 840)
 zeroButton.setFont(numberPadFont)
@@ -270,9 +273,8 @@ def zero():
     inputField.setText(inputField.text() + '0')
     input += '0'
 zeroButton.clicked.connect(zero)
-
 # Point [.]
-pointButton = QPushButton('.', window)
+pointButton = QPushButton('.', calculatorWidget)
 pointButton.setFixedSize(90, 90)
 pointButton.move(300, 840)
 pointButton.setFont(numberPadFont)
@@ -286,10 +288,9 @@ def point():
         inputField.setText(inputField.text() + '0.')
         input += '0.'
 pointButton.clicked.connect(point)
-
 # Deletion
 # All Clear
-allClearButton = QPushButton('AC', window)
+allClearButton = QPushButton('AC', calculatorWidget)
 allClearButton.setFixedSize(90, 90)
 allClearButton.move(390, 480)
 allClearButton.setFont(operatorButtonFont)
@@ -301,7 +302,7 @@ def allClear():
     input = ''
 allClearButton.clicked.connect(allClear)
 # Clear [Backspace]
-clearButton = QPushButton('C', window)
+clearButton = QPushButton('C', calculatorWidget)
 clearButton.setFixedSize(90, 90)
 clearButton.move(480, 480)
 clearButton.setFont(operatorButtonFont)
@@ -357,10 +358,9 @@ def clear():
             inputField.setText(inputFieldText)
             input = input[:-1]
 clearButton.clicked.connect(clear)
-
 # Operators [+ | - | × | ÷]
 # Plus [+]
-plusButton = QPushButton('+', window)
+plusButton = QPushButton('+', calculatorWidget)
 plusButton.setFixedSize(90, 90)
 plusButton.move(390, 660)
 plusButton.setFont(operatorButtonFont)
@@ -372,7 +372,7 @@ def plus():
         input += '+'
 plusButton.clicked.connect(plus)
 # Minus [-]
-minusButton = QPushButton('-', window)
+minusButton = QPushButton('-', calculatorWidget)
 minusButton.setFixedSize(90, 90)
 minusButton.move(480, 660)
 minusButton.setFont(operatorButtonFont)
@@ -384,7 +384,7 @@ def minus():
         input += '-'
 minusButton.clicked.connect(minus)
 # Multiply [×]
-multiplyButton = QPushButton('×', window)
+multiplyButton = QPushButton('×', calculatorWidget)
 multiplyButton.setFixedSize(90, 90)
 multiplyButton.move(390, 750)
 multiplyButton.setFont(operatorButtonFont)
@@ -396,7 +396,7 @@ def multiply():
         input += '*'
 multiplyButton.clicked.connect(multiply)
 # Divide [÷]
-divideButton = QPushButton('÷', window)
+divideButton = QPushButton('÷', calculatorWidget)
 divideButton.setFixedSize(90, 90)
 divideButton.move(480, 750)
 divideButton.setFont(operatorButtonFont)
@@ -407,9 +407,8 @@ def divide():
         inputField.setText(inputField.text() + '÷')
         input += '/'
 divideButton.clicked.connect(divide)
-
 # Percent [%]
-percentButton = QPushButton('%', window)
+percentButton = QPushButton('%', calculatorWidget)
 percentButton.setFixedSize(90, 90)
 percentButton.move(30, 570)
 percentButton.setFont(operatorButtonFont)
@@ -420,10 +419,9 @@ def percent():
         inputField.setText(inputField.text() + '%')
         input += '/100'
 percentButton.clicked.connect(percent)
-
 # Brackets
 # Open Bracket [(]
-openBracketButton = QPushButton('(', window)
+openBracketButton = QPushButton('(', calculatorWidget)
 openBracketButton.setFixedSize(90, 90)
 openBracketButton.move(390, 570)
 openBracketButton.setFont(operatorButtonFont)
@@ -435,7 +433,7 @@ def openBracket():
     input += '('
 openBracketButton.clicked.connect(openBracket)
 # Close Bracket [)]
-closeBracketButton = QPushButton(')', window)
+closeBracketButton = QPushButton(')', calculatorWidget)
 closeBracketButton.setFixedSize(90, 90)
 closeBracketButton.move(480, 570)
 closeBracketButton.setFont(operatorButtonFont)
@@ -450,10 +448,9 @@ def closeBracket():
         else:
             input += ')'
 closeBracketButton.clicked.connect(closeBracket)
-
 # Trigonometry
 # Sine
-sineButton = QPushButton('sin', window)
+sineButton = QPushButton('sin', calculatorWidget)
 sineButton.setFixedSize(90, 90)
 sineButton.move(120, 390)
 sineButton.setFont(trigonometryButtonFont)
@@ -468,7 +465,7 @@ def sine():
         input += 'sin('
 sineButton.clicked.connect(sine)
 # Cosine
-cosineButton = QPushButton('cos', window)
+cosineButton = QPushButton('cos', calculatorWidget)
 cosineButton.setFixedSize(90, 90)
 cosineButton.move(210, 390)
 cosineButton.setFont(trigonometryButtonFont)
@@ -483,7 +480,7 @@ def cosine():
         input += 'cos('
 cosineButton.clicked.connect(cosine)
 # Tangent
-tangentButton = QPushButton('tan', window)
+tangentButton = QPushButton('tan', calculatorWidget)
 tangentButton.setFixedSize(90, 90)
 tangentButton.move(300, 390)
 tangentButton.setFont(trigonometryButtonFont)
@@ -498,7 +495,7 @@ def tangent():
         input += 'tan('
 tangentButton.clicked.connect(tangent)
 # Sine Inverse
-sineInverseButton = QPushButton('sin⁻¹', window)
+sineInverseButton = QPushButton('sin⁻¹', calculatorWidget)
 sineInverseButton.setFixedSize(90, 90)
 sineInverseButton.move(120, 390)
 sineInverseButton.setFont(trigonometryButtonFont)
@@ -513,7 +510,7 @@ def sineInverse():
         input += 'asin('
 sineInverseButton.clicked.connect(sineInverse)
 # Cosine Inverse
-cosineInverseButton = QPushButton('cos⁻¹', window)
+cosineInverseButton = QPushButton('cos⁻¹', calculatorWidget)
 cosineInverseButton.setFixedSize(90, 90)
 cosineInverseButton.move(210, 390)
 cosineInverseButton.setFont(trigonometryButtonFont)
@@ -528,7 +525,7 @@ def cosineInverse():
         input += 'acos('
 cosineInverseButton.clicked.connect(cosineInverse)
 # Tangent Inverse
-tangentInverseButton = QPushButton('tan⁻¹', window)
+tangentInverseButton = QPushButton('tan⁻¹', calculatorWidget)
 tangentInverseButton.setFixedSize(90, 90)
 tangentInverseButton.move(300, 390)
 tangentInverseButton.setFont(trigonometryButtonFont)
@@ -543,7 +540,7 @@ def tangentInverse():
         input += 'atan('
 tangentInverseButton.clicked.connect(tangentInverse)
 # Angle Button
-angleButton = QPushButton('RAD', window)
+angleButton = QPushButton('RAD', calculatorWidget)
 angleButton.setFixedSize(180, 90)
 angleButton.move(390, 390)
 angleButton.setFont(numberPadFont)
@@ -556,10 +553,9 @@ def angle():
     else:
         angleButton.setText('RAD')
 angleButton.clicked.connect(angle)
-
 # Logarithm
 # Base 10 Log
-baseTenLogButton = QPushButton('log⏨', window)
+baseTenLogButton = QPushButton('log⏨', calculatorWidget)
 baseTenLogButton.setFixedSize(90, 90)
 baseTenLogButton.move(120, 480)
 baseTenLogButton.setFont(numberPadFont)
@@ -571,7 +567,7 @@ def baseTenLog():
     input += 'log10('
 baseTenLogButton.clicked.connect(baseTenLog)
 # Base 2 Log
-baseTwoLogButton = QPushButton('log₂', window)
+baseTwoLogButton = QPushButton('log₂', calculatorWidget)
 baseTwoLogButton.setFixedSize(90, 90)
 baseTwoLogButton.move(210, 480)
 baseTwoLogButton.setFont(numberPadFont)
@@ -583,7 +579,7 @@ def baseTwoLog():
     input += 'log2('
 baseTwoLogButton.clicked.connect(baseTwoLog)
 # Natural Log
-naturalLogButton = QPushButton('ln', window)
+naturalLogButton = QPushButton('ln', calculatorWidget)
 naturalLogButton.setFixedSize(90, 90)
 naturalLogButton.move(300, 480)
 naturalLogButton.setFont(numberPadFont)
@@ -594,10 +590,9 @@ def naturalLog():
     inputField.setText(inputField.text() + 'ln(')
     input += 'log('
 naturalLogButton.clicked.connect(naturalLog)
-
 # Logarithm Buttons Inverse
 # Exponents of 10
-powerTenButton = QPushButton('10ˣ', window)
+powerTenButton = QPushButton('10ˣ', calculatorWidget)
 powerTenButton.setFixedSize(90, 90)
 powerTenButton.move(120, 480)
 powerTenButton.setFont(numberPadFont)
@@ -609,7 +604,7 @@ def powerTen():
     input += '10**'
 powerTenButton.clicked.connect(powerTen)
 # Exponent of 2
-powerTwoButton = QPushButton('2ˣ', window)
+powerTwoButton = QPushButton('2ˣ', calculatorWidget)
 powerTwoButton.setFixedSize(90, 90)
 powerTwoButton.move(210, 480)
 powerTwoButton.setFont(numberPadFont)
@@ -621,7 +616,7 @@ def powerTwo():
     input += '2**'
 powerTwoButton.clicked.connect(powerTwo)
 # Exponents of e
-powerEulerButton = QPushButton('eˣ', window)
+powerEulerButton = QPushButton('eˣ', calculatorWidget)
 powerEulerButton.setFixedSize(90, 90)
 powerEulerButton.move(300, 480)
 powerEulerButton.setFont(numberPadFont)
@@ -632,9 +627,8 @@ def powerEuler():
     inputField.setText(inputField.text() + 'e^')
     input += 'e**'
 powerEulerButton.clicked.connect(powerEuler)
-
 # Inverse Button
-inverseButton = QPushButton('INV', window)
+inverseButton = QPushButton('INV', calculatorWidget)
 inverseButton.setFixedSize(90, 90)
 inverseButton.move(30, 480)
 inverseButton.setFont(numberPadFont)
@@ -669,9 +663,8 @@ def inverse():
         powerTwoButton.setVisible(False)
         powerEulerButton.setVisible(False)
 inverseButton.clicked.connect(inverse)
-
 # Square [x²]
-squareButton = QPushButton('x²', window)
+squareButton = QPushButton('x²', calculatorWidget)
 squareButton.setFixedSize(90, 90)
 squareButton.move(30, 660)
 squareButton.setFont(numberPadFont)
@@ -683,9 +676,8 @@ def square():
         inputField.setText(inputField.text() + '²')
         input += '**(2)'
 squareButton.clicked.connect(square)
-
 # Exponent
-exponentButton = QPushButton('^', window)
+exponentButton = QPushButton('^', calculatorWidget)
 exponentButton.setFixedSize(90, 90)
 exponentButton.move(30, 750)
 exponentButton.setFont(numberPadFont)
@@ -697,10 +689,9 @@ def exponent():
         inputField.setText(inputField.text() + '^')
         input += '**'
 exponentButton.clicked.connect(exponent)
-
 # Constants [π | e]
 # pi [π]
-piButton = QPushButton('π', window)
+piButton = QPushButton('π', calculatorWidget)
 piButton.setFixedSize(90, 90)
 piButton.move(30, 840)
 piButton.setFont(constantButtonFont)
@@ -712,7 +703,7 @@ def piCharacter():
     input += 'pi'
 piButton.clicked.connect(piCharacter)
 # Euler's Number [e]
-eulerButton = QPushButton('e', window)
+eulerButton = QPushButton('e', calculatorWidget)
 eulerButton.setFixedSize(90, 90)
 eulerButton.move(120, 840)
 eulerButton.setFont(constantButtonFont)
@@ -723,9 +714,8 @@ def eulerNumber():
     inputField.setText(inputField.text() + 'e')
     input += 'e'
 eulerButton.clicked.connect(eulerNumber)
-
 # Result [=]
-resultButton = QPushButton('=', window)
+resultButton = QPushButton('=', calculatorWidget)
 resultButton.setFixedSize(180, 90)
 resultButton.move(390, 840)
 resultButton.setFont(resultButtonsFont)
@@ -738,10 +728,24 @@ def result():
     except Exception as err:
         errorMessage = str(err)
         errorMessage = errorMessage.replace('(<string>, line 1)', '')
-        QMessageBox.critical(window, 'Error', f'An error occurred: {errorMessage}\nScript: {input}')
-    print(input)
+        QMessageBox.critical(calculatorWidget, 'Error', f'An error occurred: {errorMessage}\nScript: {input}')
 resultButton.clicked.connect(result)
 
-window.show()
+# Conversions Page
+# Switch to Conversions Button
+switchToCalculatorButton = QPushButton('⇄', conversionsWidget)
+switchToCalculatorButton.setFixedSize(60, 60)
+switchToCalculatorButton.move(510, 30)
+switchToCalculatorButton.setFont(mainLabel_switchButtonFont)
+def switchToCalculator():
+    stackedWidget.setCurrentWidget(calculatorWidget)
+switchToCalculatorButton.clicked.connect(switchToCalculator)
+# Calculator Page Main Label
+conversionsLabel = QLabel('CONVERSIONS', conversionsWidget)
+conversionsLabel.setFixedSize(540, 60)
+conversionsLabel.move(30, 120)
+conversionsLabel.setFont(mainLabel_switchButtonFont)
+conversionsLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
+window.show()
 CalcWizard.exec()
