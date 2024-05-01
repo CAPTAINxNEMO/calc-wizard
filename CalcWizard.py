@@ -761,7 +761,7 @@ goToCurrencyConversionButton = QPushButton('💲', conversionsWidget)
 goToCurrencyConversionButton.setFixedSize(120, 120)
 goToCurrencyConversionButton.move(60, 240)
 goToCurrencyConversionButton.setFont(goToButtonFonts)
-goToCurrencyConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+goToCurrencyConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(217, 190, 240)')
 def goToCurrencyConversion():
     stackedWidget.setCurrentWidget(currencyConversionWidget)
 goToCurrencyConversionButton.clicked.connect(goToCurrencyConversion)
@@ -776,23 +776,127 @@ goToLengthConversionButton = QPushButton('📏', conversionsWidget)
 goToLengthConversionButton.setFixedSize(120, 120)
 goToLengthConversionButton.move(240, 240)
 goToLengthConversionButton.setFont(goToButtonFonts)
-goToLengthConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+goToLengthConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(217, 190, 240)')
 def goToLengthConversion():
     stackedWidget.setCurrentWidget(lengthConversionWidget)
 goToLengthConversionButton.clicked.connect(goToLengthConversion)
-# Currency Conversion Label
+# Length Conversion Label
 goToLengthConversionLabel = QLabel('Length', conversionsWidget)
 goToLengthConversionLabel.setFixedSize(120, 30)
 goToLengthConversionLabel.move(240, 360)
 goToLengthConversionLabel.setFont(goToLabelFonts)
 goToLengthConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 # Area Conversion Button
+goToAreaConversionButton = QPushButton('🏁', conversionsWidget)
+goToAreaConversionButton.setFixedSize(120, 120)
+goToAreaConversionButton.move(420, 240)
+goToAreaConversionButton.setFont(goToButtonFonts)
+goToAreaConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(217, 190, 240)')
+def goToAreaConversion():
+    stackedWidget.setCurrentWidget(areaConversionWidget)
+goToAreaConversionButton.clicked.connect(goToAreaConversion)
+# Area Conversion Label
+goToAreaConversionLabel = QLabel('Area', conversionsWidget)
+goToAreaConversionLabel.setFixedSize(120, 30)
+goToAreaConversionLabel.move(420, 360)
+goToAreaConversionLabel.setFont(goToLabelFonts)
+goToAreaConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 # Volume Conversion Button
+goToVolumeConversionButton = QPushButton('🧊', conversionsWidget)
+goToVolumeConversionButton.setFixedSize(120, 120)
+goToVolumeConversionButton.move(60, 450)
+goToVolumeConversionButton.setFont(goToButtonFonts)
+goToVolumeConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(217, 190, 240)')
+def goToVolumeConversion():
+    stackedWidget.setCurrentWidget(volumeConversionWidget)
+goToVolumeConversionButton.clicked.connect(goToVolumeConversion)
+# Volume Conversion Label
+goToVolumeConversionLabel = QLabel('Volume', conversionsWidget)
+goToVolumeConversionLabel.setFixedSize(120, 30)
+goToVolumeConversionLabel.move(60, 570)
+goToVolumeConversionLabel.setFont(goToLabelFonts)
+goToVolumeConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 # Weight Conversion Button
+goToWeightConversionButton = QPushButton('⚖️', conversionsWidget)
+goToWeightConversionButton.setFixedSize(120, 120)
+goToWeightConversionButton.move(240, 450)
+goToWeightConversionButton.setFont(goToButtonFonts)
+goToWeightConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(217, 190, 240)')
+def goToWeightConversion():
+    stackedWidget.setCurrentWidget(weightConversionWidget)
+goToWeightConversionButton.clicked.connect(goToWeightConversion)
+# Weight Conversion Label
+goToWeightConversionLabel = QLabel('Weight', conversionsWidget)
+goToWeightConversionLabel.setFixedSize(120, 30)
+goToWeightConversionLabel.move(240, 570)
+goToWeightConversionLabel.setFont(goToLabelFonts)
+goToWeightConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 # Temperature Conversion Button
+goToTemperatureConversionButton = QPushButton('🌡️', conversionsWidget)
+goToTemperatureConversionButton.setFixedSize(120, 120)
+goToTemperatureConversionButton.move(420, 450)
+goToTemperatureConversionButton.setFont(goToButtonFonts)
+goToTemperatureConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(217, 190, 240)')
+def goToTemperatureConversion():
+    stackedWidget.setCurrentWidget(temperatureConversionWidget)
+goToTemperatureConversionButton.clicked.connect(goToTemperatureConversion)
+# Temperature Conversion Label
+goToTemperatureConversionLabel = QLabel('Temperature', conversionsWidget)
+goToTemperatureConversionLabel.setFixedSize(120, 30)
+goToTemperatureConversionLabel.move(420, 570)
+goToTemperatureConversionLabel.setFont(goToLabelFonts)
+goToTemperatureConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 # Speed Conversion Button
+goToSpeedConversionButton = QPushButton('🏎️', conversionsWidget)
+goToSpeedConversionButton.setFixedSize(120, 120)
+goToSpeedConversionButton.move(60, 660)
+goToSpeedConversionButton.setFont(goToButtonFonts)
+goToSpeedConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(217, 190, 240)')
+def goToSpeedConversion():
+    stackedWidget.setCurrentWidget(speedConversionWidget)
+goToSpeedConversionButton.clicked.connect(goToSpeedConversion)
+# Speed Conversion Label
+goToSpeedConversionLabel = QLabel('Speed', conversionsWidget)
+goToSpeedConversionLabel.setFixedSize(120, 30)
+goToSpeedConversionLabel.move(60, 780)
+goToSpeedConversionLabel.setFont(goToLabelFonts)
+goToSpeedConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 # Pressure Conversion Button
+goToPressureConversionButton = QPushButton('⏱️', conversionsWidget)
+goToPressureConversionButton.setFixedSize(120, 120)
+goToPressureConversionButton.move(240, 660)
+goToPressureConversionButton.setFont(goToButtonFonts)
+goToPressureConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(217, 190, 240)')
+def goToPressureConversion():
+    stackedWidget.setCurrentWidget(pressureConversionWidget)
+goToPressureConversionButton.clicked.connect(goToPressureConversion)
+# Pressure Conversion Label
+goToPressureConversionLabel = QLabel('Pressure', conversionsWidget)
+goToPressureConversionLabel.setFixedSize(120, 30)
+goToPressureConversionLabel.move(240, 780)
+goToPressureConversionLabel.setFont(goToLabelFonts)
+goToPressureConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 # Power Conversion Button
+goToPowerConversionButton = QPushButton('💪', conversionsWidget)
+goToPowerConversionButton.setFixedSize(120, 120)
+goToPowerConversionButton.move(420, 660)
+goToPowerConversionButton.setFont(goToButtonFonts)
+goToPowerConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(217, 190, 240)')
+def goToPowerConversion():
+    stackedWidget.setCurrentWidget(powerConversionWidget)
+goToPowerConversionButton.clicked.connect(goToPowerConversion)
+# Power Conversion Label
+goToPowerConversionLabel = QLabel('Power', conversionsWidget)
+goToPowerConversionLabel.setFixedSize(120, 30)
+goToPowerConversionLabel.move(420, 780)
+goToPowerConversionLabel.setFont(goToLabelFonts)
+goToPowerConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# Note for Currency Conversion
+noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', conversionsWidget)
+noteLabel.setFixedSize(540, 30)
+noteLabel.move(30, 900)
+noteLabel.setFont(goToLabelFonts)
+noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Currency Conversion Page
 # Currency Conversion Widget
@@ -820,6 +924,12 @@ currencyConversionLabel.setFixedSize(540, 60)
 currencyConversionLabel.move(30, 120)
 currencyConversionLabel.setFont(conversionsLabelFont)
 currencyConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# Note for Currency Conversion
+noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', currencyConversionWidget)
+noteLabel.setFixedSize(540, 30)
+noteLabel.move(30, 900)
+noteLabel.setFont(goToLabelFonts)
+noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Length Conversion Page
 # Length Conversion Widget
@@ -849,18 +959,193 @@ lengthConversionLabel.setFont(conversionsLabelFont)
 lengthConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Area Conversion Page
+# Area Conversion Widget
+areaConversionWidget = QWidget()
+stackedWidget.addWidget(areaConversionWidget)
+# Back Button
+backButton = QPushButton('←', areaConversionWidget)
+backButton.setFixedSize(60, 60)
+backButton.move(30, 30)
+backButton.setFont(mainLabelFont)
+def back():
+    stackedWidget.setCurrentWidget(conversionsWidget)
+backButton.clicked.connect(back)
+# Switch to Calculator Button
+switchToCalculatorButton = QPushButton('⇄', areaConversionWidget)
+switchToCalculatorButton.setFixedSize(60, 60)
+switchToCalculatorButton.move(510, 30)
+switchToCalculatorButton.setFont(mainLabelFont)
+def switchToCalculator():
+    stackedWidget.setCurrentWidget(calculatorWidget)
+switchToCalculatorButton.clicked.connect(switchToCalculator)
+# Area Conversion Page Main Label
+areaConversionLabel = QLabel('Area Conversion', areaConversionWidget)
+areaConversionLabel.setFixedSize(540, 60)
+areaConversionLabel.move(30, 120)
+areaConversionLabel.setFont(conversionsLabelFont)
+areaConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Volume Conversion Page
+# Volume Conversion Widget
+volumeConversionWidget = QWidget()
+stackedWidget.addWidget(volumeConversionWidget)
+# Back Button
+backButton = QPushButton('←', volumeConversionWidget)
+backButton.setFixedSize(60, 60)
+backButton.move(30, 30)
+backButton.setFont(mainLabelFont)
+def back():
+    stackedWidget.setCurrentWidget(conversionsWidget)
+backButton.clicked.connect(back)
+# Switch to Calculator Button
+switchToCalculatorButton = QPushButton('⇄', volumeConversionWidget)
+switchToCalculatorButton.setFixedSize(60, 60)
+switchToCalculatorButton.move(510, 30)
+switchToCalculatorButton.setFont(mainLabelFont)
+def switchToCalculator():
+    stackedWidget.setCurrentWidget(calculatorWidget)
+switchToCalculatorButton.clicked.connect(switchToCalculator)
+# Volume Conversion Page Main Label
+volumeConversionLabel = QLabel('Volume Conversion', volumeConversionWidget)
+volumeConversionLabel.setFixedSize(540, 60)
+volumeConversionLabel.move(30, 120)
+volumeConversionLabel.setFont(conversionsLabelFont)
+volumeConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Weight Conversion Page
+# Weight Conversion Widget
+weightConversionWidget = QWidget()
+stackedWidget.addWidget(weightConversionWidget)
+# Back Button
+backButton = QPushButton('←', weightConversionWidget)
+backButton.setFixedSize(60, 60)
+backButton.move(30, 30)
+backButton.setFont(mainLabelFont)
+def back():
+    stackedWidget.setCurrentWidget(conversionsWidget)
+backButton.clicked.connect(back)
+# Switch to Calculator Button
+switchToCalculatorButton = QPushButton('⇄', weightConversionWidget)
+switchToCalculatorButton.setFixedSize(60, 60)
+switchToCalculatorButton.move(510, 30)
+switchToCalculatorButton.setFont(mainLabelFont)
+def switchToCalculator():
+    stackedWidget.setCurrentWidget(calculatorWidget)
+switchToCalculatorButton.clicked.connect(switchToCalculator)
+# Weight Conversion Page Main Label
+weightConversionLabel = QLabel('Weight Conversion', weightConversionWidget)
+weightConversionLabel.setFixedSize(540, 60)
+weightConversionLabel.move(30, 120)
+weightConversionLabel.setFont(conversionsLabelFont)
+weightConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Temperature Conversion Page
+# Temperature Conversion Widget
+temperatureConversionWidget = QWidget()
+stackedWidget.addWidget(temperatureConversionWidget)
+# Back Button
+backButton = QPushButton('←', temperatureConversionWidget)
+backButton.setFixedSize(60, 60)
+backButton.move(30, 30)
+backButton.setFont(mainLabelFont)
+def back():
+    stackedWidget.setCurrentWidget(conversionsWidget)
+backButton.clicked.connect(back)
+# Switch to Calculator Button
+switchToCalculatorButton = QPushButton('⇄', temperatureConversionWidget)
+switchToCalculatorButton.setFixedSize(60, 60)
+switchToCalculatorButton.move(510, 30)
+switchToCalculatorButton.setFont(mainLabelFont)
+def switchToCalculator():
+    stackedWidget.setCurrentWidget(calculatorWidget)
+switchToCalculatorButton.clicked.connect(switchToCalculator)
+# Temperature Conversion Page Main Label
+temperatureConversionLabel = QLabel('Temperature Conversion', temperatureConversionWidget)
+temperatureConversionLabel.setFixedSize(540, 60)
+temperatureConversionLabel.move(30, 120)
+temperatureConversionLabel.setFont(conversionsLabelFont)
+temperatureConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Speed Conversion Page
+# Speed Conversion Widget
+speedConversionWidget = QWidget()
+stackedWidget.addWidget(speedConversionWidget)
+# Back Button
+backButton = QPushButton('←', speedConversionWidget)
+backButton.setFixedSize(60, 60)
+backButton.move(30, 30)
+backButton.setFont(mainLabelFont)
+def back():
+    stackedWidget.setCurrentWidget(conversionsWidget)
+backButton.clicked.connect(back)
+# Switch to Calculator Button
+switchToCalculatorButton = QPushButton('⇄', speedConversionWidget)
+switchToCalculatorButton.setFixedSize(60, 60)
+switchToCalculatorButton.move(510, 30)
+switchToCalculatorButton.setFont(mainLabelFont)
+def switchToCalculator():
+    stackedWidget.setCurrentWidget(calculatorWidget)
+switchToCalculatorButton.clicked.connect(switchToCalculator)
+# Speed Conversion Page Main Label
+speedConversionLabel = QLabel('Speed Conversion', speedConversionWidget)
+speedConversionLabel.setFixedSize(540, 60)
+speedConversionLabel.move(30, 120)
+speedConversionLabel.setFont(conversionsLabelFont)
+speedConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Pressure Conversion Page
+# Pressure Conversion Widget
+pressureConversionWidget = QWidget()
+stackedWidget.addWidget(pressureConversionWidget)
+# Back Button
+backButton = QPushButton('←', pressureConversionWidget)
+backButton.setFixedSize(60, 60)
+backButton.move(30, 30)
+backButton.setFont(mainLabelFont)
+def back():
+    stackedWidget.setCurrentWidget(conversionsWidget)
+backButton.clicked.connect(back)
+# Switch to Calculator Button
+switchToCalculatorButton = QPushButton('⇄', pressureConversionWidget)
+switchToCalculatorButton.setFixedSize(60, 60)
+switchToCalculatorButton.move(510, 30)
+switchToCalculatorButton.setFont(mainLabelFont)
+def switchToCalculator():
+    stackedWidget.setCurrentWidget(calculatorWidget)
+switchToCalculatorButton.clicked.connect(switchToCalculator)
+# Pressure Conversion Page Main Label
+pressureConversionLabel = QLabel('Pressure Conversion', pressureConversionWidget)
+pressureConversionLabel.setFixedSize(540, 60)
+pressureConversionLabel.move(30, 120)
+pressureConversionLabel.setFont(conversionsLabelFont)
+pressureConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Power Conversion Page
+# Power Conversion Widget
+powerConversionWidget = QWidget()
+stackedWidget.addWidget(powerConversionWidget)
+# Back Button
+backButton = QPushButton('←', powerConversionWidget)
+backButton.setFixedSize(60, 60)
+backButton.move(30, 30)
+backButton.setFont(mainLabelFont)
+def back():
+    stackedWidget.setCurrentWidget(conversionsWidget)
+backButton.clicked.connect(back)
+# Switch to Calculator Button
+switchToCalculatorButton = QPushButton('⇄', powerConversionWidget)
+switchToCalculatorButton.setFixedSize(60, 60)
+switchToCalculatorButton.move(510, 30)
+switchToCalculatorButton.setFont(mainLabelFont)
+def switchToCalculator():
+    stackedWidget.setCurrentWidget(calculatorWidget)
+switchToCalculatorButton.clicked.connect(switchToCalculator)
+# Power Conversion Page Main Label
+powerConversionLabel = QLabel('Power Conversion', powerConversionWidget)
+powerConversionLabel.setFixedSize(540, 60)
+powerConversionLabel.move(30, 120)
+powerConversionLabel.setFont(conversionsLabelFont)
+powerConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 window.show()
 CalcWizard.exec()
