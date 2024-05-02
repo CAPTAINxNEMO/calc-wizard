@@ -19,6 +19,35 @@ speedConversionInput = ''
 pressureConversionInput = ''
 powerConversionInput = ''
 
+lengthConversionFactors = {
+    (0, 0): 1, (0, 1): 1000, (0, 2): 100, (0, 3): 10, (0, 4): 0.001, (0, 5): 1000000, (0, 6): 1000000000, (0, 7): 1000000000000, (0, 8): 39.3700787402, (0, 9): 3.280839895, (0, 10): 1.0936132983, (0, 11): 0.0006213712, (0, 12): 0.0005399568, (0, 13): 0.000000000000000010570008340247, (0, 14): 0.00000000000000000324078, (0, 15): 0.000000000000668459, (0, 16): 0.000000000260147, (0, 17): 0.0049709695, (0, 18): 0.5468066492,
+    (1, 0): 0.001,
+    (2, 0): 0.01,
+    (3, 0): 0.1,
+    (4, 0): 1000,
+    (5, 0): 0.000001,
+    (6, 0): 0.000000001,
+    (7, 0): 0.000000000001,
+    (8, 0): 0.0254,
+    (9, 0): 0.3048,
+    (10, 0): 0.9144,
+    (11, 0): 1609.344,
+    (12, 0): 1852,
+    (13, 0): 9460730472580044,
+    (14, 0): 30856775812799588,
+    (15, 0): 149597870691,
+    (16, 0): 384399000,
+    (17, 0): 201.168,
+    (18, 0): 1.8288
+}
+areaConversionFactors = {}
+volumeConversionFactors = {}
+weightConversionFactors = {}
+temperatureConversionFactors = {}
+speedConversionFactors = {}
+pressureConversionFactors = {}
+powerConversionFactors = {}
+
 CalcWizard = QApplication([])
 # Window Attributes
 window = QMainWindow()
@@ -1303,10 +1332,20 @@ currencyConversionPasteButton.move(510, 210)
 currencyConversionPasteButton.setFont(conversionPasteButtonFont)
 currencyConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
 def currencyConversionPaste():
+    global currencyConversionInput
     currencyConversionFromIndex = currencyConversionFromComboBox.currentIndex()
     currencyConversionToIndex = currencyConversionToComboBox.currentIndex()
     currencyConversionFromComboBox.setCurrentIndex(currencyConversionToIndex)
     currencyConversionToComboBox.setCurrentIndex(currencyConversionFromIndex)
+    if currencyConversionInputField.text():
+        currencyConversionFrom = currencyConversionFromComboBox.currentText()
+        currencyConversionFrom = currencyConversionFrom[:3]
+        currencyConversionTo = currencyConversionToComboBox.currentText()
+        currencyConversionTo = currencyConversionTo[:3]
+        url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
+        response = requests.get(url)
+        data = response.json()
+        currencyConversionOutputField.setText(str(data["conversion_result"]))
 currencyConversionPasteButton.clicked.connect(currencyConversionPaste)
 # Number Pad
 # Nine [9]
@@ -1522,6 +1561,271 @@ lengthConversionLabel.setFixedSize(540, 60)
 lengthConversionLabel.move(30, 120)
 lengthConversionLabel.setFont(conversionsLabelFont)
 lengthConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# From Combo Box
+lengthConversionFromComboBox = QComboBox(lengthConversionWidget)
+lengthConversionFromComboBox.setFixedSize(480, 60)
+lengthConversionFromComboBox.move(30, 210)
+lengthConversionFromComboBox.setFont(comboBoxFont)
+lengthConversionFromComboBox.setStyleSheet('padding-left: 10px')
+lengthConversionFromComboBox.addItem('Metre (m)')                 # 0
+lengthConversionFromComboBox.addItem('Millimetre (mm)')           # 1
+lengthConversionFromComboBox.addItem('Centimetre (cm)')           # 2
+lengthConversionFromComboBox.addItem('Decimetre (dm)')            # 3
+lengthConversionFromComboBox.addItem('Kilometre (km)')            # 4
+lengthConversionFromComboBox.addItem('Micrometre (μm)')           # 5
+lengthConversionFromComboBox.addItem('Nanometre (nm)')            # 6
+lengthConversionFromComboBox.addItem('Picometre (pm)')            # 7
+lengthConversionFromComboBox.addItem('Inch (in)')                 # 8
+lengthConversionFromComboBox.addItem('Foot (ft)')                 # 9
+lengthConversionFromComboBox.addItem('Yard (yd)')                 # 10
+lengthConversionFromComboBox.addItem('Mile (mi)')                 # 11
+lengthConversionFromComboBox.addItem('Nautical Mile (nmi)')       # 12
+lengthConversionFromComboBox.addItem('Light year (ly)')           # 13
+lengthConversionFromComboBox.addItem('Parsec (pc)')               # 14
+lengthConversionFromComboBox.addItem('Astronomical Unit (AU)')    # 15
+lengthConversionFromComboBox.addItem('Lunar Distance (LD)')       # 16
+lengthConversionFromComboBox.addItem('Furlong (fur)')             # 17
+lengthConversionFromComboBox.addItem('Fathom (fath)')             # 18
+# Input Field
+lengthConversionInputField = QLineEdit(lengthConversionWidget)
+lengthConversionInputField.setPlaceholderText('Input')
+lengthConversionInputField.setFixedSize(480, 60)
+lengthConversionInputField.move(30, 270)
+lengthConversionInputField.setFont(inputFieldFont)
+lengthConversionInputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+lengthConversionInputField.setReadOnly(True)
+# To Combo Box
+lengthConversionToComboBox = QComboBox(lengthConversionWidget)
+lengthConversionToComboBox.setFixedSize(480, 60)
+lengthConversionToComboBox.move(30, 360)
+lengthConversionToComboBox.setFont(comboBoxFont)
+lengthConversionToComboBox.setStyleSheet('padding-left: 10px')
+lengthConversionToComboBox.addItem('Metre (m)')                 # 0
+lengthConversionToComboBox.addItem('Millimetre (mm)')           # 1
+lengthConversionToComboBox.addItem('Centimetre (cm)')           # 2
+lengthConversionToComboBox.addItem('Decimetre (dm)')            # 3
+lengthConversionToComboBox.addItem('Kilometre (km)')            # 4
+lengthConversionToComboBox.addItem('Micrometre (μm)')           # 5
+lengthConversionToComboBox.addItem('Nanometre (nm)')            # 6
+lengthConversionToComboBox.addItem('Picometre (pm)')            # 7
+lengthConversionToComboBox.addItem('Inch (in)')                 # 8
+lengthConversionToComboBox.addItem('Foot (ft)')                 # 9
+lengthConversionToComboBox.addItem('Yard (yd)')                 # 10
+lengthConversionToComboBox.addItem('Mile (mi)')                 # 11
+lengthConversionToComboBox.addItem('Nautical Mile (nmi)')       # 12
+lengthConversionToComboBox.addItem('Light year (ly)')           # 13
+lengthConversionToComboBox.addItem('Parsec (pc)')               # 14
+lengthConversionToComboBox.addItem('Astronomical Unit (AU)')    # 15
+lengthConversionToComboBox.addItem('Lunar Distance (LD)')       # 16
+lengthConversionToComboBox.addItem('Furlong (fur)')             # 17
+lengthConversionToComboBox.addItem('Fathom (fath)')             # 18
+# Output Field
+lengthConversionOutputField = QLineEdit(lengthConversionWidget)
+lengthConversionOutputField.setFixedSize(480, 60)
+lengthConversionOutputField.move(30, 420)
+lengthConversionOutputField.setFont(outputFieldFont)
+lengthConversionOutputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+lengthConversionOutputField.setPlaceholderText('Output')
+lengthConversionOutputField.setReadOnly(True)
+# Paste Output to Input
+lengthConversionPasteButton = QPushButton('⇅', lengthConversionWidget)
+lengthConversionPasteButton.setFixedSize(60, 270)
+lengthConversionPasteButton.move(510, 210)
+lengthConversionPasteButton.setFont(conversionPasteButtonFont)
+lengthConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+def lengthConversionPaste():
+    global lengthConversionInput
+    lengthConversionFromIndex = lengthConversionFromComboBox.currentIndex()
+    lengthConversionToIndex = lengthConversionToComboBox.currentIndex()
+    lengthConversionFromComboBox.setCurrentIndex(lengthConversionToIndex)
+    lengthConversionToComboBox.setCurrentIndex(lengthConversionFromIndex)
+    if lengthConversionInputField.text():
+        lengthConversionFrom = lengthConversionFromComboBox.currentIndex()
+        lengthConversionTo = lengthConversionToComboBox.currentIndex()
+        lengthConversionKey = (lengthConversionFrom, lengthConversionTo)
+        lengthConversionFactor = lengthConversionFactors[lengthConversionKey]
+        lengthConversionOutput = float(lengthConversionInput) * lengthConversionFactor
+        lengthConversionOutputField.setText(str(lengthConversionOutput))
+lengthConversionPasteButton.clicked.connect(lengthConversionPaste)
+# Number Pad
+# Nine [9]
+lengthConversionNineButton = QPushButton('9', lengthConversionWidget)
+lengthConversionNineButton.setFixedSize(90, 90)
+lengthConversionNineButton.move(300, 510)
+lengthConversionNineButton.setFont(numberPadFont)
+lengthConversionNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionNine():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '9')
+    lengthConversionInput += '9'
+lengthConversionNineButton.clicked.connect(lengthConversionNine)
+# Eight [8]
+lengthConversionEightButton = QPushButton('8', lengthConversionWidget)
+lengthConversionEightButton.setFixedSize(90, 90)
+lengthConversionEightButton.move(210, 510)
+lengthConversionEightButton.setFont(numberPadFont)
+lengthConversionEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionEight():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '8')
+    lengthConversionInput += '8'
+lengthConversionEightButton.clicked.connect(lengthConversionEight)
+# Seven [7]
+lengthConversionSevenButton = QPushButton('7', lengthConversionWidget)
+lengthConversionSevenButton.setFixedSize(90, 90)
+lengthConversionSevenButton.move(120, 510)
+lengthConversionSevenButton.setFont(numberPadFont)
+lengthConversionSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionSeven():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '7')
+    lengthConversionInput += '7'
+lengthConversionSevenButton.clicked.connect(lengthConversionSeven)
+# Six [6]
+lengthConversionSixButton = QPushButton('6', lengthConversionWidget)
+lengthConversionSixButton.setFixedSize(90, 90)
+lengthConversionSixButton.move(300, 600)
+lengthConversionSixButton.setFont(numberPadFont)
+lengthConversionSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionSix():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '6')
+    lengthConversionInput += '6'
+lengthConversionSixButton.clicked.connect(lengthConversionSix)
+# Five [5]
+lengthConversionFiveButton = QPushButton('5', lengthConversionWidget)
+lengthConversionFiveButton.setFixedSize(90, 90)
+lengthConversionFiveButton.move(210, 600)
+lengthConversionFiveButton.setFont(numberPadFont)
+lengthConversionFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionFive():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '5')
+    lengthConversionInput += '5'
+lengthConversionFiveButton.clicked.connect(lengthConversionFive)
+# Four [4]
+lengthConversionFourButton = QPushButton('4', lengthConversionWidget)
+lengthConversionFourButton.setFixedSize(90, 90)
+lengthConversionFourButton.move(120, 600)
+lengthConversionFourButton.setFont(numberPadFont)
+lengthConversionFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionFour():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '4')
+    lengthConversionInput += '4'
+lengthConversionFourButton.clicked.connect(lengthConversionFour)
+# Three [3]
+lengthConversionThreeButton = QPushButton('3', lengthConversionWidget)
+lengthConversionThreeButton.setFixedSize(90, 90)
+lengthConversionThreeButton.move(300, 690)
+lengthConversionThreeButton.setFont(numberPadFont)
+lengthConversionThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionThree():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '3')
+    lengthConversionInput += '3'
+lengthConversionThreeButton.clicked.connect(lengthConversionThree)
+# Two [2]
+lengthConversionTwoButton = QPushButton('2', lengthConversionWidget)
+lengthConversionTwoButton.setFixedSize(90, 90)
+lengthConversionTwoButton.move(210, 690)
+lengthConversionTwoButton.setFont(numberPadFont)
+lengthConversionTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionTwo():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '2')
+    lengthConversionInput += '2'
+lengthConversionTwoButton.clicked.connect(lengthConversionTwo)
+# One [1]
+lengthConversionOneButton = QPushButton('1', lengthConversionWidget)
+lengthConversionOneButton.setFixedSize(90, 90)
+lengthConversionOneButton.move(120, 690)
+lengthConversionOneButton.setFont(numberPadFont)
+lengthConversionOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionOne():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '1')
+    lengthConversionInput += '1'
+lengthConversionOneButton.clicked.connect(lengthConversionOne)
+# Zero [0]
+lengthConversionZeroButton = QPushButton('0', lengthConversionWidget)
+lengthConversionZeroButton.setFixedSize(90, 90)
+lengthConversionZeroButton.move(210, 780)
+lengthConversionZeroButton.setFont(numberPadFont)
+lengthConversionZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionZero():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '0')
+    lengthConversionInput += '0'
+lengthConversionZeroButton.clicked.connect(lengthConversionZero)
+# Double Zero [00]
+lengthConversionDoubleZeroButton = QPushButton('00', lengthConversionWidget)
+lengthConversionDoubleZeroButton.setFixedSize(90, 90)
+lengthConversionDoubleZeroButton.move(120, 780)
+lengthConversionDoubleZeroButton.setFont(numberPadFont)
+lengthConversionDoubleZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def lengthConversionDoubleZero():
+    global lengthConversionInput
+    lengthConversionInputField.setText(lengthConversionInputField.text() + '00')
+    lengthConversionInput += '00'
+lengthConversionDoubleZeroButton.clicked.connect(lengthConversionDoubleZero)
+# Point [.]
+lengthConversionPointButton = QPushButton('.', lengthConversionWidget)
+lengthConversionPointButton.setFixedSize(90, 90)
+lengthConversionPointButton.move(300, 780)
+lengthConversionPointButton.setFont(numberPadFont)
+lengthConversionPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def lengthConversionPoint():
+    global lengthConversionInput
+    if lengthConversionInputField.text():
+        lengthConversionInputField.setText(lengthConversionInputField.text() + '.')
+        lengthConversionInput += '.'
+    else:
+        lengthConversionInputField.setText(lengthConversionInputField.text() + '0.')
+        lengthConversionInput += '0.'
+lengthConversionPointButton.clicked.connect(lengthConversionPoint)
+# Deletion
+# All Clear
+lengthConversionAllClearButton = QPushButton('AC', lengthConversionWidget)
+lengthConversionAllClearButton.setFixedSize(90, 90)
+lengthConversionAllClearButton.move(390, 510)
+lengthConversionAllClearButton.setFont(operatorButtonFont)
+lengthConversionAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def lengthConversionAllClear():
+    global lengthConversionInput
+    lengthConversionInputField.setText('')
+    lengthConversionOutputField.setText('')
+    lengthConversionInput = ''
+lengthConversionAllClearButton.clicked.connect(lengthConversionAllClear)
+# Clear [Backspace]
+lengthConversionClearButton = QPushButton('C', lengthConversionWidget)
+lengthConversionClearButton.setFixedSize(90, 90)
+lengthConversionClearButton.move(390, 600)
+lengthConversionClearButton.setFont(operatorButtonFont)
+lengthConversionClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def lengthConversionClear():
+    global lengthConversionInput
+    lengthConversionInputFieldText = lengthConversionInputField.text()
+    lengthConversionInputFieldText = lengthConversionInputFieldText[:-1]
+    lengthConversionInputField.setText(lengthConversionInputFieldText)
+    lengthConversionInput = lengthConversionInput[:-1]
+lengthConversionClearButton.clicked.connect(lengthConversionClear)
+# Result [=]
+lengthConversionResultButton = QPushButton('=', lengthConversionWidget)
+lengthConversionResultButton.setFixedSize(90, 180)
+lengthConversionResultButton.move(390, 690)
+lengthConversionResultButton.setFont(resultButtonsFont)
+lengthConversionResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+def lengthConversionResult():
+    global lengthConversionInput
+    if lengthConversionInputField.text():
+        lengthConversionFrom = lengthConversionFromComboBox.currentIndex()
+        lengthConversionTo = lengthConversionToComboBox.currentIndex()
+        lengthConversionKey = (lengthConversionFrom, lengthConversionTo)
+        lengthConversionFactor = lengthConversionFactors[lengthConversionKey]
+        lengthConversionOutput = float(lengthConversionInput) * lengthConversionFactor
+        lengthConversionOutputField.setText(str(lengthConversionOutput))
+lengthConversionResultButton.clicked.connect(lengthConversionResult)
 
 # Area Conversion Page
 # Area Conversion Widget
