@@ -83,6 +83,7 @@ constantButtonFont.setItalic(True)
 # ComboBox Font
 comboBoxFont = QFont()
 comboBoxFont.setPixelSize(13)
+comboBoxFont.setBold(True)
 comboBoxFont.setItalic(True)
 
 # QStackedWidget Instance
@@ -950,164 +951,164 @@ currencyConversionFrom.setStyleSheet('padding-left: 10px')
 currencyConversionFrom.addItem('AED - UAE Dirham (United Arab Emirates)')
 currencyConversionFrom.addItem('AFN - Afghan Afghani (Afghanistan)')
 currencyConversionFrom.addItem('ALL - Albanian Lek (Albania)')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
-currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('AMD - Armenian Dram (Armenia)')
+currencyConversionFrom.addItem('ANG - Netherlands Antillian Guilder (Netherlands Antilles)')
+currencyConversionFrom.addItem('AOA - Angolan Kwanza (Angola)')
+currencyConversionFrom.addItem('ARS - Argentine Peso (Argentina)')
+currencyConversionFrom.addItem('AUD - Australian Dollar (Australia)')
+currencyConversionFrom.addItem('AWG - Aruban Florin (Aruba)')
+currencyConversionFrom.addItem('AZN - Azerbaijani Manat (Azerbaijan)')
+currencyConversionFrom.addItem('BAM - Bosnia and Herzegovina Mark (Bosnia and Herzegovina)')
+currencyConversionFrom.addItem('BBD - Barbados Dollar (Barbados)')
+currencyConversionFrom.addItem('BDT - Bangladeshi Taka (Bangladesh)')
+currencyConversionFrom.addItem('BGN - Bulgarian Lev (Bulgaria)')
+currencyConversionFrom.addItem('BHD - Bahraini Dinar (Bahrain)')
+currencyConversionFrom.addItem('BIF - Burundian Franc (Burundi)')
+currencyConversionFrom.addItem('BMD - Bermudian Dollar (Bermuda)')
+currencyConversionFrom.addItem('BND - Brunei Dollar (Brunei)')
+currencyConversionFrom.addItem('BOB - Bolivian Boliviano (Bolivia)')
+currencyConversionFrom.addItem('BRL - Brazilian Real (Brazil)')
+currencyConversionFrom.addItem('BSD - Bahamian Dollar (Bahamas)')
+currencyConversionFrom.addItem('BTN - Bhutanese Ngultrum (Bhutan)')
+currencyConversionFrom.addItem('BWP - Botswana Pula (Botswana)')
+currencyConversionFrom.addItem('BYN - Belarusian Ruble (Belarus)')
+currencyConversionFrom.addItem('BZD - Belize Dollar (Belize)')
+currencyConversionFrom.addItem('CAD - Canadian Dollar (Canada)')
+currencyConversionFrom.addItem('CDF - Congolese Franc (Democratic Republic of the Congo)')
+currencyConversionFrom.addItem('CHF - Swiss Franc (Switzerland)')
+currencyConversionFrom.addItem('CLP - Chilean Peso (Chile)')
+currencyConversionFrom.addItem('CNY - Chinese Renminbi (China)')
+currencyConversionFrom.addItem('COP - Colombian Peso (Colombia)')
+currencyConversionFrom.addItem('CRC - Costa Rican Colon (Costa Rica)')
+currencyConversionFrom.addItem('CUP - Cuban Peso (Cuba)')
+currencyConversionFrom.addItem('CVE - Cape Verdean Escudo (Cape Verde)')
+currencyConversionFrom.addItem('CZK - Czech Koruna (Czech Republic)')
+currencyConversionFrom.addItem('DJF - Djiboutian Franc (Djibouti)')
+currencyConversionFrom.addItem('DKK - Danish Krone (Denmark)')
+currencyConversionFrom.addItem('DOP - Dominican Peso (Dominican Republic)')
+currencyConversionFrom.addItem('DZD - Algerian Dinar (Algeria)')
+currencyConversionFrom.addItem('EGP - Egyptian Pound (Egypt)')
+currencyConversionFrom.addItem('ERN - Eritrean Nakfa (Eritrea)')
+currencyConversionFrom.addItem('ETB - Ethiopian Birr (Ethiopia)')
+currencyConversionFrom.addItem('EUR - Euro (European Union)')
+currencyConversionFrom.addItem('FJD - Fiji Dollar (Fiji)')
+currencyConversionFrom.addItem('FKP - Falkland Islands Pound (Falkland Islands)')
+currencyConversionFrom.addItem('FOK - Faroese Króna (Faroe Islands)')
+currencyConversionFrom.addItem('GBP - Pound Sterling (United Kingdom)')
+currencyConversionFrom.addItem('GEL - Georgian Lari (Georgia)')
+currencyConversionFrom.addItem('GGP - Guernsey Pound (Guernsey)')
+currencyConversionFrom.addItem('GHS - Ghanaian Cedi (Ghana)')
+currencyConversionFrom.addItem('GIP - Gibraltar Pound (Gibraltar)')
+currencyConversionFrom.addItem('GMD - Gambian Dalasi The (Gambia)')
+currencyConversionFrom.addItem('GNF - Guinean Franc (Guinea)')
+currencyConversionFrom.addItem('GTQ - Guatemalan Quetzal (Guatemala)')
+currencyConversionFrom.addItem('GYD - Guyanese Dollar (Guyana)')
+currencyConversionFrom.addItem('HKD - Hong Kong Dollar (Hong Kong)')
+currencyConversionFrom.addItem('HNL - Honduran Lempira (Honduras)')
+currencyConversionFrom.addItem('HRK - Croatian Kuna (Croatia)')
+currencyConversionFrom.addItem('HTG - Haitian Gourde (Haiti)')
+currencyConversionFrom.addItem('HUF - Hungarian Forint (Hungary)')
+currencyConversionFrom.addItem('IDR - Indonesian Rupiah (Indonesia)')
+currencyConversionFrom.addItem('ILS - Israeli New Shekel (Israel)')
+currencyConversionFrom.addItem('IMP - Manx Pound (Isle of Man)')
+currencyConversionFrom.addItem('INR - Indian Rupee (India)')
+currencyConversionFrom.addItem('IQD - Iraqi Dinar (Iraq)')
+currencyConversionFrom.addItem('IRR - Iranian Rial (Iran)')
+currencyConversionFrom.addItem('ISK - Icelandic Króna (Iceland)')
+currencyConversionFrom.addItem('JEP - Jersey Pound (Jersey)')
+currencyConversionFrom.addItem('JMD - Jamaican Dollar (Jamaica)')
+currencyConversionFrom.addItem('JOD - Jordanian Dinar (Jordan)')
+currencyConversionFrom.addItem('JPY - Japanese Yen (Japan)')
+currencyConversionFrom.addItem('KES - Kenyan Shilling (Kenya)')
+currencyConversionFrom.addItem('KGS - Kyrgyzstani Som (Kyrgyzstan)')
+currencyConversionFrom.addItem('KHR - Cambodian Riel (Cambodia)')
+currencyConversionFrom.addItem('KID - Kiribati Dollar (Kiribati)')
+currencyConversionFrom.addItem('KMF - Comorian Franc (Comoros)')
+currencyConversionFrom.addItem('KRW - South Korean Won (South Korea)')
+currencyConversionFrom.addItem('KWD - Kuwaiti Dinar (Kuwait)')
+currencyConversionFrom.addItem('KYD - Cayman Islands Dollar (Cayman Islands)')
+currencyConversionFrom.addItem('KZT - Kazakhstani Tenge (Kazakhstan)')
+currencyConversionFrom.addItem('LAK - Lao Kip (Laos)')
+currencyConversionFrom.addItem('LBP - Lebanese Pound (Lebanon)')
+currencyConversionFrom.addItem('LKR - Sri Lanka Rupee (Sri Lanka)')
+currencyConversionFrom.addItem('LRD - Liberian Dollar (Liberia)')
+currencyConversionFrom.addItem('LSL - Lesotho Loti (Lesotho)')
+currencyConversionFrom.addItem('LYD - Libyan Dinar (Libya)')
+currencyConversionFrom.addItem('MAD - Moroccan Dirham (Morocco)')
+currencyConversionFrom.addItem('MDL - Moldovan Leu (Moldova)')
+currencyConversionFrom.addItem('MGA - Malagasy Ariary (Madagascar)')
+currencyConversionFrom.addItem('MKD - Macedonian Denar (North Macedonia)')
+currencyConversionFrom.addItem('MMK - Burmese Kyat (Myanmar)')
+currencyConversionFrom.addItem('MNT - Mongolian Tögrög (Mongolia)')
+currencyConversionFrom.addItem('MOP - Macanese Pataca (Macau)')
+currencyConversionFrom.addItem('MRU - Mauritanian Ouguiya (Mauritania)')
+currencyConversionFrom.addItem('MUR - Mauritian Rupee (Mauritius)')
+currencyConversionFrom.addItem('MVR - Maldivian Rufiyaa (Maldives)')
+currencyConversionFrom.addItem('MWK - Malawian Kwacha (Malawi)')
+currencyConversionFrom.addItem('MXN - Mexican Peso (Mexico)')
+currencyConversionFrom.addItem('MYR - Malaysian Ringgit (Malaysia)')
+currencyConversionFrom.addItem('MZN - Mozambican Metical (Mozambique)')
+currencyConversionFrom.addItem('NAD - Namibian Dollar (Namibia)')
+currencyConversionFrom.addItem('NGN - Nigerian Naira (Nigeria)')
+currencyConversionFrom.addItem('NIO - Nicaraguan Córdoba (Nicaragua)')
+currencyConversionFrom.addItem('NOK - Norwegian Krone (Norway)')
+currencyConversionFrom.addItem('NPR - Nepalese Rupee (Nepal)')
+currencyConversionFrom.addItem('NZD - New Zealand Dollar (New Zealand)')
+currencyConversionFrom.addItem('OMR - Omani Rial (Oman)')
+currencyConversionFrom.addItem('PAB - Panamanian Balboa (Panama)')
+currencyConversionFrom.addItem('PEN - Peruvian Sol (Peru)')
+currencyConversionFrom.addItem('PGK - Papua New Guinean Kina (Papua New Guinea)')
+currencyConversionFrom.addItem('PHP - Philippine Peso (Philippines)')
+currencyConversionFrom.addItem('PKR - Pakistani Rupee (Pakistan)')
+currencyConversionFrom.addItem('PLN - Polish Złoty (Poland)')
+currencyConversionFrom.addItem('PYG - Paraguayan Guaraní (Paraguay)')
+currencyConversionFrom.addItem('QAR - Qatari Riyal (Qatar)')
+currencyConversionFrom.addItem('RON - Romanian Leu (Romania)')
+currencyConversionFrom.addItem('RSD - Serbian Dinar (Serbia)')
+currencyConversionFrom.addItem('RUB - Russian Ruble (Russia)')
+currencyConversionFrom.addItem('RWF - Rwandan Franc (Rwanda)')
+currencyConversionFrom.addItem('SAR - Saudi Riyal (Saudi Arabia)')
+currencyConversionFrom.addItem('SBD - Solomon Islands Dollar (Solomon Islands)')
+currencyConversionFrom.addItem('SCR - Seychellois Rupee (Seychelles)')
+currencyConversionFrom.addItem('SDG - Sudanese Pound (Sudan)')
+currencyConversionFrom.addItem('SEK - Swedish Krona (Sweden)')
+currencyConversionFrom.addItem('SGD - Singapore Dollar (Singapore)')
+currencyConversionFrom.addItem('SHP - Saint Helena Pound (Saint Helena)')
+currencyConversionFrom.addItem('SLE - Sierra Leonean Leone (Sierra Leone)')
+currencyConversionFrom.addItem('SOS - Somali Shilling (Somalia)')
+currencyConversionFrom.addItem('SRD - Surinamese Dollar (Suriname)')
+currencyConversionFrom.addItem('SSP - South Sudanese Pound (South Sudan)')
+currencyConversionFrom.addItem('STN - São Tomé and Príncipe Dobra (São Tomé and Príncipe)')
+currencyConversionFrom.addItem('SYP - Syrian Pound (Syria)')
+currencyConversionFrom.addItem('SZL - Eswatini Lilangeni (Eswatini)')
+currencyConversionFrom.addItem('THB - Thai Baht (Thailand)')
+currencyConversionFrom.addItem('TJS - Tajikistani Somoni (Tajikistan)')
+currencyConversionFrom.addItem('TMT - Turkmenistan Manat (Turkmenistan)')
+currencyConversionFrom.addItem('TND - Tunisian Dinar (Tunisia)')
+currencyConversionFrom.addItem('TOP - Tongan Paʻanga (Tonga)')
+currencyConversionFrom.addItem('TRY - Turkish Lira (Turkey)')
+currencyConversionFrom.addItem('TTD - Trinidad and Tobago Dollar (Trinidad and Tobago)')
+currencyConversionFrom.addItem('TVD - Tuvaluan Dollar (Tuvalu)')
+currencyConversionFrom.addItem('TWD - New Taiwan Dollar (Taiwan)')
+currencyConversionFrom.addItem('TZS - Tanzanian Shilling (Tanzania)')
+currencyConversionFrom.addItem('UAH - Ukrainian Hryvnia (Ukraine)')
+currencyConversionFrom.addItem('UGX - Ugandan Shilling (Uganda)')
+currencyConversionFrom.addItem('USD - United States Dollar (United States)')
+currencyConversionFrom.addItem('UYU - Uruguayan Peso (Uruguay)')
+currencyConversionFrom.addItem('UZS - Uzbekistani So\'m (Uzbekistan)')
+currencyConversionFrom.addItem('VES - Venezuelan Bolívar Soberano (Venezuela)')
+currencyConversionFrom.addItem('VND - Vietnamese Đồng (Vietnam)')
+currencyConversionFrom.addItem('VUV - Vanuatu Vatu (Vanuatu)')
+currencyConversionFrom.addItem('WST - Samoan Tālā (Samoa)')
+currencyConversionFrom.addItem('XAF - Central African CFA Franc (CEMAC)')
+currencyConversionFrom.addItem('XCD - East Caribbean Dollar (Organisation of Eastern Caribbean States)')
+currencyConversionFrom.addItem('XDR - Special Drawing Rights (International Monetary Fund)')
+currencyConversionFrom.addItem('XOF - West African CFA franc (CFA)')
+currencyConversionFrom.addItem('XPF - CFP Franc (Collectivités d\'Outre-Mer)')
+currencyConversionFrom.addItem('YER - Yemeni Rial (Yemen)')
+currencyConversionFrom.addItem('ZAR - South African Rand (South Africa)')
+currencyConversionFrom.addItem('ZMW - Zambian Kwacha (Zambia)')
+currencyConversionFrom.addItem('ZWL - Zimbabwean Dollar (Zimbabwe)')
 # Input Field
 currencyConversionInputField = QLineEdit(currencyConversionWidget)
 currencyConversionInputField.setPlaceholderText('Input')
@@ -1125,164 +1126,164 @@ currencyConversionTo.setStyleSheet('padding-left: 10px')
 currencyConversionTo.addItem('AED - UAE Dirham (United Arab Emirates)')
 currencyConversionTo.addItem('AFN - Afghan Afghani (Afghanistan)')
 currencyConversionTo.addItem('ALL - Albanian Lek (Albania)')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
-currencyConversionTo.addItem('')
+currencyConversionTo.addItem('AMD - Armenian Dram (Armenia)')
+currencyConversionTo.addItem('ANG - Netherlands Antillian Guilder (Netherlands Antilles)')
+currencyConversionTo.addItem('AOA - Angolan Kwanza (Angola)')
+currencyConversionTo.addItem('ARS - Argentine Peso (Argentina)')
+currencyConversionTo.addItem('AUD - Australian Dollar (Australia)')
+currencyConversionTo.addItem('AWG - Aruban Florin (Aruba)')
+currencyConversionTo.addItem('AZN - Azerbaijani Manat (Azerbaijan)')
+currencyConversionTo.addItem('BAM - Bosnia and Herzegovina Mark (Bosnia and Herzegovina)')
+currencyConversionTo.addItem('BBD - Barbados Dollar (Barbados)')
+currencyConversionTo.addItem('BDT - Bangladeshi Taka (Bangladesh)')
+currencyConversionTo.addItem('BGN - Bulgarian Lev (Bulgaria)')
+currencyConversionTo.addItem('BHD - Bahraini Dinar (Bahrain)')
+currencyConversionTo.addItem('BIF - Burundian Franc (Burundi)')
+currencyConversionTo.addItem('BMD - Bermudian Dollar (Bermuda)')
+currencyConversionTo.addItem('BND - Brunei Dollar (Brunei)')
+currencyConversionTo.addItem('BOB - Bolivian Boliviano (Bolivia)')
+currencyConversionTo.addItem('BRL - Brazilian Real (Brazil)')
+currencyConversionTo.addItem('BSD - Bahamian Dollar (Bahamas)')
+currencyConversionTo.addItem('BTN - Bhutanese Ngultrum (Bhutan)')
+currencyConversionTo.addItem('BWP - Botswana Pula (Botswana)')
+currencyConversionTo.addItem('BYN - Belarusian Ruble (Belarus)')
+currencyConversionTo.addItem('BZD - Belize Dollar (Belize)')
+currencyConversionTo.addItem('CAD - Canadian Dollar (Canada)')
+currencyConversionTo.addItem('CDF - Congolese Franc (Democratic Republic of the Congo)')
+currencyConversionTo.addItem('CHF - Swiss Franc (Switzerland)')
+currencyConversionTo.addItem('CLP - Chilean Peso (Chile)')
+currencyConversionTo.addItem('CNY - Chinese Renminbi (China)')
+currencyConversionTo.addItem('COP - Colombian Peso (Colombia)')
+currencyConversionTo.addItem('CRC - Costa Rican Colon (Costa Rica)')
+currencyConversionTo.addItem('CUP - Cuban Peso (Cuba)')
+currencyConversionTo.addItem('CVE - Cape Verdean Escudo (Cape Verde)')
+currencyConversionTo.addItem('CZK - Czech Koruna (Czech Republic)')
+currencyConversionTo.addItem('DJF - Djiboutian Franc (Djibouti)')
+currencyConversionTo.addItem('DKK - Danish Krone (Denmark)')
+currencyConversionTo.addItem('DOP - Dominican Peso (Dominican Republic)')
+currencyConversionTo.addItem('DZD - Algerian Dinar (Algeria)')
+currencyConversionTo.addItem('EGP - Egyptian Pound (Egypt)')
+currencyConversionTo.addItem('ERN - Eritrean Nakfa (Eritrea)')
+currencyConversionTo.addItem('ETB - Ethiopian Birr (Ethiopia)')
+currencyConversionTo.addItem('EUR - Euro (European Union)')
+currencyConversionTo.addItem('FJD - Fiji Dollar (Fiji)')
+currencyConversionTo.addItem('FKP - Falkland Islands Pound (Falkland Islands)')
+currencyConversionTo.addItem('FOK - Faroese Króna (Faroe Islands)')
+currencyConversionTo.addItem('GBP - Pound Sterling (United Kingdom)')
+currencyConversionTo.addItem('GEL - Georgian Lari (Georgia)')
+currencyConversionTo.addItem('GGP - Guernsey Pound (Guernsey)')
+currencyConversionTo.addItem('GHS - Ghanaian Cedi (Ghana)')
+currencyConversionTo.addItem('GIP - Gibraltar Pound (Gibraltar)')
+currencyConversionTo.addItem('GMD - Gambian Dalasi The (Gambia)')
+currencyConversionTo.addItem('GNF - Guinean Franc (Guinea)')
+currencyConversionTo.addItem('GTQ - Guatemalan Quetzal (Guatemala)')
+currencyConversionTo.addItem('GYD - Guyanese Dollar (Guyana)')
+currencyConversionTo.addItem('HKD - Hong Kong Dollar (Hong Kong)')
+currencyConversionTo.addItem('HNL - Honduran Lempira (Honduras)')
+currencyConversionTo.addItem('HRK - Croatian Kuna (Croatia)')
+currencyConversionTo.addItem('HTG - Haitian Gourde (Haiti)')
+currencyConversionTo.addItem('HUF - Hungarian Forint (Hungary)')
+currencyConversionTo.addItem('IDR - Indonesian Rupiah (Indonesia)')
+currencyConversionTo.addItem('ILS - Israeli New Shekel (Israel)')
+currencyConversionTo.addItem('IMP - Manx Pound (Isle of Man)')
+currencyConversionTo.addItem('INR - Indian Rupee (India)')
+currencyConversionTo.addItem('IQD - Iraqi Dinar (Iraq)')
+currencyConversionTo.addItem('IRR - Iranian Rial (Iran)')
+currencyConversionTo.addItem('ISK - Icelandic Króna (Iceland)')
+currencyConversionTo.addItem('JEP - Jersey Pound (Jersey)')
+currencyConversionTo.addItem('JMD - Jamaican Dollar (Jamaica)')
+currencyConversionTo.addItem('JOD - Jordanian Dinar (Jordan)')
+currencyConversionTo.addItem('JPY - Japanese Yen (Japan)')
+currencyConversionTo.addItem('KES - Kenyan Shilling (Kenya)')
+currencyConversionTo.addItem('KGS - Kyrgyzstani Som (Kyrgyzstan)')
+currencyConversionTo.addItem('KHR - Cambodian Riel (Cambodia)')
+currencyConversionTo.addItem('KID - Kiribati Dollar (Kiribati)')
+currencyConversionTo.addItem('KMF - Comorian Franc (Comoros)')
+currencyConversionTo.addItem('KRW - South Korean Won (South Korea)')
+currencyConversionTo.addItem('KWD - Kuwaiti Dinar (Kuwait)')
+currencyConversionTo.addItem('KYD - Cayman Islands Dollar (Cayman Islands)')
+currencyConversionTo.addItem('KZT - Kazakhstani Tenge (Kazakhstan)')
+currencyConversionTo.addItem('LAK - Lao Kip (Laos)')
+currencyConversionTo.addItem('LBP - Lebanese Pound (Lebanon)')
+currencyConversionTo.addItem('LKR - Sri Lanka Rupee (Sri Lanka)')
+currencyConversionTo.addItem('LRD - Liberian Dollar (Liberia)')
+currencyConversionTo.addItem('LSL - Lesotho Loti (Lesotho)')
+currencyConversionTo.addItem('LYD - Libyan Dinar (Libya)')
+currencyConversionTo.addItem('MAD - Moroccan Dirham (Morocco)')
+currencyConversionTo.addItem('MDL - Moldovan Leu (Moldova)')
+currencyConversionTo.addItem('MGA - Malagasy Ariary (Madagascar)')
+currencyConversionTo.addItem('MKD - Macedonian Denar (North Macedonia)')
+currencyConversionTo.addItem('MMK - Burmese Kyat (Myanmar)')
+currencyConversionTo.addItem('MNT - Mongolian Tögrög (Mongolia)')
+currencyConversionTo.addItem('MOP - Macanese Pataca (Macau)')
+currencyConversionTo.addItem('MRU - Mauritanian Ouguiya (Mauritania)')
+currencyConversionTo.addItem('MUR - Mauritian Rupee (Mauritius)')
+currencyConversionTo.addItem('MVR - Maldivian Rufiyaa (Maldives)')
+currencyConversionTo.addItem('MWK - Malawian Kwacha (Malawi)')
+currencyConversionTo.addItem('MXN - Mexican Peso (Mexico)')
+currencyConversionTo.addItem('MYR - Malaysian Ringgit (Malaysia)')
+currencyConversionTo.addItem('MZN - Mozambican Metical (Mozambique)')
+currencyConversionTo.addItem('NAD - Namibian Dollar (Namibia)')
+currencyConversionTo.addItem('NGN - Nigerian Naira (Nigeria)')
+currencyConversionTo.addItem('NIO - Nicaraguan Córdoba (Nicaragua)')
+currencyConversionTo.addItem('NOK - Norwegian Krone (Norway)')
+currencyConversionTo.addItem('NPR - Nepalese Rupee (Nepal)')
+currencyConversionTo.addItem('NZD - New Zealand Dollar (New Zealand)')
+currencyConversionTo.addItem('OMR - Omani Rial (Oman)')
+currencyConversionTo.addItem('PAB - Panamanian Balboa (Panama)')
+currencyConversionTo.addItem('PEN - Peruvian Sol (Peru)')
+currencyConversionTo.addItem('PGK - Papua New Guinean Kina (Papua New Guinea)')
+currencyConversionTo.addItem('PHP - Philippine Peso (Philippines)')
+currencyConversionTo.addItem('PKR - Pakistani Rupee (Pakistan)')
+currencyConversionTo.addItem('PLN - Polish Złoty (Poland)')
+currencyConversionTo.addItem('PYG - Paraguayan Guaraní (Paraguay)')
+currencyConversionTo.addItem('QAR - Qatari Riyal (Qatar)')
+currencyConversionTo.addItem('RON - Romanian Leu (Romania)')
+currencyConversionTo.addItem('RSD - Serbian Dinar (Serbia)')
+currencyConversionTo.addItem('RUB - Russian Ruble (Russia)')
+currencyConversionTo.addItem('RWF - Rwandan Franc (Rwanda)')
+currencyConversionTo.addItem('SAR - Saudi Riyal (Saudi Arabia)')
+currencyConversionTo.addItem('SBD - Solomon Islands Dollar (Solomon Islands)')
+currencyConversionTo.addItem('SCR - Seychellois Rupee (Seychelles)')
+currencyConversionTo.addItem('SDG - Sudanese Pound (Sudan)')
+currencyConversionTo.addItem('SEK - Swedish Krona (Sweden)')
+currencyConversionTo.addItem('SGD - Singapore Dollar (Singapore)')
+currencyConversionTo.addItem('SHP - Saint Helena Pound (Saint Helena)')
+currencyConversionTo.addItem('SLE - Sierra Leonean Leone (Sierra Leone)')
+currencyConversionTo.addItem('SOS - Somali Shilling (Somalia)')
+currencyConversionTo.addItem('SRD - Surinamese Dollar (Suriname)')
+currencyConversionTo.addItem('SSP - South Sudanese Pound (South Sudan)')
+currencyConversionTo.addItem('STN - São Tomé and Príncipe Dobra (São Tomé and Príncipe)')
+currencyConversionTo.addItem('SYP - Syrian Pound (Syria)')
+currencyConversionTo.addItem('SZL - Eswatini Lilangeni (Eswatini)')
+currencyConversionTo.addItem('THB - Thai Baht (Thailand)')
+currencyConversionTo.addItem('TJS - Tajikistani Somoni (Tajikistan)')
+currencyConversionTo.addItem('TMT - Turkmenistan Manat (Turkmenistan)')
+currencyConversionTo.addItem('TND - Tunisian Dinar (Tunisia)')
+currencyConversionTo.addItem('TOP - Tongan Paʻanga (Tonga)')
+currencyConversionTo.addItem('TRY - Turkish Lira (Turkey)')
+currencyConversionTo.addItem('TTD - Trinidad and Tobago Dollar (Trinidad and Tobago)')
+currencyConversionTo.addItem('TVD - Tuvaluan Dollar (Tuvalu)')
+currencyConversionTo.addItem('TWD - New Taiwan Dollar (Taiwan)')
+currencyConversionTo.addItem('TZS - Tanzanian Shilling (Tanzania)')
+currencyConversionTo.addItem('UAH - Ukrainian Hryvnia (Ukraine)')
+currencyConversionTo.addItem('UGX - Ugandan Shilling (Uganda)')
+currencyConversionTo.addItem('USD - United States Dollar (United States)')
+currencyConversionTo.addItem('UYU - Uruguayan Peso (Uruguay)')
+currencyConversionTo.addItem('UZS - Uzbekistani So\'m (Uzbekistan)')
+currencyConversionTo.addItem('VES - Venezuelan Bolívar Soberano (Venezuela)')
+currencyConversionTo.addItem('VND - Vietnamese Đồng (Vietnam)')
+currencyConversionTo.addItem('VUV - Vanuatu Vatu (Vanuatu)')
+currencyConversionTo.addItem('WST - Samoan Tālā (Samoa)')
+currencyConversionTo.addItem('XAF - Central African CFA Franc (CEMAC)')
+currencyConversionTo.addItem('XCD - East Caribbean Dollar (Organisation of Eastern Caribbean States)')
+currencyConversionTo.addItem('XDR - Special Drawing Rights (International Monetary Fund)')
+currencyConversionTo.addItem('XOF - West African CFA franc (CFA)')
+currencyConversionTo.addItem('XPF - CFP Franc (Collectivités d\'Outre-Mer)')
+currencyConversionTo.addItem('YER - Yemeni Rial (Yemen)')
+currencyConversionTo.addItem('ZAR - South African Rand (South Africa)')
+currencyConversionTo.addItem('ZMW - Zambian Kwacha (Zambia)')
+currencyConversionTo.addItem('ZWL - Zimbabwean Dollar (Zimbabwe)')
 # Output Field
 currencyConversionOutputField = QLineEdit(currencyConversionWidget)
 currencyConversionOutputField.setFixedSize(480, 60)
@@ -1700,163 +1701,3 @@ window.show()
 CalcWizard.exec()
 
 # https://www.exchangerate-api.com/docs/python-currency-api
-'''
-AMD - Armenian Dram	Armenia
-ANG - Netherlands Antillian Guilder	Netherlands Antilles
-AOA - Angolan Kwanza	Angola
-ARS - Argentine Peso	Argentina
-AUD - Australian Dollar	Australia
-AWG - Aruban Florin	Aruba
-AZN - Azerbaijani Manat	Azerbaijan
-BAM - Bosnia and Herzegovina Mark	Bosnia and Herzegovina
-BBD - Barbados Dollar	Barbados
-BDT - Bangladeshi Taka	Bangladesh
-BGN - Bulgarian Lev	Bulgaria
-BHD - Bahraini Dinar	Bahrain
-BIF - Burundian Franc	Burundi
-BMD - Bermudian Dollar	Bermuda
-BND - Brunei Dollar	Brunei
-BOB - Bolivian Boliviano	Bolivia
-BRL - Brazilian Real	Brazil
-BSD - Bahamian Dollar	Bahamas
-BTN - Bhutanese Ngultrum	Bhutan
-BWP - Botswana Pula	Botswana
-BYN - Belarusian Ruble	Belarus
-BZD - Belize Dollar	Belize
-CAD - Canadian Dollar	Canada
-CDF - Congolese Franc	Democratic Republic of the Congo
-CHF - Swiss Franc	Switzerland
-CLP - Chilean Peso	Chile
-CNY - Chinese Renminbi	China
-COP - Colombian Peso	Colombia
-CRC - Costa Rican Colon	Costa Rica
-CUP - Cuban Peso	Cuba
-CVE - Cape Verdean Escudo	Cape Verde
-CZK - Czech Koruna	Czech Republic
-DJF - Djiboutian Franc	Djibouti
-DKK - Danish Krone	Denmark
-DOP - Dominican Peso	Dominican Republic
-DZD - Algerian Dinar	Algeria
-EGP - Egyptian Pound	Egypt
-ERN - Eritrean Nakfa	Eritrea
-ETB - Ethiopian Birr	Ethiopia
-EUR - Euro	European Union
-FJD - Fiji Dollar	Fiji
-FKP - Falkland Islands Pound	Falkland Islands
-FOK - Faroese Króna	Faroe Islands
-GBP - Pound Sterling	United Kingdom
-GEL - Georgian Lari	Georgia
-GGP - Guernsey Pound	Guernsey
-GHS - Ghanaian Cedi	Ghana
-GIP - Gibraltar Pound	Gibraltar
-GMD - Gambian Dalasi	The Gambia
-GNF - Guinean Franc	Guinea
-GTQ - Guatemalan Quetzal	Guatemala
-GYD - Guyanese Dollar	Guyana
-HKD - Hong Kong Dollar	Hong Kong
-HNL - Honduran Lempira	Honduras
-HRK - Croatian Kuna	Croatia
-HTG - Haitian Gourde	Haiti
-HUF - Hungarian Forint	Hungary
-IDR - Indonesian Rupiah	Indonesia
-ILS - Israeli New Shekel	Israel
-IMP - Manx Pound	Isle of Man
-INR - Indian Rupee	India
-IQD - Iraqi Dinar	Iraq
-IRR - Iranian Rial	Iran
-ISK - Icelandic Króna	Iceland
-JEP - Jersey Pound	Jersey
-JMD - Jamaican Dollar	Jamaica
-JOD - Jordanian Dinar	Jordan
-JPY - Japanese Yen	Japan
-KES - Kenyan Shilling	Kenya
-KGS - Kyrgyzstani Som	Kyrgyzstan
-KHR - Cambodian Riel	Cambodia
-KID - Kiribati Dollar	Kiribati
-KMF - Comorian Franc	Comoros
-KRW - South Korean Won	South Korea
-KWD - Kuwaiti Dinar	Kuwait
-KYD - Cayman Islands Dollar	Cayman Islands
-KZT - Kazakhstani Tenge	Kazakhstan
-LAK - Lao Kip	Laos
-LBP - Lebanese Pound	Lebanon
-LKR - Sri Lanka Rupee	Sri Lanka
-LRD - Liberian Dollar	Liberia
-LSL - Lesotho Loti	Lesotho
-LYD - Libyan Dinar	Libya
-MAD - Moroccan Dirham	Morocco
-MDL - Moldovan Leu	Moldova
-MGA - Malagasy Ariary	Madagascar
-MKD - Macedonian Denar	North Macedonia
-MMK - Burmese Kyat	Myanmar
-MNT - Mongolian Tögrög	Mongolia
-MOP - Macanese Pataca	Macau
-MRU - Mauritanian Ouguiya	Mauritania
-MUR - Mauritian Rupee	Mauritius
-MVR - Maldivian Rufiyaa	Maldives
-MWK - Malawian Kwacha	Malawi
-MXN - Mexican Peso	Mexico
-MYR - Malaysian Ringgit	Malaysia
-MZN - Mozambican Metical	Mozambique
-NAD - Namibian Dollar	Namibia
-NGN - Nigerian Naira	Nigeria
-NIO - Nicaraguan Córdoba	Nicaragua
-NOK - Norwegian Krone	Norway
-NPR - Nepalese Rupee	Nepal
-NZD - New Zealand Dollar	New Zealand
-OMR - Omani Rial	Oman
-PAB - Panamanian Balboa	Panama
-PEN - Peruvian Sol	Peru
-PGK - Papua New Guinean Kina	Papua New Guinea
-PHP - Philippine Peso	Philippines
-PKR - Pakistani Rupee	Pakistan
-PLN - Polish Złoty	Poland
-PYG - Paraguayan Guaraní	Paraguay
-QAR - Qatari Riyal	Qatar
-RON - Romanian Leu	Romania
-RSD - Serbian Dinar	Serbia
-RUB - Russian Ruble	Russia
-RWF - Rwandan Franc	Rwanda
-SAR - Saudi Riyal	Saudi Arabia
-SBD - Solomon Islands Dollar	Solomon Islands
-SCR - Seychellois Rupee	Seychelles
-SDG - Sudanese Pound	Sudan
-SEK - Swedish Krona	Sweden
-SGD - Singapore Dollar	Singapore
-SHP - Saint Helena Pound	Saint Helena
-SLE - Sierra Leonean Leone	Sierra Leone
-SOS - Somali Shilling	Somalia
-SRD - Surinamese Dollar	Suriname
-SSP - South Sudanese Pound	South Sudan
-STN - São Tomé and Príncipe Dobra	São Tomé and Príncipe
-SYP - Syrian Pound	Syria
-SZL - Eswatini Lilangeni	Eswatini
-THB - Thai Baht	Thailand
-TJS - Tajikistani Somoni	Tajikistan
-TMT - Turkmenistan Manat	Turkmenistan
-TND - Tunisian Dinar	Tunisia
-TOP - Tongan Paʻanga	Tonga
-TRY - Turkish Lira	Turkey
-TTD - Trinidad and Tobago Dollar	Trinidad and Tobago
-TVD - Tuvaluan Dollar	Tuvalu
-TWD - New Taiwan Dollar	Taiwan
-TZS - Tanzanian Shilling	Tanzania
-UAH - Ukrainian Hryvnia	Ukraine
-UGX - Ugandan Shilling	Uganda
-USD - United States Dollar	United States
-UYU - Uruguayan Peso	Uruguay
-UZS - Uzbekistani So\'m	Uzbekistan
-VES - Venezuelan Bolívar Soberano	Venezuela
-VND - Vietnamese Đồng	Vietnam
-VUV - Vanuatu Vatu	Vanuatu
-WST - Samoan Tālā	Samoa
-XAF - Central African CFA Franc	CEMAC
-XCD - East Caribbean Dollar	(Organisation of Eastern Caribbean States)
-XDR - Special Drawing Rights	International Monetary Fund
-XOF - West African CFA franc	CFA
-XPF - CFP Franc	Collectivités d'Outre-Mer
-YER - Yemeni Rial	Yemen
-ZAR - South African Rand	South Africa
-ZMW - Zambian Kwacha	Zambia
-ZWL - Zimbabwean Dollar	Zimbabwe
-'''
