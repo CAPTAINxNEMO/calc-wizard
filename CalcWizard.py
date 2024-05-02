@@ -1,11 +1,20 @@
 # GUI
-from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QWidget, QLabel, QLineEdit, QPushButton, QMessageBox
+from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QWidget, QLabel, QLineEdit, QPushButton, QComboBox, QMessageBox
 from PyQt6.QtGui import QFont
 from PyQt6.QtCore import Qt
 # Mathematical Functions
 from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log2, log10
 
-input = ''
+calculatorInput = ''
+currencyConversionInput = ''
+lengthConversionInput = ''
+areaConversionInput = ''
+volumeConversionInput = ''
+weightConversionInput = ''
+temperatureConversionInput = ''
+speedConversionInput = ''
+pressureConversionInput = ''
+powerConversionInput = ''
 
 CalcWizard = QApplication([])
 # Window Attributes
@@ -42,6 +51,10 @@ outputFieldFont.setBold(True)
 pasteButtonFont = QFont()
 pasteButtonFont.setPixelSize(20)
 pasteButtonFont.setBold(True)
+# Conversion Paste Button Font
+conversionPasteButtonFont = QFont()
+conversionPasteButtonFont.setPixelSize(44)
+conversionPasteButtonFont.setBold(True)
 # Calculator Mode Button Font
 calculatorModeButtonFont = QFont()
 calculatorModeButtonFont.setPixelSize(48)
@@ -67,6 +80,10 @@ constantButtonFont = QFont()
 constantButtonFont.setPixelSize(36)
 constantButtonFont.setBold(True)
 constantButtonFont.setItalic(True)
+# ComboBox Font
+comboBoxFont = QFont()
+comboBoxFont.setPixelSize(13)
+comboBoxFont.setItalic(True)
 
 # QStackedWidget Instance
 stackedWidget = QStackedWidget(window)
@@ -90,36 +107,36 @@ calculatorLabel.move(30, 120)
 calculatorLabel.setFont(mainLabelFont)
 calculatorLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 # Input Field
-inputField = QLineEdit(calculatorWidget)
-inputField.setPlaceholderText('Input')
-inputField.setFixedSize(540, 60)
-inputField.move(30, 210)
-inputField.setFont(inputFieldFont)
-inputField.setAlignment(Qt.AlignmentFlag.AlignRight)
-inputField.setStyleSheet('border: 2px solid; padding-right: 15px')
-inputField.setReadOnly(True)
+calculatorInputField = QLineEdit(calculatorWidget)
+calculatorInputField.setPlaceholderText('Input')
+calculatorInputField.setFixedSize(540, 60)
+calculatorInputField.move(30, 210)
+calculatorInputField.setFont(inputFieldFont)
+calculatorInputField.setAlignment(Qt.AlignmentFlag.AlignRight)
+calculatorInputField.setStyleSheet('border: 2px solid; padding-right: 15px')
+calculatorInputField.setReadOnly(True)
 # Paste Output to Input
-pasteButton = QPushButton('↑', calculatorWidget)
-pasteButton.setFixedSize(30, 30)
-pasteButton.move(540, 270)
-pasteButton.setFont(pasteButtonFont)
-pasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
-def paste():
-    if outputField.text():
-        global input
-        inputField.setText(outputField.text())
-        input = str(outputField.text())
-        outputField.setText('')
-pasteButton.clicked.connect(paste)
+calculatorPasteButton = QPushButton('↑', calculatorWidget)
+calculatorPasteButton.setFixedSize(30, 30)
+calculatorPasteButton.move(540, 270)
+calculatorPasteButton.setFont(pasteButtonFont)
+calculatorPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+def calculatorPaste():
+    if calculatorOutputField.text():
+        global calculatorInput
+        calculatorInputField.setText(calculatorOutputField.text())
+        calculatorInput = str(calculatorOutputField.text())
+        calculatorOutputField.setText('')
+calculatorPasteButton.clicked.connect(calculatorPaste)
 # Output Field
-outputField = QLineEdit(calculatorWidget)
-outputField.setFixedSize(540, 60)
-outputField.move(30, 300)
-outputField.setFont(outputFieldFont)
-outputField.setAlignment(Qt.AlignmentFlag.AlignRight)
-outputField.setStyleSheet('border: 2px solid; padding-right: 15px')
-outputField.setPlaceholderText('Output')
-outputField.setReadOnly(True)
+calculatorOutputField = QLineEdit(calculatorWidget)
+calculatorOutputField.setFixedSize(540, 60)
+calculatorOutputField.move(30, 300)
+calculatorOutputField.setFont(outputFieldFont)
+calculatorOutputField.setAlignment(Qt.AlignmentFlag.AlignRight)
+calculatorOutputField.setStyleSheet('border: 2px solid; padding-right: 15px')
+calculatorOutputField.setPlaceholderText('Output')
+calculatorOutputField.setReadOnly(True)
 # Calculator Mode Button
 calculatorModeButton = QPushButton('∞', calculatorWidget)
 calculatorModeButton.setFixedSize(90, 90)
@@ -171,200 +188,200 @@ def calculatorMode():
 calculatorModeButton.clicked.connect(calculatorMode)
 # Number Pad
 # Nine [9]
-nineButton = QPushButton('9', calculatorWidget)
-nineButton.setFixedSize(90, 90)
-nineButton.move(300, 570)
-nineButton.setFont(numberPadFont)
-nineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def nine():
-    global input
-    inputField.setText(inputField.text() + '9')
-    input += '9'
-nineButton.clicked.connect(nine)
+calculatorNineButton = QPushButton('9', calculatorWidget)
+calculatorNineButton.setFixedSize(90, 90)
+calculatorNineButton.move(300, 570)
+calculatorNineButton.setFont(numberPadFont)
+calculatorNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def calculatorNine():
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '9')
+    calculatorInput += '9'
+calculatorNineButton.clicked.connect(calculatorNine)
 # Eight [8]
-eightButton = QPushButton('8', calculatorWidget)
-eightButton.setFixedSize(90, 90)
-eightButton.move(210, 570)
-eightButton.setFont(numberPadFont)
-eightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def eight():
-    global input
-    inputField.setText(inputField.text() + '8')
-    input += '8'
-eightButton.clicked.connect(eight)
+calculatorEightButton = QPushButton('8', calculatorWidget)
+calculatorEightButton.setFixedSize(90, 90)
+calculatorEightButton.move(210, 570)
+calculatorEightButton.setFont(numberPadFont)
+calculatorEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def calculatorEight():
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '8')
+    calculatorInput += '8'
+calculatorEightButton.clicked.connect(calculatorEight)
 # Seven [7]
-sevenButton = QPushButton('7', calculatorWidget)
-sevenButton.setFixedSize(90, 90)
-sevenButton.move(120, 570)
-sevenButton.setFont(numberPadFont)
-sevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def seven():
-    global input
-    inputField.setText(inputField.text() + '7')
-    input += '7'
-sevenButton.clicked.connect(seven)
+calculatorSevenButton = QPushButton('7', calculatorWidget)
+calculatorSevenButton.setFixedSize(90, 90)
+calculatorSevenButton.move(120, 570)
+calculatorSevenButton.setFont(numberPadFont)
+calculatorSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def calculatorSeven():
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '7')
+    calculatorInput += '7'
+calculatorSevenButton.clicked.connect(calculatorSeven)
 # Six [6]
-sixButton = QPushButton('6', calculatorWidget)
-sixButton.setFixedSize(90, 90)
-sixButton.move(300, 660)
-sixButton.setFont(numberPadFont)
-sixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def six():
-    global input
-    inputField.setText(inputField.text() + '6')
-    input += '6'
-sixButton.clicked.connect(six)
+calculatorSixButton = QPushButton('6', calculatorWidget)
+calculatorSixButton.setFixedSize(90, 90)
+calculatorSixButton.move(300, 660)
+calculatorSixButton.setFont(numberPadFont)
+calculatorSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def calculatorSix():
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '6')
+    calculatorInput += '6'
+calculatorSixButton.clicked.connect(calculatorSix)
 # Five [5]
-fiveButton = QPushButton('5', calculatorWidget)
-fiveButton.setFixedSize(90, 90)
-fiveButton.move(210, 660)
-fiveButton.setFont(numberPadFont)
-fiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def five():
-    global input
-    inputField.setText(inputField.text() + '5')
-    input += '5'
-fiveButton.clicked.connect(five)
+calculatorFiveButton = QPushButton('5', calculatorWidget)
+calculatorFiveButton.setFixedSize(90, 90)
+calculatorFiveButton.move(210, 660)
+calculatorFiveButton.setFont(numberPadFont)
+calculatorFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def calculatorFive():
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '5')
+    calculatorInput += '5'
+calculatorFiveButton.clicked.connect(calculatorFive)
 # Four [4]
-fourButton = QPushButton('4', calculatorWidget)
-fourButton.setFixedSize(90, 90)
-fourButton.move(120, 660)
-fourButton.setFont(numberPadFont)
-fourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def four():
-    global input
-    inputField.setText(inputField.text() + '4')
-    input += '4'
-fourButton.clicked.connect(four)
+calculatorFourButton = QPushButton('4', calculatorWidget)
+calculatorFourButton.setFixedSize(90, 90)
+calculatorFourButton.move(120, 660)
+calculatorFourButton.setFont(numberPadFont)
+calculatorFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def calculatorFour():
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '4')
+    calculatorInput += '4'
+calculatorFourButton.clicked.connect(calculatorFour)
 # Three [3]
-threeButton = QPushButton('3', calculatorWidget)
-threeButton.setFixedSize(90, 90)
-threeButton.move(300, 750)
-threeButton.setFont(numberPadFont)
-threeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def three():
-    global input
-    inputField.setText(inputField.text() + '3')
-    input += '3'
-threeButton.clicked.connect(three)
+calculatorThreeButton = QPushButton('3', calculatorWidget)
+calculatorThreeButton.setFixedSize(90, 90)
+calculatorThreeButton.move(300, 750)
+calculatorThreeButton.setFont(numberPadFont)
+calculatorThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def calculatorThree():
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '3')
+    calculatorInput += '3'
+calculatorThreeButton.clicked.connect(calculatorThree)
 # Two [2]
-twoButton = QPushButton('2', calculatorWidget)
-twoButton.setFixedSize(90, 90)
-twoButton.move(210, 750)
-twoButton.setFont(numberPadFont)
-twoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def two():
-    global input
-    inputField.setText(inputField.text() + '2')
-    input += '2'
-twoButton.clicked.connect(two)
+calculatorTwoButton = QPushButton('2', calculatorWidget)
+calculatorTwoButton.setFixedSize(90, 90)
+calculatorTwoButton.move(210, 750)
+calculatorTwoButton.setFont(numberPadFont)
+calculatorTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def calculatorTwo():
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '2')
+    calculatorInput += '2'
+calculatorTwoButton.clicked.connect(calculatorTwo)
 # One [1]
-oneButton = QPushButton('1', calculatorWidget)
-oneButton.setFixedSize(90, 90)
-oneButton.move(120, 750)
-oneButton.setFont(numberPadFont)
-oneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def one():
-    global input
-    inputField.setText(inputField.text() + '1')
-    input += '1'
-oneButton.clicked.connect(one)
+calculatorOneButton = QPushButton('1', calculatorWidget)
+calculatorOneButton.setFixedSize(90, 90)
+calculatorOneButton.move(120, 750)
+calculatorOneButton.setFont(numberPadFont)
+calculatorOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def calculatorOne():
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '1')
+    calculatorInput += '1'
+calculatorOneButton.clicked.connect(calculatorOne)
 # Zero [0]
-zeroButton = QPushButton('0', calculatorWidget)
-zeroButton.setFixedSize(90, 90)
-zeroButton.move(210, 840)
-zeroButton.setFont(numberPadFont)
-zeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def zero():
-    global input
-    inputField.setText(inputField.text() + '0')
-    input += '0'
-zeroButton.clicked.connect(zero)
+calculatorZeroButton = QPushButton('0', calculatorWidget)
+calculatorZeroButton.setFixedSize(90, 90)
+calculatorZeroButton.move(210, 840)
+calculatorZeroButton.setFont(numberPadFont)
+calculatorZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def calculatorZero():
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '0')
+    calculatorInput += '0'
+calculatorZeroButton.clicked.connect(calculatorZero)
 # Point [.]
-pointButton = QPushButton('.', calculatorWidget)
-pointButton.setFixedSize(90, 90)
-pointButton.move(300, 840)
-pointButton.setFont(numberPadFont)
-pointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
-def point():
-    global input
-    if inputField.text():
-        inputField.setText(inputField.text() + '.')
-        input += '.'
+calculatorPointButton = QPushButton('.', calculatorWidget)
+calculatorPointButton.setFixedSize(90, 90)
+calculatorPointButton.move(300, 840)
+calculatorPointButton.setFont(numberPadFont)
+calculatorPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def calculatorPoint():
+    global calculatorInput
+    if calculatorInputField.text():
+        calculatorInputField.setText(calculatorInputField.text() + '.')
+        calculatorInput += '.'
     else:
-        inputField.setText(inputField.text() + '0.')
-        input += '0.'
-pointButton.clicked.connect(point)
+        calculatorInputField.setText(calculatorInputField.text() + '0.')
+        calculatorInput += '0.'
+calculatorPointButton.clicked.connect(calculatorPoint)
 # Deletion
 # All Clear
-allClearButton = QPushButton('AC', calculatorWidget)
-allClearButton.setFixedSize(90, 90)
-allClearButton.move(390, 480)
-allClearButton.setFont(operatorButtonFont)
-allClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
-def allClear():
-    global input
-    inputField.setText('')
-    outputField.setText('')
-    input = ''
-allClearButton.clicked.connect(allClear)
+calculatorAllClearButton = QPushButton('AC', calculatorWidget)
+calculatorAllClearButton.setFixedSize(90, 90)
+calculatorAllClearButton.move(390, 480)
+calculatorAllClearButton.setFont(operatorButtonFont)
+calculatorAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def calculatorAllClear():
+    global calculatorInput
+    calculatorInputField.setText('')
+    calculatorOutputField.setText('')
+    calculatorInput = ''
+calculatorAllClearButton.clicked.connect(calculatorAllClear)
 # Clear [Backspace]
-clearButton = QPushButton('C', calculatorWidget)
-clearButton.setFixedSize(90, 90)
-clearButton.move(480, 480)
-clearButton.setFont(operatorButtonFont)
-clearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
-def clear():
-    global input
-    if inputField.text():
-        if inputField.text().endswith('sin('):
-            inputField.setText(inputField.text().replace('sin(', ''))
-            input = input.replace('sin(', '')
-        elif inputField.text().endswith('cos('):
-            inputField.setText(inputField.text().replace('cos(', ''))
-            input = input.replace('cos(', '')
-        elif inputField.text().endswith('tan('):
-            inputField.setText(inputField.text().replace('tan(', ''))
-            input = input.replace('tan(', '')
-        elif inputField.text().endswith('sin⁻¹('):
-            inputField.setText(inputField.text().replace('sin⁻¹(', ''))
-            input = input.replace('asin(', '')
-        elif inputField.text().endswith('cos⁻¹('):
-            inputField.setText(inputField.text().replace('cos⁻¹(', ''))
-            input = input.replace('acos(', '')
-        elif inputField.text().endswith('tan⁻¹('):
-            inputField.setText(inputField.text().replace('tan⁻¹(', ''))
-            input = input.replace('atan(', '')
-        elif inputField.text().endswith('log⏨('):
-            inputField.setText(inputField.text().replace('log⏨(', ''))
-            input = input.replace('log10(', '')
-        elif inputField.text().endswith('log₂('):
-            inputField.setText(inputField.text().replace('log₂(', ''))
-            input = input.replace('log2(', '')
-        elif inputField.text().endswith('ln('):
-            inputField.setText(inputField.text().replace('ln(', ''))
-            input = input.replace('log(', '')
-        elif inputField.text().endswith('10^'):
-            inputField.setText(inputField.text().replace('10^', ''))
-            input = input.replace('10**', '')
-        elif inputField.text().endswith('2^'):
-            inputField.setText(inputField.text().replace('2^', ''))
-            input = input.replace('2**', '')
-        elif inputField.text().endswith('e^'):
-            inputField.setText(inputField.text().replace('e^', ''))
-            input = input.replace('e**', '')
-        elif inputField.text().endswith('²'):
-            inputField.setText(inputField.text().replace('²', ''))
-            input = input.replace('**(2)', '')
-        elif inputField.text().endswith('^'):
-            inputField.setText(inputField.text().replace('^', ''))
-            input = input.replace('**', '')
+calculatorClearButton = QPushButton('C', calculatorWidget)
+calculatorClearButton.setFixedSize(90, 90)
+calculatorClearButton.move(480, 480)
+calculatorClearButton.setFont(operatorButtonFont)
+calculatorClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def calculatorClear():
+    global calculatorInput
+    if calculatorInputField.text():
+        if calculatorInputField.text().endswith('sin('):
+            calculatorInputField.setText(calculatorInputField.text().replace('sin(', ''))
+            calculatorInput = calculatorInput.replace('sin(', '')
+        elif calculatorInputField.text().endswith('cos('):
+            calculatorInputField.setText(calculatorInputField.text().replace('cos(', ''))
+            calculatorInput = calculatorInput.replace('cos(', '')
+        elif calculatorInputField.text().endswith('tan('):
+            calculatorInputField.setText(calculatorInputField.text().replace('tan(', ''))
+            calculatorInput = calculatorInput.replace('tan(', '')
+        elif calculatorInputField.text().endswith('sin⁻¹('):
+            calculatorInputField.setText(calculatorInputField.text().replace('sin⁻¹(', ''))
+            calculatorInput = calculatorInput.replace('asin(', '')
+        elif calculatorInputField.text().endswith('cos⁻¹('):
+            calculatorInputField.setText(calculatorInputField.text().replace('cos⁻¹(', ''))
+            calculatorInput = calculatorInput.replace('acos(', '')
+        elif calculatorInputField.text().endswith('tan⁻¹('):
+            calculatorInputField.setText(calculatorInputField.text().replace('tan⁻¹(', ''))
+            calculatorInput = calculatorInput.replace('atan(', '')
+        elif calculatorInputField.text().endswith('log⏨('):
+            calculatorInputField.setText(calculatorInputField.text().replace('log⏨(', ''))
+            calculatorInput = calculatorInput.replace('log10(', '')
+        elif calculatorInputField.text().endswith('log₂('):
+            calculatorInputField.setText(calculatorInputField.text().replace('log₂(', ''))
+            calculatorInput = calculatorInput.replace('log2(', '')
+        elif calculatorInputField.text().endswith('ln('):
+            calculatorInputField.setText(calculatorInputField.text().replace('ln(', ''))
+            calculatorInput = calculatorInput.replace('log(', '')
+        elif calculatorInputField.text().endswith('10^'):
+            calculatorInputField.setText(calculatorInputField.text().replace('10^', ''))
+            calculatorInput = calculatorInput.replace('10**', '')
+        elif calculatorInputField.text().endswith('2^'):
+            calculatorInputField.setText(calculatorInputField.text().replace('2^', ''))
+            calculatorInput = calculatorInput.replace('2**', '')
+        elif calculatorInputField.text().endswith('e^'):
+            calculatorInputField.setText(calculatorInputField.text().replace('e^', ''))
+            calculatorInput = calculatorInput.replace('e**', '')
+        elif calculatorInputField.text().endswith('²'):
+            calculatorInputField.setText(calculatorInputField.text().replace('²', ''))
+            calculatorInput = calculatorInput.replace('**(2)', '')
+        elif calculatorInputField.text().endswith('^'):
+            calculatorInputField.setText(calculatorInputField.text().replace('^', ''))
+            calculatorInput = calculatorInput.replace('**', '')
         else:
-            inputFieldText = inputField.text()
-            inputFieldText = inputFieldText[:-1]
-            inputField.setText(inputFieldText)
-            input = input[:-1]
-clearButton.clicked.connect(clear)
+            calculatorInputFieldText = calculatorInputField.text()
+            calculatorInputFieldText = calculatorInputFieldText[:-1]
+            calculatorInputField.setText(calculatorInputFieldText)
+            calculatorInput = calculatorInput[:-1]
+calculatorClearButton.clicked.connect(calculatorClear)
 # Operators [+ | - | × | ÷]
 # Plus [+]
 plusButton = QPushButton('+', calculatorWidget)
@@ -373,10 +390,10 @@ plusButton.move(390, 660)
 plusButton.setFont(operatorButtonFont)
 plusButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
 def plus():
-    global input
-    if inputField.text():
-        inputField.setText(inputField.text() + '+')
-        input += '+'
+    global calculatorInput
+    if calculatorInputField.text():
+        calculatorInputField.setText(calculatorInputField.text() + '+')
+        calculatorInput += '+'
 plusButton.clicked.connect(plus)
 # Minus [-]
 minusButton = QPushButton('-', calculatorWidget)
@@ -385,10 +402,10 @@ minusButton.move(480, 660)
 minusButton.setFont(operatorButtonFont)
 minusButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
 def minus():
-    global input
-    if inputField.text():
-        inputField.setText(inputField.text() + '-')
-        input += '-'
+    global calculatorInput
+    if calculatorInputField.text():
+        calculatorInputField.setText(calculatorInputField.text() + '-')
+        calculatorInput += '-'
 minusButton.clicked.connect(minus)
 # Multiply [×]
 multiplyButton = QPushButton('×', calculatorWidget)
@@ -397,10 +414,10 @@ multiplyButton.move(390, 750)
 multiplyButton.setFont(operatorButtonFont)
 multiplyButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
 def multiply():
-    global input
-    if inputField.text():
-        inputField.setText(inputField.text() + '×')
-        input += '*'
+    global calculatorInput
+    if calculatorInputField.text():
+        calculatorInputField.setText(calculatorInputField.text() + '×')
+        calculatorInput += '*'
 multiplyButton.clicked.connect(multiply)
 # Divide [÷]
 divideButton = QPushButton('÷', calculatorWidget)
@@ -409,10 +426,10 @@ divideButton.move(480, 750)
 divideButton.setFont(operatorButtonFont)
 divideButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
 def divide():
-    global input
-    if inputField.text():
-        inputField.setText(inputField.text() + '÷')
-        input += '/'
+    global calculatorInput
+    if calculatorInputField.text():
+        calculatorInputField.setText(calculatorInputField.text() + '÷')
+        calculatorInput += '/'
 divideButton.clicked.connect(divide)
 # Percent [%]
 percentButton = QPushButton('%', calculatorWidget)
@@ -421,10 +438,10 @@ percentButton.move(30, 570)
 percentButton.setFont(operatorButtonFont)
 percentButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
 def percent():
-    global input
-    if inputField.text():
-        inputField.setText(inputField.text() + '%')
-        input += '/100'
+    global calculatorInput
+    if calculatorInputField.text():
+        calculatorInputField.setText(calculatorInputField.text() + '%')
+        calculatorInput += '/100'
 percentButton.clicked.connect(percent)
 # Brackets
 # Open Bracket [(]
@@ -435,9 +452,9 @@ openBracketButton.setFont(operatorButtonFont)
 openBracketButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 191)')
 openBracketButton.setVisible(False)
 def openBracket():
-    global input
-    inputField.setText(inputField.text() + '(')
-    input += '('
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '(')
+    calculatorInput += '('
 openBracketButton.clicked.connect(openBracket)
 # Close Bracket [)]
 closeBracketButton = QPushButton(')', calculatorWidget)
@@ -447,13 +464,13 @@ closeBracketButton.setFont(operatorButtonFont)
 closeBracketButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 191)')
 closeBracketButton.setVisible(False)
 def closeBracket():
-    global input
-    if inputField.text():
-        inputField.setText(inputField.text() + ')')
+    global calculatorInput
+    if calculatorInputField.text():
+        calculatorInputField.setText(calculatorInputField.text() + ')')
         if angleButton.isChecked():
-            input += '))'
+            calculatorInput += '))'
         else:
-            input += ')'
+            calculatorInput += ')'
 closeBracketButton.clicked.connect(closeBracket)
 # Trigonometry
 # Sine
@@ -464,12 +481,12 @@ sineButton.setFont(trigonometryButtonFont)
 sineButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
 sineButton.setVisible(False)
 def sine():
-    global input
-    inputField.setText(inputField.text() + 'sin(')
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'sin(')
     if angleButton.isChecked():
-        input += 'sin(radians('
+        calculatorInput += 'sin(radians('
     else:
-        input += 'sin('
+        calculatorInput += 'sin('
 sineButton.clicked.connect(sine)
 # Cosine
 cosineButton = QPushButton('cos', calculatorWidget)
@@ -479,12 +496,12 @@ cosineButton.setFont(trigonometryButtonFont)
 cosineButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
 cosineButton.setVisible(False)
 def cosine():
-    global input
-    inputField.setText(inputField.text() + 'cos(')
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'cos(')
     if angleButton.isChecked():
-        input += 'cos(radians('
+        calculatorInput += 'cos(radians('
     else:
-        input += 'cos('
+        calculatorInput += 'cos('
 cosineButton.clicked.connect(cosine)
 # Tangent
 tangentButton = QPushButton('tan', calculatorWidget)
@@ -494,12 +511,12 @@ tangentButton.setFont(trigonometryButtonFont)
 tangentButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
 tangentButton.setVisible(False)
 def tangent():
-    global input
-    inputField.setText(inputField.text() + 'tan(')
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'tan(')
     if angleButton.isChecked():
-        input += 'tan(radians('
+        calculatorInput += 'tan(radians('
     else:
-        input += 'tan('
+        calculatorInput += 'tan('
 tangentButton.clicked.connect(tangent)
 # Sine Inverse
 sineInverseButton = QPushButton('sin⁻¹', calculatorWidget)
@@ -509,12 +526,12 @@ sineInverseButton.setFont(trigonometryButtonFont)
 sineInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
 sineInverseButton.setVisible(False)
 def sineInverse():
-    global input
-    inputField.setText(inputField.text() + 'sin⁻¹(')
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'sin⁻¹(')
     if angleButton.isChecked():
-        input += 'asin(radians('
+        calculatorInput += 'asin(radians('
     else:
-        input += 'asin('
+        calculatorInput += 'asin('
 sineInverseButton.clicked.connect(sineInverse)
 # Cosine Inverse
 cosineInverseButton = QPushButton('cos⁻¹', calculatorWidget)
@@ -524,12 +541,12 @@ cosineInverseButton.setFont(trigonometryButtonFont)
 cosineInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
 cosineInverseButton.setVisible(False)
 def cosineInverse():
-    global input
-    inputField.setText(inputField.text() + 'cos⁻¹(')
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'cos⁻¹(')
     if angleButton.isChecked():
-        input += 'acos(radians('
+        calculatorInput += 'acos(radians('
     else:
-        input += 'acos('
+        calculatorInput += 'acos('
 cosineInverseButton.clicked.connect(cosineInverse)
 # Tangent Inverse
 tangentInverseButton = QPushButton('tan⁻¹', calculatorWidget)
@@ -539,12 +556,12 @@ tangentInverseButton.setFont(trigonometryButtonFont)
 tangentInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
 tangentInverseButton.setVisible(False)
 def tangentInverse():
-    global input
-    inputField.setText(inputField.text() + 'tan⁻¹(')
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'tan⁻¹(')
     if angleButton.isChecked():
-        input += 'atan(radians('
+        calculatorInput += 'atan(radians('
     else:
-        input += 'atan('
+        calculatorInput += 'atan('
 tangentInverseButton.clicked.connect(tangentInverse)
 # Angle Button
 angleButton = QPushButton('RAD', calculatorWidget)
@@ -569,9 +586,9 @@ baseTenLogButton.setFont(numberPadFont)
 baseTenLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
 baseTenLogButton.setVisible(False)
 def baseTenLog():
-    global input
-    inputField.setText(inputField.text() + 'log⏨(')
-    input += 'log10('
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'log⏨(')
+    calculatorInput += 'log10('
 baseTenLogButton.clicked.connect(baseTenLog)
 # Base 2 Log
 baseTwoLogButton = QPushButton('log₂', calculatorWidget)
@@ -581,9 +598,9 @@ baseTwoLogButton.setFont(numberPadFont)
 baseTwoLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
 baseTwoLogButton.setVisible(False)
 def baseTwoLog():
-    global input
-    inputField.setText(inputField.text() + 'log₂(')
-    input += 'log2('
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'log₂(')
+    calculatorInput += 'log2('
 baseTwoLogButton.clicked.connect(baseTwoLog)
 # Natural Log
 naturalLogButton = QPushButton('ln', calculatorWidget)
@@ -593,9 +610,9 @@ naturalLogButton.setFont(numberPadFont)
 naturalLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
 naturalLogButton.setVisible(False)
 def naturalLog():
-    global input
-    inputField.setText(inputField.text() + 'ln(')
-    input += 'log('
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'ln(')
+    calculatorInput += 'log('
 naturalLogButton.clicked.connect(naturalLog)
 # Logarithm Buttons Inverse
 # Exponents of 10
@@ -606,9 +623,9 @@ powerTenButton.setFont(numberPadFont)
 powerTenButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
 powerTenButton.setVisible(False)
 def powerTen():
-    global input
-    inputField.setText(inputField.text() + '10^')
-    input += '10**'
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '10^')
+    calculatorInput += '10**'
 powerTenButton.clicked.connect(powerTen)
 # Exponent of 2
 powerTwoButton = QPushButton('2ˣ', calculatorWidget)
@@ -618,9 +635,9 @@ powerTwoButton.setFont(numberPadFont)
 powerTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
 powerTwoButton.setVisible(False)
 def powerTwo():
-    global input
-    inputField.setText(inputField.text() + '2^')
-    input += '2**'
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + '2^')
+    calculatorInput += '2**'
 powerTwoButton.clicked.connect(powerTwo)
 # Exponents of e
 powerEulerButton = QPushButton('eˣ', calculatorWidget)
@@ -630,9 +647,9 @@ powerEulerButton.setFont(numberPadFont)
 powerEulerButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
 powerEulerButton.setVisible(False)
 def powerEuler():
-    global input
-    inputField.setText(inputField.text() + 'e^')
-    input += 'e**'
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'e^')
+    calculatorInput += 'e**'
 powerEulerButton.clicked.connect(powerEuler)
 # Inverse Button
 inverseButton = QPushButton('INV', calculatorWidget)
@@ -678,10 +695,10 @@ squareButton.setFont(numberPadFont)
 squareButton.setStyleSheet('border: 2px solid; background-color: rgb(191, 255, 0)')
 squareButton.setVisible(False)
 def square():
-    global input
-    if inputField.text():
-        inputField.setText(inputField.text() + '²')
-        input += '**(2)'
+    global calculatorInput
+    if calculatorInputField.text():
+        calculatorInputField.setText(calculatorInputField.text() + '²')
+        calculatorInput += '**(2)'
 squareButton.clicked.connect(square)
 # Exponent
 exponentButton = QPushButton('^', calculatorWidget)
@@ -691,10 +708,10 @@ exponentButton.setFont(numberPadFont)
 exponentButton.setStyleSheet('border: 2px solid; background-color: rgb(191, 255, 0)')
 exponentButton.setVisible(False)
 def exponent():
-    global input
-    if inputField.text():
-        inputField.setText(inputField.text() + '^')
-        input += '**'
+    global calculatorInput
+    if calculatorInputField.text():
+        calculatorInputField.setText(calculatorInputField.text() + '^')
+        calculatorInput += '**'
 exponentButton.clicked.connect(exponent)
 # Constants [π | e]
 # pi [π]
@@ -705,9 +722,9 @@ piButton.setFont(constantButtonFont)
 piButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 180)')
 piButton.setVisible(False)
 def piCharacter():
-    global input
-    inputField.setText(inputField.text() + 'π')
-    input += 'pi'
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'π')
+    calculatorInput += 'pi'
 piButton.clicked.connect(piCharacter)
 # Euler's Number [e]
 eulerButton = QPushButton('e', calculatorWidget)
@@ -717,26 +734,26 @@ eulerButton.setFont(constantButtonFont)
 eulerButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 180)')
 eulerButton.setVisible(False)
 def eulerNumber():
-    global input
-    inputField.setText(inputField.text() + 'e')
-    input += 'e'
+    global calculatorInput
+    calculatorInputField.setText(calculatorInputField.text() + 'e')
+    calculatorInput += 'e'
 eulerButton.clicked.connect(eulerNumber)
 # Result [=]
-resultButton = QPushButton('=', calculatorWidget)
-resultButton.setFixedSize(180, 90)
-resultButton.move(390, 840)
-resultButton.setFont(resultButtonsFont)
-resultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
-def result():
-    global input
+calculatorResultButton = QPushButton('=', calculatorWidget)
+calculatorResultButton.setFixedSize(180, 90)
+calculatorResultButton.move(390, 840)
+calculatorResultButton.setFont(resultButtonsFont)
+calculatorResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+def calculatorResult():
+    global calculatorInput
     try:
-        if inputField.text():
-            outputField.setText(str(eval(input)))
+        if calculatorInputField.text():
+            calculatorOutputField.setText(str(eval(calculatorInput)))
     except Exception as err:
         errorMessage = str(err)
         errorMessage = errorMessage.replace('(<string>, line 1)', '')
-        QMessageBox.critical(calculatorWidget, 'Error', f'An error occurred: {errorMessage}\nScript: {input}')
-resultButton.clicked.connect(result)
+        QMessageBox.critical(calculatorWidget, 'Error', f'An error occurred: {errorMessage}\nScript: {calculatorInput}')
+calculatorResultButton.clicked.connect(calculatorResult)
 
 # Conversions Page
 # Conversions Widget
@@ -924,6 +941,538 @@ currencyConversionLabel.setFixedSize(540, 60)
 currencyConversionLabel.move(30, 120)
 currencyConversionLabel.setFont(conversionsLabelFont)
 currencyConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# From Combo Box
+currencyConversionFrom = QComboBox(currencyConversionWidget)
+currencyConversionFrom.setFixedSize(480, 60)
+currencyConversionFrom.move(30, 210)
+currencyConversionFrom.setFont(comboBoxFont)
+currencyConversionFrom.setStyleSheet('padding-left: 10px')
+currencyConversionFrom.addItem('AED - UAE Dirham (United Arab Emirates)')
+currencyConversionFrom.addItem('AFN - Afghan Afghani (Afghanistan)')
+currencyConversionFrom.addItem('ALL - Albanian Lek (Albania)')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+currencyConversionFrom.addItem('')
+# Input Field
+currencyConversionInputField = QLineEdit(currencyConversionWidget)
+currencyConversionInputField.setPlaceholderText('Input')
+currencyConversionInputField.setFixedSize(480, 60)
+currencyConversionInputField.move(30, 270)
+currencyConversionInputField.setFont(inputFieldFont)
+currencyConversionInputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+currencyConversionInputField.setReadOnly(True)
+# To Combo Box
+currencyConversionTo = QComboBox(currencyConversionWidget)
+currencyConversionTo.setFixedSize(480, 60)
+currencyConversionTo.move(30, 360)
+currencyConversionTo.setFont(comboBoxFont)
+currencyConversionTo.setStyleSheet('padding-left: 10px')
+currencyConversionTo.addItem('AED - UAE Dirham (United Arab Emirates)')
+currencyConversionTo.addItem('AFN - Afghan Afghani (Afghanistan)')
+currencyConversionTo.addItem('ALL - Albanian Lek (Albania)')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+currencyConversionTo.addItem('')
+# Output Field
+currencyConversionOutputField = QLineEdit(currencyConversionWidget)
+currencyConversionOutputField.setFixedSize(480, 60)
+currencyConversionOutputField.move(30, 420)
+currencyConversionOutputField.setFont(outputFieldFont)
+currencyConversionOutputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+currencyConversionOutputField.setPlaceholderText('Output')
+currencyConversionOutputField.setReadOnly(True)
+# Paste Output to Input
+currencyConversionPasteButton = QPushButton('⇅', currencyConversionWidget)
+currencyConversionPasteButton.setFixedSize(60, 270)
+currencyConversionPasteButton.move(510, 210)
+currencyConversionPasteButton.setFont(conversionPasteButtonFont)
+currencyConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+def currencyConversionPaste():
+    global currencyConversionInput
+    print('Placeholder')
+currencyConversionPasteButton.clicked.connect(currencyConversionPaste)
+# Number Pad
+# Nine [9]
+currencyConversionNineButton = QPushButton('9', currencyConversionWidget)
+currencyConversionNineButton.setFixedSize(90, 90)
+currencyConversionNineButton.move(300, 510)
+currencyConversionNineButton.setFont(numberPadFont)
+currencyConversionNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionNine():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '9')
+    currencyConversionInput += '9'
+currencyConversionNineButton.clicked.connect(currencyConversionNine)
+# Eight [8]
+currencyConversionEightButton = QPushButton('8', currencyConversionWidget)
+currencyConversionEightButton.setFixedSize(90, 90)
+currencyConversionEightButton.move(210, 510)
+currencyConversionEightButton.setFont(numberPadFont)
+currencyConversionEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionEight():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '8')
+    currencyConversionInput += '8'
+currencyConversionEightButton.clicked.connect(currencyConversionEight)
+# Seven [7]
+currencyConversionSevenButton = QPushButton('7', currencyConversionWidget)
+currencyConversionSevenButton.setFixedSize(90, 90)
+currencyConversionSevenButton.move(120, 510)
+currencyConversionSevenButton.setFont(numberPadFont)
+currencyConversionSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionSeven():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '7')
+    currencyConversionInput += '7'
+currencyConversionSevenButton.clicked.connect(currencyConversionSeven)
+# Six [6]
+currencyConversionSixButton = QPushButton('6', currencyConversionWidget)
+currencyConversionSixButton.setFixedSize(90, 90)
+currencyConversionSixButton.move(300, 600)
+currencyConversionSixButton.setFont(numberPadFont)
+currencyConversionSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionSix():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '6')
+    currencyConversionInput += '6'
+currencyConversionSixButton.clicked.connect(currencyConversionSix)
+# Five [5]
+currencyConversionFiveButton = QPushButton('5', currencyConversionWidget)
+currencyConversionFiveButton.setFixedSize(90, 90)
+currencyConversionFiveButton.move(210, 600)
+currencyConversionFiveButton.setFont(numberPadFont)
+currencyConversionFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionFive():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '5')
+    currencyConversionInput += '5'
+currencyConversionFiveButton.clicked.connect(currencyConversionFive)
+# Four [4]
+currencyConversionFourButton = QPushButton('4', currencyConversionWidget)
+currencyConversionFourButton.setFixedSize(90, 90)
+currencyConversionFourButton.move(120, 600)
+currencyConversionFourButton.setFont(numberPadFont)
+currencyConversionFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionFour():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '4')
+    currencyConversionInput += '4'
+currencyConversionFourButton.clicked.connect(currencyConversionFour)
+# Three [3]
+currencyConversionThreeButton = QPushButton('3', currencyConversionWidget)
+currencyConversionThreeButton.setFixedSize(90, 90)
+currencyConversionThreeButton.move(300, 690)
+currencyConversionThreeButton.setFont(numberPadFont)
+currencyConversionThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionThree():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '3')
+    currencyConversionInput += '3'
+currencyConversionThreeButton.clicked.connect(currencyConversionThree)
+# Two [2]
+currencyConversionTwoButton = QPushButton('2', currencyConversionWidget)
+currencyConversionTwoButton.setFixedSize(90, 90)
+currencyConversionTwoButton.move(210, 690)
+currencyConversionTwoButton.setFont(numberPadFont)
+currencyConversionTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionTwo():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '2')
+    currencyConversionInput += '2'
+currencyConversionTwoButton.clicked.connect(currencyConversionTwo)
+# One [1]
+currencyConversionOneButton = QPushButton('1', currencyConversionWidget)
+currencyConversionOneButton.setFixedSize(90, 90)
+currencyConversionOneButton.move(120, 690)
+currencyConversionOneButton.setFont(numberPadFont)
+currencyConversionOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionOne():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '1')
+    currencyConversionInput += '1'
+currencyConversionOneButton.clicked.connect(currencyConversionOne)
+# Zero [0]
+currencyConversionZeroButton = QPushButton('0', currencyConversionWidget)
+currencyConversionZeroButton.setFixedSize(90, 90)
+currencyConversionZeroButton.move(210, 780)
+currencyConversionZeroButton.setFont(numberPadFont)
+currencyConversionZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionZero():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '0')
+    currencyConversionInput += '0'
+currencyConversionZeroButton.clicked.connect(currencyConversionZero)
+# Double Zero [00]
+currencyConversionDoubleZeroButton = QPushButton('00', currencyConversionWidget)
+currencyConversionDoubleZeroButton.setFixedSize(90, 90)
+currencyConversionDoubleZeroButton.move(120, 780)
+currencyConversionDoubleZeroButton.setFont(numberPadFont)
+currencyConversionDoubleZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def currencyConversionDoubleZero():
+    global currencyConversionInput
+    currencyConversionInputField.setText(currencyConversionInputField.text() + '00')
+    currencyConversionInput += '00'
+currencyConversionDoubleZeroButton.clicked.connect(currencyConversionDoubleZero)
+# Point [.]
+currencyConversionPointButton = QPushButton('.', currencyConversionWidget)
+currencyConversionPointButton.setFixedSize(90, 90)
+currencyConversionPointButton.move(300, 780)
+currencyConversionPointButton.setFont(numberPadFont)
+currencyConversionPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def currencyConversionPoint():
+    global currencyConversionInput
+    if currencyConversionInputField.text():
+        currencyConversionInputField.setText(currencyConversionInputField.text() + '.')
+        currencyConversionInput += '.'
+    else:
+        currencyConversionInputField.setText(currencyConversionInputField.text() + '0.')
+        currencyConversionInput += '0.'
+currencyConversionPointButton.clicked.connect(currencyConversionPoint)
+# Deletion
+# All Clear
+currencyConversionAllClearButton = QPushButton('AC', currencyConversionWidget)
+currencyConversionAllClearButton.setFixedSize(90, 90)
+currencyConversionAllClearButton.move(390, 510)
+currencyConversionAllClearButton.setFont(operatorButtonFont)
+currencyConversionAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def currencyConversionAllClear():
+    global currencyConversionInput
+    currencyConversionInputField.setText('')
+    currencyConversionOutputField.setText('')
+    currencyConversionInput = ''
+currencyConversionAllClearButton.clicked.connect(currencyConversionAllClear)
+# Clear [Backspace]
+currencyConversionClearButton = QPushButton('C', currencyConversionWidget)
+currencyConversionClearButton.setFixedSize(90, 90)
+currencyConversionClearButton.move(390, 600)
+currencyConversionClearButton.setFont(operatorButtonFont)
+currencyConversionClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def currencyConversionClear():
+    global currencyConversionInput
+    currencyConversionInputFieldText = currencyConversionInputField.text()
+    currencyConversionInputFieldText = currencyConversionInputFieldText[:-1]
+    currencyConversionInputField.setText(currencyConversionInputFieldText)
+    currencyConversionInput = currencyConversionInput[:-1]
+currencyConversionClearButton.clicked.connect(currencyConversionClear)
+# Result [=]
+currencyConversionResultButton = QPushButton('=', currencyConversionWidget)
+currencyConversionResultButton.setFixedSize(90, 180)
+currencyConversionResultButton.move(390, 690)
+currencyConversionResultButton.setFont(resultButtonsFont)
+currencyConversionResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+def currencyConversionResult():
+    print('Placeholder')
+currencyConversionResultButton.clicked.connect(currencyConversionResult)
 # Note for Currency Conversion
 noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', currencyConversionWidget)
 noteLabel.setFixedSize(540, 30)
@@ -1149,3 +1698,165 @@ powerConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 window.show()
 CalcWizard.exec()
+
+# https://www.exchangerate-api.com/docs/python-currency-api
+'''
+AMD - Armenian Dram	Armenia
+ANG - Netherlands Antillian Guilder	Netherlands Antilles
+AOA - Angolan Kwanza	Angola
+ARS - Argentine Peso	Argentina
+AUD - Australian Dollar	Australia
+AWG - Aruban Florin	Aruba
+AZN - Azerbaijani Manat	Azerbaijan
+BAM - Bosnia and Herzegovina Mark	Bosnia and Herzegovina
+BBD - Barbados Dollar	Barbados
+BDT - Bangladeshi Taka	Bangladesh
+BGN - Bulgarian Lev	Bulgaria
+BHD - Bahraini Dinar	Bahrain
+BIF - Burundian Franc	Burundi
+BMD - Bermudian Dollar	Bermuda
+BND - Brunei Dollar	Brunei
+BOB - Bolivian Boliviano	Bolivia
+BRL - Brazilian Real	Brazil
+BSD - Bahamian Dollar	Bahamas
+BTN - Bhutanese Ngultrum	Bhutan
+BWP - Botswana Pula	Botswana
+BYN - Belarusian Ruble	Belarus
+BZD - Belize Dollar	Belize
+CAD - Canadian Dollar	Canada
+CDF - Congolese Franc	Democratic Republic of the Congo
+CHF - Swiss Franc	Switzerland
+CLP - Chilean Peso	Chile
+CNY - Chinese Renminbi	China
+COP - Colombian Peso	Colombia
+CRC - Costa Rican Colon	Costa Rica
+CUP - Cuban Peso	Cuba
+CVE - Cape Verdean Escudo	Cape Verde
+CZK - Czech Koruna	Czech Republic
+DJF - Djiboutian Franc	Djibouti
+DKK - Danish Krone	Denmark
+DOP - Dominican Peso	Dominican Republic
+DZD - Algerian Dinar	Algeria
+EGP - Egyptian Pound	Egypt
+ERN - Eritrean Nakfa	Eritrea
+ETB - Ethiopian Birr	Ethiopia
+EUR - Euro	European Union
+FJD - Fiji Dollar	Fiji
+FKP - Falkland Islands Pound	Falkland Islands
+FOK - Faroese Króna	Faroe Islands
+GBP - Pound Sterling	United Kingdom
+GEL - Georgian Lari	Georgia
+GGP - Guernsey Pound	Guernsey
+GHS - Ghanaian Cedi	Ghana
+GIP - Gibraltar Pound	Gibraltar
+GMD - Gambian Dalasi	The Gambia
+GNF - Guinean Franc	Guinea
+GTQ - Guatemalan Quetzal	Guatemala
+GYD - Guyanese Dollar	Guyana
+HKD - Hong Kong Dollar	Hong Kong
+HNL - Honduran Lempira	Honduras
+HRK - Croatian Kuna	Croatia
+HTG - Haitian Gourde	Haiti
+HUF - Hungarian Forint	Hungary
+IDR - Indonesian Rupiah	Indonesia
+ILS - Israeli New Shekel	Israel
+IMP - Manx Pound	Isle of Man
+INR - Indian Rupee	India
+IQD - Iraqi Dinar	Iraq
+IRR - Iranian Rial	Iran
+ISK - Icelandic Króna	Iceland
+JEP - Jersey Pound	Jersey
+JMD - Jamaican Dollar	Jamaica
+JOD - Jordanian Dinar	Jordan
+JPY - Japanese Yen	Japan
+KES - Kenyan Shilling	Kenya
+KGS - Kyrgyzstani Som	Kyrgyzstan
+KHR - Cambodian Riel	Cambodia
+KID - Kiribati Dollar	Kiribati
+KMF - Comorian Franc	Comoros
+KRW - South Korean Won	South Korea
+KWD - Kuwaiti Dinar	Kuwait
+KYD - Cayman Islands Dollar	Cayman Islands
+KZT - Kazakhstani Tenge	Kazakhstan
+LAK - Lao Kip	Laos
+LBP - Lebanese Pound	Lebanon
+LKR - Sri Lanka Rupee	Sri Lanka
+LRD - Liberian Dollar	Liberia
+LSL - Lesotho Loti	Lesotho
+LYD - Libyan Dinar	Libya
+MAD - Moroccan Dirham	Morocco
+MDL - Moldovan Leu	Moldova
+MGA - Malagasy Ariary	Madagascar
+MKD - Macedonian Denar	North Macedonia
+MMK - Burmese Kyat	Myanmar
+MNT - Mongolian Tögrög	Mongolia
+MOP - Macanese Pataca	Macau
+MRU - Mauritanian Ouguiya	Mauritania
+MUR - Mauritian Rupee	Mauritius
+MVR - Maldivian Rufiyaa	Maldives
+MWK - Malawian Kwacha	Malawi
+MXN - Mexican Peso	Mexico
+MYR - Malaysian Ringgit	Malaysia
+MZN - Mozambican Metical	Mozambique
+NAD - Namibian Dollar	Namibia
+NGN - Nigerian Naira	Nigeria
+NIO - Nicaraguan Córdoba	Nicaragua
+NOK - Norwegian Krone	Norway
+NPR - Nepalese Rupee	Nepal
+NZD - New Zealand Dollar	New Zealand
+OMR - Omani Rial	Oman
+PAB - Panamanian Balboa	Panama
+PEN - Peruvian Sol	Peru
+PGK - Papua New Guinean Kina	Papua New Guinea
+PHP - Philippine Peso	Philippines
+PKR - Pakistani Rupee	Pakistan
+PLN - Polish Złoty	Poland
+PYG - Paraguayan Guaraní	Paraguay
+QAR - Qatari Riyal	Qatar
+RON - Romanian Leu	Romania
+RSD - Serbian Dinar	Serbia
+RUB - Russian Ruble	Russia
+RWF - Rwandan Franc	Rwanda
+SAR - Saudi Riyal	Saudi Arabia
+SBD - Solomon Islands Dollar	Solomon Islands
+SCR - Seychellois Rupee	Seychelles
+SDG - Sudanese Pound	Sudan
+SEK - Swedish Krona	Sweden
+SGD - Singapore Dollar	Singapore
+SHP - Saint Helena Pound	Saint Helena
+SLE - Sierra Leonean Leone	Sierra Leone
+SOS - Somali Shilling	Somalia
+SRD - Surinamese Dollar	Suriname
+SSP - South Sudanese Pound	South Sudan
+STN - São Tomé and Príncipe Dobra	São Tomé and Príncipe
+SYP - Syrian Pound	Syria
+SZL - Eswatini Lilangeni	Eswatini
+THB - Thai Baht	Thailand
+TJS - Tajikistani Somoni	Tajikistan
+TMT - Turkmenistan Manat	Turkmenistan
+TND - Tunisian Dinar	Tunisia
+TOP - Tongan Paʻanga	Tonga
+TRY - Turkish Lira	Turkey
+TTD - Trinidad and Tobago Dollar	Trinidad and Tobago
+TVD - Tuvaluan Dollar	Tuvalu
+TWD - New Taiwan Dollar	Taiwan
+TZS - Tanzanian Shilling	Tanzania
+UAH - Ukrainian Hryvnia	Ukraine
+UGX - Ugandan Shilling	Uganda
+USD - United States Dollar	United States
+UYU - Uruguayan Peso	Uruguay
+UZS - Uzbekistani So\'m	Uzbekistan
+VES - Venezuelan Bolívar Soberano	Venezuela
+VND - Vietnamese Đồng	Vietnam
+VUV - Vanuatu Vatu	Vanuatu
+WST - Samoan Tālā	Samoa
+XAF - Central African CFA Franc	CEMAC
+XCD - East Caribbean Dollar	(Organisation of Eastern Caribbean States)
+XDR - Special Drawing Rights	International Monetary Fund
+XOF - West African CFA franc	CFA
+XPF - CFP Franc	Collectivités d'Outre-Mer
+YER - Yemeni Rial	Yemen
+ZAR - South African Rand	South Africa
+ZMW - Zambian Kwacha	Zambia
+ZWL - Zimbabwean Dollar	Zimbabwe
+'''
