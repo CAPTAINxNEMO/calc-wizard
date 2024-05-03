@@ -1421,7 +1421,12 @@ def currencyConversionPaste():
                 url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
                 response = requests.get(url)
                 data = response.json()
-                currencyConversionOutputField.setText(str(data["conversion_result"]))
+                if data["result"] != "error":
+                    currencyConversionOutputField.setText(str(data["conversion_result"]))
+                else:
+                    API_KEY = ''
+                    errorMessage = str(data["error-type"])
+                    QMessageBox.critical(currencyConversionWidget, 'Error', f'An error occurred: {errorMessage}')
         else:
             currencyConversionFrom = currencyConversionFromComboBox.currentText()
             currencyConversionFrom = currencyConversionFrom[:3]
@@ -1614,7 +1619,12 @@ def currencyConversionResult():
                 url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
                 response = requests.get(url)
                 data = response.json()
-                currencyConversionOutputField.setText(str(data["conversion_result"]))
+                if data["result"] != "error":
+                    currencyConversionOutputField.setText(str(data["conversion_result"]))
+                else:
+                    API_KEY = ''
+                    errorMessage = str(data["error-type"])
+                    QMessageBox.critical(currencyConversionWidget, 'Error', f'An error occurred: {errorMessage}')
         else:
             currencyConversionFrom = currencyConversionFromComboBox.currentText()
             currencyConversionFrom = currencyConversionFrom[:3]
