@@ -21,21 +21,21 @@ powerConversionInput = ''
 
 lengthConversionFactors = {
     # Metre (m)
-    (0, 0): 1, (0, 1): 1000, (0, 2): 100, (0, 3): 10, (0, 4): 0.001, (0, 5): 1000000, (0, 6): 1000000000, (0, 7): 1000000000000, (0, 8): 39.37007874, (0, 9): 3.280839895, (0, 10): 1.0936132983, (0, 11): 0.0006213711922, (0, 12): 0.0001799856012,
+    (0, 0): 1, (0, 1): 1000, (0, 2): 100, (0, 3): 10, (0, 4): 0.001, (0, 5): 1000000, (0, 6): 1000000000, (0, 7): 1000000000000, (0, 8): (10000 / 254), (0, 9): (10000 / 3048), (0, 10): (10000 / 9144), (0, 11): (1000 / 1609344), (0, 12): (1 / 5556),
     # Millimetre (mm)
-    (1, 0): 0.001, (1, 1): 1, (1, 2): 0.1, (1, 3): 0.01, (1, 4): 0.000001, (1, 5): 1000, (1, 6): 1000000, (1, 7): 1000000000, (1, 8): 0.03937007874, (1, 9): 0.003280839895, (1, 10): 0.0010936132983, (1, 11): 0.0000006213711922, (1, 12): 0.0000001799856012,
+    (1, 0): 0.001, (1, 1): 1, (1, 2): 0.1, (1, 3): 0.01, (1, 4): 0.000001, (1, 5): 1000, (1, 6): 1000000, (1, 7): 1000000000, (1, 8): (10 / 254), (1, 9): (10 / 3048), (1, 10): (10 / 9144), (1, 11): (1 / 1609344), (1, 12): (1 / 5556000),
     # Centimetre (cm)
-    (2, 0): 0.01, (2, 1): 10, (2, 2): 1, (2, 3): 0.1, (2, 4): 0.00001, (2, 5): 10000, (2, 6): 10000000, (2, 7): 10000000000, (2, 8): 0.3937007874, (2, 9): 0.03280839895, (2, 10): 0.010936132983, (2, 11): 0.000006213711922, (2, 12): 0.000001799856012,
+    (2, 0): 0.01, (2, 1): 10, (2, 2): 1, (2, 3): 0.1, (2, 4): 0.00001, (2, 5): 10000, (2, 6): 10000000, (2, 7): 10000000000, (2, 8): (100 / 254), (2, 9): (100 / 3048), (2, 10): (100 / 9144), (2, 11): (10 / 1609344), (2, 12): (1 / 555600),
     # Decimetre (dm)
-    (3, 0): 0.1, (3, 1): 100, (3, 2): 10, (3, 3): 1, (3, 4): 0.0001, (3, 5): 100000, (3, 6): 100000000, (3, 7): 100000000000, (3, 8): 3.937007874, (3, 9): 0.3280839895, (3, 10): 0.10936132983, (3, 11): 0.00006213711922, (3, 12): 0.00001799856012,
+    (3, 0): 0.1, (3, 1): 100, (3, 2): 10, (3, 3): 1, (3, 4): 0.0001, (3, 5): 100000, (3, 6): 100000000, (3, 7): 100000000000, (3, 8): (1000 / 254), (3, 9): (1000 / 3048), (3, 10): (1000 / 9144), (3, 11): (100 / 1609344), (3, 12): (1 / 55560),
     # Kilometre (km)
-    (4, 0): 1000, (4, 1): 1000000, (4, 2): 100000, (4, 3): 10000, (4, 4): 1, (4, 5): 1000000000, (4, 6): 1000000000000, (4, 7): 1000000000000000, (4, 8): 39370.07874, (4, 9): 3280.839895, (4, 10): 1093.6132983, (4, 11): 0.6213711922, (4, 12): 0.1799856012,
+    (4, 0): 1000, (4, 1): 1000000, (4, 2): 100000, (4, 3): 10000, (4, 4): 1, (4, 5): 1000000000, (4, 6): 1000000000000, (4, 7): 1000000000000000, (4, 8): (10000000 / 254), (4, 9): (10000000 / 3048), (4, 10): (10000000 / 9144), (4, 11): (1000000 / 1609344), (4, 12): (1000 / 5556),
     # Micrometre (μm)
-    (5, 0): 0.000001, (5, 1): 0.001, (5, 2): 0.0001, (5, 3): 0.00001, (5, 4): 0.000000001, (5, 5): 1, (5, 6): 1000, (5, 7): 1000000, (5, 8): 0.00003937007874, (5, 9): 0.000003280839895, (5, 10): 0.0000010936132983, (5, 11): 0.0000000006213711922, (5, 12): 0.0000000001799856012,
+    (5, 0): 0.000001, (5, 1): 0.001, (5, 2): 0.0001, (5, 3): 0.00001, (5, 4): 0.000000001, (5, 5): 1, (5, 6): 1000, (5, 7): 1000000, (5, 8): (1 / 25400), (5, 9): (1 / 304800), (5, 10): (1 / 914400), (5, 11): (1 / 1609344000), (5, 12): (1 / 5556000000),
     # Nanometre (nm)
-    (6, 0): 0.000000001, (6, 1): 0.000001, (6, 2): 0.0000001, (6, 3): 0.00000001, (6, 4): 0.000000000001, (6, 5): 0.001, (6, 6): 1, (6, 7): 1000, (6, 8): 0.00000003937007874, (6, 9): 0.000000003280839895, (6, 10): 0.0000000010936132983, (6, 11): 0.0000000000006213711922, (6, 12): 0.0000000000001799856012,
+    (6, 0): 0.000000001, (6, 1): 0.000001, (6, 2): 0.0000001, (6, 3): 0.00000001, (6, 4): 0.000000000001, (6, 5): 0.001, (6, 6): 1, (6, 7): 1000, (6, 8): (1 / 25400000), (6, 9): (1 / 304800000), (6, 10): (1 / 914400000), (6, 11): (1 / 1609344000000), (6, 12): (1 / 5556000000000),
     # Picometre (pm)
-    (7, 0): 0.000000000001, (7, 1): 0.000000001, (7, 2): 0.0000000001, (7, 3): 0.00000000001, (7, 4): 0.000000000000001, (7, 5): 0.000001, (7, 6): 0.001, (7, 7): 1, (7, 8): 0.00000000003937007874, (7, 9): 0.000000000003280839895, (7, 10): 0.0000000000010936132983, (7, 11): 0.0000000000000006213711922, (7, 12): 0.0000000000000001799856012,
+    (7, 0): 0.000000000001, (7, 1): 0.000000001, (7, 2): 0.0000000001, (7, 3): 0.00000000001, (7, 4): 0.000000000000001, (7, 5): 0.000001, (7, 6): 0.001, (7, 7): 1, (7, 8): (1 / 25400000000), (7, 9): (1 / 304800000000), (7, 10): (1 / 914400000000), (7, 11): (1 / 1609344000000000), (7, 12): (1 / 5556000000000000),
     # Inch (in)
     (8, 0): 0.0254, (8, 1): 25.4, (8, 2): 2.54, (8, 3): 0.254, (8, 4): 0.0000254, (8, 5): 25400, (8, 6): 25400000, (8, 7): 25400000000, (8, 8): 1, (8, 9): (1 / 12), (8, 10): (1 / 36), (8, 11): (1 / 63360), (8, 12): (1 / 218740.15625),
     # Foot (ft)
@@ -48,25 +48,25 @@ lengthConversionFactors = {
     (12, 0): 5556, (12, 1): 5556000, (12, 2): 555600, (12, 3): 55560, (12, 4): 5.556, (12, 5): 5556000000, (12, 6): 5556000000000, (12, 7): 5556000000000000, (12, 8): 218740.15625, (12, 9): (218740.15625 / 12), (12, 10): (218740.15625 / 36), (12, 11): (218740.15625 / 63360), (12, 12): 1
 }
 areaConversionFactors = {}
-#     # Square Metres (m²)
+#     # Square Metre (m²)
 #     (0, 0): 1, (0, 1): , (0, 2): , (0, 3): , (0, 4): , (0, 5): , (0, 6): , (0, 7): , (0, 8): , (0, 9): ,
-#     # Square Decimetres (dm²)
+#     # Square Decimetre (dm²)
 #     (1, 0): , (1, 1): 1, (1, 2): , (1, 3): , (1, 4): , (1, 5): , (1, 6): , (1, 7): , (1, 8): , (1, 9): ,
-#     # Square Centimetres (cm²)
+#     # Square Centimetre (cm²)
 #     (2, 0): , (2, 1): , (2, 2): 1, (2, 3): , (2, 4): , (2, 5): , (2, 6): , (2, 7): , (2, 8): , (2, 9): ,
-#     # Square Millimetres (mm²)
+#     # Square Millimetre (mm²)
 #     (3, 0): , (3, 1): , (3, 2): , (3, 3): 1, (3, 4): , (3, 5): , (3, 6): , (3, 7): , (3, 8): , (3, 9): ,
-#     # Square Kilometres (km²)
+#     # Square Kilometre (km²)
 #     (4, 0): , (4, 1): , (4, 2): , (4, 3): , (4, 4): 1, (4, 5): , (4, 6): , (4, 7): , (4, 8): , (4, 9): ,
-#     # Square Inches (in²)
+#     # Square Inch (in²)
 #     (5, 0): , (5, 1): , (5, 2): , (5, 3): , (5, 4): , (5, 5): 1, (5, 6): , (5, 7): , (5, 8): , (5, 9): ,
-#     # Square Feet (ft²)
+#     # Square Foot (ft²)
 #     (6, 0): , (6, 1): , (6, 2): , (6, 3): , (6, 4): , (6, 5): , (6, 6): 1, (6, 7): , (6, 8): , (6, 9): ,
-#     # Square Miles (mi²)
+#     # Square Mile (mi²)
 #     (7, 0): , (7, 1): , (7, 2): , (7, 3): , (7, 4): , (7, 5): , (7, 6): , (7, 7): 1, (7, 8): , (7, 9): ,
-#     # Acres (ac)
+#     # Acre (ac)
 #     (8, 0): , (8, 1): , (8, 2): , (8, 3): , (8, 4): , (8, 5): , (8, 6): , (8, 7): , (8, 8): 1, (8, 9): ,
-#     # Hectares (ha)
+#     # Hectare (ha)
 #     (9, 0): , (9, 1): , (9, 2): , (9, 3): , (9, 4): , (9, 5): , (9, 6): , (9, 7): , (9, 8): , (9, 9): 1
 # }
 # volumeConversionFactors = {
@@ -130,9 +130,9 @@ areaConversionFactors = {}
 # }
 
 CalcWizard = QApplication([])
+QApplication.setWindowIcon(QIcon('CalcWizard (Icon).ico'))
 # Window Attributes
 window = QMainWindow()
-window.setWindowIcon(QIcon('CalcWizard (Icon).ico'))
 window.setWindowTitle('CalcWizard')
 window.setGeometry(660, 60, 600, 960)
 window.setFixedSize(600, 960)
@@ -1420,7 +1420,7 @@ def currencyConversionPaste():
     currencyConversionToComboBox.setCurrentIndex(currencyConversionFromIndex)
     if currencyConversionInputField.text():
         if API_KEY == '':
-            API_KEY, ok = QInputDialog.getText(None, 'API Key Input', 'Enter your API Key (ExchangeRate-API):')
+            API_KEY, ok = QInputDialog.getText(None, 'API Key Input', 'Enter your API Key (ExchangeRate-API)')
             if ok:
                 currencyConversionFrom = currencyConversionFromComboBox.currentText()
                 currencyConversionFrom = currencyConversionFrom[:3]
@@ -1618,7 +1618,7 @@ def currencyConversionResult():
     global API_KEY, currencyConversionInput
     if currencyConversionInputField.text():
         if API_KEY == '':
-            API_KEY, ok = QInputDialog.getText(None, 'API Key Input', 'Enter your API Key (ExchangeRate-API):')
+            API_KEY, ok = QInputDialog.getText(None, 'API Key Input', 'Enter your API Key (ExchangeRate-API)')
             if ok:
                 currencyConversionFrom = currencyConversionFromComboBox.currentText()
                 currencyConversionFrom = currencyConversionFrom[:3]
@@ -1962,16 +1962,16 @@ areaConversionFromComboBox.setFixedSize(480, 60)
 areaConversionFromComboBox.move(30, 210)
 areaConversionFromComboBox.setFont(comboBoxFont)
 areaConversionFromComboBox.setStyleSheet('padding-left: 10px')
-areaConversionFromComboBox.addItem('Square Metres (m²)')            # 0
-areaConversionFromComboBox.addItem('Square Decimetres (dm²)')       # 1
-areaConversionFromComboBox.addItem('Square Centimetres (cm²)')      # 2
-areaConversionFromComboBox.addItem('Square Millimetres (mm²)')      # 3
-areaConversionFromComboBox.addItem('Square Kilometres (km²)')       # 4
-areaConversionFromComboBox.addItem('Square Inches (in²)')           # 5
-areaConversionFromComboBox.addItem('Square Feet (ft²)')             # 6
-areaConversionFromComboBox.addItem('Square Miles (mi²)')            # 7
-areaConversionFromComboBox.addItem('Acres (ac)')                    # 8
-areaConversionFromComboBox.addItem('Hectares (ha)')                 # 9
+areaConversionFromComboBox.addItem('Square Metre (m²)')             # 0
+areaConversionFromComboBox.addItem('Square Decimetre (dm²)')        # 1
+areaConversionFromComboBox.addItem('Square Centimetre (cm²)')       # 2
+areaConversionFromComboBox.addItem('Square Millimetre (mm²)')       # 3
+areaConversionFromComboBox.addItem('Square Kilometre (km²)')        # 4
+areaConversionFromComboBox.addItem('Square Inch (in²)')             # 5
+areaConversionFromComboBox.addItem('Square Foot (ft²)')             # 6
+areaConversionFromComboBox.addItem('Square Mile (mi²)')             # 7
+areaConversionFromComboBox.addItem('Acre (ac)')                     # 8
+areaConversionFromComboBox.addItem('Hectare (ha)')                  # 9
 # Input Field
 areaConversionInputField = QLineEdit(areaConversionWidget)
 areaConversionInputField.setPlaceholderText('Input')
@@ -1986,16 +1986,16 @@ areaConversionToComboBox.setFixedSize(480, 60)
 areaConversionToComboBox.move(30, 360)
 areaConversionToComboBox.setFont(comboBoxFont)
 areaConversionToComboBox.setStyleSheet('padding-left: 10px')
-areaConversionToComboBox.addItem('Square Metres (m²)')              # 0
-areaConversionToComboBox.addItem('Square Decimetres (dm²)')         # 1
-areaConversionToComboBox.addItem('Square Centimetres (cm²)')        # 2
-areaConversionToComboBox.addItem('Square Millimetres (mm²)')        # 3
-areaConversionToComboBox.addItem('Square Kilometres (km²)')         # 4
-areaConversionToComboBox.addItem('Square Inches (in²)')             # 5
-areaConversionToComboBox.addItem('Square Feet (ft²)')               # 6
-areaConversionToComboBox.addItem('Square Miles (mi²)')              # 7
-areaConversionToComboBox.addItem('Acres (ac)')                      # 8
-areaConversionToComboBox.addItem('Hectares (ha)')                   # 9
+areaConversionToComboBox.addItem('Square Metre (m²)')               # 0
+areaConversionToComboBox.addItem('Square Decimetre (dm²)')          # 1
+areaConversionToComboBox.addItem('Square Centimetre (cm²)')         # 2
+areaConversionToComboBox.addItem('Square Millimetre (mm²)')         # 3
+areaConversionToComboBox.addItem('Square Kilometre (km²)')          # 4
+areaConversionToComboBox.addItem('Square Inch (in²)')               # 5
+areaConversionToComboBox.addItem('Square Foot (ft²)')               # 6
+areaConversionToComboBox.addItem('Square Mile (mi²)')               # 7
+areaConversionToComboBox.addItem('Acre (ac)')                       # 8
+areaConversionToComboBox.addItem('Hectare (ha)')                    # 9
 # Output Field
 areaConversionOutputField = QLineEdit(areaConversionWidget)
 areaConversionOutputField.setFixedSize(480, 60)
