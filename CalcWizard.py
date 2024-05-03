@@ -1,5 +1,5 @@
 # GUI
-from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QWidget, QLabel, QLineEdit, QPushButton, QComboBox, QMessageBox
+from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QWidget, QLabel, QLineEdit, QPushButton, QComboBox, QMessageBox, QInputDialog
 from PyQt6.QtGui import QIcon, QFont
 from PyQt6.QtCore import Qt
 # Mathematical Functions
@@ -7,7 +7,7 @@ from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log2, log
 # For API request
 import requests
 
-API_KEY = '9654cc6962121a783cf516e6'
+API_KEY = ''
 calculatorInput = ''
 currencyConversionInput = ''
 lengthConversionInput = ''
@@ -38,15 +38,15 @@ lengthConversionFactors = {
     (7, 0): 0.000000000001, (7, 1): 0.000000001, (7, 2): 0.0000000001, (7, 3): 0.00000000001, (7, 4): 0.000000000000001, (7, 5): 0.000001, (7, 6): 0.001, (7, 7): 1,# (7, 8), (7, 9), (7, 10), (7, 11), (7, 12), (7, 13),
     # Inch (in)
     # (8, 0), (8, 1), (8, 2), (8, 3), (8, 4), (8, 5), (8, 6), (8, 7), (8, 8): 1, (8, 9), (8, 10), (8, 11), (8, 12), (8, 13),
-    # Foot (ft)
+    # # Foot (ft)
     # (9, 0), (9, 1), (9, 2), (9, 3), (9, 4), (9, 5), (9, 6), (9, 7), (9, 8), (9, 9): 1, (9, 10), (9, 11), (9, 12), (9, 13),
-    # Yard (yd)
+    # # Yard (yd)
     # (10, 0), (10, 1), (10, 2), (10, 3), (10, 4), (10, 5), (10, 6), (10, 7), (10, 8), (10, 9), (10, 10): 1, (10, 11), (10, 12), (10, 13),
-    # Mile (mi)
+    # # Mile (mi)
     # (11, 0), (11, 1), (11, 2), (11, 3), (11, 4), (11, 5), (11, 6), (11, 7), (11, 8), (11, 9), (11, 10), (11, 11): 1, (11, 12), (11, 13),
-    # Nautical Mile (nmi)
+    # # Nautical Mile (nmi)
     # (12, 0), (12, 1), (12, 2), (12, 3), (12, 4), (12, 5), (12, 6), (12, 7), (12, 8), (12, 9), (12, 10), (12, 11), (12, 12): 1, (12, 13),
-    # Light year (ly)
+    # # Light year (ly)
     # (13, 0), (13, 1), (13, 2), (13, 3), (13, 4), (13, 5), (13, 6), (13, 7), (13, 8), (13, 9), (13, 10), (13, 11), (13, 12), (13, 13): 1
 }
 # areaConversionFactors = {
@@ -1405,20 +1405,32 @@ currencyConversionPasteButton.move(510, 210)
 currencyConversionPasteButton.setFont(conversionPasteButtonFont)
 currencyConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
 def currencyConversionPaste():
-    global currencyConversionInput
+    global API_KEY, currencyConversionInput
     currencyConversionFromIndex = currencyConversionFromComboBox.currentIndex()
     currencyConversionToIndex = currencyConversionToComboBox.currentIndex()
     currencyConversionFromComboBox.setCurrentIndex(currencyConversionToIndex)
     currencyConversionToComboBox.setCurrentIndex(currencyConversionFromIndex)
     if currencyConversionInputField.text():
-        currencyConversionFrom = currencyConversionFromComboBox.currentText()
-        currencyConversionFrom = currencyConversionFrom[:3]
-        currencyConversionTo = currencyConversionToComboBox.currentText()
-        currencyConversionTo = currencyConversionTo[:3]
-        url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
-        response = requests.get(url)
-        data = response.json()
-        currencyConversionOutputField.setText(str(data["conversion_result"]))
+        if API_KEY == '':
+            API_KEY, ok = QInputDialog.getText(None, 'API Key Input', 'Enter your API Key (ExchangeRate-API):')
+            if ok:
+                currencyConversionFrom = currencyConversionFromComboBox.currentText()
+                currencyConversionFrom = currencyConversionFrom[:3]
+                currencyConversionTo = currencyConversionToComboBox.currentText()
+                currencyConversionTo = currencyConversionTo[:3]
+                url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
+                response = requests.get(url)
+                data = response.json()
+                currencyConversionOutputField.setText(str(data["conversion_result"]))
+        else:
+            currencyConversionFrom = currencyConversionFromComboBox.currentText()
+            currencyConversionFrom = currencyConversionFrom[:3]
+            currencyConversionTo = currencyConversionToComboBox.currentText()
+            currencyConversionTo = currencyConversionTo[:3]
+            url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
+            response = requests.get(url)
+            data = response.json()
+            currencyConversionOutputField.setText(str(data["conversion_result"]))
 currencyConversionPasteButton.clicked.connect(currencyConversionPaste)
 # Number Pad
 # Nine [9]
@@ -1590,16 +1602,28 @@ currencyConversionResultButton.move(390, 690)
 currencyConversionResultButton.setFont(resultButtonsFont)
 currencyConversionResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
 def currencyConversionResult():
-    global currencyConversionInput
+    global API_KEY, currencyConversionInput
     if currencyConversionInputField.text():
-        currencyConversionFrom = currencyConversionFromComboBox.currentText()
-        currencyConversionFrom = currencyConversionFrom[:3]
-        currencyConversionTo = currencyConversionToComboBox.currentText()
-        currencyConversionTo = currencyConversionTo[:3]
-        url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
-        response = requests.get(url)
-        data = response.json()
-        currencyConversionOutputField.setText(str(data["conversion_result"]))
+        if API_KEY == '':
+            API_KEY, ok = QInputDialog.getText(None, 'API Key Input', 'Enter your API Key (ExchangeRate-API):')
+            if ok:
+                currencyConversionFrom = currencyConversionFromComboBox.currentText()
+                currencyConversionFrom = currencyConversionFrom[:3]
+                currencyConversionTo = currencyConversionToComboBox.currentText()
+                currencyConversionTo = currencyConversionTo[:3]
+                url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
+                response = requests.get(url)
+                data = response.json()
+                currencyConversionOutputField.setText(str(data["conversion_result"]))
+        else:
+            currencyConversionFrom = currencyConversionFromComboBox.currentText()
+            currencyConversionFrom = currencyConversionFrom[:3]
+            currencyConversionTo = currencyConversionToComboBox.currentText()
+            currencyConversionTo = currencyConversionTo[:3]
+            url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
+            response = requests.get(url)
+            data = response.json()
+            currencyConversionOutputField.setText(str(data["conversion_result"]))
 currencyConversionResultButton.clicked.connect(currencyConversionResult)
 # Note for Currency Conversion
 noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', currencyConversionWidget)
