@@ -47,17 +47,27 @@ lengthConversionFactors = {
     # Nautical Mile (nmi)
     (12, 0): 5556, (12, 1): 5556000, (12, 2): 555600, (12, 3): 55560, (12, 4): 5.556, (12, 5): 5556000000, (12, 6): 5556000000000, (12, 7): 5556000000000000, (12, 8): 218740.15625, (12, 9): (218740.15625 / 12), (12, 10): (218740.15625 / 36), (12, 11): (218740.15625 / 63360), (12, 12): 1
 }
-# areaConversionFactors = {
-#     (0, 0): 1, (0, 1): , (0, 2): , (0, 3): , (0, 4): , (0, 5): , (0, 6): , (0, 7): , (0, 8): , (0, 9): ,                    # m2
-#     (1, 0): , (1, 1): 1, (1, 2): , (1, 3): , (1, 4): , (1, 5): , (1, 6): , (1, 7): , (1, 8): , (1, 9): ,                    # dm2
-#     (2, 0): , (2, 1): , (2, 2): 1, (2, 3): , (2, 4): , (2, 5): , (2, 6): , (2, 7): , (2, 8): , (2, 9): ,                    # cm2
-#     (3, 0): , (3, 1): , (3, 2): , (3, 3): 1, (3, 4): , (3, 5): , (3, 6): , (3, 7): , (3, 8): , (3, 9): ,                    # km2
-#     (4, 0): , (4, 1): , (4, 2): , (4, 3): , (4, 4): 1, (4, 5): , (4, 6): , (4, 7): , (4, 8): , (4, 9): ,                    # mm2
-#     (5, 0): , (5, 1): , (5, 2): , (5, 3): , (5, 4): , (5, 5): 1, (5, 6): , (5, 7): , (5, 8): , (5, 9): ,                    # ha
-#     (6, 0): , (6, 1): , (6, 2): , (6, 3): , (6, 4): , (6, 5): , (6, 6): 1, (6, 7): , (6, 8): , (6, 9): ,                    # mi2
-#     (7, 0): , (7, 1): , (7, 2): , (7, 3): , (7, 4): , (7, 5): , (7, 6): , (7, 7): 1, (7, 8): , (7, 9): ,                    # ft2
-#     (8, 0): , (8, 1): , (8, 2): , (8, 3): , (8, 4): , (8, 5): , (8, 6): , (8, 7): , (8, 8): 1, (8, 9): ,                    # ac
-#     (9, 0): , (9, 1): , (9, 2): , (9, 3): , (9, 4): , (9, 5): , (9, 6): , (9, 7): , (9, 8): , (9, 9): 1                     # in2
+areaConversionFactors = {}
+#     # Square Metres (m²)
+#     (0, 0): 1, (0, 1): , (0, 2): , (0, 3): , (0, 4): , (0, 5): , (0, 6): , (0, 7): , (0, 8): , (0, 9): ,
+#     # Square Decimetres (dm²)
+#     (1, 0): , (1, 1): 1, (1, 2): , (1, 3): , (1, 4): , (1, 5): , (1, 6): , (1, 7): , (1, 8): , (1, 9): ,
+#     # Square Centimetres (cm²)
+#     (2, 0): , (2, 1): , (2, 2): 1, (2, 3): , (2, 4): , (2, 5): , (2, 6): , (2, 7): , (2, 8): , (2, 9): ,
+#     # Square Millimetres (mm²)
+#     (3, 0): , (3, 1): , (3, 2): , (3, 3): 1, (3, 4): , (3, 5): , (3, 6): , (3, 7): , (3, 8): , (3, 9): ,
+#     # Square Kilometres (km²)
+#     (4, 0): , (4, 1): , (4, 2): , (4, 3): , (4, 4): 1, (4, 5): , (4, 6): , (4, 7): , (4, 8): , (4, 9): ,
+#     # Square Inches (in²)
+#     (5, 0): , (5, 1): , (5, 2): , (5, 3): , (5, 4): , (5, 5): 1, (5, 6): , (5, 7): , (5, 8): , (5, 9): ,
+#     # Square Feet (ft²)
+#     (6, 0): , (6, 1): , (6, 2): , (6, 3): , (6, 4): , (6, 5): , (6, 6): 1, (6, 7): , (6, 8): , (6, 9): ,
+#     # Square Miles (mi²)
+#     (7, 0): , (7, 1): , (7, 2): , (7, 3): , (7, 4): , (7, 5): , (7, 6): , (7, 7): 1, (7, 8): , (7, 9): ,
+#     # Acres (ac)
+#     (8, 0): , (8, 1): , (8, 2): , (8, 3): , (8, 4): , (8, 5): , (8, 6): , (8, 7): , (8, 8): 1, (8, 9): ,
+#     # Hectares (ha)
+#     (9, 0): , (9, 1): , (9, 2): , (9, 3): , (9, 4): , (9, 5): , (9, 6): , (9, 7): , (9, 8): , (9, 9): 1
 # }
 # volumeConversionFactors = {
 #     (0, 0): 1, (0, 1): , (0, 2): , (0, 3): , (0, 4): , (0, 5): , (0, 6): , (0, 7): , (0, 8): , (0, 9): ,                    # m3
@@ -1672,19 +1682,19 @@ lengthConversionFromComboBox.setFixedSize(480, 60)
 lengthConversionFromComboBox.move(30, 210)
 lengthConversionFromComboBox.setFont(comboBoxFont)
 lengthConversionFromComboBox.setStyleSheet('padding-left: 10px')
-lengthConversionFromComboBox.addItem('Metre (m)')                 # 0
-lengthConversionFromComboBox.addItem('Millimetre (mm)')           # 1
-lengthConversionFromComboBox.addItem('Centimetre (cm)')           # 2
-lengthConversionFromComboBox.addItem('Decimetre (dm)')            # 3
-lengthConversionFromComboBox.addItem('Kilometre (km)')            # 4
-lengthConversionFromComboBox.addItem('Micrometre (μm)')           # 5
-lengthConversionFromComboBox.addItem('Nanometre (nm)')            # 6
-lengthConversionFromComboBox.addItem('Picometre (pm)')            # 7
-lengthConversionFromComboBox.addItem('Inch (in)')                 # 8
-lengthConversionFromComboBox.addItem('Foot (ft)')                 # 9
-lengthConversionFromComboBox.addItem('Yard (yd)')                 # 10
-lengthConversionFromComboBox.addItem('Mile (mi)')                 # 11
-lengthConversionFromComboBox.addItem('Nautical Mile (nmi)')       # 12
+lengthConversionFromComboBox.addItem('Metre (m)')                   # 0
+lengthConversionFromComboBox.addItem('Millimetre (mm)')             # 1
+lengthConversionFromComboBox.addItem('Centimetre (cm)')             # 2
+lengthConversionFromComboBox.addItem('Decimetre (dm)')              # 3
+lengthConversionFromComboBox.addItem('Kilometre (km)')              # 4
+lengthConversionFromComboBox.addItem('Micrometre (μm)')             # 5
+lengthConversionFromComboBox.addItem('Nanometre (nm)')              # 6
+lengthConversionFromComboBox.addItem('Picometre (pm)')              # 7
+lengthConversionFromComboBox.addItem('Inch (in)')                   # 8
+lengthConversionFromComboBox.addItem('Foot (ft)')                   # 9
+lengthConversionFromComboBox.addItem('Yard (yd)')                   # 10
+lengthConversionFromComboBox.addItem('Mile (mi)')                   # 11
+lengthConversionFromComboBox.addItem('Nautical Mile (nmi)')         # 12
 # Input Field
 lengthConversionInputField = QLineEdit(lengthConversionWidget)
 lengthConversionInputField.setPlaceholderText('Input')
@@ -1699,19 +1709,19 @@ lengthConversionToComboBox.setFixedSize(480, 60)
 lengthConversionToComboBox.move(30, 360)
 lengthConversionToComboBox.setFont(comboBoxFont)
 lengthConversionToComboBox.setStyleSheet('padding-left: 10px')
-lengthConversionToComboBox.addItem('Metre (m)')                 # 0
-lengthConversionToComboBox.addItem('Millimetre (mm)')           # 1
-lengthConversionToComboBox.addItem('Centimetre (cm)')           # 2
-lengthConversionToComboBox.addItem('Decimetre (dm)')            # 3
-lengthConversionToComboBox.addItem('Kilometre (km)')            # 4
-lengthConversionToComboBox.addItem('Micrometre (μm)')           # 5
-lengthConversionToComboBox.addItem('Nanometre (nm)')            # 6
-lengthConversionToComboBox.addItem('Picometre (pm)')            # 7
-lengthConversionToComboBox.addItem('Inch (in)')                 # 8
-lengthConversionToComboBox.addItem('Foot (ft)')                 # 9
-lengthConversionToComboBox.addItem('Yard (yd)')                 # 10
-lengthConversionToComboBox.addItem('Mile (mi)')                 # 11
-lengthConversionToComboBox.addItem('Nautical Mile (nmi)')       # 12
+lengthConversionToComboBox.addItem('Metre (m)')                     # 0
+lengthConversionToComboBox.addItem('Millimetre (mm)')               # 1
+lengthConversionToComboBox.addItem('Centimetre (cm)')               # 2
+lengthConversionToComboBox.addItem('Decimetre (dm)')                # 3
+lengthConversionToComboBox.addItem('Kilometre (km)')                # 4
+lengthConversionToComboBox.addItem('Micrometre (μm)')               # 5
+lengthConversionToComboBox.addItem('Nanometre (nm)')                # 6
+lengthConversionToComboBox.addItem('Picometre (pm)')                # 7
+lengthConversionToComboBox.addItem('Inch (in)')                     # 8
+lengthConversionToComboBox.addItem('Foot (ft)')                     # 9
+lengthConversionToComboBox.addItem('Yard (yd)')                     # 10
+lengthConversionToComboBox.addItem('Mile (mi)')                     # 11
+lengthConversionToComboBox.addItem('Nautical Mile (nmi)')           # 12
 # Output Field
 lengthConversionOutputField = QLineEdit(lengthConversionWidget)
 lengthConversionOutputField.setFixedSize(480, 60)
@@ -1946,6 +1956,253 @@ areaConversionLabel.setFixedSize(540, 60)
 areaConversionLabel.move(30, 120)
 areaConversionLabel.setFont(conversionsLabelFont)
 areaConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# From Combo Box
+areaConversionFromComboBox = QComboBox(areaConversionWidget)
+areaConversionFromComboBox.setFixedSize(480, 60)
+areaConversionFromComboBox.move(30, 210)
+areaConversionFromComboBox.setFont(comboBoxFont)
+areaConversionFromComboBox.setStyleSheet('padding-left: 10px')
+areaConversionFromComboBox.addItem('Square Metres (m²)')            # 0
+areaConversionFromComboBox.addItem('Square Decimetres (dm²)')       # 1
+areaConversionFromComboBox.addItem('Square Centimetres (cm²)')      # 2
+areaConversionFromComboBox.addItem('Square Millimetres (mm²)')      # 3
+areaConversionFromComboBox.addItem('Square Kilometres (km²)')       # 4
+areaConversionFromComboBox.addItem('Square Inches (in²)')           # 5
+areaConversionFromComboBox.addItem('Square Feet (ft²)')             # 6
+areaConversionFromComboBox.addItem('Square Miles (mi²)')            # 7
+areaConversionFromComboBox.addItem('Acres (ac)')                    # 8
+areaConversionFromComboBox.addItem('Hectares (ha)')                 # 9
+# Input Field
+areaConversionInputField = QLineEdit(areaConversionWidget)
+areaConversionInputField.setPlaceholderText('Input')
+areaConversionInputField.setFixedSize(480, 60)
+areaConversionInputField.move(30, 270)
+areaConversionInputField.setFont(inputFieldFont)
+areaConversionInputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+areaConversionInputField.setReadOnly(True)
+# To Combo Box
+areaConversionToComboBox = QComboBox(areaConversionWidget)
+areaConversionToComboBox.setFixedSize(480, 60)
+areaConversionToComboBox.move(30, 360)
+areaConversionToComboBox.setFont(comboBoxFont)
+areaConversionToComboBox.setStyleSheet('padding-left: 10px')
+areaConversionToComboBox.addItem('Square Metres (m²)')              # 0
+areaConversionToComboBox.addItem('Square Decimetres (dm²)')         # 1
+areaConversionToComboBox.addItem('Square Centimetres (cm²)')        # 2
+areaConversionToComboBox.addItem('Square Millimetres (mm²)')        # 3
+areaConversionToComboBox.addItem('Square Kilometres (km²)')         # 4
+areaConversionToComboBox.addItem('Square Inches (in²)')             # 5
+areaConversionToComboBox.addItem('Square Feet (ft²)')               # 6
+areaConversionToComboBox.addItem('Square Miles (mi²)')              # 7
+areaConversionToComboBox.addItem('Acres (ac)')                      # 8
+areaConversionToComboBox.addItem('Hectares (ha)')                   # 9
+# Output Field
+areaConversionOutputField = QLineEdit(areaConversionWidget)
+areaConversionOutputField.setFixedSize(480, 60)
+areaConversionOutputField.move(30, 420)
+areaConversionOutputField.setFont(outputFieldFont)
+areaConversionOutputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+areaConversionOutputField.setPlaceholderText('Output')
+areaConversionOutputField.setReadOnly(True)
+# Paste Output to Input
+areaConversionPasteButton = QPushButton('⇅', areaConversionWidget)
+areaConversionPasteButton.setFixedSize(60, 270)
+areaConversionPasteButton.move(510, 210)
+areaConversionPasteButton.setFont(conversionPasteButtonFont)
+areaConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+def areaConversionPaste():
+    global areaConversionInput
+    areaConversionFromIndex = areaConversionFromComboBox.currentIndex()
+    areaConversionToIndex = areaConversionToComboBox.currentIndex()
+    areaConversionFromComboBox.setCurrentIndex(areaConversionToIndex)
+    areaConversionToComboBox.setCurrentIndex(areaConversionFromIndex)
+    if areaConversionInputField.text():
+        areaConversionFrom = areaConversionFromComboBox.currentIndex()
+        areaConversionTo = areaConversionToComboBox.currentIndex()
+        areaConversionKey = (areaConversionFrom, areaConversionTo)
+        areaConversionFactor = areaConversionFactors[areaConversionKey]
+        areaConversionOutput = float(areaConversionInput) * areaConversionFactor
+        areaConversionOutputField.setText(str(areaConversionOutput))
+areaConversionPasteButton.clicked.connect(areaConversionPaste)
+# Number Pad
+# Nine [9]
+areaConversionNineButton = QPushButton('9', areaConversionWidget)
+areaConversionNineButton.setFixedSize(90, 90)
+areaConversionNineButton.move(300, 510)
+areaConversionNineButton.setFont(numberPadFont)
+areaConversionNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionNine():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '9')
+    areaConversionInput += '9'
+areaConversionNineButton.clicked.connect(areaConversionNine)
+# Eight [8]
+areaConversionEightButton = QPushButton('8', areaConversionWidget)
+areaConversionEightButton.setFixedSize(90, 90)
+areaConversionEightButton.move(210, 510)
+areaConversionEightButton.setFont(numberPadFont)
+areaConversionEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionEight():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '8')
+    areaConversionInput += '8'
+areaConversionEightButton.clicked.connect(areaConversionEight)
+# Seven [7]
+areaConversionSevenButton = QPushButton('7', areaConversionWidget)
+areaConversionSevenButton.setFixedSize(90, 90)
+areaConversionSevenButton.move(120, 510)
+areaConversionSevenButton.setFont(numberPadFont)
+areaConversionSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionSeven():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '7')
+    areaConversionInput += '7'
+areaConversionSevenButton.clicked.connect(areaConversionSeven)
+# Six [6]
+areaConversionSixButton = QPushButton('6', areaConversionWidget)
+areaConversionSixButton.setFixedSize(90, 90)
+areaConversionSixButton.move(300, 600)
+areaConversionSixButton.setFont(numberPadFont)
+areaConversionSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionSix():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '6')
+    areaConversionInput += '6'
+areaConversionSixButton.clicked.connect(areaConversionSix)
+# Five [5]
+areaConversionFiveButton = QPushButton('5', areaConversionWidget)
+areaConversionFiveButton.setFixedSize(90, 90)
+areaConversionFiveButton.move(210, 600)
+areaConversionFiveButton.setFont(numberPadFont)
+areaConversionFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionFive():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '5')
+    areaConversionInput += '5'
+areaConversionFiveButton.clicked.connect(areaConversionFive)
+# Four [4]
+areaConversionFourButton = QPushButton('4', areaConversionWidget)
+areaConversionFourButton.setFixedSize(90, 90)
+areaConversionFourButton.move(120, 600)
+areaConversionFourButton.setFont(numberPadFont)
+areaConversionFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionFour():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '4')
+    areaConversionInput += '4'
+areaConversionFourButton.clicked.connect(areaConversionFour)
+# Three [3]
+areaConversionThreeButton = QPushButton('3', areaConversionWidget)
+areaConversionThreeButton.setFixedSize(90, 90)
+areaConversionThreeButton.move(300, 690)
+areaConversionThreeButton.setFont(numberPadFont)
+areaConversionThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionThree():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '3')
+    areaConversionInput += '3'
+areaConversionThreeButton.clicked.connect(areaConversionThree)
+# Two [2]
+areaConversionTwoButton = QPushButton('2', areaConversionWidget)
+areaConversionTwoButton.setFixedSize(90, 90)
+areaConversionTwoButton.move(210, 690)
+areaConversionTwoButton.setFont(numberPadFont)
+areaConversionTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionTwo():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '2')
+    areaConversionInput += '2'
+areaConversionTwoButton.clicked.connect(areaConversionTwo)
+# One [1]
+areaConversionOneButton = QPushButton('1', areaConversionWidget)
+areaConversionOneButton.setFixedSize(90, 90)
+areaConversionOneButton.move(120, 690)
+areaConversionOneButton.setFont(numberPadFont)
+areaConversionOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionOne():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '1')
+    areaConversionInput += '1'
+areaConversionOneButton.clicked.connect(areaConversionOne)
+# Zero [0]
+areaConversionZeroButton = QPushButton('0', areaConversionWidget)
+areaConversionZeroButton.setFixedSize(90, 90)
+areaConversionZeroButton.move(210, 780)
+areaConversionZeroButton.setFont(numberPadFont)
+areaConversionZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionZero():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '0')
+    areaConversionInput += '0'
+areaConversionZeroButton.clicked.connect(areaConversionZero)
+# Double Zero [00]
+areaConversionDoubleZeroButton = QPushButton('00', areaConversionWidget)
+areaConversionDoubleZeroButton.setFixedSize(90, 90)
+areaConversionDoubleZeroButton.move(120, 780)
+areaConversionDoubleZeroButton.setFont(numberPadFont)
+areaConversionDoubleZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def areaConversionDoubleZero():
+    global areaConversionInput
+    areaConversionInputField.setText(areaConversionInputField.text() + '00')
+    areaConversionInput += '00'
+areaConversionDoubleZeroButton.clicked.connect(areaConversionDoubleZero)
+# Point [.]
+areaConversionPointButton = QPushButton('.', areaConversionWidget)
+areaConversionPointButton.setFixedSize(90, 90)
+areaConversionPointButton.move(300, 780)
+areaConversionPointButton.setFont(numberPadFont)
+areaConversionPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def areaConversionPoint():
+    global areaConversionInput
+    if areaConversionInputField.text():
+        areaConversionInputField.setText(areaConversionInputField.text() + '.')
+        areaConversionInput += '.'
+    else:
+        areaConversionInputField.setText(areaConversionInputField.text() + '0.')
+        areaConversionInput += '0.'
+areaConversionPointButton.clicked.connect(areaConversionPoint)
+# Deletion
+# All Clear
+areaConversionAllClearButton = QPushButton('AC', areaConversionWidget)
+areaConversionAllClearButton.setFixedSize(90, 90)
+areaConversionAllClearButton.move(390, 510)
+areaConversionAllClearButton.setFont(operatorButtonFont)
+areaConversionAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def areaConversionAllClear():
+    global areaConversionInput
+    areaConversionInputField.setText('')
+    areaConversionOutputField.setText('')
+    areaConversionInput = ''
+areaConversionAllClearButton.clicked.connect(areaConversionAllClear)
+# Clear [Backspace]
+areaConversionClearButton = QPushButton('C', areaConversionWidget)
+areaConversionClearButton.setFixedSize(90, 90)
+areaConversionClearButton.move(390, 600)
+areaConversionClearButton.setFont(operatorButtonFont)
+areaConversionClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def areaConversionClear():
+    global areaConversionInput
+    areaConversionInputFieldText = areaConversionInputField.text()
+    areaConversionInputFieldText = areaConversionInputFieldText[:-1]
+    areaConversionInputField.setText(areaConversionInputFieldText)
+    areaConversionInput = areaConversionInput[:-1]
+areaConversionClearButton.clicked.connect(areaConversionClear)
+# Result [=]
+areaConversionResultButton = QPushButton('=', areaConversionWidget)
+areaConversionResultButton.setFixedSize(90, 180)
+areaConversionResultButton.move(390, 690)
+areaConversionResultButton.setFont(resultButtonsFont)
+areaConversionResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+def areaConversionResult():
+    global areaConversionInput
+    if areaConversionInputField.text():
+        areaConversionFrom = areaConversionFromComboBox.currentIndex()
+        areaConversionTo = areaConversionToComboBox.currentIndex()
+        areaConversionKey = (areaConversionFrom, areaConversionTo)
+        areaConversionFactor = areaConversionFactors[areaConversionKey]
+        areaConversionOutput = float(areaConversionInput) * areaConversionFactor
+        areaConversionOutputField.setText(str(areaConversionOutput))
+areaConversionResultButton.clicked.connect(areaConversionResult)
 
 # Volume Conversion Page
 # Volume Conversion Widget
