@@ -21,31 +21,31 @@ powerConversionInput = ''
 
 lengthConversionFactors = {
     # Metre (m)
-    (0, 0): 1, (0, 1): 1000, (0, 2): 100, (0, 3): 10, (0, 4): 0.001, (0, 5): 1000000, (0, 6): 1000000000, (0, 7): 1000000000000, (0, 8): (10000 / 254), (0, 9): (10000 / 3048), (0, 10): (10000 / 9144), (0, 11): (1000 / 1609344), (0, 12): (1 / 5556),
+    (0, 0): 1, (0, 1): 1000, (0, 2): 100, (0, 3): 10, (0, 4): 0.001, (0, 5): 1000000, (0, 6): 1000000000, (0, 7): 1000000000000, (0, 8): (5000 / 127), (0, 9): (1250 / 381), (0, 10): (1250 / 1143), (0, 11): (125 / 201168), (0, 12): (1 / 1852),
     # Millimetre (mm)
-    (1, 0): 0.001, (1, 1): 1, (1, 2): 0.1, (1, 3): 0.01, (1, 4): 0.000001, (1, 5): 1000, (1, 6): 1000000, (1, 7): 1000000000, (1, 8): (10 / 254), (1, 9): (10 / 3048), (1, 10): (10 / 9144), (1, 11): (1 / 1609344), (1, 12): (1 / 5556000),
+    (1, 0): 0.001, (1, 1): 1, (1, 2): 0.1, (1, 3): 0.01, (1, 4): 0.000001, (1, 5): 1000, (1, 6): 1000000, (1, 7): 1000000000, (1, 8): (5 / 127), (1, 9): (5 / 1524), (1, 10): (5 / 4572), (1, 11): (1 / 1609344), (1, 12): (1 / 1852000),
     # Centimetre (cm)
-    (2, 0): 0.01, (2, 1): 10, (2, 2): 1, (2, 3): 0.1, (2, 4): 0.00001, (2, 5): 10000, (2, 6): 10000000, (2, 7): 10000000000, (2, 8): (100 / 254), (2, 9): (100 / 3048), (2, 10): (100 / 9144), (2, 11): (10 / 1609344), (2, 12): (1 / 555600),
+    (2, 0): 0.01, (2, 1): 10, (2, 2): 1, (2, 3): 0.1, (2, 4): 0.00001, (2, 5): 10000, (2, 6): 10000000, (2, 7): 10000000000, (2, 8): (50 / 127), (2, 9): (25 / 762), (2, 10): (25 / 2286), (2, 11): (5 / 804672), (2, 12): (1 / 185200),
     # Decimetre (dm)
-    (3, 0): 0.1, (3, 1): 100, (3, 2): 10, (3, 3): 1, (3, 4): 0.0001, (3, 5): 100000, (3, 6): 100000000, (3, 7): 100000000000, (3, 8): (1000 / 254), (3, 9): (1000 / 3048), (3, 10): (1000 / 9144), (3, 11): (100 / 1609344), (3, 12): (1 / 55560),
+    (3, 0): 0.1, (3, 1): 100, (3, 2): 10, (3, 3): 1, (3, 4): 0.0001, (3, 5): 100000, (3, 6): 100000000, (3, 7): 100000000000, (3, 8): (500 / 127), (3, 9): (125 / 381), (3, 10): (125 / 1143), (3, 11): (25 / 402336), (3, 12): (1 / 18520),
     # Kilometre (km)
-    (4, 0): 1000, (4, 1): 1000000, (4, 2): 100000, (4, 3): 10000, (4, 4): 1, (4, 5): 1000000000, (4, 6): 1000000000000, (4, 7): 1000000000000000, (4, 8): (10000000 / 254), (4, 9): (10000000 / 3048), (4, 10): (10000000 / 9144), (4, 11): (1000000 / 1609344), (4, 12): (1000 / 5556),
+    (4, 0): 1000, (4, 1): 1000000, (4, 2): 100000, (4, 3): 10000, (4, 4): 1, (4, 5): 1000000000, (4, 6): 1000000000000, (4, 7): 1000000000000000, (4, 8): (5000000 / 127), (4, 9): (1250000 / 381), (4, 10): (1250000 / 1143), (4, 11): (15625 / 25146), (4, 12): (250 / 463),
     # Micrometre (μm)
-    (5, 0): 0.000001, (5, 1): 0.001, (5, 2): 0.0001, (5, 3): 0.00001, (5, 4): 0.000000001, (5, 5): 1, (5, 6): 1000, (5, 7): 1000000, (5, 8): (1 / 25400), (5, 9): (1 / 304800), (5, 10): (1 / 914400), (5, 11): (1 / 1609344000), (5, 12): (1 / 5556000000),
+    (5, 0): 0.000001, (5, 1): 0.001, (5, 2): 0.0001, (5, 3): 0.00001, (5, 4): 0.000000001, (5, 5): 1, (5, 6): 1000, (5, 7): 1000000, (5, 8): (1 / 25400), (5, 9): (1 / 304800), (5, 10): (1 / 914400), (5, 11): (1 / 1609344000), (5, 12): (1 / 1852000000),
     # Nanometre (nm)
-    (6, 0): 0.000000001, (6, 1): 0.000001, (6, 2): 0.0000001, (6, 3): 0.00000001, (6, 4): 0.000000000001, (6, 5): 0.001, (6, 6): 1, (6, 7): 1000, (6, 8): (1 / 25400000), (6, 9): (1 / 304800000), (6, 10): (1 / 914400000), (6, 11): (1 / 1609344000000), (6, 12): (1 / 5556000000000),
+    (6, 0): 0.000000001, (6, 1): 0.000001, (6, 2): 0.0000001, (6, 3): 0.00000001, (6, 4): 0.000000000001, (6, 5): 0.001, (6, 6): 1, (6, 7): 1000, (6, 8): (1 / 25400000), (6, 9): (1 / 304800000), (6, 10): (1 / 914400000), (6, 11): (1 / 1609344000000), (6, 12): (1 / 1852000000000),
     # Picometre (pm)
-    (7, 0): 0.000000000001, (7, 1): 0.000000001, (7, 2): 0.0000000001, (7, 3): 0.00000000001, (7, 4): 0.000000000000001, (7, 5): 0.000001, (7, 6): 0.001, (7, 7): 1, (7, 8): (1 / 25400000000), (7, 9): (1 / 304800000000), (7, 10): (1 / 914400000000), (7, 11): (1 / 1609344000000000), (7, 12): (1 / 5556000000000000),
+    (7, 0): 0.000000000001, (7, 1): 0.000000001, (7, 2): 0.0000000001, (7, 3): 0.00000000001, (7, 4): 0.000000000000001, (7, 5): 0.000001, (7, 6): 0.001, (7, 7): 1, (7, 8): (1 / 25400000000), (7, 9): (1 / 304800000000), (7, 10): (7 / 914400000000), (7, 11): (1 / 1609344000000000), (7, 12): (1 / 1852000000000000),
     # Inch (in)
-    (8, 0): 0.0254, (8, 1): 25.4, (8, 2): 2.54, (8, 3): 0.254, (8, 4): 0.0000254, (8, 5): 25400, (8, 6): 25400000, (8, 7): 25400000000, (8, 8): 1, (8, 9): (1 / 12), (8, 10): (1 / 36), (8, 11): (1 / 63360), (8, 12): (1 / 218740.15625),
+    (8, 0): 0.0254, (8, 1): 25.4, (8, 2): 2.54, (8, 3): 0.254, (8, 4): 0.0000254, (8, 5): 25400, (8, 6): 25400000, (8, 7): 25400000000, (8, 8): 1, (8, 9): (1 / 12), (8, 10): (1 / 36), (8, 11): (3 / 1760), (8, 12): (9260000 / 127),
     # Foot (ft)
-    (9, 0): 0.3048, (9, 1): 304.8, (9, 2): 30.48, (9, 3): 3.048, (9, 4): 0.0003048, (9, 5): 304800, (9, 6): 304800000, (9, 7): 304800000000, (9, 8): 12, (9, 9): 1, (9, 10): (1 / 3), (9, 11): (1 / 5280), (9, 12): (12 / 218740.15625),
+    (9, 0): 0.3048, (9, 1): 304.8, (9, 2): 30.48, (9, 3): 3.048, (9, 4): 0.0003048, (9, 5): 304800, (9, 6): 304800000, (9, 7): 304800000000, (9, 8): 12, (9, 9): 1, (9, 10): (1 / 3), (9, 11): (3 / 1760), (9, 12): (2315000 / 381),
     # Yard (yd)
-    (10, 0): 0.9144, (10, 1): 0.0009144, (10, 2): 0.009144, (10, 3): 0.09144, (10, 4): 0.0009144, (10, 5): 0.0000009144, (10, 6): 0.0000000009144, (10, 7): 0.0000000000009144, (10, 8): 36, (10, 9): 3, (10, 10): 1, (10, 11): (1 / 1760), (10, 12): (36 / 218740.15625),
+    (10, 0): 0.9144, (10, 1): 914.4, (10, 2): 91.44, (10, 3): 9.144, (10, 4): 0.0009144, (10, 5): 914400, (10, 6): 914400000, (10, 7): 914400000000, (10, 8): 36, (10, 9): 3, (10, 10): 1, (10, 11): (1 / 1760), (10, 12): (2315000 / 1143),
     # Mile (mi)
-    (11, 0): 1609.344, (11, 1): 1609344, (11, 2): 160934.4, (11, 3): 16093.44, (11, 4): 1.609344, (11, 5): 1609344000, (11, 6): 1609344000000, (11, 7): 1609344000000000, (11, 8): 63360, (11, 9): 5280, (11, 10): 1760, (11, 11): 1, (11, 12): (63360 / 218740.15625),
+    (11, 0): 1609.344, (11, 1): 1609344, (11, 2): 160934.4, (11, 3): 16093.44, (11, 4): 1.609344, (11, 5): 1609344000, (11, 6): 1609344000000, (11, 7): 1609344000000000, (11, 8): (440 / 9), (11, 9): (1760 / 3), (11, 10): 1760, (11, 11): 1, (11, 12): (57875 / 50292),
     # Nautical Mile (nmi)
-    (12, 0): 5556, (12, 1): 5556000, (12, 2): 555600, (12, 3): 55560, (12, 4): 5.556, (12, 5): 5556000000, (12, 6): 5556000000000, (12, 7): 5556000000000000, (12, 8): 218740.15625, (12, 9): (218740.15625 / 12), (12, 10): (218740.15625 / 36), (12, 11): (218740.15625 / 63360), (12, 12): 1
+    (12, 0): 1852, (12, 1): 1852000, (12, 2): 18520000, (12, 3): 185200000, (12, 4): 1.852, (12, 5): 1852000000, (12, 6): 1852000000000, (12, 7): 1852000000000000, (12, 8): (127 / 9260000), (12, 9): (381 / 2315000), (12, 10): (1143 / 2315000), (12, 11): (50292 / 57875), (12, 12): 1
 }
 areaConversionFactors = {
     # Square Metre (m²)
@@ -69,65 +69,75 @@ areaConversionFactors = {
     # Hectare (ha)
     (9, 0): 10000, (9, 1): 1000000, (9, 2): 100000000, (9, 3): 10000000000, (9, 4): 0.01, (9, 5): 15500031, (9, 6): (15500031 / 144), (9, 7): (15500031 / 4014489600), (9, 8): (15500031 / 6272640), (9, 9): 1
 }
-# volumeConversionFactors = {
-#     (0, 0): 1, (0, 1): , (0, 2): , (0, 3): , (0, 4): , (0, 5): , (0, 6): , (0, 7): , (0, 8): , (0, 9): ,                    # m3
-#     (1, 0): , (1, 1): 1, (1, 2): , (1, 3): , (1, 4): , (1, 5): , (1, 6): , (1, 7): , (1, 8): , (1, 9): ,                    # cm3
-#     (2, 0): , (2, 1): , (2, 2): 1, (2, 3): , (2, 4): , (2, 5): , (2, 6): , (2, 7): , (2, 8): , (2, 9): ,                    # dm3
-#     (3, 0): , (3, 1): , (3, 2): , (3, 3): 1, (3, 4): , (3, 5): , (3, 6): , (3, 7): , (3, 8): , (3, 9): ,                    # l
-#     (4, 0): , (4, 1): , (4, 2): , (4, 3): , (4, 4): 1, (4, 5): , (4, 6): , (4, 7): , (4, 8): , (4, 9): ,                    # mm3
-#     (5, 0): , (5, 1): , (5, 2): , (5, 3): , (5, 4): , (5, 5): 1, (5, 6): , (5, 7): , (5, 8): , (5, 9): ,                    # ml
-#     (6, 0): , (6, 1): , (6, 2): , (6, 3): , (6, 4): , (6, 5): , (6, 6): 1, (6, 7): , (6, 8): , (6, 9): ,                    # ft3
-#     (7, 0): , (7, 1): , (7, 2): , (7, 3): , (7, 4): , (7, 5): , (7, 6): , (7, 7): 1, (7, 8): , (7, 9): ,                    # fl.oz
-#     (8, 0): , (8, 1): , (8, 2): , (8, 3): , (8, 4): , (8, 5): , (8, 6): , (8, 7): , (8, 8): 1, (8, 9): ,                    # in3
-#     (9, 0): , (9, 1): , (9, 2): , (9, 3): , (9, 4): , (9, 5): , (9, 6): , (9, 7): , (9, 8): , (9, 9): 1                     # gal
-# }
-# weightConversionFactors = {
-#     (0, 0): 1, (0, 1): , (0, 2): , (0, 3): , (0, 4): , (0, 5): , (0, 6): , (0, 7): , (0, 8): ,                            # g
-#     (1, 0): , (1, 1): 1, (1, 2): , (1, 3): , (1, 4): , (1, 5): , (1, 6): , (1, 7): , (1, 8): ,                            # q
-#     (2, 0): , (2, 1): , (2, 2): 1, (2, 3): , (2, 4): , (2, 5): , (2, 6): , (2, 7): , (2, 8): ,                            # ct
-#     (3, 0): , (3, 1): , (3, 2): , (3, 3): 1, (3, 4): , (3, 5): , (3, 6): , (3, 7): , (3, 8): ,                            # t
-#     (4, 0): , (4, 1): , (4, 2): , (4, 3): , (4, 4): 1, (4, 5): , (4, 6): , (4, 7): , (4, 8): ,                            # mg
-#     (5, 0): , (5, 1): , (5, 2): , (5, 3): , (5, 4): , (5, 5): 1, (5, 6): , (5, 7): , (5, 8): ,                            # kg
-#     (6, 0): , (6, 1): , (6, 2): , (6, 3): , (6, 4): , (6, 5): , (6, 6): 1, (6, 7): , (6, 8): ,                            # oz
-#     (7, 0): , (7, 1): , (7, 2): , (7, 3): , (7, 4): , (7, 5): , (7, 6): , (7, 7): 1, (7, 8): ,                            # lb
-#     (8, 0): , (8, 1): , (8, 2): , (8, 3): , (8, 4): , (8, 5): , (8, 6): , (8, 7): , (8, 8): 1                             # st
-# }
-# temperatureConversionFactors = {
-#     (0, 0): 1, (0, 1): , (0, 2): , (0, 3): , (0, 4): ,                                                            # C
-#     (1, 0): , (1, 1): 1, (1, 2): , (1, 3): , (1, 4): ,                                                            # F
-#     (2, 0): , (2, 1): , (2, 2): 1, (2, 3): , (2, 4): ,                                                            # K
-#     (3, 0): , (3, 1): , (3, 2): , (3, 3): 1, (3, 4): ,                                                            # R
-#     (4, 0): , (4, 1): , (4, 2): , (4, 3): , (4, 4): 1                                                             # Re
-# }
-# speedConversionFactors = {
-#     (0, 0): 1, (0, 1): , (0, 2): , (0, 3): , (0, 4): , (0, 5): ,                                                    # c
-#     (1, 0): , (1, 1): 1, (1, 2): , (1, 3): , (1, 4): , (1, 5): ,                                                    # km/s
-#     (2, 0): , (2, 1): , (2, 2): 1, (2, 3): , (2, 4): , (2, 5): ,                                                    # mph
-#     (3, 0): , (3, 1): , (3, 2): , (3, 3): 1, (3, 4): , (3, 5): ,                                                    # Ma
-#     (4, 0): , (4, 1): , (4, 2): , (4, 3): , (4, 4): 1, (4, 5): ,                                                    # m/s
-#     (5, 0): , (5, 1): , (5, 2): , (5, 3): , (5, 4): , (5, 5): 1                                                     # km/h
-# }
-# pressureConversionFactors = {
-#     (0, 0): 1, (0, 1): , (0, 2): , (0, 3): , (0, 4): , (0, 5): , (0, 6): , (0, 7): ,                                    # mmH20
-#     (1, 0): , (1, 1): 1, (1, 2): , (1, 3): , (1, 4): , (1, 5): , (1, 6): , (1, 7): ,                                    # psi
-#     (2, 0): , (2, 1): , (2, 2): 1, (2, 3): , (2, 4): , (2, 5): , (2, 6): , (2, 7): ,                                    # mmHg
-#     (3, 0): , (3, 1): , (3, 2): , (3, 3): 1, (3, 4): , (3, 5): , (3, 6): , (3, 7): ,                                    # Bar
-#     (4, 0): , (4, 1): , (4, 2): , (4, 3): , (4, 4): 1, (4, 5): , (4, 6): , (4, 7): ,                                    # mBar
-#     (5, 0): , (5, 1): , (5, 2): , (5, 3): , (5, 4): , (5, 5): 1, (5, 6): , (5, 7): ,                                    # atm
-#     (6, 0): , (6, 1): , (6, 2): , (6, 3): , (6, 4): , (6, 5): , (6, 6): 1, (6, 7): ,                                    # kPa
-#     (7, 0): , (7, 1): , (7, 2): , (7, 3): , (7, 4): , (7, 5): , (7, 6): , (7, 7): 1                                     # MPa
-# }
-# powerConversionFactors = {
-#     (0, 0): 1, (0, 1): , (0, 2): , (0, 3): , (0, 4): , (0, 5): , (0, 6): , (0, 7): , (0, 8): ,                            # J/s
-#     (1, 0): , (1, 1): 1, (1, 2): , (1, 3): , (1, 4): , (1, 5): , (1, 6): , (1, 7): , (1, 8): ,                            # BTU/s
-#     (2, 0): , (2, 1): , (2, 2): 1, (2, 3): , (2, 4): , (2, 5): , (2, 6): , (2, 7): , (2, 8): ,                            # HP
-#     (3, 0): , (3, 1): , (3, 2): , (3, 3): 1, (3, 4): , (3, 5): , (3, 6): , (3, 7): , (3, 8): ,                            # kg.m/s
-#     (4, 0): , (4, 1): , (4, 2): , (4, 3): , (4, 4): 1, (4, 5): , (4, 6): , (4, 7): , (4, 8): ,                            # kcal/s
-#     (5, 0): , (5, 1): , (5, 2): , (5, 3): , (5, 4): , (5, 5): 1, (5, 6): , (5, 7): , (5, 8): ,                            # W
-#     (6, 0): , (6, 1): , (6, 2): , (6, 3): , (6, 4): , (6, 5): , (6, 6): 1, (6, 7): , (6, 8): ,                            # ft.lb/s
-#     (7, 0): , (7, 1): , (7, 2): , (7, 3): , (7, 4): , (7, 5): , (7, 6): , (7, 7): 1, (7, 8): ,                            # N.m/s
-#     (8, 0): , (8, 1): , (8, 2): , (8, 3): , (8, 4): , (8, 5): , (8, 6): , (8, 7): , (8, 8): 1                             # kW
-# }
+volumeConversionFactors = {
+    # Cubic Metre (m³)
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'), (0, 8): ('PLACEHOLDER'), (0, 9): ('PLACEHOLDER'),
+    # Cubic Decimetre (dm³)
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'), (1, 8): ('PLACEHOLDER'), (1, 9): ('PLACEHOLDER'),
+    # Cubic Centimetre (cm³)
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'), (2, 8): ('PLACEHOLDER'), (2, 9): ('PLACEHOLDER'),
+    # Cubic Millimetre (mm³)
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'), (3, 8): ('PLACEHOLDER'), (3, 9): ('PLACEHOLDER'),
+    # Litre (L)
+    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'), (4, 8): ('PLACEHOLDER'), (4, 9): ('PLACEHOLDER'),
+    # Millilitre (mL)
+    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'), (5, 8): ('PLACEHOLDER'), (5, 9): ('PLACEHOLDER'),
+    # Cubic Inch (in³)
+    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'), (6, 8): ('PLACEHOLDER'), (6, 9): ('PLACEHOLDER'),
+    # Cubic Foot (ft³)
+    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1, (7, 8): ('PLACEHOLDER'), (7, 9): ('PLACEHOLDER'),
+    # Fluid Ounce (fl. oz)
+    (8, 0): ('PLACEHOLDER'), (8, 1): ('PLACEHOLDER'), (8, 2): ('PLACEHOLDER'), (8, 3): ('PLACEHOLDER'), (8, 4): ('PLACEHOLDER'), (8, 5): ('PLACEHOLDER'), (8, 6): ('PLACEHOLDER'), (8, 7): ('PLACEHOLDER'), (8, 8): 1, (8, 9): ('PLACEHOLDER'),
+    # Gallon (gal)
+    (9, 0): ('PLACEHOLDER'), (9, 1): ('PLACEHOLDER'), (9, 2): ('PLACEHOLDER'), (9, 3): ('PLACEHOLDER'), (9, 4): ('PLACEHOLDER'), (9, 5): ('PLACEHOLDER'), (9, 6): ('PLACEHOLDER'), (9, 7): ('PLACEHOLDER'), (9, 8): ('PLACEHOLDER'), (9, 9): 1
+}
+weightConversionFactors = {
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'), (0, 8): ('PLACEHOLDER'),                            # g
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'), (1, 8): ('PLACEHOLDER'),                            # q
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'), (2, 8): ('PLACEHOLDER'),                            # ct
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'), (3, 8): ('PLACEHOLDER'),                            # t
+    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'), (4, 8): ('PLACEHOLDER'),                            # mg
+    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'), (5, 8): ('PLACEHOLDER'),                            # kg
+    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'), (6, 8): ('PLACEHOLDER'),                            # oz
+    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1, (7, 8): ('PLACEHOLDER'),                            # lb
+    (8, 0): ('PLACEHOLDER'), (8, 1): ('PLACEHOLDER'), (8, 2): ('PLACEHOLDER'), (8, 3): ('PLACEHOLDER'), (8, 4): ('PLACEHOLDER'), (8, 5): ('PLACEHOLDER'), (8, 6): ('PLACEHOLDER'), (8, 7): ('PLACEHOLDER'), (8, 8): 1                             # st
+}
+temperatureConversionFactors = {
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'),                                                            # C
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'),                                                            # F
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'),                                                            # K
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'),                                                            # R
+    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1                                                             # Re
+}
+speedConversionFactors = {
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'),                                                    # c
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'),                                                    # km/s
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'),                                                    # mph
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'),                                                    # Ma
+    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'),                                                    # m/s
+    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1                                                     # km/h
+}
+pressureConversionFactors = {
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'),                                    # mmH20
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'),                                    # psi
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'),                                    # mmHg
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'),                                    # Bar
+    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'),                                    # mBar
+    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'),                                    # atm
+    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'),                                    # kPa
+    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1                                     # MPa
+}
+powerConversionFactors = {
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'), (0, 8): ('PLACEHOLDER'),                            # J/s
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'), (1, 8): ('PLACEHOLDER'),                            # BTU/s
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'), (2, 8): ('PLACEHOLDER'),                            # HP
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'), (3, 8): ('PLACEHOLDER'),                            # kg.m/s
+    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'), (4, 8): ('PLACEHOLDER'),                            # kcal/s
+    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'), (5, 8): ('PLACEHOLDER'),                            # W
+    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'), (6, 8): ('PLACEHOLDER'),                            # ft.lb/s
+    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1, (7, 8): ('PLACEHOLDER'),                            # N.m/s
+    (8, 0): ('PLACEHOLDER'), (8, 1): ('PLACEHOLDER'), (8, 2): ('PLACEHOLDER'), (8, 3): ('PLACEHOLDER'), (8, 4): ('PLACEHOLDER'), (8, 5): ('PLACEHOLDER'), (8, 6): ('PLACEHOLDER'), (8, 7): ('PLACEHOLDER'), (8, 8): 1                             # kW
+}
 
 CalcWizard = QApplication([])
 QApplication.setWindowIcon(QIcon('CalcWizard (Icon).ico'))
@@ -2230,6 +2240,253 @@ volumeConversionLabel.setFixedSize(540, 60)
 volumeConversionLabel.move(30, 120)
 volumeConversionLabel.setFont(conversionsLabelFont)
 volumeConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# From Combo Box
+volumeConversionFromComboBox = QComboBox(volumeConversionWidget)
+volumeConversionFromComboBox.setFixedSize(480, 60)
+volumeConversionFromComboBox.move(30, 210)
+volumeConversionFromComboBox.setFont(comboBoxFont)
+volumeConversionFromComboBox.setStyleSheet('padding-left: 10px')
+volumeConversionFromComboBox.addItem('Cubic Metre (m³)')            # 0
+volumeConversionFromComboBox.addItem('Cubic Decimetre (dm³)')       # 1
+volumeConversionFromComboBox.addItem('Cubic Centimetre (cm³)')      # 2
+volumeConversionFromComboBox.addItem('Cubic Millimetre (mm³)')      # 3
+volumeConversionFromComboBox.addItem('Litre (L)')                   # 4
+volumeConversionFromComboBox.addItem('Millilitre (mL)')             # 5
+volumeConversionFromComboBox.addItem('Cubic Inch (in³)')            # 6
+volumeConversionFromComboBox.addItem('Cubic Foot (ft³)')            # 7
+volumeConversionFromComboBox.addItem('Fluid Ounce (fl. oz)')        # 8
+volumeConversionFromComboBox.addItem('Gallon (gal)')                # 9
+# Input Field
+volumeConversionInputField = QLineEdit(volumeConversionWidget)
+volumeConversionInputField.setPlaceholderText('Input')
+volumeConversionInputField.setFixedSize(480, 60)
+volumeConversionInputField.move(30, 270)
+volumeConversionInputField.setFont(inputFieldFont)
+volumeConversionInputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+volumeConversionInputField.setReadOnly(True)
+# To Combo Box
+volumeConversionToComboBox = QComboBox(volumeConversionWidget)
+volumeConversionToComboBox.setFixedSize(480, 60)
+volumeConversionToComboBox.move(30, 360)
+volumeConversionToComboBox.setFont(comboBoxFont)
+volumeConversionToComboBox.setStyleSheet('padding-left: 10px')
+volumeConversionToComboBox.addItem('Cubic Metre (m³)')              # 0
+volumeConversionToComboBox.addItem('Cubic Decimetre (dm³)')         # 1
+volumeConversionToComboBox.addItem('Cubic Centimetre (cm³)')        # 2
+volumeConversionToComboBox.addItem('Cubic Millimetre (mm³)')        # 3
+volumeConversionToComboBox.addItem('Litre (L)')                     # 4
+volumeConversionToComboBox.addItem('Millilitre (mL)')               # 5
+volumeConversionToComboBox.addItem('Cubic Inch (in³)')              # 6
+volumeConversionToComboBox.addItem('Cubic Foot (ft³)')              # 7
+volumeConversionToComboBox.addItem('Fluid Ounce (fl. oz)')          # 8
+volumeConversionToComboBox.addItem('Gallon (gal)')                  # 9
+# Output Field
+volumeConversionOutputField = QLineEdit(volumeConversionWidget)
+volumeConversionOutputField.setFixedSize(480, 60)
+volumeConversionOutputField.move(30, 420)
+volumeConversionOutputField.setFont(outputFieldFont)
+volumeConversionOutputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+volumeConversionOutputField.setPlaceholderText('Output')
+volumeConversionOutputField.setReadOnly(True)
+# Paste Output to Input
+volumeConversionPasteButton = QPushButton('⇅', volumeConversionWidget)
+volumeConversionPasteButton.setFixedSize(60, 270)
+volumeConversionPasteButton.move(510, 210)
+volumeConversionPasteButton.setFont(conversionPasteButtonFont)
+volumeConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+def volumeConversionPaste():
+    global volumeConversionInput
+    volumeConversionFromIndex = volumeConversionFromComboBox.currentIndex()
+    volumeConversionToIndex = volumeConversionToComboBox.currentIndex()
+    volumeConversionFromComboBox.setCurrentIndex(volumeConversionToIndex)
+    volumeConversionToComboBox.setCurrentIndex(volumeConversionFromIndex)
+    if volumeConversionInputField.text():
+        volumeConversionFrom = volumeConversionFromComboBox.currentIndex()
+        volumeConversionTo = volumeConversionToComboBox.currentIndex()
+        volumeConversionKey = (volumeConversionFrom, volumeConversionTo)
+        volumeConversionFactor = volumeConversionFactors[volumeConversionKey]
+        volumeConversionOutput = float(volumeConversionInput) * volumeConversionFactor
+        volumeConversionOutputField.setText(str(volumeConversionOutput))
+volumeConversionPasteButton.clicked.connect(volumeConversionPaste)
+# Number Pad
+# Nine [9]
+volumeConversionNineButton = QPushButton('9', volumeConversionWidget)
+volumeConversionNineButton.setFixedSize(90, 90)
+volumeConversionNineButton.move(300, 510)
+volumeConversionNineButton.setFont(numberPadFont)
+volumeConversionNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionNine():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '9')
+    volumeConversionInput += '9'
+volumeConversionNineButton.clicked.connect(volumeConversionNine)
+# Eight [8]
+volumeConversionEightButton = QPushButton('8', volumeConversionWidget)
+volumeConversionEightButton.setFixedSize(90, 90)
+volumeConversionEightButton.move(210, 510)
+volumeConversionEightButton.setFont(numberPadFont)
+volumeConversionEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionEight():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '8')
+    volumeConversionInput += '8'
+volumeConversionEightButton.clicked.connect(volumeConversionEight)
+# Seven [7]
+volumeConversionSevenButton = QPushButton('7', volumeConversionWidget)
+volumeConversionSevenButton.setFixedSize(90, 90)
+volumeConversionSevenButton.move(120, 510)
+volumeConversionSevenButton.setFont(numberPadFont)
+volumeConversionSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionSeven():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '7')
+    volumeConversionInput += '7'
+volumeConversionSevenButton.clicked.connect(volumeConversionSeven)
+# Six [6]
+volumeConversionSixButton = QPushButton('6', volumeConversionWidget)
+volumeConversionSixButton.setFixedSize(90, 90)
+volumeConversionSixButton.move(300, 600)
+volumeConversionSixButton.setFont(numberPadFont)
+volumeConversionSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionSix():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '6')
+    volumeConversionInput += '6'
+volumeConversionSixButton.clicked.connect(volumeConversionSix)
+# Five [5]
+volumeConversionFiveButton = QPushButton('5', volumeConversionWidget)
+volumeConversionFiveButton.setFixedSize(90, 90)
+volumeConversionFiveButton.move(210, 600)
+volumeConversionFiveButton.setFont(numberPadFont)
+volumeConversionFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionFive():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '5')
+    volumeConversionInput += '5'
+volumeConversionFiveButton.clicked.connect(volumeConversionFive)
+# Four [4]
+volumeConversionFourButton = QPushButton('4', volumeConversionWidget)
+volumeConversionFourButton.setFixedSize(90, 90)
+volumeConversionFourButton.move(120, 600)
+volumeConversionFourButton.setFont(numberPadFont)
+volumeConversionFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionFour():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '4')
+    volumeConversionInput += '4'
+volumeConversionFourButton.clicked.connect(volumeConversionFour)
+# Three [3]
+volumeConversionThreeButton = QPushButton('3', volumeConversionWidget)
+volumeConversionThreeButton.setFixedSize(90, 90)
+volumeConversionThreeButton.move(300, 690)
+volumeConversionThreeButton.setFont(numberPadFont)
+volumeConversionThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionThree():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '3')
+    volumeConversionInput += '3'
+volumeConversionThreeButton.clicked.connect(volumeConversionThree)
+# Two [2]
+volumeConversionTwoButton = QPushButton('2', volumeConversionWidget)
+volumeConversionTwoButton.setFixedSize(90, 90)
+volumeConversionTwoButton.move(210, 690)
+volumeConversionTwoButton.setFont(numberPadFont)
+volumeConversionTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionTwo():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '2')
+    volumeConversionInput += '2'
+volumeConversionTwoButton.clicked.connect(volumeConversionTwo)
+# One [1]
+volumeConversionOneButton = QPushButton('1', volumeConversionWidget)
+volumeConversionOneButton.setFixedSize(90, 90)
+volumeConversionOneButton.move(120, 690)
+volumeConversionOneButton.setFont(numberPadFont)
+volumeConversionOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionOne():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '1')
+    volumeConversionInput += '1'
+volumeConversionOneButton.clicked.connect(volumeConversionOne)
+# Zero [0]
+volumeConversionZeroButton = QPushButton('0', volumeConversionWidget)
+volumeConversionZeroButton.setFixedSize(90, 90)
+volumeConversionZeroButton.move(210, 780)
+volumeConversionZeroButton.setFont(numberPadFont)
+volumeConversionZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionZero():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '0')
+    volumeConversionInput += '0'
+volumeConversionZeroButton.clicked.connect(volumeConversionZero)
+# Double Zero [00]
+volumeConversionDoubleZeroButton = QPushButton('00', volumeConversionWidget)
+volumeConversionDoubleZeroButton.setFixedSize(90, 90)
+volumeConversionDoubleZeroButton.move(120, 780)
+volumeConversionDoubleZeroButton.setFont(numberPadFont)
+volumeConversionDoubleZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def volumeConversionDoubleZero():
+    global volumeConversionInput
+    volumeConversionInputField.setText(volumeConversionInputField.text() + '00')
+    volumeConversionInput += '00'
+volumeConversionDoubleZeroButton.clicked.connect(volumeConversionDoubleZero)
+# Point [.]
+volumeConversionPointButton = QPushButton('.', volumeConversionWidget)
+volumeConversionPointButton.setFixedSize(90, 90)
+volumeConversionPointButton.move(300, 780)
+volumeConversionPointButton.setFont(numberPadFont)
+volumeConversionPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def volumeConversionPoint():
+    global volumeConversionInput
+    if volumeConversionInputField.text():
+        volumeConversionInputField.setText(volumeConversionInputField.text() + '.')
+        volumeConversionInput += '.'
+    else:
+        volumeConversionInputField.setText(volumeConversionInputField.text() + '0.')
+        volumeConversionInput += '0.'
+volumeConversionPointButton.clicked.connect(volumeConversionPoint)
+# Deletion
+# All Clear
+volumeConversionAllClearButton = QPushButton('AC', volumeConversionWidget)
+volumeConversionAllClearButton.setFixedSize(90, 90)
+volumeConversionAllClearButton.move(390, 510)
+volumeConversionAllClearButton.setFont(operatorButtonFont)
+volumeConversionAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def volumeConversionAllClear():
+    global volumeConversionInput
+    volumeConversionInputField.setText('')
+    volumeConversionOutputField.setText('')
+    volumeConversionInput = ''
+volumeConversionAllClearButton.clicked.connect(volumeConversionAllClear)
+# Clear [Backspace]
+volumeConversionClearButton = QPushButton('C', volumeConversionWidget)
+volumeConversionClearButton.setFixedSize(90, 90)
+volumeConversionClearButton.move(390, 600)
+volumeConversionClearButton.setFont(operatorButtonFont)
+volumeConversionClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def volumeConversionClear():
+    global volumeConversionInput
+    volumeConversionInputFieldText = volumeConversionInputField.text()
+    volumeConversionInputFieldText = volumeConversionInputFieldText[:-1]
+    volumeConversionInputField.setText(volumeConversionInputFieldText)
+    volumeConversionInput = volumeConversionInput[:-1]
+volumeConversionClearButton.clicked.connect(volumeConversionClear)
+# Result [=]
+volumeConversionResultButton = QPushButton('=', volumeConversionWidget)
+volumeConversionResultButton.setFixedSize(90, 180)
+volumeConversionResultButton.move(390, 690)
+volumeConversionResultButton.setFont(resultButtonsFont)
+volumeConversionResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+def volumeConversionResult():
+    global volumeConversionInput
+    if volumeConversionInputField.text():
+        volumeConversionFrom = volumeConversionFromComboBox.currentIndex()
+        volumeConversionTo = volumeConversionToComboBox.currentIndex()
+        volumeConversionKey = (volumeConversionFrom, volumeConversionTo)
+        volumeConversionFactor = volumeConversionFactors[volumeConversionKey]
+        volumeConversionOutput = float(volumeConversionInput) * volumeConversionFactor
+        volumeConversionOutputField.setText(str(volumeConversionOutput))
+volumeConversionResultButton.clicked.connect(volumeConversionResult)
 
 # Weight Conversion Page
 # Weight Conversion Widget
