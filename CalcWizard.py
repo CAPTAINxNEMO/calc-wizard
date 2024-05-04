@@ -49,94 +49,123 @@ lengthConversionFactors = {
 }
 areaConversionFactors = {
     # Square Metre (m²)
-    (0, 0): 1, (0, 1): 100, (0, 2): 10000, (0, 3): 1000000, (0, 4): 0.000001, (0, 5): (15500031 / 10000), (0, 6): (15500031 / 1440000), (0, 7): (15500031 / 40144896000000), (0, 8): (15500031 / 62726400000), (0, 9): 0.0001,
+    (0, 0): 1, (0, 1): 100, (0, 2): 10000, (0, 3): 1000000, (0, 4): 0.000001, (0, 5): 1550.0031, (0, 6): (5166677 / 480000), (0, 7): (5166677 / 13381632000000), (0, 8): (5166677 / 20908800000), (0, 9): 0.0001,
     # Square Decimetre (dm²)
-    (1, 0): 0.01, (1, 1): 1, (1, 2): 100, (1, 3): 10000, (1, 4): 0.00000001, (1, 5): (15500031 / 1000000), (1, 6): (15500031 / 144000000), (1, 7): (15500031 / 4014489600000000), (1, 8): (15500031 / 6272640000000), (1, 9): 0.000001,
+    (1, 0): 0.01, (1, 1): 1, (1, 2): 100, (1, 3): 10000, (1, 4): 0.00000001, (1, 5): 15.500031, (1, 6): (5166677 / 48000000), (1, 7): (5166677 / 1338163200000000), (1, 8): (5166677 / 2090880000000), (1, 9): 0.000001,
     # Square Centimetre (cm²)
-    (2, 0): 0.0001, (2, 1): 0.01, (2, 2): 1, (2, 3): 100, (2, 4): 0.0000000001, (2, 5): (15500031 / 100000000), (2, 6): (15500031 / 14400000000), (2, 7): (15500031 / 401448960000000000), (2, 8): (15500031 / 627264000000000), (2, 9): 0.00000001,
+    (2, 0): 0.0001, (2, 1): 0.01, (2, 2): 1, (2, 3): 100, (2, 4): 0.0000000001, (2, 5): 0.5166677, (2, 6): (5166677 / 4800000000), (2, 7): (5166677 / 133816320000000000), (2, 8): (5166677 / 209088000000000), (2, 9): 0.00000001,
     # Square Millimetre (mm²)
-    (3, 0): 0.000001, (3, 1): 0.0001, (3, 2): 0.01, (3, 3): 1, (3, 4): 0.000000000001, (3, 5): (15500031 / 10000000000), (3, 6): (15500031 / 1440000000000), (3, 7): (15500031 / 40144896000000000000), (3, 8): (15500031 / 62726400000000000), (3, 9): 0.0000000001,
+    (3, 0): 0.000001, (3, 1): 0.0001, (3, 2): 0.01, (3, 3): 1, (3, 4): 0.000000000001, (3, 5): 0.005166677, (3, 6): (5166677 / 480000000000), (3, 7): (5166677 / 13381632000000000000), (3, 8): (5166677 / 20908800000000000), (3, 9): 0.0000000001,
     # Square Kilometre (km²)
-    (4, 0): 1000000, (4, 1): 100000000, (4, 2): 10000000000, (4, 3): 1000000000000, (4, 4): 1, (4, 5): 1550003100, (4, 6): (1550003100 / 144), (4, 7): (15500031 / 40144896), (4, 8): (155000310 / 627264), (4, 9): 100,
+    (4, 0): 1000000, (4, 1): 100000000, (4, 2): 10000000000, (4, 3): 1000000000000, (4, 4): 1, (4, 5): 516667700, (4, 6): (5166677 / 48), (4, 7): (5166677 / 13381632), (4, 8): (51666770 / 209088), (4, 9): 100,
     # Square Inch (in²)
-    (5, 0): (10000 / 15500031), (5, 1): (1000000 / 15500031), (5, 2): (100000000 / 15500031), (5, 3): (10000000000 / 15500031), (5, 4): (1 / 1550003100), (5, 5): 1, (5, 6): (1 / 144), (5, 7): (1 / 4014489600), (5, 8): (1 / 6272640), (5, 9): (1 / 15500031),
+    (5, 0): (10000 / 5166677), (5, 1): (1000000 / 5166677), (5, 2): (100000000 / 5166677), (5, 3): (10000000000 / 5166677), (5, 4): (1 / 516667700), (5, 5): 1, (5, 6): (1 / 144), (5, 7): (1 / 1338163200), (5, 8): (1 / 2090880), (5, 9): (1 / 5166677),
     # Square Foot (ft²)
-    (6, 0): (1440000 / 15500031), (6, 1): (144000000 / 15500031), (6, 2): (14400000000 / 15500031), (6, 3): (1440000000000 / 15500031), (6, 4): (144 / 1550003100), (6, 5): 144, (6, 6): 1, (6, 7): (1 / 27878400), (6, 8): (1 / 43560), (6, 9): (144 / 15500031),
+    (6, 0): (480000 / 5166677), (6, 1): (48000000 / 5166677), (6, 2): (4800000000 / 5166677), (6, 3): (480000000000 / 5166677), (6, 4): (48 / 516667700), (6, 5): 144, (6, 6): 1, (6, 7): (1 / 27878400), (6, 8): (1 / 43560), (6, 9): (48 / 5166677),
     # Square Mile (mi²)
-    (7, 0): (40144896000000 / 15500031), (7, 1): (4014489600000000 / 15500031), (7, 2): (401448960000000000 / 15500031), (7, 3): (40144896000000000000 / 15500031), (7, 4): (40144896 / 15500031), (7, 5): 4014489600, (7, 6): 27878400, (7, 7): 1, (7, 8): 640, (7, 9): (4014489600 / 15500031),
+    (7, 0): (13381632000000 / 5166677), (7, 1): (1338163200000000 / 5166677), (7, 2): (133816320000000000 / 5166677), (7, 3): (13381632000000000000 / 5166677), (7, 4): (13381632 / 5166677), (7, 5): 1338163200, (7, 6): 27878400, (7, 7): 1, (7, 8): 640, (7, 9): (1338163200 / 5166677),
     # Acre (ac)
-    (8, 0): (62726400000 / 15500031), (8, 1): (6272640000000 / 15500031), (8, 2): (627264000000000 / 15500031), (8, 3): (62726400000000000 / 15500031), (8, 4): (627264 / 155000310), (8, 5): 6272640, (8, 6): 43560, (8, 7): (1 / 640), (8, 8): 1, (8, 9): (6272640 / 15500031),
+    (8, 0): (20908800000 / 5166677), (8, 1): (2090880000000 / 5166677), (8, 2): (209088000000000 / 5166677), (8, 3): (20908800000000000 / 5166677), (8, 4): (209088 / 51666770), (8, 5): 2090880, (8, 6): 43560, (8, 7): (1 / 640), (8, 8): 1, (8, 9): (2090880 / 5166677),
     # Hectare (ha)
-    (9, 0): 10000, (9, 1): 1000000, (9, 2): 100000000, (9, 3): 10000000000, (9, 4): 0.01, (9, 5): 15500031, (9, 6): (15500031 / 144), (9, 7): (15500031 / 4014489600), (9, 8): (15500031 / 6272640), (9, 9): 1
+    (9, 0): 10000, (9, 1): 1000000, (9, 2): 100000000, (9, 3): 10000000000, (9, 4): 0.01, (9, 5): 5166677, (9, 6): (5166677 / 48), (9, 7): (5166677 / 1338163200), (9, 8): (5166677 / 2090880), (9, 9): 1
 }
 volumeConversionFactors = {
     # Cubic Metre (m³)
-    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'), (0, 8): ('PLACEHOLDER'), (0, 9): ('PLACEHOLDER'),
+    (0, 0): 1, (0, 1): 1000, (0, 2): 1000000, (0, 3): 1000000000, (0, 4): 1000, (0, 5): 1000000, (0, 6): (125000000000 / 2048383), (0, 7): (1953125000 / 55306341), (0, 8): (16000000000 / 454609), (0, 9): (100000000 / 454609),
     # Cubic Decimetre (dm³)
-    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'), (1, 8): ('PLACEHOLDER'), (1, 9): ('PLACEHOLDER'),
+    (1, 0): 0.001, (1, 1): 1, (1, 2): 1000, (1, 3): 1000000, (1, 4): 1, (1, 5): 1000, (1, 6): (125000000 / 2048383), (1, 7): (1953125 / 55306341), (1, 8): (16000000 / 454609), (1, 9): (100000 / 454609),
     # Cubic Centimetre (cm³)
-    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'), (2, 8): ('PLACEHOLDER'), (2, 9): ('PLACEHOLDER'),
+    (2, 0): 0.000001, (2, 1): 0.001, (2, 2): 1, (2, 3): 1000, (2, 4): 0.001, (2, 5): 1, (2, 6): (125000 / 2048383), (2, 7): (15625 / 442450728), (2, 8): (16000 / 454609), (2, 9): (100 / 454609),
     # Cubic Millimetre (mm³)
-    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'), (3, 8): ('PLACEHOLDER'), (3, 9): ('PLACEHOLDER'),
+    (3, 0): 0.000000001, (3, 1): 0.000001, (3, 2): 0.001, (3, 3): 1, (3, 4): 0.000001, (3, 5): 0.001, (3, 6): (125 / 2048383), (3, 7): (125 / 3539605824), (3, 8): (16 / 454609), (3, 9): (1 / 4546090),
     # Litre (L)
-    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'), (4, 8): ('PLACEHOLDER'), (4, 9): ('PLACEHOLDER'),
+    (4, 0): 0.001, (4, 1): 1, (4, 2): 1000, (4, 3): 1000000, (4, 4): 1, (4, 5): 1000, (4, 6): (125000000 / 2048383), (4, 7): (1953125 / 55306341), (4, 8): (16000000 / 454609), (4, 9): (100000 / 454609),
     # Millilitre (mL)
-    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'), (5, 8): ('PLACEHOLDER'), (5, 9): ('PLACEHOLDER'),
+    (5, 0): 0.000001, (5, 1): 0.001, (5, 2): 1, (5, 3): 1000, (5, 4): 0.001, (5, 5): 1, (5, 6): (125000 / 2048383), (5, 7): (15625 / 442450728), (5, 8): (16000 / 454609), (5, 9): (100 / 454609),
     # Cubic Inch (in³)
-    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'), (6, 8): ('PLACEHOLDER'), (6, 9): ('PLACEHOLDER'),
+    (6, 0): 0.000016387064, (6, 1): 0.016387064, (6, 2): 016.387064, (6, 3): 016387.064, (6, 4): 0.016387064, (6, 5): 016.387064, (6, 6): 1, (6, 7): (1/ 1728), (6, 8): (32774128 / 56826125), (6, 9): (2048383 / 568261250),
     # Cubic Foot (ft³)
-    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1, (7, 8): ('PLACEHOLDER'), (7, 9): ('PLACEHOLDER'),
+    (7, 0): 0.028316846592, (7, 1): 28.316846592, (7, 2): 28316.846592, (7, 3): 28316846.592, (7, 4): 28.316846592, (7, 5): 28316.846592, (7, 6): 1728, (7, 7): 1, (7, 8): (56633693184 / 56826125), (7, 9): (1769802912 / 284130625),
     # Fluid Ounce (fl. oz)
-    (8, 0): ('PLACEHOLDER'), (8, 1): ('PLACEHOLDER'), (8, 2): ('PLACEHOLDER'), (8, 3): ('PLACEHOLDER'), (8, 4): ('PLACEHOLDER'), (8, 5): ('PLACEHOLDER'), (8, 6): ('PLACEHOLDER'), (8, 7): ('PLACEHOLDER'), (8, 8): 1, (8, 9): ('PLACEHOLDER'),
+    (8, 0): 0.0000284130625, (8, 1): 0.0284130625, (8, 2): 28.4130625, (8, 3): 28413.0625, (8, 4): 0.0284130625, (8, 5): 28.4130625, (8, 6): (56826125 / 32774128), (8, 7): (56826125 / 56633693184), (8, 8): 1, (8, 9): 0.00625,
     # Gallon (gal)
-    (9, 0): ('PLACEHOLDER'), (9, 1): ('PLACEHOLDER'), (9, 2): ('PLACEHOLDER'), (9, 3): ('PLACEHOLDER'), (9, 4): ('PLACEHOLDER'), (9, 5): ('PLACEHOLDER'), (9, 6): ('PLACEHOLDER'), (9, 7): ('PLACEHOLDER'), (9, 8): ('PLACEHOLDER'), (9, 9): 1
+    (9, 0): 0.00454609, (9, 1): 4.54609, (9, 2): 4546.09, (9, 3): 4546090, (9, 4): 4.54609, (9, 5): 4546.09, (9, 6): (568261250 / 2048383), (9, 7): (284130625 / 1769802912), (9, 8): 160, (9, 9): 1
 }
 weightConversionFactors = {
-    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'), (0, 8): ('PLACEHOLDER'),                            # g
-    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'), (1, 8): ('PLACEHOLDER'),                            # q
-    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'), (2, 8): ('PLACEHOLDER'),                            # ct
-    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'), (3, 8): ('PLACEHOLDER'),                            # t
-    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'), (4, 8): ('PLACEHOLDER'),                            # mg
-    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'), (5, 8): ('PLACEHOLDER'),                            # kg
-    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'), (6, 8): ('PLACEHOLDER'),                            # oz
-    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1, (7, 8): ('PLACEHOLDER'),                            # lb
-    (8, 0): ('PLACEHOLDER'), (8, 1): ('PLACEHOLDER'), (8, 2): ('PLACEHOLDER'), (8, 3): ('PLACEHOLDER'), (8, 4): ('PLACEHOLDER'), (8, 5): ('PLACEHOLDER'), (8, 6): ('PLACEHOLDER'), (8, 7): ('PLACEHOLDER'), (8, 8): 1                             # st
+    # Gram (g)
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'), (0, 8): ('PLACEHOLDER'),
+    # Kilogram (kg)
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'), (1, 8): ('PLACEHOLDER'),
+    # Milligram (mg)
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'), (2, 8): ('PLACEHOLDER'),
+    # Tonne (t)
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'), (3, 8): ('PLACEHOLDER'),
+    # Quintal (q)
+    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'), (4, 8): ('PLACEHOLDER'),
+    # Carat (ct)
+    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'), (5, 8): ('PLACEHOLDER'),
+    # Ounce (oz)
+    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'), (6, 8): ('PLACEHOLDER'),
+    # Pound (lb)
+    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1, (7, 8): ('PLACEHOLDER'),
+    # Stone (st)
+    (8, 0): ('PLACEHOLDER'), (8, 1): ('PLACEHOLDER'), (8, 2): ('PLACEHOLDER'), (8, 3): ('PLACEHOLDER'), (8, 4): ('PLACEHOLDER'), (8, 5): ('PLACEHOLDER'), (8, 6): ('PLACEHOLDER'), (8, 7): ('PLACEHOLDER'), (8, 8): 1
 }
 temperatureConversionFactors = {
-    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'),                                                            # C
-    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'),                                                            # F
-    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'),                                                            # K
-    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'),                                                            # R
-    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1                                                             # Re
+    # Celsius (℃)
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'),
+    # Fahrenheit (℉)
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'),
+    # Kelvin (K)
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'),
+    # Rankine (°Ra)
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1
 }
 speedConversionFactors = {
-    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'),                                                    # c
-    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'),                                                    # km/s
-    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'),                                                    # mph
-    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'),                                                    # Ma
-    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'),                                                    # m/s
-    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1                                                     # km/h
+    # Metres per second (m/s)
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'),
+    # Kilometres per hour (km/h)
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'),
+    # Miles per hour (mph)
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'),
+    # Mach (Ma)
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'),
+    # Speed of Light (c)
+    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1
 }
 pressureConversionFactors = {
-    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'),                                    # mmH20
-    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'),                                    # psi
-    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'),                                    # mmHg
-    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'),                                    # Bar
-    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'),                                    # mBar
-    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'),                                    # atm
-    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'),                                    # kPa
-    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1                                     # MPa
+    # Atmosphere (atm)
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'),
+    # Bar (Bar)
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'),
+    # Millibar (mBar)
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'),
+    # Pounds per square inch (psi)
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'),
+    # Newtons per square metre (N/m²)
+    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'),
+    # Millimetres of H₂O [Water] (mmH₂O)
+    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'),
+    # Millimetres of Hg [Mercury] (mmHg)
+    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1
 }
 powerConversionFactors = {
-    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'), (0, 8): ('PLACEHOLDER'),                            # J/s
-    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'), (1, 8): ('PLACEHOLDER'),                            # BTU/s
-    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'), (2, 8): ('PLACEHOLDER'),                            # HP
-    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'), (3, 8): ('PLACEHOLDER'),                            # kg.m/s
-    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'), (4, 8): ('PLACEHOLDER'),                            # kcal/s
-    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'), (5, 8): ('PLACEHOLDER'),                            # W
-    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'), (6, 8): ('PLACEHOLDER'),                            # ft.lb/s
-    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1, (7, 8): ('PLACEHOLDER'),                            # N.m/s
-    (8, 0): ('PLACEHOLDER'), (8, 1): ('PLACEHOLDER'), (8, 2): ('PLACEHOLDER'), (8, 3): ('PLACEHOLDER'), (8, 4): ('PLACEHOLDER'), (8, 5): ('PLACEHOLDER'), (8, 6): ('PLACEHOLDER'), (8, 7): ('PLACEHOLDER'), (8, 8): 1                             # kW
+    # Watt (W)
+    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'),
+    # Newton-metres per second (N∙m/s)
+    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'),
+    # Kilogram-metres per second (kg∙m/s)
+    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'),
+    # Joules per second (J/s)
+    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'),
+    # Foot-pounds per second (ft∙lb/s)
+    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'),
+    # Kilocalories per second (kcal/s)
+    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'),
+    # Horsepower (HP)
+    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'),
+    # British Thermal Units per second (BTU/s)
+    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1
 }
 
 CalcWizard = QApplication([])
