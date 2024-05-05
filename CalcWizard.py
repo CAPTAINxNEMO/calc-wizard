@@ -111,16 +111,6 @@ weightConversionFactors = {
     # Stone (st)
     (8, 0): ('PLACEHOLDER'), (8, 1): ('PLACEHOLDER'), (8, 2): ('PLACEHOLDER'), (8, 3): ('PLACEHOLDER'), (8, 4): ('PLACEHOLDER'), (8, 5): ('PLACEHOLDER'), (8, 6): ('PLACEHOLDER'), (8, 7): ('PLACEHOLDER'), (8, 8): 1
 }
-temperatureConversionFactors = {
-    # Celsius (℃)
-    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'),
-    # Fahrenheit (℉)
-    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'),
-    # Kelvin (K)
-    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'),
-    # Rankine (°Ra)
-    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1
-}
 speedConversionFactors = {
     # Metres per second (m/s)
     (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'),
@@ -902,6 +892,9 @@ def calculatorResult():
     global calculatorInput
     try:
         if calculatorInputField.text():
+            if calculatorInputField.text().endswith('.'):
+                calculatorInputField.setText(calculatorInputField.text().replace('.', ''))
+                calculatorInput = calculatorInput.replace('.', '')
             calculatorOutputField.setText(str(eval(calculatorInput)))
     except Exception as err:
         errorMessage = str(err)
@@ -1458,6 +1451,9 @@ def currencyConversionPaste():
     currencyConversionFromComboBox.setCurrentIndex(currencyConversionToIndex)
     currencyConversionToComboBox.setCurrentIndex(currencyConversionFromIndex)
     if currencyConversionInputField.text():
+        if currencyConversionInputField.text().endswith('.'):
+            currencyConversionInputField.setText(currencyConversionInputField.text().replace('.', ''))
+            currencyConversionInput = currencyConversionInput.replace('.', '')
         if API_KEY == '':
             API_KEY, ok = QInputDialog.getText(None, 'API Key Input', 'Enter your API Key (ExchangeRate-API)')
             if ok:
@@ -1656,6 +1652,9 @@ currencyConversionResultButton.setStyleSheet('border: 2px solid; background-colo
 def currencyConversionResult():
     global API_KEY, currencyConversionInput
     if currencyConversionInputField.text():
+        if currencyConversionInputField.text().endswith('.'):
+            currencyConversionInputField.setText(currencyConversionInputField.text().replace('.', ''))
+            currencyConversionInput = currencyConversionInput.replace('.', '')
         if API_KEY == '':
             API_KEY, ok = QInputDialog.getText(None, 'API Key Input', 'Enter your API Key (ExchangeRate-API)')
             if ok:
@@ -1721,19 +1720,19 @@ lengthConversionFromComboBox.setFixedSize(480, 60)
 lengthConversionFromComboBox.move(30, 210)
 lengthConversionFromComboBox.setFont(comboBoxFont)
 lengthConversionFromComboBox.setStyleSheet('padding-left: 10px')
-lengthConversionFromComboBox.addItem('Metre (m)')                   # 0
-lengthConversionFromComboBox.addItem('Millimetre (mm)')             # 1
-lengthConversionFromComboBox.addItem('Centimetre (cm)')             # 2
-lengthConversionFromComboBox.addItem('Decimetre (dm)')              # 3
-lengthConversionFromComboBox.addItem('Kilometre (km)')              # 4
-lengthConversionFromComboBox.addItem('Micrometre (μm)')             # 5
-lengthConversionFromComboBox.addItem('Nanometre (nm)')              # 6
-lengthConversionFromComboBox.addItem('Picometre (pm)')              # 7
-lengthConversionFromComboBox.addItem('Inch (in)')                   # 8
-lengthConversionFromComboBox.addItem('Foot (ft)')                   # 9
-lengthConversionFromComboBox.addItem('Yard (yd)')                   # 10
-lengthConversionFromComboBox.addItem('Mile (mi)')                   # 11
-lengthConversionFromComboBox.addItem('Nautical Mile (nmi)')         # 12
+lengthConversionFromComboBox.addItem('Metre (m)')                                                   # 0
+lengthConversionFromComboBox.addItem('Millimetre (mm)')                                             # 1
+lengthConversionFromComboBox.addItem('Centimetre (cm)')                                             # 2
+lengthConversionFromComboBox.addItem('Decimetre (dm)')                                              # 3
+lengthConversionFromComboBox.addItem('Kilometre (km)')                                              # 4
+lengthConversionFromComboBox.addItem('Micrometre (μm)')                                             # 5
+lengthConversionFromComboBox.addItem('Nanometre (nm)')                                              # 6
+lengthConversionFromComboBox.addItem('Picometre (pm)')                                              # 7
+lengthConversionFromComboBox.addItem('Inch (in)')                                                   # 8
+lengthConversionFromComboBox.addItem('Foot (ft)')                                                   # 9
+lengthConversionFromComboBox.addItem('Yard (yd)')                                                   # 10
+lengthConversionFromComboBox.addItem('Mile (mi)')                                                   # 11
+lengthConversionFromComboBox.addItem('Nautical Mile (nmi)')                                         # 12
 # Input Field
 lengthConversionInputField = QLineEdit(lengthConversionWidget)
 lengthConversionInputField.setPlaceholderText('Input')
@@ -1748,19 +1747,19 @@ lengthConversionToComboBox.setFixedSize(480, 60)
 lengthConversionToComboBox.move(30, 360)
 lengthConversionToComboBox.setFont(comboBoxFont)
 lengthConversionToComboBox.setStyleSheet('padding-left: 10px')
-lengthConversionToComboBox.addItem('Metre (m)')                     # 0
-lengthConversionToComboBox.addItem('Millimetre (mm)')               # 1
-lengthConversionToComboBox.addItem('Centimetre (cm)')               # 2
-lengthConversionToComboBox.addItem('Decimetre (dm)')                # 3
-lengthConversionToComboBox.addItem('Kilometre (km)')                # 4
-lengthConversionToComboBox.addItem('Micrometre (μm)')               # 5
-lengthConversionToComboBox.addItem('Nanometre (nm)')                # 6
-lengthConversionToComboBox.addItem('Picometre (pm)')                # 7
-lengthConversionToComboBox.addItem('Inch (in)')                     # 8
-lengthConversionToComboBox.addItem('Foot (ft)')                     # 9
-lengthConversionToComboBox.addItem('Yard (yd)')                     # 10
-lengthConversionToComboBox.addItem('Mile (mi)')                     # 11
-lengthConversionToComboBox.addItem('Nautical Mile (nmi)')           # 12
+lengthConversionToComboBox.addItem('Metre (m)')                                                     # 0
+lengthConversionToComboBox.addItem('Millimetre (mm)')                                               # 1
+lengthConversionToComboBox.addItem('Centimetre (cm)')                                               # 2
+lengthConversionToComboBox.addItem('Decimetre (dm)')                                                # 3
+lengthConversionToComboBox.addItem('Kilometre (km)')                                                # 4
+lengthConversionToComboBox.addItem('Micrometre (μm)')                                               # 5
+lengthConversionToComboBox.addItem('Nanometre (nm)')                                                # 6
+lengthConversionToComboBox.addItem('Picometre (pm)')                                                # 7
+lengthConversionToComboBox.addItem('Inch (in)')                                                     # 8
+lengthConversionToComboBox.addItem('Foot (ft)')                                                     # 9
+lengthConversionToComboBox.addItem('Yard (yd)')                                                     # 10
+lengthConversionToComboBox.addItem('Mile (mi)')                                                     # 11
+lengthConversionToComboBox.addItem('Nautical Mile (nmi)')                                           # 12
 # Output Field
 lengthConversionOutputField = QLineEdit(lengthConversionWidget)
 lengthConversionOutputField.setFixedSize(480, 60)
@@ -1782,6 +1781,9 @@ def lengthConversionPaste():
     lengthConversionFromComboBox.setCurrentIndex(lengthConversionToIndex)
     lengthConversionToComboBox.setCurrentIndex(lengthConversionFromIndex)
     if lengthConversionInputField.text():
+        if lengthConversionInputField.text().endswith('.'):
+            lengthConversionInputField.setText(lengthConversionInputField.text().replace('.', ''))
+            lengthConversionInput = lengthConversionInput.replace('.', '')
         lengthConversionFrom = lengthConversionFromComboBox.currentIndex()
         lengthConversionTo = lengthConversionToComboBox.currentIndex()
         lengthConversionKey = (lengthConversionFrom, lengthConversionTo)
@@ -1961,6 +1963,9 @@ lengthConversionResultButton.setStyleSheet('border: 2px solid; background-color:
 def lengthConversionResult():
     global lengthConversionInput
     if lengthConversionInputField.text():
+        if lengthConversionInputField.text().endswith('.'):
+            lengthConversionInputField.setText(lengthConversionInputField.text().replace('.', ''))
+            lengthConversionInput = lengthConversionInput.replace('.', '')
         lengthConversionFrom = lengthConversionFromComboBox.currentIndex()
         lengthConversionTo = lengthConversionToComboBox.currentIndex()
         lengthConversionKey = (lengthConversionFrom, lengthConversionTo)
@@ -2001,16 +2006,16 @@ areaConversionFromComboBox.setFixedSize(480, 60)
 areaConversionFromComboBox.move(30, 210)
 areaConversionFromComboBox.setFont(comboBoxFont)
 areaConversionFromComboBox.setStyleSheet('padding-left: 10px')
-areaConversionFromComboBox.addItem('Square Metre (m²)')             # 0
-areaConversionFromComboBox.addItem('Square Decimetre (dm²)')        # 1
-areaConversionFromComboBox.addItem('Square Centimetre (cm²)')       # 2
-areaConversionFromComboBox.addItem('Square Millimetre (mm²)')       # 3
-areaConversionFromComboBox.addItem('Square Kilometre (km²)')        # 4
-areaConversionFromComboBox.addItem('Square Inch (in²)')             # 5
-areaConversionFromComboBox.addItem('Square Foot (ft²)')             # 6
-areaConversionFromComboBox.addItem('Square Mile (mi²)')             # 7
-areaConversionFromComboBox.addItem('Acre (ac)')                     # 8
-areaConversionFromComboBox.addItem('Hectare (ha)')                  # 9
+areaConversionFromComboBox.addItem('Square Metre (m²)')                                             # 0
+areaConversionFromComboBox.addItem('Square Decimetre (dm²)')                                        # 1
+areaConversionFromComboBox.addItem('Square Centimetre (cm²)')                                       # 2
+areaConversionFromComboBox.addItem('Square Millimetre (mm²)')                                       # 3
+areaConversionFromComboBox.addItem('Square Kilometre (km²)')                                        # 4
+areaConversionFromComboBox.addItem('Square Inch (in²)')                                             # 5
+areaConversionFromComboBox.addItem('Square Foot (ft²)')                                             # 6
+areaConversionFromComboBox.addItem('Square Mile (mi²)')                                             # 7
+areaConversionFromComboBox.addItem('Acre (ac)')                                                     # 8
+areaConversionFromComboBox.addItem('Hectare (ha)')                                                  # 9
 # Input Field
 areaConversionInputField = QLineEdit(areaConversionWidget)
 areaConversionInputField.setPlaceholderText('Input')
@@ -2025,16 +2030,16 @@ areaConversionToComboBox.setFixedSize(480, 60)
 areaConversionToComboBox.move(30, 360)
 areaConversionToComboBox.setFont(comboBoxFont)
 areaConversionToComboBox.setStyleSheet('padding-left: 10px')
-areaConversionToComboBox.addItem('Square Metre (m²)')               # 0
-areaConversionToComboBox.addItem('Square Decimetre (dm²)')          # 1
-areaConversionToComboBox.addItem('Square Centimetre (cm²)')         # 2
-areaConversionToComboBox.addItem('Square Millimetre (mm²)')         # 3
-areaConversionToComboBox.addItem('Square Kilometre (km²)')          # 4
-areaConversionToComboBox.addItem('Square Inch (in²)')               # 5
-areaConversionToComboBox.addItem('Square Foot (ft²)')               # 6
-areaConversionToComboBox.addItem('Square Mile (mi²)')               # 7
-areaConversionToComboBox.addItem('Acre (ac)')                       # 8
-areaConversionToComboBox.addItem('Hectare (ha)')                    # 9
+areaConversionToComboBox.addItem('Square Metre (m²)')                                               # 0
+areaConversionToComboBox.addItem('Square Decimetre (dm²)')                                          # 1
+areaConversionToComboBox.addItem('Square Centimetre (cm²)')                                         # 2
+areaConversionToComboBox.addItem('Square Millimetre (mm²)')                                         # 3
+areaConversionToComboBox.addItem('Square Kilometre (km²)')                                          # 4
+areaConversionToComboBox.addItem('Square Inch (in²)')                                               # 5
+areaConversionToComboBox.addItem('Square Foot (ft²)')                                               # 6
+areaConversionToComboBox.addItem('Square Mile (mi²)')                                               # 7
+areaConversionToComboBox.addItem('Acre (ac)')                                                       # 8
+areaConversionToComboBox.addItem('Hectare (ha)')                                                    # 9
 # Output Field
 areaConversionOutputField = QLineEdit(areaConversionWidget)
 areaConversionOutputField.setFixedSize(480, 60)
@@ -2056,6 +2061,9 @@ def areaConversionPaste():
     areaConversionFromComboBox.setCurrentIndex(areaConversionToIndex)
     areaConversionToComboBox.setCurrentIndex(areaConversionFromIndex)
     if areaConversionInputField.text():
+        if areaConversionInputField.text().endswith('.'):
+            areaConversionInputField.setText(areaConversionInputField.text().replace('.', ''))
+            areaConversionInput = areaConversionInput.replace('.', '')
         areaConversionFrom = areaConversionFromComboBox.currentIndex()
         areaConversionTo = areaConversionToComboBox.currentIndex()
         areaConversionKey = (areaConversionFrom, areaConversionTo)
@@ -2235,6 +2243,9 @@ areaConversionResultButton.setStyleSheet('border: 2px solid; background-color: r
 def areaConversionResult():
     global areaConversionInput
     if areaConversionInputField.text():
+        if areaConversionInputField.text().endswith('.'):
+            areaConversionInputField.setText(areaConversionInputField.text().replace('.', ''))
+            areaConversionInput = areaConversionInput.replace('.', '')
         areaConversionFrom = areaConversionFromComboBox.currentIndex()
         areaConversionTo = areaConversionToComboBox.currentIndex()
         areaConversionKey = (areaConversionFrom, areaConversionTo)
@@ -2275,16 +2286,16 @@ volumeConversionFromComboBox.setFixedSize(480, 60)
 volumeConversionFromComboBox.move(30, 210)
 volumeConversionFromComboBox.setFont(comboBoxFont)
 volumeConversionFromComboBox.setStyleSheet('padding-left: 10px')
-volumeConversionFromComboBox.addItem('Cubic Metre (m³)')            # 0
-volumeConversionFromComboBox.addItem('Cubic Decimetre (dm³)')       # 1
-volumeConversionFromComboBox.addItem('Cubic Centimetre (cm³)')      # 2
-volumeConversionFromComboBox.addItem('Cubic Millimetre (mm³)')      # 3
-volumeConversionFromComboBox.addItem('Litre (L)')                   # 4
-volumeConversionFromComboBox.addItem('Millilitre (mL)')             # 5
-volumeConversionFromComboBox.addItem('Cubic Inch (in³)')            # 6
-volumeConversionFromComboBox.addItem('Cubic Foot (ft³)')            # 7
-volumeConversionFromComboBox.addItem('Fluid Ounce (fl. oz)')        # 8
-volumeConversionFromComboBox.addItem('Gallon (gal)')                # 9
+volumeConversionFromComboBox.addItem('Cubic Metre (m³)')                                            # 0
+volumeConversionFromComboBox.addItem('Cubic Decimetre (dm³)')                                       # 1
+volumeConversionFromComboBox.addItem('Cubic Centimetre (cm³)')                                      # 2
+volumeConversionFromComboBox.addItem('Cubic Millimetre (mm³)')                                      # 3
+volumeConversionFromComboBox.addItem('Litre (L)')                                                   # 4
+volumeConversionFromComboBox.addItem('Millilitre (mL)')                                             # 5
+volumeConversionFromComboBox.addItem('Cubic Inch (in³)')                                            # 6
+volumeConversionFromComboBox.addItem('Cubic Foot (ft³)')                                            # 7
+volumeConversionFromComboBox.addItem('Fluid Ounce (fl. oz)')                                        # 8
+volumeConversionFromComboBox.addItem('Gallon (gal)')                                                # 9
 # Input Field
 volumeConversionInputField = QLineEdit(volumeConversionWidget)
 volumeConversionInputField.setPlaceholderText('Input')
@@ -2299,16 +2310,16 @@ volumeConversionToComboBox.setFixedSize(480, 60)
 volumeConversionToComboBox.move(30, 360)
 volumeConversionToComboBox.setFont(comboBoxFont)
 volumeConversionToComboBox.setStyleSheet('padding-left: 10px')
-volumeConversionToComboBox.addItem('Cubic Metre (m³)')              # 0
-volumeConversionToComboBox.addItem('Cubic Decimetre (dm³)')         # 1
-volumeConversionToComboBox.addItem('Cubic Centimetre (cm³)')        # 2
-volumeConversionToComboBox.addItem('Cubic Millimetre (mm³)')        # 3
-volumeConversionToComboBox.addItem('Litre (L)')                     # 4
-volumeConversionToComboBox.addItem('Millilitre (mL)')               # 5
-volumeConversionToComboBox.addItem('Cubic Inch (in³)')              # 6
-volumeConversionToComboBox.addItem('Cubic Foot (ft³)')              # 7
-volumeConversionToComboBox.addItem('Fluid Ounce (fl. oz)')          # 8
-volumeConversionToComboBox.addItem('Gallon (gal)')                  # 9
+volumeConversionToComboBox.addItem('Cubic Metre (m³)')                                              # 0
+volumeConversionToComboBox.addItem('Cubic Decimetre (dm³)')                                         # 1
+volumeConversionToComboBox.addItem('Cubic Centimetre (cm³)')                                        # 2
+volumeConversionToComboBox.addItem('Cubic Millimetre (mm³)')                                        # 3
+volumeConversionToComboBox.addItem('Litre (L)')                                                     # 4
+volumeConversionToComboBox.addItem('Millilitre (mL)')                                               # 5
+volumeConversionToComboBox.addItem('Cubic Inch (in³)')                                              # 6
+volumeConversionToComboBox.addItem('Cubic Foot (ft³)')                                              # 7
+volumeConversionToComboBox.addItem('Fluid Ounce (fl. oz)')                                          # 8
+volumeConversionToComboBox.addItem('Gallon (gal)')                                                  # 9
 # Output Field
 volumeConversionOutputField = QLineEdit(volumeConversionWidget)
 volumeConversionOutputField.setFixedSize(480, 60)
@@ -2330,6 +2341,9 @@ def volumeConversionPaste():
     volumeConversionFromComboBox.setCurrentIndex(volumeConversionToIndex)
     volumeConversionToComboBox.setCurrentIndex(volumeConversionFromIndex)
     if volumeConversionInputField.text():
+        if volumeConversionInputField.text().endswith('.'):
+            volumeConversionInputField.setText(volumeConversionInputField.text().replace('.', ''))
+            volumeConversionInput = volumeConversionInput.replace('.', '')
         volumeConversionFrom = volumeConversionFromComboBox.currentIndex()
         volumeConversionTo = volumeConversionToComboBox.currentIndex()
         volumeConversionKey = (volumeConversionFrom, volumeConversionTo)
@@ -2509,6 +2523,9 @@ volumeConversionResultButton.setStyleSheet('border: 2px solid; background-color:
 def volumeConversionResult():
     global volumeConversionInput
     if volumeConversionInputField.text():
+        if volumeConversionInputField.text().endswith('.'):
+            volumeConversionInputField.setText(volumeConversionInputField.text().replace('.', ''))
+            volumeConversionInput = volumeConversionInput.replace('.', '')
         volumeConversionFrom = volumeConversionFromComboBox.currentIndex()
         volumeConversionTo = volumeConversionToComboBox.currentIndex()
         volumeConversionKey = (volumeConversionFrom, volumeConversionTo)
@@ -2543,6 +2560,257 @@ weightConversionLabel.setFixedSize(540, 60)
 weightConversionLabel.move(30, 120)
 weightConversionLabel.setFont(conversionsLabelFont)
 weightConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# From Combo Box
+weightConversionFromComboBox = QComboBox(weightConversionWidget)
+weightConversionFromComboBox.setFixedSize(480, 60)
+weightConversionFromComboBox.move(30, 210)
+weightConversionFromComboBox.setFont(comboBoxFont)
+weightConversionFromComboBox.setStyleSheet('padding-left: 10px')
+weightConversionFromComboBox.addItem('Gram (g)')                                                    # 0
+weightConversionFromComboBox.addItem('Kilogram (kg)')                                               # 1
+weightConversionFromComboBox.addItem('Milligram (mg)')                                              # 2
+weightConversionFromComboBox.addItem('Tonne (t)')                                                   # 3
+weightConversionFromComboBox.addItem('Quintal (q)')                                                 # 4
+weightConversionFromComboBox.addItem('Carat (ct)')                                                  # 5
+weightConversionFromComboBox.addItem('Ounce (oz)')                                                  # 6
+weightConversionFromComboBox.addItem('Pound (lb)')                                                  # 7
+weightConversionFromComboBox.addItem('Stone (st)')                                                  # 8
+# Input Field
+weightConversionInputField = QLineEdit(weightConversionWidget)
+weightConversionInputField.setPlaceholderText('Input')
+weightConversionInputField.setFixedSize(480, 60)
+weightConversionInputField.move(30, 270)
+weightConversionInputField.setFont(inputFieldFont)
+weightConversionInputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+weightConversionInputField.setReadOnly(True)
+# To Combo Box
+weightConversionToComboBox = QComboBox(weightConversionWidget)
+weightConversionToComboBox.setFixedSize(480, 60)
+weightConversionToComboBox.move(30, 360)
+weightConversionToComboBox.setFont(comboBoxFont)
+weightConversionToComboBox.setStyleSheet('padding-left: 10px')
+weightConversionToComboBox.addItem('Gram (g)')                                                      # 0
+weightConversionToComboBox.addItem('Kilogram (kg)')                                                 # 1
+weightConversionToComboBox.addItem('Milligram (mg)')                                                # 2
+weightConversionToComboBox.addItem('Tonne (t)')                                                     # 3
+weightConversionToComboBox.addItem('Quintal (q)')                                                   # 4
+weightConversionToComboBox.addItem('Carat (ct)')                                                    # 5
+weightConversionToComboBox.addItem('Ounce (oz)')                                                    # 6
+weightConversionToComboBox.addItem('Pound (lb)')                                                    # 7
+weightConversionToComboBox.addItem('Stone (st)')                                                    # 8
+# Output Field
+weightConversionOutputField = QLineEdit(weightConversionWidget)
+weightConversionOutputField.setFixedSize(480, 60)
+weightConversionOutputField.move(30, 420)
+weightConversionOutputField.setFont(outputFieldFont)
+weightConversionOutputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+weightConversionOutputField.setPlaceholderText('Output')
+weightConversionOutputField.setReadOnly(True)
+# Paste Output to Input
+weightConversionPasteButton = QPushButton('⇅', weightConversionWidget)
+weightConversionPasteButton.setFixedSize(60, 270)
+weightConversionPasteButton.move(510, 210)
+weightConversionPasteButton.setFont(conversionPasteButtonFont)
+weightConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+def weightConversionPaste():
+    global weightConversionInput
+    weightConversionFromIndex = weightConversionFromComboBox.currentIndex()
+    weightConversionToIndex = weightConversionToComboBox.currentIndex()
+    weightConversionFromComboBox.setCurrentIndex(weightConversionToIndex)
+    weightConversionToComboBox.setCurrentIndex(weightConversionFromIndex)
+    if weightConversionInputField.text():
+        if weightConversionInputField.text().endswith('.'):
+            weightConversionInputField.setText(weightConversionInputField.text().replace('.', ''))
+            weightConversionInput = weightConversionInput.replace('.', '')
+        weightConversionFrom = weightConversionFromComboBox.currentIndex()
+        weightConversionTo = weightConversionToComboBox.currentIndex()
+        weightConversionKey = (weightConversionFrom, weightConversionTo)
+        weightConversionFactor = weightConversionFactors[weightConversionKey]
+        weightConversionOutput = float(weightConversionInput) * weightConversionFactor
+        weightConversionOutputField.setText(str(weightConversionOutput))
+weightConversionPasteButton.clicked.connect(weightConversionPaste)
+# Number Pad
+# Nine [9]
+weightConversionNineButton = QPushButton('9', weightConversionWidget)
+weightConversionNineButton.setFixedSize(90, 90)
+weightConversionNineButton.move(300, 510)
+weightConversionNineButton.setFont(numberPadFont)
+weightConversionNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionNine():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '9')
+    weightConversionInput += '9'
+weightConversionNineButton.clicked.connect(weightConversionNine)
+# Eight [8]
+weightConversionEightButton = QPushButton('8', weightConversionWidget)
+weightConversionEightButton.setFixedSize(90, 90)
+weightConversionEightButton.move(210, 510)
+weightConversionEightButton.setFont(numberPadFont)
+weightConversionEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionEight():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '8')
+    weightConversionInput += '8'
+weightConversionEightButton.clicked.connect(weightConversionEight)
+# Seven [7]
+weightConversionSevenButton = QPushButton('7', weightConversionWidget)
+weightConversionSevenButton.setFixedSize(90, 90)
+weightConversionSevenButton.move(120, 510)
+weightConversionSevenButton.setFont(numberPadFont)
+weightConversionSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionSeven():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '7')
+    weightConversionInput += '7'
+weightConversionSevenButton.clicked.connect(weightConversionSeven)
+# Six [6]
+weightConversionSixButton = QPushButton('6', weightConversionWidget)
+weightConversionSixButton.setFixedSize(90, 90)
+weightConversionSixButton.move(300, 600)
+weightConversionSixButton.setFont(numberPadFont)
+weightConversionSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionSix():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '6')
+    weightConversionInput += '6'
+weightConversionSixButton.clicked.connect(weightConversionSix)
+# Five [5]
+weightConversionFiveButton = QPushButton('5', weightConversionWidget)
+weightConversionFiveButton.setFixedSize(90, 90)
+weightConversionFiveButton.move(210, 600)
+weightConversionFiveButton.setFont(numberPadFont)
+weightConversionFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionFive():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '5')
+    weightConversionInput += '5'
+weightConversionFiveButton.clicked.connect(weightConversionFive)
+# Four [4]
+weightConversionFourButton = QPushButton('4', weightConversionWidget)
+weightConversionFourButton.setFixedSize(90, 90)
+weightConversionFourButton.move(120, 600)
+weightConversionFourButton.setFont(numberPadFont)
+weightConversionFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionFour():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '4')
+    weightConversionInput += '4'
+weightConversionFourButton.clicked.connect(weightConversionFour)
+# Three [3]
+weightConversionThreeButton = QPushButton('3', weightConversionWidget)
+weightConversionThreeButton.setFixedSize(90, 90)
+weightConversionThreeButton.move(300, 690)
+weightConversionThreeButton.setFont(numberPadFont)
+weightConversionThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionThree():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '3')
+    weightConversionInput += '3'
+weightConversionThreeButton.clicked.connect(weightConversionThree)
+# Two [2]
+weightConversionTwoButton = QPushButton('2', weightConversionWidget)
+weightConversionTwoButton.setFixedSize(90, 90)
+weightConversionTwoButton.move(210, 690)
+weightConversionTwoButton.setFont(numberPadFont)
+weightConversionTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionTwo():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '2')
+    weightConversionInput += '2'
+weightConversionTwoButton.clicked.connect(weightConversionTwo)
+# One [1]
+weightConversionOneButton = QPushButton('1', weightConversionWidget)
+weightConversionOneButton.setFixedSize(90, 90)
+weightConversionOneButton.move(120, 690)
+weightConversionOneButton.setFont(numberPadFont)
+weightConversionOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionOne():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '1')
+    weightConversionInput += '1'
+weightConversionOneButton.clicked.connect(weightConversionOne)
+# Zero [0]
+weightConversionZeroButton = QPushButton('0', weightConversionWidget)
+weightConversionZeroButton.setFixedSize(90, 90)
+weightConversionZeroButton.move(210, 780)
+weightConversionZeroButton.setFont(numberPadFont)
+weightConversionZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionZero():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '0')
+    weightConversionInput += '0'
+weightConversionZeroButton.clicked.connect(weightConversionZero)
+# Double Zero [00]
+weightConversionDoubleZeroButton = QPushButton('00', weightConversionWidget)
+weightConversionDoubleZeroButton.setFixedSize(90, 90)
+weightConversionDoubleZeroButton.move(120, 780)
+weightConversionDoubleZeroButton.setFont(numberPadFont)
+weightConversionDoubleZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def weightConversionDoubleZero():
+    global weightConversionInput
+    weightConversionInputField.setText(weightConversionInputField.text() + '00')
+    weightConversionInput += '00'
+weightConversionDoubleZeroButton.clicked.connect(weightConversionDoubleZero)
+# Point [.]
+weightConversionPointButton = QPushButton('.', weightConversionWidget)
+weightConversionPointButton.setFixedSize(90, 90)
+weightConversionPointButton.move(300, 780)
+weightConversionPointButton.setFont(numberPadFont)
+weightConversionPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def weightConversionPoint():
+    global weightConversionInput
+    if weightConversionInputField.text():
+        weightConversionInputField.setText(weightConversionInputField.text() + '.')
+        weightConversionInput += '.'
+    else:
+        weightConversionInputField.setText(weightConversionInputField.text() + '0.')
+        weightConversionInput += '0.'
+weightConversionPointButton.clicked.connect(weightConversionPoint)
+# Deletion
+# All Clear
+weightConversionAllClearButton = QPushButton('AC', weightConversionWidget)
+weightConversionAllClearButton.setFixedSize(90, 90)
+weightConversionAllClearButton.move(390, 510)
+weightConversionAllClearButton.setFont(operatorButtonFont)
+weightConversionAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def weightConversionAllClear():
+    global weightConversionInput
+    weightConversionInputField.setText('')
+    weightConversionOutputField.setText('')
+    weightConversionInput = ''
+weightConversionAllClearButton.clicked.connect(weightConversionAllClear)
+# Clear [Backspace]
+weightConversionClearButton = QPushButton('C', weightConversionWidget)
+weightConversionClearButton.setFixedSize(90, 90)
+weightConversionClearButton.move(390, 600)
+weightConversionClearButton.setFont(operatorButtonFont)
+weightConversionClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def weightConversionClear():
+    global weightConversionInput
+    weightConversionInputFieldText = weightConversionInputField.text()
+    weightConversionInputFieldText = weightConversionInputFieldText[:-1]
+    weightConversionInputField.setText(weightConversionInputFieldText)
+    weightConversionInput = weightConversionInput[:-1]
+weightConversionClearButton.clicked.connect(weightConversionClear)
+# Result [=]
+weightConversionResultButton = QPushButton('=', weightConversionWidget)
+weightConversionResultButton.setFixedSize(90, 180)
+weightConversionResultButton.move(390, 690)
+weightConversionResultButton.setFont(resultButtonsFont)
+weightConversionResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+def weightConversionResult():
+    global weightConversionInput
+    if weightConversionInputField.text():
+        if weightConversionInputField.text().endswith('.'):
+            weightConversionInputField.setText(weightConversionInputField.text().replace('.', ''))
+            weightConversionInput = weightConversionInput.replace('.', '')
+        weightConversionFrom = weightConversionFromComboBox.currentIndex()
+        weightConversionTo = weightConversionToComboBox.currentIndex()
+        weightConversionKey = (weightConversionFrom, weightConversionTo)
+        weightConversionFactor = weightConversionFactors[weightConversionKey]
+        weightConversionOutput = float(weightConversionInput) * weightConversionFactor
+        weightConversionOutputField.setText(str(weightConversionOutput))
+weightConversionResultButton.clicked.connect(weightConversionResult)
 
 # Temperature Conversion Page
 # Temperature Conversion Widget
@@ -2570,6 +2838,332 @@ temperatureConversionLabel.setFixedSize(540, 60)
 temperatureConversionLabel.move(30, 120)
 temperatureConversionLabel.setFont(conversionsLabelFont)
 temperatureConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# From Combo Box
+temperatureConversionFromComboBox = QComboBox(temperatureConversionWidget)
+temperatureConversionFromComboBox.setFixedSize(480, 60)
+temperatureConversionFromComboBox.move(30, 210)
+temperatureConversionFromComboBox.setFont(comboBoxFont)
+temperatureConversionFromComboBox.setStyleSheet('padding-left: 10px')
+temperatureConversionFromComboBox.addItem('Celsius (°C)')                                           # 0
+temperatureConversionFromComboBox.addItem('Fahrenheit (°F)')                                        # 1
+temperatureConversionFromComboBox.addItem('Kelvin (K)')                                             # 2
+temperatureConversionFromComboBox.addItem('Rankine (°Ra)')                                          # 3
+# Input Field
+temperatureConversionInputField = QLineEdit(temperatureConversionWidget)
+temperatureConversionInputField.setPlaceholderText('Input')
+temperatureConversionInputField.setFixedSize(480, 60)
+temperatureConversionInputField.move(30, 270)
+temperatureConversionInputField.setFont(inputFieldFont)
+temperatureConversionInputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+temperatureConversionInputField.setReadOnly(True)
+# To Combo Box
+temperatureConversionToComboBox = QComboBox(temperatureConversionWidget)
+temperatureConversionToComboBox.setFixedSize(480, 60)
+temperatureConversionToComboBox.move(30, 360)
+temperatureConversionToComboBox.setFont(comboBoxFont)
+temperatureConversionToComboBox.setStyleSheet('padding-left: 10px')
+temperatureConversionToComboBox.addItem('Celsius (°C))')                                            # 0
+temperatureConversionToComboBox.addItem('Fahrenheit (°F)')                                          # 1
+temperatureConversionToComboBox.addItem('Kelvin (K)')                                               # 2
+temperatureConversionToComboBox.addItem('Rankine (°Ra)')                                            # 3
+# Output Field
+temperatureConversionOutputField = QLineEdit(temperatureConversionWidget)
+temperatureConversionOutputField.setFixedSize(480, 60)
+temperatureConversionOutputField.move(30, 420)
+temperatureConversionOutputField.setFont(outputFieldFont)
+temperatureConversionOutputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+temperatureConversionOutputField.setPlaceholderText('Output')
+temperatureConversionOutputField.setReadOnly(True)
+# Paste Output to Input
+temperatureConversionPasteButton = QPushButton('⇅', temperatureConversionWidget)
+temperatureConversionPasteButton.setFixedSize(60, 270)
+temperatureConversionPasteButton.move(510, 210)
+temperatureConversionPasteButton.setFont(conversionPasteButtonFont)
+temperatureConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+def temperatureConversionPaste():
+    global temperatureConversionInput
+    temperatureConversionFromIndex = temperatureConversionFromComboBox.currentIndex()
+    temperatureConversionToIndex = temperatureConversionToComboBox.currentIndex()
+    temperatureConversionFromComboBox.setCurrentIndex(temperatureConversionToIndex)
+    temperatureConversionToComboBox.setCurrentIndex(temperatureConversionFromIndex)
+    if temperatureConversionInputField.text():
+        if temperatureConversionInputField.text().endswith('.'):
+            temperatureConversionInputField.setText(temperatureConversionInputField.text().replace('.', ''))
+            temperatureConversionInput = temperatureConversionInput.replace('.', '')
+        if temperatureConversionFromComboBox.currentIndex() == 0 and temperatureConversionToComboBox.currentIndex() == 0:
+            temperatureConversionOutput = temperatureConversionInput
+            temperatureConversionOutputField.setText(temperatureConversionOutput)
+        elif temperatureConversionFromComboBox.currentIndex() == 0 and temperatureConversionToComboBox.currentIndex() == 1:
+            temperatureConversionOutput = (float(temperatureConversionInput) * 1.8) + 32
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 0 and temperatureConversionToComboBox.currentIndex() == 2:
+            temperatureConversionOutput = float(temperatureConversionInput) + 273.15
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 0 and temperatureConversionToComboBox.currentIndex() == 3:
+            temperatureConversionOutput = (float(temperatureConversionInput) * 1.8) + 491.67
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 1 and temperatureConversionToComboBox.currentIndex() == 0:
+            temperatureConversionOutput = (float(temperatureConversionInput) - 32) / 1.8
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 1 and temperatureConversionToComboBox.currentIndex() == 1:
+            temperatureConversionOutput = temperatureConversionInput
+            temperatureConversionOutputField.setText(temperatureConversionOutput)
+        elif temperatureConversionFromComboBox.currentIndex() == 1 and temperatureConversionToComboBox.currentIndex() == 2:
+            temperatureConversionOutput = ((float(temperatureConversionInput) - 32) / 1.8) + 273.15
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 1 and temperatureConversionToComboBox.currentIndex() == 3:
+            temperatureConversionOutput = float(temperatureConversionInput) + 459.67
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 2 and temperatureConversionToComboBox.currentIndex() == 0:
+            temperatureConversionOutput = float(temperatureConversionInput) - 273.15
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 2 and temperatureConversionToComboBox.currentIndex() == 1:
+            temperatureConversionOutput = ((float(temperatureConversionInput) - 273.15) * 1.8) + 32
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 2 and temperatureConversionToComboBox.currentIndex() == 2:
+            temperatureConversionOutput = temperatureConversionInput
+            temperatureConversionOutputField.setText(temperatureConversionOutput)
+        elif temperatureConversionFromComboBox.currentIndex() == 2 and temperatureConversionToComboBox.currentIndex() == 3:
+            temperatureConversionOutput = float(temperatureConversionInput) * 1.8
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 3 and temperatureConversionToComboBox.currentIndex() == 0:
+            temperatureConversionOutput = (float(temperatureConversionInput) - 491.67) / 1.8
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 3 and temperatureConversionToComboBox.currentIndex() == 1:
+            temperatureConversionOutput = float(temperatureConversionInput) - 459.67
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 3 and temperatureConversionToComboBox.currentIndex() == 2:
+            temperatureConversionOutput = float(temperatureConversionInput) / 1.8
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        else:
+            temperatureConversionOutput = temperatureConversionInput
+            temperatureConversionOutputField.setText(temperatureConversionOutput)
+temperatureConversionPasteButton.clicked.connect(temperatureConversionPaste)
+# Number Pad
+# Nine [9]
+temperatureConversionNineButton = QPushButton('9', temperatureConversionWidget)
+temperatureConversionNineButton.setFixedSize(90, 90)
+temperatureConversionNineButton.move(300, 510)
+temperatureConversionNineButton.setFont(numberPadFont)
+temperatureConversionNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def temperatureConversionNine():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText(temperatureConversionInputField.text() + '9')
+    temperatureConversionInput += '9'
+temperatureConversionNineButton.clicked.connect(temperatureConversionNine)
+# Eight [8]
+temperatureConversionEightButton = QPushButton('8', temperatureConversionWidget)
+temperatureConversionEightButton.setFixedSize(90, 90)
+temperatureConversionEightButton.move(210, 510)
+temperatureConversionEightButton.setFont(numberPadFont)
+temperatureConversionEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def temperatureConversionEight():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText(temperatureConversionInputField.text() + '8')
+    temperatureConversionInput += '8'
+temperatureConversionEightButton.clicked.connect(temperatureConversionEight)
+# Seven [7]
+temperatureConversionSevenButton = QPushButton('7', temperatureConversionWidget)
+temperatureConversionSevenButton.setFixedSize(90, 90)
+temperatureConversionSevenButton.move(120, 510)
+temperatureConversionSevenButton.setFont(numberPadFont)
+temperatureConversionSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def temperatureConversionSeven():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText(temperatureConversionInputField.text() + '7')
+    temperatureConversionInput += '7'
+temperatureConversionSevenButton.clicked.connect(temperatureConversionSeven)
+# Six [6]
+temperatureConversionSixButton = QPushButton('6', temperatureConversionWidget)
+temperatureConversionSixButton.setFixedSize(90, 90)
+temperatureConversionSixButton.move(300, 600)
+temperatureConversionSixButton.setFont(numberPadFont)
+temperatureConversionSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def temperatureConversionSix():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText(temperatureConversionInputField.text() + '6')
+    temperatureConversionInput += '6'
+temperatureConversionSixButton.clicked.connect(temperatureConversionSix)
+# Five [5]
+temperatureConversionFiveButton = QPushButton('5', temperatureConversionWidget)
+temperatureConversionFiveButton.setFixedSize(90, 90)
+temperatureConversionFiveButton.move(210, 600)
+temperatureConversionFiveButton.setFont(numberPadFont)
+temperatureConversionFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def temperatureConversionFive():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText(temperatureConversionInputField.text() + '5')
+    temperatureConversionInput += '5'
+temperatureConversionFiveButton.clicked.connect(temperatureConversionFive)
+# Four [4]
+temperatureConversionFourButton = QPushButton('4', temperatureConversionWidget)
+temperatureConversionFourButton.setFixedSize(90, 90)
+temperatureConversionFourButton.move(120, 600)
+temperatureConversionFourButton.setFont(numberPadFont)
+temperatureConversionFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def temperatureConversionFour():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText(temperatureConversionInputField.text() + '4')
+    temperatureConversionInput += '4'
+temperatureConversionFourButton.clicked.connect(temperatureConversionFour)
+# Three [3]
+temperatureConversionThreeButton = QPushButton('3', temperatureConversionWidget)
+temperatureConversionThreeButton.setFixedSize(90, 90)
+temperatureConversionThreeButton.move(300, 690)
+temperatureConversionThreeButton.setFont(numberPadFont)
+temperatureConversionThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def temperatureConversionThree():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText(temperatureConversionInputField.text() + '3')
+    temperatureConversionInput += '3'
+temperatureConversionThreeButton.clicked.connect(temperatureConversionThree)
+# Two [2]
+temperatureConversionTwoButton = QPushButton('2', temperatureConversionWidget)
+temperatureConversionTwoButton.setFixedSize(90, 90)
+temperatureConversionTwoButton.move(210, 690)
+temperatureConversionTwoButton.setFont(numberPadFont)
+temperatureConversionTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def temperatureConversionTwo():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText(temperatureConversionInputField.text() + '2')
+    temperatureConversionInput += '2'
+temperatureConversionTwoButton.clicked.connect(temperatureConversionTwo)
+# One [1]
+temperatureConversionOneButton = QPushButton('1', temperatureConversionWidget)
+temperatureConversionOneButton.setFixedSize(90, 90)
+temperatureConversionOneButton.move(120, 690)
+temperatureConversionOneButton.setFont(numberPadFont)
+temperatureConversionOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def temperatureConversionOne():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText(temperatureConversionInputField.text() + '1')
+    temperatureConversionInput += '1'
+temperatureConversionOneButton.clicked.connect(temperatureConversionOne)
+# Zero [0]
+temperatureConversionZeroButton = QPushButton('0', temperatureConversionWidget)
+temperatureConversionZeroButton.setFixedSize(90, 90)
+temperatureConversionZeroButton.move(210, 780)
+temperatureConversionZeroButton.setFont(numberPadFont)
+temperatureConversionZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def temperatureConversionZero():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText(temperatureConversionInputField.text() + '0')
+    temperatureConversionInput += '0'
+temperatureConversionZeroButton.clicked.connect(temperatureConversionZero)
+# Minus [-]
+temperatureConversionMinusButton = QPushButton('-', temperatureConversionWidget)
+temperatureConversionMinusButton.setFixedSize(90, 90)
+temperatureConversionMinusButton.move(120, 780)
+temperatureConversionMinusButton.setFont(operatorButtonFont)
+temperatureConversionMinusButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def temperatureConversionMinus():
+    global temperatureConversionInput
+    if temperatureConversionInputField.text() == '':
+        temperatureConversionInputField.setText('-')
+        temperatureConversionInput = '-'
+temperatureConversionMinusButton.clicked.connect(temperatureConversionMinus)
+# Point [.]
+temperatureConversionPointButton = QPushButton('.', temperatureConversionWidget)
+temperatureConversionPointButton.setFixedSize(90, 90)
+temperatureConversionPointButton.move(300, 780)
+temperatureConversionPointButton.setFont(numberPadFont)
+temperatureConversionPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def temperatureConversionPoint():
+    global temperatureConversionInput
+    if temperatureConversionInputField.text():
+        temperatureConversionInputField.setText(temperatureConversionInputField.text() + '.')
+        temperatureConversionInput += '.'
+    else:
+        temperatureConversionInputField.setText(temperatureConversionInputField.text() + '0.')
+        temperatureConversionInput += '0.'
+temperatureConversionPointButton.clicked.connect(temperatureConversionPoint)
+# Deletion
+# All Clear
+temperatureConversionAllClearButton = QPushButton('AC', temperatureConversionWidget)
+temperatureConversionAllClearButton.setFixedSize(90, 90)
+temperatureConversionAllClearButton.move(390, 510)
+temperatureConversionAllClearButton.setFont(operatorButtonFont)
+temperatureConversionAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def temperatureConversionAllClear():
+    global temperatureConversionInput
+    temperatureConversionInputField.setText('')
+    temperatureConversionOutputField.setText('')
+    temperatureConversionInput = ''
+temperatureConversionAllClearButton.clicked.connect(temperatureConversionAllClear)
+# Clear [Backspace]
+temperatureConversionClearButton = QPushButton('C', temperatureConversionWidget)
+temperatureConversionClearButton.setFixedSize(90, 90)
+temperatureConversionClearButton.move(390, 600)
+temperatureConversionClearButton.setFont(operatorButtonFont)
+temperatureConversionClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def temperatureConversionClear():
+    global temperatureConversionInput
+    temperatureConversionInputFieldText = temperatureConversionInputField.text()
+    temperatureConversionInputFieldText = temperatureConversionInputFieldText[:-1]
+    temperatureConversionInputField.setText(temperatureConversionInputFieldText)
+    temperatureConversionInput = temperatureConversionInput[:-1]
+temperatureConversionClearButton.clicked.connect(temperatureConversionClear)
+# Result [=]
+temperatureConversionResultButton = QPushButton('=', temperatureConversionWidget)
+temperatureConversionResultButton.setFixedSize(90, 180)
+temperatureConversionResultButton.move(390, 690)
+temperatureConversionResultButton.setFont(resultButtonsFont)
+temperatureConversionResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+def temperatureConversionResult():
+    global temperatureConversionInput
+    if temperatureConversionInputField.text():
+        if temperatureConversionInputField.text().endswith('.'):
+            temperatureConversionInputField.setText(temperatureConversionInputField.text().replace('.', ''))
+            temperatureConversionInput = temperatureConversionInput.replace('.', '')
+        if temperatureConversionFromComboBox.currentIndex() == 0 and temperatureConversionToComboBox.currentIndex() == 0:
+            temperatureConversionOutput = temperatureConversionInput
+            temperatureConversionOutputField.setText(temperatureConversionOutput)
+        elif temperatureConversionFromComboBox.currentIndex() == 0 and temperatureConversionToComboBox.currentIndex() == 1:
+            temperatureConversionOutput = (float(temperatureConversionInput) * 1.8) + 32
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 0 and temperatureConversionToComboBox.currentIndex() == 2:
+            temperatureConversionOutput = float(temperatureConversionInput) + 273.15
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 0 and temperatureConversionToComboBox.currentIndex() == 3:
+            temperatureConversionOutput = (float(temperatureConversionInput) * 1.8) + 491.67
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 1 and temperatureConversionToComboBox.currentIndex() == 0:
+            temperatureConversionOutput = (float(temperatureConversionInput) - 32) / 1.8
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 1 and temperatureConversionToComboBox.currentIndex() == 1:
+            temperatureConversionOutput = temperatureConversionInput
+            temperatureConversionOutputField.setText(temperatureConversionOutput)
+        elif temperatureConversionFromComboBox.currentIndex() == 1 and temperatureConversionToComboBox.currentIndex() == 2:
+            temperatureConversionOutput = ((float(temperatureConversionInput) - 32) / 1.8) + 273.15
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 1 and temperatureConversionToComboBox.currentIndex() == 3:
+            temperatureConversionOutput = float(temperatureConversionInput) + 459.67
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 2 and temperatureConversionToComboBox.currentIndex() == 0:
+            temperatureConversionOutput = float(temperatureConversionInput) - 273.15
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 2 and temperatureConversionToComboBox.currentIndex() == 1:
+            temperatureConversionOutput = ((float(temperatureConversionInput) - 273.15) * 1.8) + 32
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 2 and temperatureConversionToComboBox.currentIndex() == 2:
+            temperatureConversionOutput = temperatureConversionInput
+            temperatureConversionOutputField.setText(temperatureConversionOutput)
+        elif temperatureConversionFromComboBox.currentIndex() == 2 and temperatureConversionToComboBox.currentIndex() == 3:
+            temperatureConversionOutput = float(temperatureConversionInput) * 1.8
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 3 and temperatureConversionToComboBox.currentIndex() == 0:
+            temperatureConversionOutput = (float(temperatureConversionInput) - 491.67) / 1.8
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 3 and temperatureConversionToComboBox.currentIndex() == 1:
+            temperatureConversionOutput = float(temperatureConversionInput) - 459.67
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        elif temperatureConversionFromComboBox.currentIndex() == 3 and temperatureConversionToComboBox.currentIndex() == 2:
+            temperatureConversionOutput = float(temperatureConversionInput) / 1.8
+            temperatureConversionOutputField.setText(str(temperatureConversionOutput))
+        else:
+            temperatureConversionOutput = temperatureConversionInput
+            temperatureConversionOutputField.setText(temperatureConversionOutput)
+temperatureConversionResultButton.clicked.connect(temperatureConversionResult)
 
 # Speed Conversion Page
 # Speed Conversion Widget
@@ -2597,6 +3191,249 @@ speedConversionLabel.setFixedSize(540, 60)
 speedConversionLabel.move(30, 120)
 speedConversionLabel.setFont(conversionsLabelFont)
 speedConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# From Combo Box
+speedConversionFromComboBox = QComboBox(speedConversionWidget)
+speedConversionFromComboBox.setFixedSize(480, 60)
+speedConversionFromComboBox.move(30, 210)
+speedConversionFromComboBox.setFont(comboBoxFont)
+speedConversionFromComboBox.setStyleSheet('padding-left: 10px')
+speedConversionFromComboBox.addItem('Metres per second (m/s)')                                      # 0
+speedConversionFromComboBox.addItem('Kilometres per hour (km/h)')                                   # 1
+speedConversionFromComboBox.addItem('Miles per hour (mph)')                                         # 2
+speedConversionFromComboBox.addItem('Mach (Ma)')                                                    # 3
+speedConversionFromComboBox.addItem('Speed of Light (c)')                                           # 4
+# Input Field
+speedConversionInputField = QLineEdit(speedConversionWidget)
+speedConversionInputField.setPlaceholderText('Input')
+speedConversionInputField.setFixedSize(480, 60)
+speedConversionInputField.move(30, 270)
+speedConversionInputField.setFont(inputFieldFont)
+speedConversionInputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+speedConversionInputField.setReadOnly(True)
+# To Combo Box
+speedConversionToComboBox = QComboBox(speedConversionWidget)
+speedConversionToComboBox.setFixedSize(480, 60)
+speedConversionToComboBox.move(30, 360)
+speedConversionToComboBox.setFont(comboBoxFont)
+speedConversionToComboBox.setStyleSheet('padding-left: 10px')
+speedConversionToComboBox.addItem('Metres per second (m/s)')                                        # 0
+speedConversionToComboBox.addItem('Kilometres per hour (km/h)')                                     # 1
+speedConversionToComboBox.addItem('Miles per hour (mph)')                                           # 2
+speedConversionToComboBox.addItem('Mach (Ma)')                                                      # 3
+speedConversionToComboBox.addItem('Speed of Light (c)')                                             # 4
+# Output Field
+speedConversionOutputField = QLineEdit(speedConversionWidget)
+speedConversionOutputField.setFixedSize(480, 60)
+speedConversionOutputField.move(30, 420)
+speedConversionOutputField.setFont(outputFieldFont)
+speedConversionOutputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+speedConversionOutputField.setPlaceholderText('Output')
+speedConversionOutputField.setReadOnly(True)
+# Paste Output to Input
+speedConversionPasteButton = QPushButton('⇅', speedConversionWidget)
+speedConversionPasteButton.setFixedSize(60, 270)
+speedConversionPasteButton.move(510, 210)
+speedConversionPasteButton.setFont(conversionPasteButtonFont)
+speedConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+def speedConversionPaste():
+    global speedConversionInput
+    speedConversionFromIndex = speedConversionFromComboBox.currentIndex()
+    speedConversionToIndex = speedConversionToComboBox.currentIndex()
+    speedConversionFromComboBox.setCurrentIndex(speedConversionToIndex)
+    speedConversionToComboBox.setCurrentIndex(speedConversionFromIndex)
+    if speedConversionInputField.text():
+        if speedConversionInputField.text().endswith('.'):
+            speedConversionInputField.setText(speedConversionInputField.text().replace('.', ''))
+            speedConversionInput = speedConversionInput.replace('.', '')
+        speedConversionFrom = speedConversionFromComboBox.currentIndex()
+        speedConversionTo = speedConversionToComboBox.currentIndex()
+        speedConversionKey = (speedConversionFrom, speedConversionTo)
+        speedConversionFactor = speedConversionFactors[speedConversionKey]
+        speedConversionOutput = float(speedConversionInput) * speedConversionFactor
+        speedConversionOutputField.setText(str(speedConversionOutput))
+speedConversionPasteButton.clicked.connect(speedConversionPaste)
+# Number Pad
+# Nine [9]
+speedConversionNineButton = QPushButton('9', speedConversionWidget)
+speedConversionNineButton.setFixedSize(90, 90)
+speedConversionNineButton.move(300, 510)
+speedConversionNineButton.setFont(numberPadFont)
+speedConversionNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionNine():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '9')
+    speedConversionInput += '9'
+speedConversionNineButton.clicked.connect(speedConversionNine)
+# Eight [8]
+speedConversionEightButton = QPushButton('8', speedConversionWidget)
+speedConversionEightButton.setFixedSize(90, 90)
+speedConversionEightButton.move(210, 510)
+speedConversionEightButton.setFont(numberPadFont)
+speedConversionEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionEight():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '8')
+    speedConversionInput += '8'
+speedConversionEightButton.clicked.connect(speedConversionEight)
+# Seven [7]
+speedConversionSevenButton = QPushButton('7', speedConversionWidget)
+speedConversionSevenButton.setFixedSize(90, 90)
+speedConversionSevenButton.move(120, 510)
+speedConversionSevenButton.setFont(numberPadFont)
+speedConversionSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionSeven():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '7')
+    speedConversionInput += '7'
+speedConversionSevenButton.clicked.connect(speedConversionSeven)
+# Six [6]
+speedConversionSixButton = QPushButton('6', speedConversionWidget)
+speedConversionSixButton.setFixedSize(90, 90)
+speedConversionSixButton.move(300, 600)
+speedConversionSixButton.setFont(numberPadFont)
+speedConversionSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionSix():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '6')
+    speedConversionInput += '6'
+speedConversionSixButton.clicked.connect(speedConversionSix)
+# Five [5]
+speedConversionFiveButton = QPushButton('5', speedConversionWidget)
+speedConversionFiveButton.setFixedSize(90, 90)
+speedConversionFiveButton.move(210, 600)
+speedConversionFiveButton.setFont(numberPadFont)
+speedConversionFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionFive():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '5')
+    speedConversionInput += '5'
+speedConversionFiveButton.clicked.connect(speedConversionFive)
+# Four [4]
+speedConversionFourButton = QPushButton('4', speedConversionWidget)
+speedConversionFourButton.setFixedSize(90, 90)
+speedConversionFourButton.move(120, 600)
+speedConversionFourButton.setFont(numberPadFont)
+speedConversionFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionFour():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '4')
+    speedConversionInput += '4'
+speedConversionFourButton.clicked.connect(speedConversionFour)
+# Three [3]
+speedConversionThreeButton = QPushButton('3', speedConversionWidget)
+speedConversionThreeButton.setFixedSize(90, 90)
+speedConversionThreeButton.move(300, 690)
+speedConversionThreeButton.setFont(numberPadFont)
+speedConversionThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionThree():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '3')
+    speedConversionInput += '3'
+speedConversionThreeButton.clicked.connect(speedConversionThree)
+# Two [2]
+speedConversionTwoButton = QPushButton('2', speedConversionWidget)
+speedConversionTwoButton.setFixedSize(90, 90)
+speedConversionTwoButton.move(210, 690)
+speedConversionTwoButton.setFont(numberPadFont)
+speedConversionTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionTwo():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '2')
+    speedConversionInput += '2'
+speedConversionTwoButton.clicked.connect(speedConversionTwo)
+# One [1]
+speedConversionOneButton = QPushButton('1', speedConversionWidget)
+speedConversionOneButton.setFixedSize(90, 90)
+speedConversionOneButton.move(120, 690)
+speedConversionOneButton.setFont(numberPadFont)
+speedConversionOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionOne():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '1')
+    speedConversionInput += '1'
+speedConversionOneButton.clicked.connect(speedConversionOne)
+# Zero [0]
+speedConversionZeroButton = QPushButton('0', speedConversionWidget)
+speedConversionZeroButton.setFixedSize(90, 90)
+speedConversionZeroButton.move(210, 780)
+speedConversionZeroButton.setFont(numberPadFont)
+speedConversionZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionZero():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '0')
+    speedConversionInput += '0'
+speedConversionZeroButton.clicked.connect(speedConversionZero)
+# Double Zero [00]
+speedConversionDoubleZeroButton = QPushButton('00', speedConversionWidget)
+speedConversionDoubleZeroButton.setFixedSize(90, 90)
+speedConversionDoubleZeroButton.move(120, 780)
+speedConversionDoubleZeroButton.setFont(numberPadFont)
+speedConversionDoubleZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def speedConversionDoubleZero():
+    global speedConversionInput
+    speedConversionInputField.setText(speedConversionInputField.text() + '00')
+    speedConversionInput += '00'
+speedConversionDoubleZeroButton.clicked.connect(speedConversionDoubleZero)
+# Point [.]
+speedConversionPointButton = QPushButton('.', speedConversionWidget)
+speedConversionPointButton.setFixedSize(90, 90)
+speedConversionPointButton.move(300, 780)
+speedConversionPointButton.setFont(numberPadFont)
+speedConversionPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def speedConversionPoint():
+    global speedConversionInput
+    if speedConversionInputField.text():
+        speedConversionInputField.setText(speedConversionInputField.text() + '.')
+        speedConversionInput += '.'
+    else:
+        speedConversionInputField.setText(speedConversionInputField.text() + '0.')
+        speedConversionInput += '0.'
+speedConversionPointButton.clicked.connect(speedConversionPoint)
+# Deletion
+# All Clear
+speedConversionAllClearButton = QPushButton('AC', speedConversionWidget)
+speedConversionAllClearButton.setFixedSize(90, 90)
+speedConversionAllClearButton.move(390, 510)
+speedConversionAllClearButton.setFont(operatorButtonFont)
+speedConversionAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def speedConversionAllClear():
+    global speedConversionInput
+    speedConversionInputField.setText('')
+    speedConversionOutputField.setText('')
+    speedConversionInput = ''
+speedConversionAllClearButton.clicked.connect(speedConversionAllClear)
+# Clear [Backspace]
+speedConversionClearButton = QPushButton('C', speedConversionWidget)
+speedConversionClearButton.setFixedSize(90, 90)
+speedConversionClearButton.move(390, 600)
+speedConversionClearButton.setFont(operatorButtonFont)
+speedConversionClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def speedConversionClear():
+    global speedConversionInput
+    speedConversionInputFieldText = speedConversionInputField.text()
+    speedConversionInputFieldText = speedConversionInputFieldText[:-1]
+    speedConversionInputField.setText(speedConversionInputFieldText)
+    speedConversionInput = speedConversionInput[:-1]
+speedConversionClearButton.clicked.connect(speedConversionClear)
+# Result [=]
+speedConversionResultButton = QPushButton('=', speedConversionWidget)
+speedConversionResultButton.setFixedSize(90, 180)
+speedConversionResultButton.move(390, 690)
+speedConversionResultButton.setFont(resultButtonsFont)
+speedConversionResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+def speedConversionResult():
+    global speedConversionInput
+    if speedConversionInputField.text():
+        if speedConversionInputField.text().endswith('.'):
+            speedConversionInputField.setText(speedConversionInputField.text().replace('.', ''))
+            speedConversionInput = speedConversionInput.replace('.', '')
+        speedConversionFrom = speedConversionFromComboBox.currentIndex()
+        speedConversionTo = speedConversionToComboBox.currentIndex()
+        speedConversionKey = (speedConversionFrom, speedConversionTo)
+        speedConversionFactor = speedConversionFactors[speedConversionKey]
+        speedConversionOutput = float(speedConversionInput) * speedConversionFactor
+        speedConversionOutputField.setText(str(speedConversionOutput))
+speedConversionResultButton.clicked.connect(speedConversionResult)
 
 # Pressure Conversion Page
 # Pressure Conversion Widget
@@ -2624,6 +3461,253 @@ pressureConversionLabel.setFixedSize(540, 60)
 pressureConversionLabel.move(30, 120)
 pressureConversionLabel.setFont(conversionsLabelFont)
 pressureConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# From Combo Box
+pressureConversionFromComboBox = QComboBox(pressureConversionWidget)
+pressureConversionFromComboBox.setFixedSize(480, 60)
+pressureConversionFromComboBox.move(30, 210)
+pressureConversionFromComboBox.setFont(comboBoxFont)
+pressureConversionFromComboBox.setStyleSheet('padding-left: 10px')
+pressureConversionFromComboBox.addItem('Atmosphere (atm)')                                          # 0
+pressureConversionFromComboBox.addItem('Bar (Bar)')                                                 # 1
+pressureConversionFromComboBox.addItem('Millibar (mBar)')                                           # 2
+pressureConversionFromComboBox.addItem('Pounds per square inch (psi)')                              # 3
+pressureConversionFromComboBox.addItem('Newtons per square metre (N/m²)')                           # 4
+pressureConversionFromComboBox.addItem('Millimetres of H₂O [Water] (mmH₂O)')                        # 5
+pressureConversionFromComboBox.addItem('Millimetres of Hg [Mercury] (mmHg)')                        # 6
+# Input Field
+pressureConversionInputField = QLineEdit(pressureConversionWidget)
+pressureConversionInputField.setPlaceholderText('Input')
+pressureConversionInputField.setFixedSize(480, 60)
+pressureConversionInputField.move(30, 270)
+pressureConversionInputField.setFont(inputFieldFont)
+pressureConversionInputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+pressureConversionInputField.setReadOnly(True)
+# To Combo Box
+pressureConversionToComboBox = QComboBox(pressureConversionWidget)
+pressureConversionToComboBox.setFixedSize(480, 60)
+pressureConversionToComboBox.move(30, 360)
+pressureConversionToComboBox.setFont(comboBoxFont)
+pressureConversionToComboBox.setStyleSheet('padding-left: 10px')
+pressureConversionToComboBox.addItem('Atmosphere (atm)')                                            # 0
+pressureConversionToComboBox.addItem('Bar (Bar)')                                                   # 1
+pressureConversionToComboBox.addItem('Millibar (mBar)')                                             # 2
+pressureConversionToComboBox.addItem('Pounds per square inch (psi)')                                # 3
+pressureConversionToComboBox.addItem('Newtons per square metre (N/m²)')                             # 4
+pressureConversionToComboBox.addItem('Millimetres of H₂O [Water] (mmH₂O)')                          # 5
+pressureConversionToComboBox.addItem('Millimetres of Hg [Mercury] (mmHg)')                          # 6
+# Output Field
+pressureConversionOutputField = QLineEdit(pressureConversionWidget)
+pressureConversionOutputField.setFixedSize(480, 60)
+pressureConversionOutputField.move(30, 420)
+pressureConversionOutputField.setFont(outputFieldFont)
+pressureConversionOutputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+pressureConversionOutputField.setPlaceholderText('Output')
+pressureConversionOutputField.setReadOnly(True)
+# Paste Output to Input
+pressureConversionPasteButton = QPushButton('⇅', pressureConversionWidget)
+pressureConversionPasteButton.setFixedSize(60, 270)
+pressureConversionPasteButton.move(510, 210)
+pressureConversionPasteButton.setFont(conversionPasteButtonFont)
+pressureConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+def pressureConversionPaste():
+    global pressureConversionInput
+    pressureConversionFromIndex = pressureConversionFromComboBox.currentIndex()
+    pressureConversionToIndex = pressureConversionToComboBox.currentIndex()
+    pressureConversionFromComboBox.setCurrentIndex(pressureConversionToIndex)
+    pressureConversionToComboBox.setCurrentIndex(pressureConversionFromIndex)
+    if pressureConversionInputField.text():
+        if pressureConversionInputField.text().endswith('.'):
+            pressureConversionInputField.setText(pressureConversionInputField.text().replace('.', ''))
+            pressureConversionInput = pressureConversionInput.replace('.', '')
+        pressureConversionFrom = pressureConversionFromComboBox.currentIndex()
+        pressureConversionTo = pressureConversionToComboBox.currentIndex()
+        pressureConversionKey = (pressureConversionFrom, pressureConversionTo)
+        pressureConversionFactor = pressureConversionFactors[pressureConversionKey]
+        pressureConversionOutput = float(pressureConversionInput) * pressureConversionFactor
+        pressureConversionOutputField.setText(str(pressureConversionOutput))
+pressureConversionPasteButton.clicked.connect(pressureConversionPaste)
+# Number Pad
+# Nine [9]
+pressureConversionNineButton = QPushButton('9', pressureConversionWidget)
+pressureConversionNineButton.setFixedSize(90, 90)
+pressureConversionNineButton.move(300, 510)
+pressureConversionNineButton.setFont(numberPadFont)
+pressureConversionNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionNine():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '9')
+    pressureConversionInput += '9'
+pressureConversionNineButton.clicked.connect(pressureConversionNine)
+# Eight [8]
+pressureConversionEightButton = QPushButton('8', pressureConversionWidget)
+pressureConversionEightButton.setFixedSize(90, 90)
+pressureConversionEightButton.move(210, 510)
+pressureConversionEightButton.setFont(numberPadFont)
+pressureConversionEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionEight():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '8')
+    pressureConversionInput += '8'
+pressureConversionEightButton.clicked.connect(pressureConversionEight)
+# Seven [7]
+pressureConversionSevenButton = QPushButton('7', pressureConversionWidget)
+pressureConversionSevenButton.setFixedSize(90, 90)
+pressureConversionSevenButton.move(120, 510)
+pressureConversionSevenButton.setFont(numberPadFont)
+pressureConversionSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionSeven():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '7')
+    pressureConversionInput += '7'
+pressureConversionSevenButton.clicked.connect(pressureConversionSeven)
+# Six [6]
+pressureConversionSixButton = QPushButton('6', pressureConversionWidget)
+pressureConversionSixButton.setFixedSize(90, 90)
+pressureConversionSixButton.move(300, 600)
+pressureConversionSixButton.setFont(numberPadFont)
+pressureConversionSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionSix():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '6')
+    pressureConversionInput += '6'
+pressureConversionSixButton.clicked.connect(pressureConversionSix)
+# Five [5]
+pressureConversionFiveButton = QPushButton('5', pressureConversionWidget)
+pressureConversionFiveButton.setFixedSize(90, 90)
+pressureConversionFiveButton.move(210, 600)
+pressureConversionFiveButton.setFont(numberPadFont)
+pressureConversionFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionFive():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '5')
+    pressureConversionInput += '5'
+pressureConversionFiveButton.clicked.connect(pressureConversionFive)
+# Four [4]
+pressureConversionFourButton = QPushButton('4', pressureConversionWidget)
+pressureConversionFourButton.setFixedSize(90, 90)
+pressureConversionFourButton.move(120, 600)
+pressureConversionFourButton.setFont(numberPadFont)
+pressureConversionFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionFour():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '4')
+    pressureConversionInput += '4'
+pressureConversionFourButton.clicked.connect(pressureConversionFour)
+# Three [3]
+pressureConversionThreeButton = QPushButton('3', pressureConversionWidget)
+pressureConversionThreeButton.setFixedSize(90, 90)
+pressureConversionThreeButton.move(300, 690)
+pressureConversionThreeButton.setFont(numberPadFont)
+pressureConversionThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionThree():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '3')
+    pressureConversionInput += '3'
+pressureConversionThreeButton.clicked.connect(pressureConversionThree)
+# Two [2]
+pressureConversionTwoButton = QPushButton('2', pressureConversionWidget)
+pressureConversionTwoButton.setFixedSize(90, 90)
+pressureConversionTwoButton.move(210, 690)
+pressureConversionTwoButton.setFont(numberPadFont)
+pressureConversionTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionTwo():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '2')
+    pressureConversionInput += '2'
+pressureConversionTwoButton.clicked.connect(pressureConversionTwo)
+# One [1]
+pressureConversionOneButton = QPushButton('1', pressureConversionWidget)
+pressureConversionOneButton.setFixedSize(90, 90)
+pressureConversionOneButton.move(120, 690)
+pressureConversionOneButton.setFont(numberPadFont)
+pressureConversionOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionOne():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '1')
+    pressureConversionInput += '1'
+pressureConversionOneButton.clicked.connect(pressureConversionOne)
+# Zero [0]
+pressureConversionZeroButton = QPushButton('0', pressureConversionWidget)
+pressureConversionZeroButton.setFixedSize(90, 90)
+pressureConversionZeroButton.move(210, 780)
+pressureConversionZeroButton.setFont(numberPadFont)
+pressureConversionZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionZero():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '0')
+    pressureConversionInput += '0'
+pressureConversionZeroButton.clicked.connect(pressureConversionZero)
+# Double Zero [00]
+pressureConversionDoubleZeroButton = QPushButton('00', pressureConversionWidget)
+pressureConversionDoubleZeroButton.setFixedSize(90, 90)
+pressureConversionDoubleZeroButton.move(120, 780)
+pressureConversionDoubleZeroButton.setFont(numberPadFont)
+pressureConversionDoubleZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def pressureConversionDoubleZero():
+    global pressureConversionInput
+    pressureConversionInputField.setText(pressureConversionInputField.text() + '00')
+    pressureConversionInput += '00'
+pressureConversionDoubleZeroButton.clicked.connect(pressureConversionDoubleZero)
+# Point [.]
+pressureConversionPointButton = QPushButton('.', pressureConversionWidget)
+pressureConversionPointButton.setFixedSize(90, 90)
+pressureConversionPointButton.move(300, 780)
+pressureConversionPointButton.setFont(numberPadFont)
+pressureConversionPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def pressureConversionPoint():
+    global pressureConversionInput
+    if pressureConversionInputField.text():
+        pressureConversionInputField.setText(pressureConversionInputField.text() + '.')
+        pressureConversionInput += '.'
+    else:
+        pressureConversionInputField.setText(pressureConversionInputField.text() + '0.')
+        pressureConversionInput += '0.'
+pressureConversionPointButton.clicked.connect(pressureConversionPoint)
+# Deletion
+# All Clear
+pressureConversionAllClearButton = QPushButton('AC', pressureConversionWidget)
+pressureConversionAllClearButton.setFixedSize(90, 90)
+pressureConversionAllClearButton.move(390, 510)
+pressureConversionAllClearButton.setFont(operatorButtonFont)
+pressureConversionAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def pressureConversionAllClear():
+    global pressureConversionInput
+    pressureConversionInputField.setText('')
+    pressureConversionOutputField.setText('')
+    pressureConversionInput = ''
+pressureConversionAllClearButton.clicked.connect(pressureConversionAllClear)
+# Clear [Backspace]
+pressureConversionClearButton = QPushButton('C', pressureConversionWidget)
+pressureConversionClearButton.setFixedSize(90, 90)
+pressureConversionClearButton.move(390, 600)
+pressureConversionClearButton.setFont(operatorButtonFont)
+pressureConversionClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def pressureConversionClear():
+    global pressureConversionInput
+    pressureConversionInputFieldText = pressureConversionInputField.text()
+    pressureConversionInputFieldText = pressureConversionInputFieldText[:-1]
+    pressureConversionInputField.setText(pressureConversionInputFieldText)
+    pressureConversionInput = pressureConversionInput[:-1]
+pressureConversionClearButton.clicked.connect(pressureConversionClear)
+# Result [=]
+pressureConversionResultButton = QPushButton('=', pressureConversionWidget)
+pressureConversionResultButton.setFixedSize(90, 180)
+pressureConversionResultButton.move(390, 690)
+pressureConversionResultButton.setFont(resultButtonsFont)
+pressureConversionResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+def pressureConversionResult():
+    global pressureConversionInput
+    if pressureConversionInputField.text():
+        if pressureConversionInputField.text().endswith('.'):
+            pressureConversionInputField.setText(pressureConversionInputField.text().replace('.', ''))
+            pressureConversionInput = pressureConversionInput.replace('.', '')
+        pressureConversionFrom = pressureConversionFromComboBox.currentIndex()
+        pressureConversionTo = pressureConversionToComboBox.currentIndex()
+        pressureConversionKey = (pressureConversionFrom, pressureConversionTo)
+        pressureConversionFactor = pressureConversionFactors[pressureConversionKey]
+        pressureConversionOutput = float(pressureConversionInput) * pressureConversionFactor
+        pressureConversionOutputField.setText(str(pressureConversionOutput))
+pressureConversionResultButton.clicked.connect(pressureConversionResult)
 
 # Power Conversion Page
 # Power Conversion Widget
@@ -2651,6 +3735,255 @@ powerConversionLabel.setFixedSize(540, 60)
 powerConversionLabel.move(30, 120)
 powerConversionLabel.setFont(conversionsLabelFont)
 powerConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+# From Combo Box
+powerConversionFromComboBox = QComboBox(powerConversionWidget)
+powerConversionFromComboBox.setFixedSize(480, 60)
+powerConversionFromComboBox.move(30, 210)
+powerConversionFromComboBox.setFont(comboBoxFont)
+powerConversionFromComboBox.setStyleSheet('padding-left: 10px')
+powerConversionFromComboBox.addItem('Watt (W)')                                                     # 0
+powerConversionFromComboBox.addItem('Newton-metres per second (N∙m/s)')                             # 1
+powerConversionFromComboBox.addItem('Kilogram-metres per second (kg∙m/s)')                          # 2
+powerConversionFromComboBox.addItem('Joules per second (J/s)')                                      # 3
+powerConversionFromComboBox.addItem('Foot-pounds per second (ft∙lb/s)')                             # 4
+powerConversionFromComboBox.addItem('Kilocalories per second (kcal/s)')                             # 5
+powerConversionFromComboBox.addItem('Horsepower (HP)')                                              # 6
+powerConversionFromComboBox.addItem('British Thermal Units per second (BTU/s)')                     # 7
+# Input Field
+powerConversionInputField = QLineEdit(powerConversionWidget)
+powerConversionInputField.setPlaceholderText('Input')
+powerConversionInputField.setFixedSize(480, 60)
+powerConversionInputField.move(30, 270)
+powerConversionInputField.setFont(inputFieldFont)
+powerConversionInputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+powerConversionInputField.setReadOnly(True)
+# To Combo Box
+powerConversionToComboBox = QComboBox(powerConversionWidget)
+powerConversionToComboBox.setFixedSize(480, 60)
+powerConversionToComboBox.move(30, 360)
+powerConversionToComboBox.setFont(comboBoxFont)
+powerConversionToComboBox.setStyleSheet('padding-left: 10px')
+powerConversionToComboBox.addItem('Watt (W)')                                                       # 0
+powerConversionToComboBox.addItem('Newton-metres per second (N∙m/s)')                               # 1
+powerConversionToComboBox.addItem('Kilogram-metres per second (kg∙m/s)')                            # 2
+powerConversionToComboBox.addItem('Joules per second (J/s)')                                        # 3
+powerConversionToComboBox.addItem('Foot-pounds per second (ft∙lb/s)')                               # 4
+powerConversionToComboBox.addItem('Kilocalories per second (kcal/s)')                               # 5
+powerConversionToComboBox.addItem('Horsepower (HP)')                                                # 6
+powerConversionToComboBox.addItem('British Thermal Units per second (BTU/s)')                       # 7
+# Output Field
+powerConversionOutputField = QLineEdit(powerConversionWidget)
+powerConversionOutputField.setFixedSize(480, 60)
+powerConversionOutputField.move(30, 420)
+powerConversionOutputField.setFont(outputFieldFont)
+powerConversionOutputField.setStyleSheet('border: 2px solid; padding-left: 15px')
+powerConversionOutputField.setPlaceholderText('Output')
+powerConversionOutputField.setReadOnly(True)
+# Paste Output to Input
+powerConversionPasteButton = QPushButton('⇅', powerConversionWidget)
+powerConversionPasteButton.setFixedSize(60, 270)
+powerConversionPasteButton.move(510, 210)
+powerConversionPasteButton.setFont(conversionPasteButtonFont)
+powerConversionPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+def powerConversionPaste():
+    global powerConversionInput
+    powerConversionFromIndex = powerConversionFromComboBox.currentIndex()
+    powerConversionToIndex = powerConversionToComboBox.currentIndex()
+    powerConversionFromComboBox.setCurrentIndex(powerConversionToIndex)
+    powerConversionToComboBox.setCurrentIndex(powerConversionFromIndex)
+    if powerConversionInputField.text():
+        if powerConversionInputField.text().endswith('.'):
+            powerConversionInputField.setText(powerConversionInputField.text().replace('.', ''))
+            powerConversionInput = powerConversionInput.replace('.', '')
+        powerConversionFrom = powerConversionFromComboBox.currentIndex()
+        powerConversionTo = powerConversionToComboBox.currentIndex()
+        powerConversionKey = (powerConversionFrom, powerConversionTo)
+        powerConversionFactor = powerConversionFactors[powerConversionKey]
+        powerConversionOutput = float(powerConversionInput) * powerConversionFactor
+        powerConversionOutputField.setText(str(powerConversionOutput))
+powerConversionPasteButton.clicked.connect(powerConversionPaste)
+# Number Pad
+# Nine [9]
+powerConversionNineButton = QPushButton('9', powerConversionWidget)
+powerConversionNineButton.setFixedSize(90, 90)
+powerConversionNineButton.move(300, 510)
+powerConversionNineButton.setFont(numberPadFont)
+powerConversionNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionNine():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '9')
+    powerConversionInput += '9'
+powerConversionNineButton.clicked.connect(powerConversionNine)
+# Eight [8]
+powerConversionEightButton = QPushButton('8', powerConversionWidget)
+powerConversionEightButton.setFixedSize(90, 90)
+powerConversionEightButton.move(210, 510)
+powerConversionEightButton.setFont(numberPadFont)
+powerConversionEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionEight():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '8')
+    powerConversionInput += '8'
+powerConversionEightButton.clicked.connect(powerConversionEight)
+# Seven [7]
+powerConversionSevenButton = QPushButton('7', powerConversionWidget)
+powerConversionSevenButton.setFixedSize(90, 90)
+powerConversionSevenButton.move(120, 510)
+powerConversionSevenButton.setFont(numberPadFont)
+powerConversionSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionSeven():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '7')
+    powerConversionInput += '7'
+powerConversionSevenButton.clicked.connect(powerConversionSeven)
+# Six [6]
+powerConversionSixButton = QPushButton('6', powerConversionWidget)
+powerConversionSixButton.setFixedSize(90, 90)
+powerConversionSixButton.move(300, 600)
+powerConversionSixButton.setFont(numberPadFont)
+powerConversionSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionSix():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '6')
+    powerConversionInput += '6'
+powerConversionSixButton.clicked.connect(powerConversionSix)
+# Five [5]
+powerConversionFiveButton = QPushButton('5', powerConversionWidget)
+powerConversionFiveButton.setFixedSize(90, 90)
+powerConversionFiveButton.move(210, 600)
+powerConversionFiveButton.setFont(numberPadFont)
+powerConversionFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionFive():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '5')
+    powerConversionInput += '5'
+powerConversionFiveButton.clicked.connect(powerConversionFive)
+# Four [4]
+powerConversionFourButton = QPushButton('4', powerConversionWidget)
+powerConversionFourButton.setFixedSize(90, 90)
+powerConversionFourButton.move(120, 600)
+powerConversionFourButton.setFont(numberPadFont)
+powerConversionFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionFour():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '4')
+    powerConversionInput += '4'
+powerConversionFourButton.clicked.connect(powerConversionFour)
+# Three [3]
+powerConversionThreeButton = QPushButton('3', powerConversionWidget)
+powerConversionThreeButton.setFixedSize(90, 90)
+powerConversionThreeButton.move(300, 690)
+powerConversionThreeButton.setFont(numberPadFont)
+powerConversionThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionThree():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '3')
+    powerConversionInput += '3'
+powerConversionThreeButton.clicked.connect(powerConversionThree)
+# Two [2]
+powerConversionTwoButton = QPushButton('2', powerConversionWidget)
+powerConversionTwoButton.setFixedSize(90, 90)
+powerConversionTwoButton.move(210, 690)
+powerConversionTwoButton.setFont(numberPadFont)
+powerConversionTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionTwo():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '2')
+    powerConversionInput += '2'
+powerConversionTwoButton.clicked.connect(powerConversionTwo)
+# One [1]
+powerConversionOneButton = QPushButton('1', powerConversionWidget)
+powerConversionOneButton.setFixedSize(90, 90)
+powerConversionOneButton.move(120, 690)
+powerConversionOneButton.setFont(numberPadFont)
+powerConversionOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionOne():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '1')
+    powerConversionInput += '1'
+powerConversionOneButton.clicked.connect(powerConversionOne)
+# Zero [0]
+powerConversionZeroButton = QPushButton('0', powerConversionWidget)
+powerConversionZeroButton.setFixedSize(90, 90)
+powerConversionZeroButton.move(210, 780)
+powerConversionZeroButton.setFont(numberPadFont)
+powerConversionZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionZero():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '0')
+    powerConversionInput += '0'
+powerConversionZeroButton.clicked.connect(powerConversionZero)
+# Double Zero [00]
+powerConversionDoubleZeroButton = QPushButton('00', powerConversionWidget)
+powerConversionDoubleZeroButton.setFixedSize(90, 90)
+powerConversionDoubleZeroButton.move(120, 780)
+powerConversionDoubleZeroButton.setFont(numberPadFont)
+powerConversionDoubleZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+def powerConversionDoubleZero():
+    global powerConversionInput
+    powerConversionInputField.setText(powerConversionInputField.text() + '00')
+    powerConversionInput += '00'
+powerConversionDoubleZeroButton.clicked.connect(powerConversionDoubleZero)
+# Point [.]
+powerConversionPointButton = QPushButton('.', powerConversionWidget)
+powerConversionPointButton.setFixedSize(90, 90)
+powerConversionPointButton.move(300, 780)
+powerConversionPointButton.setFont(numberPadFont)
+powerConversionPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+def powerConversionPoint():
+    global powerConversionInput
+    if powerConversionInputField.text():
+        powerConversionInputField.setText(powerConversionInputField.text() + '.')
+        powerConversionInput += '.'
+    else:
+        powerConversionInputField.setText(powerConversionInputField.text() + '0.')
+        powerConversionInput += '0.'
+powerConversionPointButton.clicked.connect(powerConversionPoint)
+# Deletion
+# All Clear
+powerConversionAllClearButton = QPushButton('AC', powerConversionWidget)
+powerConversionAllClearButton.setFixedSize(90, 90)
+powerConversionAllClearButton.move(390, 510)
+powerConversionAllClearButton.setFont(operatorButtonFont)
+powerConversionAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def powerConversionAllClear():
+    global powerConversionInput
+    powerConversionInputField.setText('')
+    powerConversionOutputField.setText('')
+    powerConversionInput = ''
+powerConversionAllClearButton.clicked.connect(powerConversionAllClear)
+# Clear [Backspace]
+powerConversionClearButton = QPushButton('C', powerConversionWidget)
+powerConversionClearButton.setFixedSize(90, 90)
+powerConversionClearButton.move(390, 600)
+powerConversionClearButton.setFont(operatorButtonFont)
+powerConversionClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+def powerConversionClear():
+    global powerConversionInput
+    powerConversionInputFieldText = powerConversionInputField.text()
+    powerConversionInputFieldText = powerConversionInputFieldText[:-1]
+    powerConversionInputField.setText(powerConversionInputFieldText)
+    powerConversionInput = powerConversionInput[:-1]
+powerConversionClearButton.clicked.connect(powerConversionClear)
+# Result [=]
+powerConversionResultButton = QPushButton('=', powerConversionWidget)
+powerConversionResultButton.setFixedSize(90, 180)
+powerConversionResultButton.move(390, 690)
+powerConversionResultButton.setFont(resultButtonsFont)
+powerConversionResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+def powerConversionResult():
+    global powerConversionInput
+    if powerConversionInputField.text():
+        if powerConversionInputField.text().endswith('.'):
+            powerConversionInputField.setText(powerConversionInputField.text().replace('.', ''))
+            powerConversionInput = powerConversionInput.replace('.', '')
+        powerConversionFrom = powerConversionFromComboBox.currentIndex()
+        powerConversionTo = powerConversionToComboBox.currentIndex()
+        powerConversionKey = (powerConversionFrom, powerConversionTo)
+        powerConversionFactor = powerConversionFactors[powerConversionKey]
+        powerConversionOutput = float(powerConversionInput) * powerConversionFactor
+        powerConversionOutputField.setText(str(powerConversionOutput))
+powerConversionResultButton.clicked.connect(powerConversionResult)
 
 window.show()
 CalcWizard.exec()
