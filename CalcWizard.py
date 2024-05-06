@@ -1,6 +1,6 @@
 # GUI
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QWidget, QLabel, QLineEdit, QPushButton, QComboBox, QMessageBox, QInputDialog
-from PyQt6.QtGui import QIcon, QFont
+from PyQt6.QtGui import QFont
 from PyQt6.QtCore import Qt
 # Mathematical Functions
 from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log2, log10
@@ -151,7 +151,6 @@ powerConversionFactors = {
 }
 
 CalcWizard = QApplication([])
-QApplication.setWindowIcon(QIcon('CalcWizard (Icon).ico'))
 # Window Attributes
 window = QMainWindow()
 window.setWindowTitle('CalcWizard')
