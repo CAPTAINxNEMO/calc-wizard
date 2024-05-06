@@ -125,37 +125,29 @@ speedConversionFactors = {
 }
 pressureConversionFactors = {
     # Atmosphere (atm)
-    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'),
+    (0, 0): 1, (0, 1): 1.01325, (0, 2): 1013.25, (0, 3): (506625 / 34474), (0, 4): 101325, (0, 5): (506625000 /  49033), (0, 6): 760,
     # Bar (Bar)
-    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'),
+    (1, 0): (4000 / 4053), (1, 1): 1, (1, 2): 1000, (1, 3): (250000 / 17237), (1, 4): 100000, (1, 5): (500000000 / 49033), (1, 6): (3040000 / 4053),
     # Millibar (mBar)
-    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'),
+    (2, 0): (4 / 4053), (2, 1): 0.001, (2, 2): 1, (2, 3): (250 / 17237), (2, 4): 100, (2, 5): (500000 / 49033), (2, 6): (3040 / 4053),
     # Pounds per square inch (psi)
-    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'),
-    # Newtons per square metre (N/m²)
-    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'),
+    (3, 0): (34474 / 506625), (3, 1): 0.068948, (3, 2): 68.948, (3, 3): 1, (3, 4): 6894.8, (3, 5): (34474000 / 49033), (3, 6): (436634756250000 / 45680466691),
+    # Pascal (Pa) | Newtons per square metre (N/m²)
+    (4, 0): (1 / 101325), (4, 1): 0.00001, (4, 2): 0.01, (4, 3): (5 / 34474), (4, 4): 1, (4, 5): (5000 / 49033), (4, 6): (152 / 20265),
     # Millimetres of H₂O [Water] (mmH₂O)
-    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'),
+    (5, 0): (49033 / 506625000), (5, 1): 0.000098066, (5, 2): 0.098066, (5, 3): (49033 / 34474000), (5, 4): 9.8066, (5, 5): 1, (5, 6): (12665625 / 931627),
     # Millimetres of Hg [Mercury] (mmHg)
-    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1
+    (6, 0): (1 / 760), (6, 1): (4053 / 3040000), (6, 2): (4053 / 3040), (6, 3): (45680466691 / 436634756250000), (6, 4): (20265 / 152), (6, 5): (931627 / 12665625), (6, 6): 1
 }
 powerConversionFactors = {
-    # Watt (W)
-    (0, 0): 1, (0, 1): ('PLACEHOLDER'), (0, 2): ('PLACEHOLDER'), (0, 3): ('PLACEHOLDER'), (0, 4): ('PLACEHOLDER'), (0, 5): ('PLACEHOLDER'), (0, 6): ('PLACEHOLDER'), (0, 7): ('PLACEHOLDER'),
-    # Newton-metres per second (N∙m/s)
-    (1, 0): ('PLACEHOLDER'), (1, 1): 1, (1, 2): ('PLACEHOLDER'), (1, 3): ('PLACEHOLDER'), (1, 4): ('PLACEHOLDER'), (1, 5): ('PLACEHOLDER'), (1, 6): ('PLACEHOLDER'), (1, 7): ('PLACEHOLDER'),
-    # Kilogram-metres per second (kg∙m/s)
-    (2, 0): ('PLACEHOLDER'), (2, 1): ('PLACEHOLDER'), (2, 2): 1, (2, 3): ('PLACEHOLDER'), (2, 4): ('PLACEHOLDER'), (2, 5): ('PLACEHOLDER'), (2, 6): ('PLACEHOLDER'), (2, 7): ('PLACEHOLDER'),
-    # Joules per second (J/s)
-    (3, 0): ('PLACEHOLDER'), (3, 1): ('PLACEHOLDER'), (3, 2): ('PLACEHOLDER'), (3, 3): 1, (3, 4): ('PLACEHOLDER'), (3, 5): ('PLACEHOLDER'), (3, 6): ('PLACEHOLDER'), (3, 7): ('PLACEHOLDER'),
+    # Watt (W) | Joules per second (J/s) | Newton-metres per second (N∙m/s)
+    (0, 0): 1, (0, 1): (12500000000000 / 16953513780357), (0, 2): (1 / 4184), (0, 3): (250000000000 / 186488651583927),
     # Foot-pounds per second (ft∙lb/s)
-    (4, 0): ('PLACEHOLDER'), (4, 1): ('PLACEHOLDER'), (4, 2): ('PLACEHOLDER'), (4, 3): ('PLACEHOLDER'), (4, 4): 1, (4, 5): ('PLACEHOLDER'), (4, 6): ('PLACEHOLDER'), (4, 7): ('PLACEHOLDER'),
+    (1, 0): 1.35628110242856, (1, 1): 1, (1, 2): (16953513780357 / 52300000000000000), (1, 3): 550,
     # Kilocalories per second (kcal/s)
-    (5, 0): ('PLACEHOLDER'), (5, 1): ('PLACEHOLDER'), (5, 2): ('PLACEHOLDER'), (5, 3): ('PLACEHOLDER'), (5, 4): ('PLACEHOLDER'), (5, 5): 1, (5, 6): ('PLACEHOLDER'), (5, 7): ('PLACEHOLDER'),
+    (2, 0): 4184, (2, 1): (52300000000000000 / 16953513780357), (2, 2): 1, (2, 3): (28765000000000000000 / 16953513780357),
     # Horsepower (HP)
-    (6, 0): ('PLACEHOLDER'), (6, 1): ('PLACEHOLDER'), (6, 2): ('PLACEHOLDER'), (6, 3): ('PLACEHOLDER'), (6, 4): ('PLACEHOLDER'), (6, 5): ('PLACEHOLDER'), (6, 6): 1, (6, 7): ('PLACEHOLDER'),
-    # British Thermal Units per second (BTU/s)
-    (7, 0): ('PLACEHOLDER'), (7, 1): ('PLACEHOLDER'), (7, 2): ('PLACEHOLDER'), (7, 3): ('PLACEHOLDER'), (7, 4): ('PLACEHOLDER'), (7, 5): ('PLACEHOLDER'), (7, 6): ('PLACEHOLDER'), (7, 7): 1
+    (3, 0): 745.954606335708, (3, 1): (1 / 550), (3, 2): (16953513780357 / 28765000000000000000), (3, 3): 1
 }
 
 CalcWizard = QApplication([])
@@ -1720,19 +1712,19 @@ lengthConversionFromComboBox.setFixedSize(480, 60)
 lengthConversionFromComboBox.move(30, 210)
 lengthConversionFromComboBox.setFont(comboBoxFont)
 lengthConversionFromComboBox.setStyleSheet('padding-left: 10px')
-lengthConversionFromComboBox.addItem('Metre (m)')                                                   # 0
-lengthConversionFromComboBox.addItem('Millimetre (mm)')                                             # 1
-lengthConversionFromComboBox.addItem('Centimetre (cm)')                                             # 2
-lengthConversionFromComboBox.addItem('Decimetre (dm)')                                              # 3
-lengthConversionFromComboBox.addItem('Kilometre (km)')                                              # 4
-lengthConversionFromComboBox.addItem('Micrometre (μm)')                                             # 5
-lengthConversionFromComboBox.addItem('Nanometre (nm)')                                              # 6
-lengthConversionFromComboBox.addItem('Picometre (pm)')                                              # 7
-lengthConversionFromComboBox.addItem('Inch (in)')                                                   # 8
-lengthConversionFromComboBox.addItem('Foot (ft)')                                                   # 9
-lengthConversionFromComboBox.addItem('Yard (yd)')                                                   # 10
-lengthConversionFromComboBox.addItem('Mile (mi)')                                                   # 11
-lengthConversionFromComboBox.addItem('Nautical Mile (nmi)')                                         # 12
+lengthConversionFromComboBox.addItem('Metre (m)')                                                                   # 0
+lengthConversionFromComboBox.addItem('Millimetre (mm)')                                                             # 1
+lengthConversionFromComboBox.addItem('Centimetre (cm)')                                                             # 2
+lengthConversionFromComboBox.addItem('Decimetre (dm)')                                                              # 3
+lengthConversionFromComboBox.addItem('Kilometre (km)')                                                              # 4
+lengthConversionFromComboBox.addItem('Micrometre (μm)')                                                             # 5
+lengthConversionFromComboBox.addItem('Nanometre (nm)')                                                              # 6
+lengthConversionFromComboBox.addItem('Picometre (pm)')                                                              # 7
+lengthConversionFromComboBox.addItem('Inch (in)')                                                                   # 8
+lengthConversionFromComboBox.addItem('Foot (ft)')                                                                   # 9
+lengthConversionFromComboBox.addItem('Yard (yd)')                                                                   # 10
+lengthConversionFromComboBox.addItem('Mile (mi)')                                                                   # 11
+lengthConversionFromComboBox.addItem('Nautical Mile (nmi)')                                                         # 12
 # Input Field
 lengthConversionInputField = QLineEdit(lengthConversionWidget)
 lengthConversionInputField.setPlaceholderText('Input')
@@ -1747,19 +1739,19 @@ lengthConversionToComboBox.setFixedSize(480, 60)
 lengthConversionToComboBox.move(30, 360)
 lengthConversionToComboBox.setFont(comboBoxFont)
 lengthConversionToComboBox.setStyleSheet('padding-left: 10px')
-lengthConversionToComboBox.addItem('Metre (m)')                                                     # 0
-lengthConversionToComboBox.addItem('Millimetre (mm)')                                               # 1
-lengthConversionToComboBox.addItem('Centimetre (cm)')                                               # 2
-lengthConversionToComboBox.addItem('Decimetre (dm)')                                                # 3
-lengthConversionToComboBox.addItem('Kilometre (km)')                                                # 4
-lengthConversionToComboBox.addItem('Micrometre (μm)')                                               # 5
-lengthConversionToComboBox.addItem('Nanometre (nm)')                                                # 6
-lengthConversionToComboBox.addItem('Picometre (pm)')                                                # 7
-lengthConversionToComboBox.addItem('Inch (in)')                                                     # 8
-lengthConversionToComboBox.addItem('Foot (ft)')                                                     # 9
-lengthConversionToComboBox.addItem('Yard (yd)')                                                     # 10
-lengthConversionToComboBox.addItem('Mile (mi)')                                                     # 11
-lengthConversionToComboBox.addItem('Nautical Mile (nmi)')                                           # 12
+lengthConversionToComboBox.addItem('Metre (m)')                                                                     # 0
+lengthConversionToComboBox.addItem('Millimetre (mm)')                                                               # 1
+lengthConversionToComboBox.addItem('Centimetre (cm)')                                                               # 2
+lengthConversionToComboBox.addItem('Decimetre (dm)')                                                                # 3
+lengthConversionToComboBox.addItem('Kilometre (km)')                                                                # 4
+lengthConversionToComboBox.addItem('Micrometre (μm)')                                                               # 5
+lengthConversionToComboBox.addItem('Nanometre (nm)')                                                                # 6
+lengthConversionToComboBox.addItem('Picometre (pm)')                                                                # 7
+lengthConversionToComboBox.addItem('Inch (in)')                                                                     # 8
+lengthConversionToComboBox.addItem('Foot (ft)')                                                                     # 9
+lengthConversionToComboBox.addItem('Yard (yd)')                                                                     # 10
+lengthConversionToComboBox.addItem('Mile (mi)')                                                                     # 11
+lengthConversionToComboBox.addItem('Nautical Mile (nmi)')                                                           # 12
 # Output Field
 lengthConversionOutputField = QLineEdit(lengthConversionWidget)
 lengthConversionOutputField.setFixedSize(480, 60)
@@ -2006,16 +1998,16 @@ areaConversionFromComboBox.setFixedSize(480, 60)
 areaConversionFromComboBox.move(30, 210)
 areaConversionFromComboBox.setFont(comboBoxFont)
 areaConversionFromComboBox.setStyleSheet('padding-left: 10px')
-areaConversionFromComboBox.addItem('Square Metre (m²)')                                             # 0
-areaConversionFromComboBox.addItem('Square Decimetre (dm²)')                                        # 1
-areaConversionFromComboBox.addItem('Square Centimetre (cm²)')                                       # 2
-areaConversionFromComboBox.addItem('Square Millimetre (mm²)')                                       # 3
-areaConversionFromComboBox.addItem('Square Kilometre (km²)')                                        # 4
-areaConversionFromComboBox.addItem('Square Inch (in²)')                                             # 5
-areaConversionFromComboBox.addItem('Square Foot (ft²)')                                             # 6
-areaConversionFromComboBox.addItem('Square Mile (mi²)')                                             # 7
-areaConversionFromComboBox.addItem('Acre (ac)')                                                     # 8
-areaConversionFromComboBox.addItem('Hectare (ha)')                                                  # 9
+areaConversionFromComboBox.addItem('Square Metre (m²)')                                                             # 0
+areaConversionFromComboBox.addItem('Square Decimetre (dm²)')                                                        # 1
+areaConversionFromComboBox.addItem('Square Centimetre (cm²)')                                                       # 2
+areaConversionFromComboBox.addItem('Square Millimetre (mm²)')                                                       # 3
+areaConversionFromComboBox.addItem('Square Kilometre (km²)')                                                        # 4
+areaConversionFromComboBox.addItem('Square Inch (in²)')                                                             # 5
+areaConversionFromComboBox.addItem('Square Foot (ft²)')                                                             # 6
+areaConversionFromComboBox.addItem('Square Mile (mi²)')                                                             # 7
+areaConversionFromComboBox.addItem('Acre (ac)')                                                                     # 8
+areaConversionFromComboBox.addItem('Hectare (ha)')                                                                  # 9
 # Input Field
 areaConversionInputField = QLineEdit(areaConversionWidget)
 areaConversionInputField.setPlaceholderText('Input')
@@ -2030,16 +2022,16 @@ areaConversionToComboBox.setFixedSize(480, 60)
 areaConversionToComboBox.move(30, 360)
 areaConversionToComboBox.setFont(comboBoxFont)
 areaConversionToComboBox.setStyleSheet('padding-left: 10px')
-areaConversionToComboBox.addItem('Square Metre (m²)')                                               # 0
-areaConversionToComboBox.addItem('Square Decimetre (dm²)')                                          # 1
-areaConversionToComboBox.addItem('Square Centimetre (cm²)')                                         # 2
-areaConversionToComboBox.addItem('Square Millimetre (mm²)')                                         # 3
-areaConversionToComboBox.addItem('Square Kilometre (km²)')                                          # 4
-areaConversionToComboBox.addItem('Square Inch (in²)')                                               # 5
-areaConversionToComboBox.addItem('Square Foot (ft²)')                                               # 6
-areaConversionToComboBox.addItem('Square Mile (mi²)')                                               # 7
-areaConversionToComboBox.addItem('Acre (ac)')                                                       # 8
-areaConversionToComboBox.addItem('Hectare (ha)')                                                    # 9
+areaConversionToComboBox.addItem('Square Metre (m²)')                                                               # 0
+areaConversionToComboBox.addItem('Square Decimetre (dm²)')                                                          # 1
+areaConversionToComboBox.addItem('Square Centimetre (cm²)')                                                         # 2
+areaConversionToComboBox.addItem('Square Millimetre (mm²)')                                                         # 3
+areaConversionToComboBox.addItem('Square Kilometre (km²)')                                                          # 4
+areaConversionToComboBox.addItem('Square Inch (in²)')                                                               # 5
+areaConversionToComboBox.addItem('Square Foot (ft²)')                                                               # 6
+areaConversionToComboBox.addItem('Square Mile (mi²)')                                                               # 7
+areaConversionToComboBox.addItem('Acre (ac)')                                                                       # 8
+areaConversionToComboBox.addItem('Hectare (ha)')                                                                    # 9
 # Output Field
 areaConversionOutputField = QLineEdit(areaConversionWidget)
 areaConversionOutputField.setFixedSize(480, 60)
@@ -2286,16 +2278,16 @@ volumeConversionFromComboBox.setFixedSize(480, 60)
 volumeConversionFromComboBox.move(30, 210)
 volumeConversionFromComboBox.setFont(comboBoxFont)
 volumeConversionFromComboBox.setStyleSheet('padding-left: 10px')
-volumeConversionFromComboBox.addItem('Cubic Metre (m³)')                                            # 0
-volumeConversionFromComboBox.addItem('Cubic Decimetre (dm³)')                                       # 1
-volumeConversionFromComboBox.addItem('Cubic Centimetre (cm³)')                                      # 2
-volumeConversionFromComboBox.addItem('Cubic Millimetre (mm³)')                                      # 3
-volumeConversionFromComboBox.addItem('Litre (L)')                                                   # 4
-volumeConversionFromComboBox.addItem('Millilitre (mL)')                                             # 5
-volumeConversionFromComboBox.addItem('Cubic Inch (in³)')                                            # 6
-volumeConversionFromComboBox.addItem('Cubic Foot (ft³)')                                            # 7
-volumeConversionFromComboBox.addItem('Fluid Ounce (fl. oz)')                                        # 8
-volumeConversionFromComboBox.addItem('Gallon (gal)')                                                # 9
+volumeConversionFromComboBox.addItem('Cubic Metre (m³)')                                                            # 0
+volumeConversionFromComboBox.addItem('Cubic Decimetre (dm³)')                                                       # 1
+volumeConversionFromComboBox.addItem('Cubic Centimetre (cm³)')                                                      # 2
+volumeConversionFromComboBox.addItem('Cubic Millimetre (mm³)')                                                      # 3
+volumeConversionFromComboBox.addItem('Litre (L)')                                                                   # 4
+volumeConversionFromComboBox.addItem('Millilitre (mL)')                                                             # 5
+volumeConversionFromComboBox.addItem('Cubic Inch (in³)')                                                            # 6
+volumeConversionFromComboBox.addItem('Cubic Foot (ft³)')                                                            # 7
+volumeConversionFromComboBox.addItem('Fluid Ounce (fl. oz)')                                                        # 8
+volumeConversionFromComboBox.addItem('Gallon (gal)')                                                                # 9
 # Input Field
 volumeConversionInputField = QLineEdit(volumeConversionWidget)
 volumeConversionInputField.setPlaceholderText('Input')
@@ -2310,16 +2302,16 @@ volumeConversionToComboBox.setFixedSize(480, 60)
 volumeConversionToComboBox.move(30, 360)
 volumeConversionToComboBox.setFont(comboBoxFont)
 volumeConversionToComboBox.setStyleSheet('padding-left: 10px')
-volumeConversionToComboBox.addItem('Cubic Metre (m³)')                                              # 0
-volumeConversionToComboBox.addItem('Cubic Decimetre (dm³)')                                         # 1
-volumeConversionToComboBox.addItem('Cubic Centimetre (cm³)')                                        # 2
-volumeConversionToComboBox.addItem('Cubic Millimetre (mm³)')                                        # 3
-volumeConversionToComboBox.addItem('Litre (L)')                                                     # 4
-volumeConversionToComboBox.addItem('Millilitre (mL)')                                               # 5
-volumeConversionToComboBox.addItem('Cubic Inch (in³)')                                              # 6
-volumeConversionToComboBox.addItem('Cubic Foot (ft³)')                                              # 7
-volumeConversionToComboBox.addItem('Fluid Ounce (fl. oz)')                                          # 8
-volumeConversionToComboBox.addItem('Gallon (gal)')                                                  # 9
+volumeConversionToComboBox.addItem('Cubic Metre (m³)')                                                              # 0
+volumeConversionToComboBox.addItem('Cubic Decimetre (dm³)')                                                         # 1
+volumeConversionToComboBox.addItem('Cubic Centimetre (cm³)')                                                        # 2
+volumeConversionToComboBox.addItem('Cubic Millimetre (mm³)')                                                        # 3
+volumeConversionToComboBox.addItem('Litre (L)')                                                                     # 4
+volumeConversionToComboBox.addItem('Millilitre (mL)')                                                               # 5
+volumeConversionToComboBox.addItem('Cubic Inch (in³)')                                                              # 6
+volumeConversionToComboBox.addItem('Cubic Foot (ft³)')                                                              # 7
+volumeConversionToComboBox.addItem('Fluid Ounce (fl. oz)')                                                          # 8
+volumeConversionToComboBox.addItem('Gallon (gal)')                                                                  # 9
 # Output Field
 volumeConversionOutputField = QLineEdit(volumeConversionWidget)
 volumeConversionOutputField.setFixedSize(480, 60)
@@ -2566,15 +2558,15 @@ weightConversionFromComboBox.setFixedSize(480, 60)
 weightConversionFromComboBox.move(30, 210)
 weightConversionFromComboBox.setFont(comboBoxFont)
 weightConversionFromComboBox.setStyleSheet('padding-left: 10px')
-weightConversionFromComboBox.addItem('Gram (g)')                                                    # 0
-weightConversionFromComboBox.addItem('Kilogram (kg)')                                               # 1
-weightConversionFromComboBox.addItem('Milligram (mg)')                                              # 2
-weightConversionFromComboBox.addItem('Tonne (t)')                                                   # 3
-weightConversionFromComboBox.addItem('Quintal (q)')                                                 # 4
-weightConversionFromComboBox.addItem('Carat (ct)')                                                  # 5
-weightConversionFromComboBox.addItem('Ounce (oz)')                                                  # 6
-weightConversionFromComboBox.addItem('Pound (lb)')                                                  # 7
-weightConversionFromComboBox.addItem('Stone (st)')                                                  # 8
+weightConversionFromComboBox.addItem('Gram (g)')                                                                    # 0
+weightConversionFromComboBox.addItem('Kilogram (kg)')                                                               # 1
+weightConversionFromComboBox.addItem('Milligram (mg)')                                                              # 2
+weightConversionFromComboBox.addItem('Tonne (t)')                                                                   # 3
+weightConversionFromComboBox.addItem('Quintal (q)')                                                                 # 4
+weightConversionFromComboBox.addItem('Carat (ct)')                                                                  # 5
+weightConversionFromComboBox.addItem('Ounce (oz)')                                                                  # 6
+weightConversionFromComboBox.addItem('Pound (lb)')                                                                  # 7
+weightConversionFromComboBox.addItem('Stone (st)')                                                                  # 8
 # Input Field
 weightConversionInputField = QLineEdit(weightConversionWidget)
 weightConversionInputField.setPlaceholderText('Input')
@@ -2589,15 +2581,15 @@ weightConversionToComboBox.setFixedSize(480, 60)
 weightConversionToComboBox.move(30, 360)
 weightConversionToComboBox.setFont(comboBoxFont)
 weightConversionToComboBox.setStyleSheet('padding-left: 10px')
-weightConversionToComboBox.addItem('Gram (g)')                                                      # 0
-weightConversionToComboBox.addItem('Kilogram (kg)')                                                 # 1
-weightConversionToComboBox.addItem('Milligram (mg)')                                                # 2
-weightConversionToComboBox.addItem('Tonne (t)')                                                     # 3
-weightConversionToComboBox.addItem('Quintal (q)')                                                   # 4
-weightConversionToComboBox.addItem('Carat (ct)')                                                    # 5
-weightConversionToComboBox.addItem('Ounce (oz)')                                                    # 6
-weightConversionToComboBox.addItem('Pound (lb)')                                                    # 7
-weightConversionToComboBox.addItem('Stone (st)')                                                    # 8
+weightConversionToComboBox.addItem('Gram (g)')                                                                      # 0
+weightConversionToComboBox.addItem('Kilogram (kg)')                                                                 # 1
+weightConversionToComboBox.addItem('Milligram (mg)')                                                                # 2
+weightConversionToComboBox.addItem('Tonne (t)')                                                                     # 3
+weightConversionToComboBox.addItem('Quintal (q)')                                                                   # 4
+weightConversionToComboBox.addItem('Carat (ct)')                                                                    # 5
+weightConversionToComboBox.addItem('Ounce (oz)')                                                                    # 6
+weightConversionToComboBox.addItem('Pound (lb)')                                                                    # 7
+weightConversionToComboBox.addItem('Stone (st)')                                                                    # 8
 # Output Field
 weightConversionOutputField = QLineEdit(weightConversionWidget)
 weightConversionOutputField.setFixedSize(480, 60)
@@ -2844,10 +2836,10 @@ temperatureConversionFromComboBox.setFixedSize(480, 60)
 temperatureConversionFromComboBox.move(30, 210)
 temperatureConversionFromComboBox.setFont(comboBoxFont)
 temperatureConversionFromComboBox.setStyleSheet('padding-left: 10px')
-temperatureConversionFromComboBox.addItem('Celsius (°C)')                                           # 0
-temperatureConversionFromComboBox.addItem('Fahrenheit (°F)')                                        # 1
-temperatureConversionFromComboBox.addItem('Kelvin (K)')                                             # 2
-temperatureConversionFromComboBox.addItem('Rankine (°Ra)')                                          # 3
+temperatureConversionFromComboBox.addItem('Celsius (°C)')                                                           # 0
+temperatureConversionFromComboBox.addItem('Fahrenheit (°F)')                                                        # 1
+temperatureConversionFromComboBox.addItem('Kelvin (K)')                                                             # 2
+temperatureConversionFromComboBox.addItem('Rankine (°Ra)')                                                          # 3
 # Input Field
 temperatureConversionInputField = QLineEdit(temperatureConversionWidget)
 temperatureConversionInputField.setPlaceholderText('Input')
@@ -2862,10 +2854,10 @@ temperatureConversionToComboBox.setFixedSize(480, 60)
 temperatureConversionToComboBox.move(30, 360)
 temperatureConversionToComboBox.setFont(comboBoxFont)
 temperatureConversionToComboBox.setStyleSheet('padding-left: 10px')
-temperatureConversionToComboBox.addItem('Celsius (°C))')                                            # 0
-temperatureConversionToComboBox.addItem('Fahrenheit (°F)')                                          # 1
-temperatureConversionToComboBox.addItem('Kelvin (K)')                                               # 2
-temperatureConversionToComboBox.addItem('Rankine (°Ra)')                                            # 3
+temperatureConversionToComboBox.addItem('Celsius (°C))')                                                            # 0
+temperatureConversionToComboBox.addItem('Fahrenheit (°F)')                                                          # 1
+temperatureConversionToComboBox.addItem('Kelvin (K)')                                                               # 2
+temperatureConversionToComboBox.addItem('Rankine (°Ra)')                                                            # 3
 # Output Field
 temperatureConversionOutputField = QLineEdit(temperatureConversionWidget)
 temperatureConversionOutputField.setFixedSize(480, 60)
@@ -3197,11 +3189,11 @@ speedConversionFromComboBox.setFixedSize(480, 60)
 speedConversionFromComboBox.move(30, 210)
 speedConversionFromComboBox.setFont(comboBoxFont)
 speedConversionFromComboBox.setStyleSheet('padding-left: 10px')
-speedConversionFromComboBox.addItem('Metres per second (m/s)')                                      # 0
-speedConversionFromComboBox.addItem('Kilometres per hour (km/h)')                                   # 1
-speedConversionFromComboBox.addItem('Miles per hour (mph)')                                         # 2
-speedConversionFromComboBox.addItem('Mach (Ma)')                                                    # 3
-speedConversionFromComboBox.addItem('Speed of Light (c)')                                           # 4
+speedConversionFromComboBox.addItem('Metres per second (m/s)')                                                      # 0
+speedConversionFromComboBox.addItem('Kilometres per hour (km/h)')                                                   # 1
+speedConversionFromComboBox.addItem('Miles per hour (mph)')                                                         # 2
+speedConversionFromComboBox.addItem('Mach (Ma)')                                                                    # 3
+speedConversionFromComboBox.addItem('Speed of Light (c)')                                                           # 4
 # Input Field
 speedConversionInputField = QLineEdit(speedConversionWidget)
 speedConversionInputField.setPlaceholderText('Input')
@@ -3216,11 +3208,11 @@ speedConversionToComboBox.setFixedSize(480, 60)
 speedConversionToComboBox.move(30, 360)
 speedConversionToComboBox.setFont(comboBoxFont)
 speedConversionToComboBox.setStyleSheet('padding-left: 10px')
-speedConversionToComboBox.addItem('Metres per second (m/s)')                                        # 0
-speedConversionToComboBox.addItem('Kilometres per hour (km/h)')                                     # 1
-speedConversionToComboBox.addItem('Miles per hour (mph)')                                           # 2
-speedConversionToComboBox.addItem('Mach (Ma)')                                                      # 3
-speedConversionToComboBox.addItem('Speed of Light (c)')                                             # 4
+speedConversionToComboBox.addItem('Metres per second (m/s)')                                                        # 0
+speedConversionToComboBox.addItem('Kilometres per hour (km/h)')                                                     # 1
+speedConversionToComboBox.addItem('Miles per hour (mph)')                                                           # 2
+speedConversionToComboBox.addItem('Mach (Ma)')                                                                      # 3
+speedConversionToComboBox.addItem('Speed of Light (c)')                                                             # 4
 # Output Field
 speedConversionOutputField = QLineEdit(speedConversionWidget)
 speedConversionOutputField.setFixedSize(480, 60)
@@ -3467,13 +3459,13 @@ pressureConversionFromComboBox.setFixedSize(480, 60)
 pressureConversionFromComboBox.move(30, 210)
 pressureConversionFromComboBox.setFont(comboBoxFont)
 pressureConversionFromComboBox.setStyleSheet('padding-left: 10px')
-pressureConversionFromComboBox.addItem('Atmosphere (atm)')                                          # 0
-pressureConversionFromComboBox.addItem('Bar (Bar)')                                                 # 1
-pressureConversionFromComboBox.addItem('Millibar (mBar)')                                           # 2
-pressureConversionFromComboBox.addItem('Pounds per square inch (psi)')                              # 3
-pressureConversionFromComboBox.addItem('Newtons per square metre (N/m²)')                           # 4
-pressureConversionFromComboBox.addItem('Millimetres of H₂O [Water] (mmH₂O)')                        # 5
-pressureConversionFromComboBox.addItem('Millimetres of Hg [Mercury] (mmHg)')                        # 6
+pressureConversionFromComboBox.addItem('Atmosphere (atm)')                                                          # 0
+pressureConversionFromComboBox.addItem('Bar (Bar)')                                                                 # 1
+pressureConversionFromComboBox.addItem('Millibar (mBar)')                                                           # 2
+pressureConversionFromComboBox.addItem('Pounds per square inch (psi)')                                              # 3
+pressureConversionFromComboBox.addItem('Pascal (Pa) / Newtons per square metre (N/m²)')                             # 4
+pressureConversionFromComboBox.addItem('Millimetres of H₂O [Water] (mmH₂O)')                                        # 5
+pressureConversionFromComboBox.addItem('Millimetres of Hg [Mercury] (mmHg)')                                        # 6
 # Input Field
 pressureConversionInputField = QLineEdit(pressureConversionWidget)
 pressureConversionInputField.setPlaceholderText('Input')
@@ -3488,13 +3480,13 @@ pressureConversionToComboBox.setFixedSize(480, 60)
 pressureConversionToComboBox.move(30, 360)
 pressureConversionToComboBox.setFont(comboBoxFont)
 pressureConversionToComboBox.setStyleSheet('padding-left: 10px')
-pressureConversionToComboBox.addItem('Atmosphere (atm)')                                            # 0
-pressureConversionToComboBox.addItem('Bar (Bar)')                                                   # 1
-pressureConversionToComboBox.addItem('Millibar (mBar)')                                             # 2
-pressureConversionToComboBox.addItem('Pounds per square inch (psi)')                                # 3
-pressureConversionToComboBox.addItem('Newtons per square metre (N/m²)')                             # 4
-pressureConversionToComboBox.addItem('Millimetres of H₂O [Water] (mmH₂O)')                          # 5
-pressureConversionToComboBox.addItem('Millimetres of Hg [Mercury] (mmHg)')                          # 6
+pressureConversionToComboBox.addItem('Atmosphere (atm)')                                                            # 0
+pressureConversionToComboBox.addItem('Bar (Bar)')                                                                   # 1
+pressureConversionToComboBox.addItem('Millibar (mBar)')                                                             # 2
+pressureConversionToComboBox.addItem('Pounds per square inch (psi)')                                                # 3
+pressureConversionToComboBox.addItem('Pascal (Pa) / Newtons per square metre (N/m²)')                               # 4
+pressureConversionToComboBox.addItem('Millimetres of H₂O [Water] (mmH₂O)')                                          # 5
+pressureConversionToComboBox.addItem('Millimetres of Hg [Mercury] (mmHg)')                                          # 6
 # Output Field
 pressureConversionOutputField = QLineEdit(pressureConversionWidget)
 pressureConversionOutputField.setFixedSize(480, 60)
@@ -3741,14 +3733,10 @@ powerConversionFromComboBox.setFixedSize(480, 60)
 powerConversionFromComboBox.move(30, 210)
 powerConversionFromComboBox.setFont(comboBoxFont)
 powerConversionFromComboBox.setStyleSheet('padding-left: 10px')
-powerConversionFromComboBox.addItem('Watt (W)')                                                     # 0
-powerConversionFromComboBox.addItem('Newton-metres per second (N∙m/s)')                             # 1
-powerConversionFromComboBox.addItem('Kilogram-metres per second (kg∙m/s)')                          # 2
-powerConversionFromComboBox.addItem('Joules per second (J/s)')                                      # 3
-powerConversionFromComboBox.addItem('Foot-pounds per second (ft∙lb/s)')                             # 4
-powerConversionFromComboBox.addItem('Kilocalories per second (kcal/s)')                             # 5
-powerConversionFromComboBox.addItem('Horsepower (HP)')                                              # 6
-powerConversionFromComboBox.addItem('British Thermal Units per second (BTU/s)')                     # 7
+powerConversionFromComboBox.addItem('Watt (W) | Joules per second (J/s) | Newton-metres per second (N∙m/s)')        # 0
+powerConversionFromComboBox.addItem('Foot-pounds per second (ft∙lb/s)')                                             # 1
+powerConversionFromComboBox.addItem('Kilocalories per second (kcal/s)')                                             # 2
+powerConversionFromComboBox.addItem('Horsepower (HP)')                                                              # 3
 # Input Field
 powerConversionInputField = QLineEdit(powerConversionWidget)
 powerConversionInputField.setPlaceholderText('Input')
@@ -3763,14 +3751,10 @@ powerConversionToComboBox.setFixedSize(480, 60)
 powerConversionToComboBox.move(30, 360)
 powerConversionToComboBox.setFont(comboBoxFont)
 powerConversionToComboBox.setStyleSheet('padding-left: 10px')
-powerConversionToComboBox.addItem('Watt (W)')                                                       # 0
-powerConversionToComboBox.addItem('Newton-metres per second (N∙m/s)')                               # 1
-powerConversionToComboBox.addItem('Kilogram-metres per second (kg∙m/s)')                            # 2
-powerConversionToComboBox.addItem('Joules per second (J/s)')                                        # 3
-powerConversionToComboBox.addItem('Foot-pounds per second (ft∙lb/s)')                               # 4
-powerConversionToComboBox.addItem('Kilocalories per second (kcal/s)')                               # 5
-powerConversionToComboBox.addItem('Horsepower (HP)')                                                # 6
-powerConversionToComboBox.addItem('British Thermal Units per second (BTU/s)')                       # 7
+powerConversionToComboBox.addItem('Watt (W) | Joules per second (J/s) | Newton-metres per second (N∙m/s)')          # 0
+powerConversionToComboBox.addItem('Foot-pounds per second (ft∙lb/s)')                                               # 1
+powerConversionToComboBox.addItem('Kilocalories per second (kcal/s)')                                               # 2
+powerConversionToComboBox.addItem('Horsepower (HP)')                                                                # 3
 # Output Field
 powerConversionOutputField = QLineEdit(powerConversionWidget)
 powerConversionOutputField.setFixedSize(480, 60)
