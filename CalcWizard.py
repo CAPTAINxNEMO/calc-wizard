@@ -1,11 +1,20 @@
 # GUI
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QWidget, QLabel, QLineEdit, QPushButton, QComboBox, QMessageBox, QInputDialog
-from PyQt6.QtGui import QFont
+from PyQt6.QtGui import QIcon, QFont
 from PyQt6.QtCore import Qt
 # Mathematical Functions
 from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log2, log10
 # For API request
 import requests
+# Icon Check
+import sys
+import os
+
+if getattr(sys, 'frozen', False):
+    baseDir = sys._MEIPASS
+else:
+    baseDir = os.path.dirname(os.path.abspath(__file__))
+iconPath = os.path.join(baseDir, 'CalcWizard (Icon).ico')
 
 API_KEY = ''
 calculatorInput = ''
@@ -156,6 +165,7 @@ window = QMainWindow()
 window.setWindowTitle('CalcWizard')
 window.setGeometry(660, 60, 600, 960)
 window.setFixedSize(600, 960)
+window.setWindowIcon(QIcon(iconPath))
 
 # Font Attributes
 # Main Label Font
@@ -219,6 +229,16 @@ comboBoxFont = QFont()
 comboBoxFont.setPixelSize(13)
 comboBoxFont.setBold(True)
 comboBoxFont.setItalic(True)
+
+# Pop-ups
+# Error Message
+errorMessageBox = QMessageBox()
+errorMessageBox.setWindowIcon(QIcon(iconPath))
+# API Key Dialog Box
+apiDialogBox = QInputDialog()
+apiDialogBox.setWindowTitle('API Key Input')
+apiDialogBox.setWindowIcon(QIcon(iconPath))
+apiDialogBox.setLabelText('Enter your API Key (ExchangeRate-API)')
 
 # QStackedWidget Instance
 stackedWidget = QStackedWidget(window)
@@ -890,7 +910,7 @@ def calculatorResult():
     except Exception as err:
         errorMessage = str(err)
         errorMessage = errorMessage.replace('(<string>, line 1)', '')
-        QMessageBox.critical(calculatorWidget, 'Error', f'An error occurred: {errorMessage}\nScript: {calculatorInput}')
+        errorMessageBox.critical(calculatorWidget, 'Error', f'An error occurred: {errorMessage}\nScript: {calculatorInput}')
 calculatorResultButton.clicked.connect(calculatorResult)
 
 # Conversions Page
@@ -1446,7 +1466,8 @@ def currencyConversionPaste():
             currencyConversionInputField.setText(currencyConversionInputField.text().replace('.', ''))
             currencyConversionInput = currencyConversionInput.replace('.', '')
         if API_KEY == '':
-            API_KEY, ok = QInputDialog.getText(None, 'API Key Input', 'Enter your API Key (ExchangeRate-API)')
+            ok = apiDialogBox.exec()
+            API_KEY = apiDialogBox.textValue()
             if ok:
                 currencyConversionFrom = currencyConversionFromComboBox.currentText()
                 currencyConversionFrom = currencyConversionFrom[:3]
@@ -1460,7 +1481,7 @@ def currencyConversionPaste():
                 else:
                     API_KEY = ''
                     errorMessage = str(data["error-type"])
-                    QMessageBox.critical(currencyConversionWidget, 'Error', f'An error occurred: {errorMessage}')
+                    errorMessageBox.critical(currencyConversionWidget, 'Error', f'An error occurred: {errorMessage}')
         else:
             currencyConversionFrom = currencyConversionFromComboBox.currentText()
             currencyConversionFrom = currencyConversionFrom[:3]
@@ -1647,7 +1668,8 @@ def currencyConversionResult():
             currencyConversionInputField.setText(currencyConversionInputField.text().replace('.', ''))
             currencyConversionInput = currencyConversionInput.replace('.', '')
         if API_KEY == '':
-            API_KEY, ok = QInputDialog.getText(None, 'API Key Input', 'Enter your API Key (ExchangeRate-API)')
+            ok = apiDialogBox.exec()
+            API_KEY = apiDialogBox.textValue()
             if ok:
                 currencyConversionFrom = currencyConversionFromComboBox.currentText()
                 currencyConversionFrom = currencyConversionFrom[:3]
@@ -1661,7 +1683,7 @@ def currencyConversionResult():
                 else:
                     API_KEY = ''
                     errorMessage = str(data["error-type"])
-                    QMessageBox.critical(currencyConversionWidget, 'Error', f'An error occurred: {errorMessage}')
+                    errorMessageBox.critical(currencyConversionWidget, 'Error', f'An error occurred: {errorMessage}')
         else:
             currencyConversionFrom = currencyConversionFromComboBox.currentText()
             currencyConversionFrom = currencyConversionFrom[:3]
