@@ -55,6 +55,8 @@ CalcWizard uses ExchangeRate-API for live currency conversion. To use this featu
 3. The app attempts to save the key to your system environment for future use.
 If saving fails, the key must be entered each time.
 
+NOTE: You can set the environment variable manually by creating the variable `CW_CURRENCY_API_KEY` and assigning your API Key as the value. This value can later be edited.
+
 ---
 
 ## 📄 License
