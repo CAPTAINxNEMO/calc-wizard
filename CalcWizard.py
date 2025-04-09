@@ -5,18 +5,20 @@ from PyQt6.QtCore import Qt
 # Mathematical Functions
 from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log2, log10
 # For API request
-import requests
+from qtpy import API
+from requests import get
 # Icon Check
 import sys
-import os
+from os.path import dirname, abspath, join
+# API Key Check
+from os import environ
 
 if getattr(sys, 'frozen', False):
-    baseDir = sys._MEIPASS
+    baseDir = sys._MEIPASS # type: ignore
 else:
-    baseDir = os.path.dirname(os.path.abspath(__file__))
-iconPath = os.path.join(baseDir, 'CalcWizard (Icon).ico')
+    baseDir = dirname(abspath(__file__))
+iconPath = join(baseDir, 'CalcWizard (Icon).ico')
 
-API_KEY = ''
 calculatorInput = ''
 currencyConversionInput = ''
 lengthConversionInput = ''
@@ -27,6 +29,23 @@ temperatureConversionInput = ''
 speedConversionInput = ''
 pressureConversionInput = ''
 powerConversionInput = ''
+
+API_KEY = environ.get('CW_CURRENCY_API_KEY')
+
+def saveAPI(key):
+    global API_KEY
+    API_KEY = key
+    environ['CW_CURRENCY_API_KEY'] = key
+    try:
+        from subprocess import run
+        run(['setx', 'CW_CURRENCY_API_KEY', key], check = False, capture_output = True)
+    except Exception as e:
+        warningMessageBox = QMessageBox()
+        warningMessageBox.setWindowIcon(QIcon(iconPath))
+        warningMessageBox.setIcon(QMessageBox.Icon.Warning)
+        warningMessageBox.setWindowTitle('Warning')
+        warningMessageBox.setText(f'Could not save API key to system environment: {e}')
+        warningMessageBox.exec()
 
 lengthConversionFactors = {
     # Metre (m)
@@ -500,12 +519,6 @@ def calculatorClear():
             calculatorInput = calculatorInput.replace('tan(', '')
         elif calculatorInputField.text().endswith('sin⁻¹('):
             calculatorInputField.setText(calculatorInputField.text().replace('sin⁻¹(', ''))
-            calculatorInput = calculatorInput.replace('asin(', '')
-        elif calculatorInputField.text().endswith('cos⁻¹('):
-            calculatorInputField.setText(calculatorInputField.text().replace('cos⁻¹(', ''))
-            calculatorInput = calculatorInput.replace('acos(', '')
-        elif calculatorInputField.text().endswith('tan⁻¹('):
-            calculatorInputField.setText(calculatorInputField.text().replace('tan⁻¹(', ''))
             calculatorInput = calculatorInput.replace('atan(', '')
         elif calculatorInputField.text().endswith('log⏨('):
             calculatorInputField.setText(calculatorInputField.text().replace('log⏨(', ''))
@@ -918,13 +931,13 @@ calculatorResultButton.clicked.connect(calculatorResult)
 conversionsWidget = QWidget()
 stackedWidget.addWidget(conversionsWidget)
 # Switch to Calculator Button
-switchToCalculatorButton = QPushButton('⇄', conversionsWidget)
-switchToCalculatorButton.setFixedSize(60, 60)
-switchToCalculatorButton.move(510, 30)
-switchToCalculatorButton.setFont(mainLabelFont)
-def switchToCalculator():
+conversionsSwitchToCalculatorButton = QPushButton('⇄', conversionsWidget)
+conversionsSwitchToCalculatorButton.setFixedSize(60, 60)
+conversionsSwitchToCalculatorButton.move(510, 30)
+conversionsSwitchToCalculatorButton.setFont(mainLabelFont)
+def conversionsSwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
-switchToCalculatorButton.clicked.connect(switchToCalculator)
+conversionsSwitchToCalculatorButton.clicked.connect(conversionsSwitchToCalculator)
 # Conversions Page Main Label
 conversionsLabel = QLabel('CONVERSIONS', conversionsWidget)
 conversionsLabel.setFixedSize(540, 60)
@@ -1078,21 +1091,21 @@ noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 currencyConversionWidget = QWidget()
 stackedWidget.addWidget(currencyConversionWidget)
 # Back Button
-backButton = QPushButton('←', currencyConversionWidget)
-backButton.setFixedSize(60, 60)
-backButton.move(30, 30)
-backButton.setFont(mainLabelFont)
-def back():
+currencyBackButton = QPushButton('←', currencyConversionWidget)
+currencyBackButton.setFixedSize(60, 60)
+currencyBackButton.move(30, 30)
+currencyBackButton.setFont(mainLabelFont)
+def currencyBack():
     stackedWidget.setCurrentWidget(conversionsWidget)
-backButton.clicked.connect(back)
+currencyBackButton.clicked.connect(currencyBack)
 # Switch to Calculator Button
-switchToCalculatorButton = QPushButton('⇄', currencyConversionWidget)
-switchToCalculatorButton.setFixedSize(60, 60)
-switchToCalculatorButton.move(510, 30)
-switchToCalculatorButton.setFont(mainLabelFont)
-def switchToCalculator():
+currencySwitchToCalculatorButton = QPushButton('⇄', currencyConversionWidget)
+currencySwitchToCalculatorButton.setFixedSize(60, 60)
+currencySwitchToCalculatorButton.move(510, 30)
+currencySwitchToCalculatorButton.setFont(mainLabelFont)
+def currencySwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
-switchToCalculatorButton.clicked.connect(switchToCalculator)
+currencySwitchToCalculatorButton.clicked.connect(currencySwitchToCalculator)
 # Currency Conversion Page Main Label
 currencyConversionLabel = QLabel('Currency Conversion', currencyConversionWidget)
 currencyConversionLabel.setFixedSize(540, 60)
@@ -1465,7 +1478,7 @@ def currencyConversionPaste():
         if currencyConversionInputField.text().endswith('.'):
             currencyConversionInputField.setText(currencyConversionInputField.text().replace('.', ''))
             currencyConversionInput = currencyConversionInput.replace('.', '')
-        if API_KEY == '':
+        if API_KEY is None:
             ok = apiDialogBox.exec()
             API_KEY = apiDialogBox.textValue()
             if ok:
@@ -1474,21 +1487,25 @@ def currencyConversionPaste():
                 currencyConversionTo = currencyConversionToComboBox.currentText()
                 currencyConversionTo = currencyConversionTo[:3]
                 url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
-                response = requests.get(url)
-                data = response.json()
-                if data["result"] != "error":
-                    currencyConversionOutputField.setText(str(data["conversion_result"]))
-                else:
-                    API_KEY = ''
-                    errorMessage = str(data["error-type"])
-                    errorMessageBox.critical(currencyConversionWidget, 'Error', f'An error occurred: {errorMessage}')
+                try:
+                    response = get(url)
+                    data = response.json()
+                    if "result" in data and data["result"] != "error":
+                        saveAPI(API_KEY)
+                        currencyConversionOutputField.setText(str(data["conversion_result"]))
+                    else:
+                        error_message = data.get("error-type", "Unknown error")
+                        API_KEY = ''
+                        errorMessageBox.critical(currencyConversionWidget, 'Error', f'An error occurred: {error_message}')
+                except Exception as e:
+                    errorMessageBox.critical(currencyConversionWidget, 'Error', f'Connection error: {str(e)}')
         else:
             currencyConversionFrom = currencyConversionFromComboBox.currentText()
             currencyConversionFrom = currencyConversionFrom[:3]
             currencyConversionTo = currencyConversionToComboBox.currentText()
             currencyConversionTo = currencyConversionTo[:3]
             url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
-            response = requests.get(url)
+            response = get(url)
             data = response.json()
             currencyConversionOutputField.setText(str(data["conversion_result"]))
 currencyConversionPasteButton.clicked.connect(currencyConversionPaste)
@@ -1667,7 +1684,7 @@ def currencyConversionResult():
         if currencyConversionInputField.text().endswith('.'):
             currencyConversionInputField.setText(currencyConversionInputField.text().replace('.', ''))
             currencyConversionInput = currencyConversionInput.replace('.', '')
-        if API_KEY == '':
+        if API_KEY == None:
             ok = apiDialogBox.exec()
             API_KEY = apiDialogBox.textValue()
             if ok:
@@ -1676,21 +1693,25 @@ def currencyConversionResult():
                 currencyConversionTo = currencyConversionToComboBox.currentText()
                 currencyConversionTo = currencyConversionTo[:3]
                 url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
-                response = requests.get(url)
-                data = response.json()
-                if data["result"] != "error":
-                    currencyConversionOutputField.setText(str(data["conversion_result"]))
-                else:
-                    API_KEY = ''
-                    errorMessage = str(data["error-type"])
-                    errorMessageBox.critical(currencyConversionWidget, 'Error', f'An error occurred: {errorMessage}')
+                try:
+                    response = get(url)
+                    data = response.json()
+                    if "result" in data and data["result"] != "error":
+                        saveAPI(API_KEY)
+                        currencyConversionOutputField.setText(str(data["conversion_result"]))
+                    else:
+                        error_message = data.get("error-type", "Unknown error")
+                        API_KEY = ''
+                        errorMessageBox.critical(currencyConversionWidget, 'Error', f'An error occurred: {error_message}')
+                except Exception as e:
+                    errorMessageBox.critical(currencyConversionWidget, 'Error', f'Connection error: {str(e)}')
         else:
             currencyConversionFrom = currencyConversionFromComboBox.currentText()
             currencyConversionFrom = currencyConversionFrom[:3]
             currencyConversionTo = currencyConversionToComboBox.currentText()
             currencyConversionTo = currencyConversionTo[:3]
             url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{currencyConversionFrom}/{currencyConversionTo}/{currencyConversionInput}'
-            response = requests.get(url)
+            response = get(url)
             data = response.json()
             currencyConversionOutputField.setText(str(data["conversion_result"]))
 currencyConversionResultButton.clicked.connect(currencyConversionResult)
@@ -1706,21 +1727,21 @@ noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 lengthConversionWidget = QWidget()
 stackedWidget.addWidget(lengthConversionWidget)
 # Back Button
-backButton = QPushButton('←', lengthConversionWidget)
-backButton.setFixedSize(60, 60)
-backButton.move(30, 30)
-backButton.setFont(mainLabelFont)
-def back():
+lengthBackButton = QPushButton('←', lengthConversionWidget)
+lengthBackButton.setFixedSize(60, 60)
+lengthBackButton.move(30, 30)
+lengthBackButton.setFont(mainLabelFont)
+def lengthBack():
     stackedWidget.setCurrentWidget(conversionsWidget)
-backButton.clicked.connect(back)
+lengthBackButton.clicked.connect(lengthBack)
 # Switch to Calculator Button
-switchToCalculatorButton = QPushButton('⇄', lengthConversionWidget)
-switchToCalculatorButton.setFixedSize(60, 60)
-switchToCalculatorButton.move(510, 30)
-switchToCalculatorButton.setFont(mainLabelFont)
-def switchToCalculator():
+lengthSwitchToCalculatorButton = QPushButton('⇄', lengthConversionWidget)
+lengthSwitchToCalculatorButton.setFixedSize(60, 60)
+lengthSwitchToCalculatorButton.move(510, 30)
+lengthSwitchToCalculatorButton.setFont(mainLabelFont)
+def lengthSwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
-switchToCalculatorButton.clicked.connect(switchToCalculator)
+lengthSwitchToCalculatorButton.clicked.connect(lengthSwitchToCalculator)
 # Length Conversion Page Main Label
 lengthConversionLabel = QLabel('Length Conversion', lengthConversionWidget)
 lengthConversionLabel.setFixedSize(540, 60)
@@ -1992,21 +2013,21 @@ lengthConversionResultButton.clicked.connect(lengthConversionResult)
 areaConversionWidget = QWidget()
 stackedWidget.addWidget(areaConversionWidget)
 # Back Button
-backButton = QPushButton('←', areaConversionWidget)
-backButton.setFixedSize(60, 60)
-backButton.move(30, 30)
-backButton.setFont(mainLabelFont)
-def back():
+areaBackButton = QPushButton('←', areaConversionWidget)
+areaBackButton.setFixedSize(60, 60)
+areaBackButton.move(30, 30)
+areaBackButton.setFont(mainLabelFont)
+def areaBack():
     stackedWidget.setCurrentWidget(conversionsWidget)
-backButton.clicked.connect(back)
+areaBackButton.clicked.connect(areaBack)
 # Switch to Calculator Button
-switchToCalculatorButton = QPushButton('⇄', areaConversionWidget)
-switchToCalculatorButton.setFixedSize(60, 60)
-switchToCalculatorButton.move(510, 30)
-switchToCalculatorButton.setFont(mainLabelFont)
-def switchToCalculator():
+areaSwitchToCalculatorButton = QPushButton('⇄', areaConversionWidget)
+areaSwitchToCalculatorButton.setFixedSize(60, 60)
+areaSwitchToCalculatorButton.move(510, 30)
+areaSwitchToCalculatorButton.setFont(mainLabelFont)
+def areaSwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
-switchToCalculatorButton.clicked.connect(switchToCalculator)
+areaSwitchToCalculatorButton.clicked.connect(areaSwitchToCalculator)
 # Area Conversion Page Main Label
 areaConversionLabel = QLabel('Area Conversion', areaConversionWidget)
 areaConversionLabel.setFixedSize(540, 60)
@@ -2272,21 +2293,21 @@ areaConversionResultButton.clicked.connect(areaConversionResult)
 volumeConversionWidget = QWidget()
 stackedWidget.addWidget(volumeConversionWidget)
 # Back Button
-backButton = QPushButton('←', volumeConversionWidget)
-backButton.setFixedSize(60, 60)
-backButton.move(30, 30)
-backButton.setFont(mainLabelFont)
-def back():
+volumeBackButton = QPushButton('←', volumeConversionWidget)
+volumeBackButton.setFixedSize(60, 60)
+volumeBackButton.move(30, 30)
+volumeBackButton.setFont(mainLabelFont)
+def volumeBack():
     stackedWidget.setCurrentWidget(conversionsWidget)
-backButton.clicked.connect(back)
+volumeBackButton.clicked.connect(volumeBack)
 # Switch to Calculator Button
-switchToCalculatorButton = QPushButton('⇄', volumeConversionWidget)
-switchToCalculatorButton.setFixedSize(60, 60)
-switchToCalculatorButton.move(510, 30)
-switchToCalculatorButton.setFont(mainLabelFont)
-def switchToCalculator():
+volumeSwitchToCalculatorButton = QPushButton('⇄', volumeConversionWidget)
+volumeSwitchToCalculatorButton.setFixedSize(60, 60)
+volumeSwitchToCalculatorButton.move(510, 30)
+volumeSwitchToCalculatorButton.setFont(mainLabelFont)
+def volumeSwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
-switchToCalculatorButton.clicked.connect(switchToCalculator)
+volumeSwitchToCalculatorButton.clicked.connect(volumeSwitchToCalculator)
 # Volume Conversion Page Main Label
 volumeConversionLabel = QLabel('Volume Conversion', volumeConversionWidget)
 volumeConversionLabel.setFixedSize(540, 60)
@@ -2552,21 +2573,21 @@ volumeConversionResultButton.clicked.connect(volumeConversionResult)
 weightConversionWidget = QWidget()
 stackedWidget.addWidget(weightConversionWidget)
 # Back Button
-backButton = QPushButton('←', weightConversionWidget)
-backButton.setFixedSize(60, 60)
-backButton.move(30, 30)
-backButton.setFont(mainLabelFont)
-def back():
+weightBackButton = QPushButton('←', weightConversionWidget)
+weightBackButton.setFixedSize(60, 60)
+weightBackButton.move(30, 30)
+weightBackButton.setFont(mainLabelFont)
+def weightBack():
     stackedWidget.setCurrentWidget(conversionsWidget)
-backButton.clicked.connect(back)
+weightBackButton.clicked.connect(weightBack)
 # Switch to Calculator Button
-switchToCalculatorButton = QPushButton('⇄', weightConversionWidget)
-switchToCalculatorButton.setFixedSize(60, 60)
-switchToCalculatorButton.move(510, 30)
-switchToCalculatorButton.setFont(mainLabelFont)
-def switchToCalculator():
+weightSwitchToCalculatorButton = QPushButton('⇄', weightConversionWidget)
+weightSwitchToCalculatorButton.setFixedSize(60, 60)
+weightSwitchToCalculatorButton.move(510, 30)
+weightSwitchToCalculatorButton.setFont(mainLabelFont)
+def weightSwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
-switchToCalculatorButton.clicked.connect(switchToCalculator)
+weightSwitchToCalculatorButton.clicked.connect(weightSwitchToCalculator)
 # Weight Conversion Page Main Label
 weightConversionLabel = QLabel('Weight Conversion', weightConversionWidget)
 weightConversionLabel.setFixedSize(540, 60)
@@ -2830,21 +2851,21 @@ weightConversionResultButton.clicked.connect(weightConversionResult)
 temperatureConversionWidget = QWidget()
 stackedWidget.addWidget(temperatureConversionWidget)
 # Back Button
-backButton = QPushButton('←', temperatureConversionWidget)
-backButton.setFixedSize(60, 60)
-backButton.move(30, 30)
-backButton.setFont(mainLabelFont)
-def back():
+temperatureBackButton = QPushButton('←', temperatureConversionWidget)
+temperatureBackButton.setFixedSize(60, 60)
+temperatureBackButton.move(30, 30)
+temperatureBackButton.setFont(mainLabelFont)
+def temperatureBack():
     stackedWidget.setCurrentWidget(conversionsWidget)
-backButton.clicked.connect(back)
+temperatureBackButton.clicked.connect(temperatureBack)
 # Switch to Calculator Button
-switchToCalculatorButton = QPushButton('⇄', temperatureConversionWidget)
-switchToCalculatorButton.setFixedSize(60, 60)
-switchToCalculatorButton.move(510, 30)
-switchToCalculatorButton.setFont(mainLabelFont)
-def switchToCalculator():
+temperatureSwitchToCalculatorButton = QPushButton('⇄', temperatureConversionWidget)
+temperatureSwitchToCalculatorButton.setFixedSize(60, 60)
+temperatureSwitchToCalculatorButton.move(510, 30)
+temperatureSwitchToCalculatorButton.setFont(mainLabelFont)
+def temperatureSwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
-switchToCalculatorButton.clicked.connect(switchToCalculator)
+temperatureSwitchToCalculatorButton.clicked.connect(temperatureSwitchToCalculator)
 # Temperature Conversion Page Main Label
 temperatureConversionLabel = QLabel('Temperature Conversion', temperatureConversionWidget)
 temperatureConversionLabel.setFixedSize(540, 60)
@@ -3183,21 +3204,21 @@ temperatureConversionResultButton.clicked.connect(temperatureConversionResult)
 speedConversionWidget = QWidget()
 stackedWidget.addWidget(speedConversionWidget)
 # Back Button
-backButton = QPushButton('←', speedConversionWidget)
-backButton.setFixedSize(60, 60)
-backButton.move(30, 30)
-backButton.setFont(mainLabelFont)
-def back():
+speedBackButton = QPushButton('←', speedConversionWidget)
+speedBackButton.setFixedSize(60, 60)
+speedBackButton.move(30, 30)
+speedBackButton.setFont(mainLabelFont)
+def speedBack():
     stackedWidget.setCurrentWidget(conversionsWidget)
-backButton.clicked.connect(back)
+speedBackButton.clicked.connect(speedBack)
 # Switch to Calculator Button
-switchToCalculatorButton = QPushButton('⇄', speedConversionWidget)
-switchToCalculatorButton.setFixedSize(60, 60)
-switchToCalculatorButton.move(510, 30)
-switchToCalculatorButton.setFont(mainLabelFont)
-def switchToCalculator():
+speedSwitchToCalculatorButton = QPushButton('⇄', speedConversionWidget)
+speedSwitchToCalculatorButton.setFixedSize(60, 60)
+speedSwitchToCalculatorButton.move(510, 30)
+speedSwitchToCalculatorButton.setFont(mainLabelFont)
+def speedSwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
-switchToCalculatorButton.clicked.connect(switchToCalculator)
+speedSwitchToCalculatorButton.clicked.connect(speedSwitchToCalculator)
 # Speed Conversion Page Main Label
 speedConversionLabel = QLabel('Speed Conversion', speedConversionWidget)
 speedConversionLabel.setFixedSize(540, 60)
@@ -3453,21 +3474,21 @@ speedConversionResultButton.clicked.connect(speedConversionResult)
 pressureConversionWidget = QWidget()
 stackedWidget.addWidget(pressureConversionWidget)
 # Back Button
-backButton = QPushButton('←', pressureConversionWidget)
-backButton.setFixedSize(60, 60)
-backButton.move(30, 30)
-backButton.setFont(mainLabelFont)
-def back():
+pressureBackButton = QPushButton('←', pressureConversionWidget)
+pressureBackButton.setFixedSize(60, 60)
+pressureBackButton.move(30, 30)
+pressureBackButton.setFont(mainLabelFont)
+def pressureBack():
     stackedWidget.setCurrentWidget(conversionsWidget)
-backButton.clicked.connect(back)
+pressureBackButton.clicked.connect(pressureBack)
 # Switch to Calculator Button
-switchToCalculatorButton = QPushButton('⇄', pressureConversionWidget)
-switchToCalculatorButton.setFixedSize(60, 60)
-switchToCalculatorButton.move(510, 30)
-switchToCalculatorButton.setFont(mainLabelFont)
-def switchToCalculator():
+pressureSwitchToCalculatorButton = QPushButton('⇄', pressureConversionWidget)
+pressureSwitchToCalculatorButton.setFixedSize(60, 60)
+pressureSwitchToCalculatorButton.move(510, 30)
+pressureSwitchToCalculatorButton.setFont(mainLabelFont)
+def pressureSwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
-switchToCalculatorButton.clicked.connect(switchToCalculator)
+pressureSwitchToCalculatorButton.clicked.connect(pressureSwitchToCalculator)
 # Pressure Conversion Page Main Label
 pressureConversionLabel = QLabel('Pressure Conversion', pressureConversionWidget)
 pressureConversionLabel.setFixedSize(540, 60)
@@ -3727,21 +3748,21 @@ pressureConversionResultButton.clicked.connect(pressureConversionResult)
 powerConversionWidget = QWidget()
 stackedWidget.addWidget(powerConversionWidget)
 # Back Button
-backButton = QPushButton('←', powerConversionWidget)
-backButton.setFixedSize(60, 60)
-backButton.move(30, 30)
-backButton.setFont(mainLabelFont)
-def back():
+powerBackButton = QPushButton('←', powerConversionWidget)
+powerBackButton.setFixedSize(60, 60)
+powerBackButton.move(30, 30)
+powerBackButton.setFont(mainLabelFont)
+def powerBack():
     stackedWidget.setCurrentWidget(conversionsWidget)
-backButton.clicked.connect(back)
+powerBackButton.clicked.connect(powerBack)
 # Switch to Calculator Button
-switchToCalculatorButton = QPushButton('⇄', powerConversionWidget)
-switchToCalculatorButton.setFixedSize(60, 60)
-switchToCalculatorButton.move(510, 30)
-switchToCalculatorButton.setFont(mainLabelFont)
-def switchToCalculator():
+powerSwitchToCalculatorButton = QPushButton('⇄', powerConversionWidget)
+powerSwitchToCalculatorButton.setFixedSize(60, 60)
+powerSwitchToCalculatorButton.move(510, 30)
+powerSwitchToCalculatorButton.setFont(mainLabelFont)
+def powerSwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
-switchToCalculatorButton.clicked.connect(switchToCalculator)
+powerSwitchToCalculatorButton.clicked.connect(powerSwitchToCalculator)
 # Power Conversion Page Main Label
 powerConversionLabel = QLabel('Power Conversion', powerConversionWidget)
 powerConversionLabel.setFixedSize(540, 60)
