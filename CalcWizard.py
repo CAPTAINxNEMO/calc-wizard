@@ -39,12 +39,10 @@ def saveAPI(key):
         from subprocess import run
         run(['setx', 'CW_CURRENCY_API_KEY', key], check = False, capture_output = True)
     except Exception as e:
-        warningMessageBox = QMessageBox()
-        warningMessageBox.setWindowIcon(QIcon(iconPath))
-        warningMessageBox.setIcon(QMessageBox.Icon.Warning)
-        warningMessageBox.setWindowTitle('Warning')
-        warningMessageBox.setText(f'Could not save API key to system environment: {e}')
-        warningMessageBox.exec()
+        errorMessageBox.setIcon(QMessageBox.Icon.Warning)
+        errorMessageBox.setWindowTitle('Warning')
+        errorMessageBox.setText(f'Could not save API key to system environment: {e}')
+        errorMessageBox.exec()
 
 lengthConversionFactors = {
     # Metre (m)
@@ -360,116 +358,33 @@ def calculatorMode():
         eulerButton.setVisible(False)
 calculatorModeButton.clicked.connect(calculatorMode)
 # Number Pad
-# Nine [9]
-calculatorNineButton = QPushButton('9', calculatorWidget)
-calculatorNineButton.setFixedSize(90, 90)
-calculatorNineButton.move(300, 570)
-calculatorNineButton.setFont(numberPadFont)
-calculatorNineButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def calculatorNine():
+def createCalculatorDigitButtons(calculatorDigitsParent):
+    calculatorDigitButtons = {}
+    calculatorDigitPositions = {
+        '7': (120, 480), '8': (210, 480), '9': (300, 480),
+        '4': (120, 570), '5': (210, 570), '6': (300, 570),
+        '1': (120, 660), '2': (210, 660), '3': (300, 660),
+        '0': (210, 750)
+    }
+
+    for calculatorDigit, calculatorDigitPosition in calculatorDigitPositions.items():
+        calculatorDigitButton = QPushButton(calculatorDigit, calculatorDigitsParent)
+        calculatorDigitButton.setFixedSize(90, 90)
+        calculatorDigitButton.move(*calculatorDigitPosition)
+        calculatorDigitButton.setFont(numberPadFont)
+        calculatorDigitButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+
+        calculatorDigitButton.clicked.connect(
+            lambda checked = False,
+            calD = calculatorDigit: addCalculatorDigit(calD)
+        )
+        calculatorDigitButtons[calculatorDigit] = calculatorDigitButton
+    return calculatorDigitButtons
+def addCalculatorDigit(calculatorDigit):
     global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '9')
-    calculatorInput += '9'
-calculatorNineButton.clicked.connect(calculatorNine)
-# Eight [8]
-calculatorEightButton = QPushButton('8', calculatorWidget)
-calculatorEightButton.setFixedSize(90, 90)
-calculatorEightButton.move(210, 570)
-calculatorEightButton.setFont(numberPadFont)
-calculatorEightButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def calculatorEight():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '8')
-    calculatorInput += '8'
-calculatorEightButton.clicked.connect(calculatorEight)
-# Seven [7]
-calculatorSevenButton = QPushButton('7', calculatorWidget)
-calculatorSevenButton.setFixedSize(90, 90)
-calculatorSevenButton.move(120, 570)
-calculatorSevenButton.setFont(numberPadFont)
-calculatorSevenButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def calculatorSeven():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '7')
-    calculatorInput += '7'
-calculatorSevenButton.clicked.connect(calculatorSeven)
-# Six [6]
-calculatorSixButton = QPushButton('6', calculatorWidget)
-calculatorSixButton.setFixedSize(90, 90)
-calculatorSixButton.move(300, 660)
-calculatorSixButton.setFont(numberPadFont)
-calculatorSixButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def calculatorSix():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '6')
-    calculatorInput += '6'
-calculatorSixButton.clicked.connect(calculatorSix)
-# Five [5]
-calculatorFiveButton = QPushButton('5', calculatorWidget)
-calculatorFiveButton.setFixedSize(90, 90)
-calculatorFiveButton.move(210, 660)
-calculatorFiveButton.setFont(numberPadFont)
-calculatorFiveButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def calculatorFive():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '5')
-    calculatorInput += '5'
-calculatorFiveButton.clicked.connect(calculatorFive)
-# Four [4]
-calculatorFourButton = QPushButton('4', calculatorWidget)
-calculatorFourButton.setFixedSize(90, 90)
-calculatorFourButton.move(120, 660)
-calculatorFourButton.setFont(numberPadFont)
-calculatorFourButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def calculatorFour():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '4')
-    calculatorInput += '4'
-calculatorFourButton.clicked.connect(calculatorFour)
-# Three [3]
-calculatorThreeButton = QPushButton('3', calculatorWidget)
-calculatorThreeButton.setFixedSize(90, 90)
-calculatorThreeButton.move(300, 750)
-calculatorThreeButton.setFont(numberPadFont)
-calculatorThreeButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def calculatorThree():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '3')
-    calculatorInput += '3'
-calculatorThreeButton.clicked.connect(calculatorThree)
-# Two [2]
-calculatorTwoButton = QPushButton('2', calculatorWidget)
-calculatorTwoButton.setFixedSize(90, 90)
-calculatorTwoButton.move(210, 750)
-calculatorTwoButton.setFont(numberPadFont)
-calculatorTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def calculatorTwo():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '2')
-    calculatorInput += '2'
-calculatorTwoButton.clicked.connect(calculatorTwo)
-# One [1]
-calculatorOneButton = QPushButton('1', calculatorWidget)
-calculatorOneButton.setFixedSize(90, 90)
-calculatorOneButton.move(120, 750)
-calculatorOneButton.setFont(numberPadFont)
-calculatorOneButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def calculatorOne():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '1')
-    calculatorInput += '1'
-calculatorOneButton.clicked.connect(calculatorOne)
-# Zero [0]
-calculatorZeroButton = QPushButton('0', calculatorWidget)
-calculatorZeroButton.setFixedSize(90, 90)
-calculatorZeroButton.move(210, 840)
-calculatorZeroButton.setFont(numberPadFont)
-calculatorZeroButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-def calculatorZero():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '0')
-    calculatorInput += '0'
-calculatorZeroButton.clicked.connect(calculatorZero)
+    calculatorInputField.setText(calculatorInputField.text() + calculatorDigit)
+    calculatorInput += calculatorDigit
+calculatorDigits = createCalculatorDigitButtons(calculatorWidget)
 # Point [.]
 calculatorPointButton = QPushButton('.', calculatorWidget)
 calculatorPointButton.setFixedSize(90, 90)
@@ -549,67 +464,40 @@ def calculatorClear():
             calculatorInputField.setText(calculatorInputFieldText)
             calculatorInput = calculatorInput[:-1]
 calculatorClearButton.clicked.connect(calculatorClear)
-# Operators [+ | - | × | ÷]
-# Plus [+]
-plusButton = QPushButton('+', calculatorWidget)
-plusButton.setFixedSize(90, 90)
-plusButton.move(390, 660)
-plusButton.setFont(operatorButtonFont)
-plusButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
-def plus():
+# Operators [+ | - | × | ÷ | %]
+def createCalculatorOperationButtons(calculatorOperationsParent):
+    calculatorOperationButtons = {}
+    calculatorOperationFunctions = {
+        '+': '+', '-': '-',
+        '×': '*', '÷': '/',
+        '%': '/100'
+    }
+    calculatorOperationPositions = {
+        '+': (390, 660), '-': (480, 660),
+        '×': (390, 750), '÷': (480, 750),
+        '%': (30, 570)
+    }
+
+    for calculatorOperation, calculatorOperationPosition in calculatorOperationPositions.items():
+        calculatorOperationButton = QPushButton(calculatorOperation, calculatorOperationsParent)
+        calculatorOperationButton.setFixedSize(90, 90)
+        calculatorOperationButton.move(*calculatorOperationPosition)
+        calculatorOperationButton.setFont(numberPadFont)
+        calculatorOperationButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
+
+        calculatorOperationButton.clicked.connect(
+            lambda checked = False, displayOp = calculatorOperation,
+            functionOp = calculatorOperationFunctions[calculatorOperation]: addCalculatorOperation(displayOp, functionOp)
+        )
+        calculatorOperationButtons[calculatorOperation] = calculatorOperationButton
+    return calculatorOperationButtons
+def addCalculatorOperation(displayOperation, functionOperation):
     global calculatorInput
     if calculatorInputField.text():
-        calculatorInputField.setText(calculatorInputField.text() + '+')
-        calculatorInput += '+'
-plusButton.clicked.connect(plus)
-# Minus [-]
-minusButton = QPushButton('-', calculatorWidget)
-minusButton.setFixedSize(90, 90)
-minusButton.move(480, 660)
-minusButton.setFont(operatorButtonFont)
-minusButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
-def minus():
-    global calculatorInput
-    if calculatorInputField.text():
-        calculatorInputField.setText(calculatorInputField.text() + '-')
-        calculatorInput += '-'
-minusButton.clicked.connect(minus)
-# Multiply [×]
-multiplyButton = QPushButton('×', calculatorWidget)
-multiplyButton.setFixedSize(90, 90)
-multiplyButton.move(390, 750)
-multiplyButton.setFont(operatorButtonFont)
-multiplyButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
-def multiply():
-    global calculatorInput
-    if calculatorInputField.text():
-        calculatorInputField.setText(calculatorInputField.text() + '×')
-        calculatorInput += '*'
-multiplyButton.clicked.connect(multiply)
-# Divide [÷]
-divideButton = QPushButton('÷', calculatorWidget)
-divideButton.setFixedSize(90, 90)
-divideButton.move(480, 750)
-divideButton.setFont(operatorButtonFont)
-divideButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
-def divide():
-    global calculatorInput
-    if calculatorInputField.text():
-        calculatorInputField.setText(calculatorInputField.text() + '÷')
-        calculatorInput += '/'
-divideButton.clicked.connect(divide)
-# Percent [%]
-percentButton = QPushButton('%', calculatorWidget)
-percentButton.setFixedSize(90, 90)
-percentButton.move(30, 570)
-percentButton.setFont(operatorButtonFont)
-percentButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
-def percent():
-    global calculatorInput
-    if calculatorInputField.text():
-        calculatorInputField.setText(calculatorInputField.text() + '%')
-        calculatorInput += '/100'
-percentButton.clicked.connect(percent)
+        calculatorInputField.setText(calculatorInputField.text() + displayOperation)
+        calculatorInput += functionOperation
+calculatorOperations = createCalculatorOperationButtons(calculatorWidget)
+
 # Brackets
 # Open Bracket [(]
 openBracketButton = QPushButton('(', calculatorWidget)
