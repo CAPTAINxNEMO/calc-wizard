@@ -26,8 +26,8 @@
 - Python 3.10+
 - Packages:
 
-  ```
-  pip install PyQt6 qtpy requests
+  ```python
+  pip install PyQt6 requests
   ```
 
 ---
@@ -36,8 +36,8 @@
 
 - Run PyInstaller with the following command:
 
-  ```
-  pyinstaller --onefile --windowed --icon="CalcWizard (Icon).ico" --add-data="CalcWizard (Icon).ico;." CalcWizard.py
+  ```shell
+  pyinstaller --onefile --windowed --icon="CalcWizardIcon.ico" --add-data="CalcWizardIcon.ico;." CalcWizard.py
   ```
 
 - Explanation of flags:
@@ -46,15 +46,12 @@
   - `icon`: Embed the custom application icon.
   - `add-data`: Includes the icon file in the build and places it in the current directory (.) inside the executable.
 
-- The executable will be found in the `dist/` folder:
-
-  ```
-  dist/CalcWizard.exe
-  ```
+- The executable will be found in the `dist/` folder.
 
 ---
 
 ## 🌐 Currency API Key Setup
+
 CalcWizard uses ExchangeRate-API for live currency conversion. To use this feature:
 
 1. Get your free API key from [here](https://www.exchangerate-api.com).
@@ -67,4 +64,5 @@ NOTE: You can set the environment variable manually by creating the variable `CW
 ---
 
 ## 📄 License
+
 MIT License – feel free to use and modify as needed.
