@@ -17,7 +17,7 @@ if getattr(sys, 'frozen', False):
     baseDir = sys._MEIPASS # type: ignore
 else:
     baseDir = dirname(abspath(__file__))
-iconPath = join(baseDir, 'CalcWizard (Icon).ico')
+iconPath = join(baseDir, 'CalcWizardIcon.ico')
 
 calculatorInput = ''
 currencyConversionInput = ''
