@@ -24,7 +24,8 @@
 ### Requirements
 
 - Python 3.10+
-- Packages:  
+- Packages:
+
   ```
   pip install PyQt6 qtpy requests
   ```
@@ -34,15 +35,19 @@
 ## 🔧 Building Executable
 
 - Run PyInstaller with the following command:
+
   ```
   pyinstaller --onefile --windowed --icon="CalcWizard (Icon).ico" --add-data="CalcWizard (Icon).ico;." CalcWizard.py
   ```
+
 - Explanation of flags:
   - `onefile`: Bundle everything into a single executable.
   - `windowed`: Build the app without opening a terminal/console window.
   - `icon`: Embed the custom application icon.
   - `add-data`: Includes the icon file in the build and places it in the current directory (.) inside the executable.
+
 - The executable will be found in the `dist/` folder:
+
   ```
   dist/CalcWizard.exe
   ```
@@ -51,7 +56,8 @@
 
 ## 🌐 Currency API Key Setup
 CalcWizard uses ExchangeRate-API for live currency conversion. To use this feature:
-1. Get your free API key from: https://www.exchangerate-api.com
+
+1. Get your free API key from [here](https://www.exchangerate-api.com).
 2. On first run, enter your key when prompted.
 3. The app attempts to save the key to your system environment for future use.
 If saving fails, the key must be entered each time.
