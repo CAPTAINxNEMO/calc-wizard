@@ -5,7 +5,6 @@ from PyQt6.QtCore import Qt
 # Mathematical Functions
 from math import sin, cos, tan, asin, acos, atan, radians, pi, e, log, log2, log10
 # For API request
-from numpy import size
 from requests import get
 # Icon Check
 import sys
