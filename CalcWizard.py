@@ -193,13 +193,6 @@ mainLabelFont.setBold(True)
 conversionsLabelFont = QFont()
 conversionsLabelFont.setPixelSize(40)
 conversionsLabelFont.setBold(True)
-# Conversions Page Buttons Font
-goToButtonFonts = QFont()
-goToButtonFonts.setPixelSize(80)    # 60
-goToButtonFonts.setBold(True)
-# Conversions Page Labels Font
-goToLabelFonts = QFont()
-goToLabelFonts.setPixelSize(20)     # 15
 # Input Field Font
 inputFieldFont = QFont()
 inputFieldFont.setPixelSize(28)
@@ -906,7 +899,7 @@ goToConversionCombos = createGoToConversionCombos(conversionsWidget)
 noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', conversionsWidget)
 noteLabel.setFixedSize(540, 30)
 noteLabel.move(30, 900)
-noteLabel.setFont(goToLabelFonts)
+noteLabel.setFont(QFont(noteLabel.font().family(), 15))
 noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Currency Conversion Page
@@ -1542,7 +1535,7 @@ currencyConversionResultButton.clicked.connect(currencyConversionResult)
 noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', currencyConversionWidget)
 noteLabel.setFixedSize(540, 30)
 noteLabel.move(30, 900)
-noteLabel.setFont(goToLabelFonts)
+noteLabel.setFont(QFont(noteLabel.font().family(), 15))
 noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 # Length Conversion Page
