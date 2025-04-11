@@ -1,5 +1,5 @@
 # GUI
-from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QWidget, QLabel, QLineEdit, QPushButton, QComboBox, QMessageBox, QInputDialog
+from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QWidget, QLabel, QLineEdit, QPushButton, QComboBox, QMessageBox, QDialog
 from PyQt6.QtGui import QIcon, QFont
 from PyQt6.QtCore import Qt
 # Mathematical Functions
@@ -251,10 +251,35 @@ comboBoxFont.setItalic(True)
 errorMessageBox = QMessageBox()
 errorMessageBox.setWindowIcon(QIcon(iconPath))
 # API Key Dialog Box
-apiDialogBox = QInputDialog()
-apiDialogBox.setWindowTitle('API Key Input')
-apiDialogBox.setWindowIcon(QIcon(iconPath))
-apiDialogBox.setLabelText('Enter your API Key (ExchangeRate-API)')
+class APIKeyDialog(QDialog):
+    def __init__(self, parent = None):
+        super().__init__(parent)
+        self.setWindowTitle('API Key Input')
+        self.setWindowIcon(QIcon(iconPath))
+        self.setFixedSize(400, 150)
+        # Label with clickable link
+        self.label = QLabel('Enter your API Key (<a href = "https://www.exchangerate-api.com/">ExchangeRate-API</a>)', self)
+        self.label.setGeometry(10, 20, 380, 30)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label.setOpenExternalLinks(True)
+        self.label.show()
+        # Input Field
+        self.input = QLineEdit(self)
+        self.input.setGeometry(50, 60, 300, 30)
+        self.input.show()
+        # OK Button
+        self.okButton = QPushButton('OK', self)
+        self.okButton.setGeometry(120, 100, 80, 30)
+        self.okButton.clicked.connect(self.accept)
+        self.okButton.show()
+        # Cancel Button
+        self.cancelButton = QPushButton('Cancel', self)
+        self.cancelButton.setGeometry(210, 100, 80, 30)
+        self.cancelButton.clicked.connect(self.reject)
+        self.cancelButton.show()
+
+    def getAPIKey(self):
+        return self.input.text()
 
 # QStackedWidget Instance
 stackedWidget = QStackedWidget(window)
@@ -1366,9 +1391,9 @@ def currencyConversionPaste():
             currencyConversionInputField.setText(currencyConversionInputField.text().replace('.', ''))
             currencyConversionInput = currencyConversionInput.replace('.', '')
         if API_KEY is None:
-            ok = apiDialogBox.exec()
-            API_KEY = apiDialogBox.textValue()
-            if ok:
+            apiDialog = APIKeyDialog(currencyConversionWidget)
+            result = apiDialog.exec()
+            if result == QDialog.DialogCode.Accepted:
                 currencyConversionFrom = currencyConversionFromComboBox.currentText()
                 currencyConversionFrom = currencyConversionFrom[:3]
                 currencyConversionTo = currencyConversionToComboBox.currentText()
@@ -1572,9 +1597,9 @@ def currencyConversionResult():
             currencyConversionInputField.setText(currencyConversionInputField.text().replace('.', ''))
             currencyConversionInput = currencyConversionInput.replace('.', '')
         if API_KEY == None:
-            ok = apiDialogBox.exec()
-            API_KEY = apiDialogBox.textValue()
-            if ok:
+            apiDialog = APIKeyDialog(currencyConversionWidget)
+            result = apiDialog.exec()
+            if result == QDialog.DialogCode.Accepted:
                 currencyConversionFrom = currencyConversionFromComboBox.currentText()
                 currencyConversionFrom = currencyConversionFrom[:3]
                 currencyConversionTo = currencyConversionToComboBox.currentText()
