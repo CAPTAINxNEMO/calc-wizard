@@ -18,8 +18,6 @@ else:
     baseDir = dirname(abspath(__file__))
 iconPath = join(baseDir, 'CalcWizardIcon.ico')
 
-calculatorInput = ''
-
 API_KEY = environ.get('CW_CURRENCY_API_KEY')
 
 def saveAPI(key):
@@ -42,62 +40,6 @@ window.setWindowTitle('CalcWizard')
 window.setGeometry(660, 60, 600, 960)
 window.setFixedSize(600, 960)
 window.setWindowIcon(QIcon(iconPath))
-
-# Font Attributes
-# Main Label Font
-mainLabelFont = QFont()
-mainLabelFont.setPixelSize(52)  # 39
-mainLabelFont.setBold(True)
-# Conversion Pages Label Font
-conversionsLabelFont = QFont()
-conversionsLabelFont.setPixelSize(40)
-conversionsLabelFont.setBold(True)
-# Input Field Font
-inputFieldFont = QFont()
-inputFieldFont.setPixelSize(28)     # 21
-inputFieldFont.setBold(False)
-# Output Field Font
-outputFieldFont = QFont()
-outputFieldFont.setPixelSize(28)
-outputFieldFont.setBold(True)
-# Paste Button Font
-pasteButtonFont = QFont()
-pasteButtonFont.setPixelSize(20)
-pasteButtonFont.setBold(True)
-# Conversion Paste Button Font
-conversionPasteButtonFont = QFont()
-conversionPasteButtonFont.setPixelSize(44)
-conversionPasteButtonFont.setBold(True)
-# Calculator Mode Button Font
-calculatorModeButtonFont = QFont()
-calculatorModeButtonFont.setPixelSize(48)
-calculatorModeButtonFont.setBold(True)
-# Number Pad Font
-numberPadFont = QFont()
-numberPadFont.setPixelSize(36)  # 27
-numberPadFont.setBold(True)
-# Result Buttons Font
-resultButtonsFont = QFont()
-resultButtonsFont.setPixelSize(60)
-resultButtonsFont.setBold(True)
-# Operator Buttons Font
-operatorButtonFont = QFont()
-operatorButtonFont.setPixelSize(44)
-operatorButtonFont.setBold(True)
-# Trigonometry Buttons Font
-trigonometryButtonFont = QFont()
-trigonometryButtonFont.setPixelSize(28)
-trigonometryButtonFont.setBold(True)
-# Constant Buttons Font
-constantButtonFont = QFont()
-constantButtonFont.setPixelSize(36)
-constantButtonFont.setBold(True)
-constantButtonFont.setItalic(True)
-# ComboBox Font
-comboBoxFont = QFont()
-comboBoxFont.setPixelSize(13)      # 10
-comboBoxFont.setBold(True)
-comboBoxFont.setItalic(True)
 
 # Pop-ups
 # Error Message
@@ -137,574 +79,580 @@ class APIKeyDialog(QDialog):
 # QStackedWidget Instance
 stackedWidget = QStackedWidget(window)
 window.setCentralWidget(stackedWidget)
+
 # Calculator Page
-# Calculator Widget
 calculatorWidget = QWidget()
 stackedWidget.addWidget(calculatorWidget)
-# Switch to Conversions Button
-switchToConversionsButton = QPushButton('⇄', calculatorWidget)
-switchToConversionsButton.setFixedSize(60, 60)
-switchToConversionsButton.move(510, 30)
-switchToConversionsButton.setFont(QFont(switchToConversionsButton.font().family(), 39, QFont.Weight.Bold))
-def switchToConversions():
-    stackedWidget.setCurrentWidget(conversionsWidget)
-switchToConversionsButton.clicked.connect(switchToConversions)
-# Calculator Page Main Label
-calculatorLabel = QLabel('CALCULATOR', calculatorWidget)
-calculatorLabel.setFixedSize(540, 60)
-calculatorLabel.move(30, 120)
-calculatorLabel.setFont(QFont(calculatorLabel.font().family(), 39, QFont.Weight.Bold))
-calculatorLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
-# Input Field
-calculatorInputField = QLineEdit(calculatorWidget)
-calculatorInputField.setPlaceholderText('Input')
-calculatorInputField.setFixedSize(540, 60)
-calculatorInputField.move(30, 210)
-calculatorInputField.setFont(inputFieldFont)
-calculatorInputField.setAlignment(Qt.AlignmentFlag.AlignRight)
-calculatorInputField.setStyleSheet('border: 2px solid; padding-right: 15px')
-calculatorInputField.setReadOnly(True)
-# Paste Output to Input
-calculatorPasteButton = QPushButton('↑', calculatorWidget)
-calculatorPasteButton.setFixedSize(30, 30)
-calculatorPasteButton.move(540, 270)
-calculatorPasteButton.setFont(pasteButtonFont)
-calculatorPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
-def calculatorPaste():
-    if calculatorOutputField.text():
-        global calculatorInput
-        calculatorInputField.setText(calculatorOutputField.text())
-        calculatorInput = str(calculatorOutputField.text())
-        calculatorOutputField.setText('')
-calculatorPasteButton.clicked.connect(calculatorPaste)
-# Output Field
-calculatorOutputField = QLineEdit(calculatorWidget)
-calculatorOutputField.setFixedSize(540, 60)
-calculatorOutputField.move(30, 300)
-calculatorOutputField.setFont(outputFieldFont)
-calculatorOutputField.setAlignment(Qt.AlignmentFlag.AlignRight)
-calculatorOutputField.setStyleSheet('border: 2px solid; padding-right: 15px')
-calculatorOutputField.setPlaceholderText('Output')
-calculatorOutputField.setReadOnly(True)
-# Calculator Mode Button
-calculatorModeButton = QPushButton('∞', calculatorWidget)
-calculatorModeButton.setFixedSize(90, 90)
-calculatorModeButton.move(30, 390)
-calculatorModeButton.setFont(calculatorModeButtonFont)
-calculatorModeButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 255)')
-calculatorModeButton.setCheckable(True)
-def calculatorMode():
-    if calculatorModeButton.isChecked():                    # Advanced Mode
-        calculatorModeButton.setText('±')
-        openBracketButton.setVisible(True)
-        closeBracketButton.setVisible(True)
-        sineButton.setVisible(True)
-        cosineButton.setVisible(True)
-        tangentButton.setVisible(True)
-        angleButton.setVisible(True)
-        baseTenLogButton.setVisible(True)
-        baseTwoLogButton.setVisible(True)
-        naturalLogButton.setVisible(True)
-        inverseButton.setVisible(True)
-        squareButton.setVisible(True)
-        exponentButton.setVisible(True)
-        piButton.setVisible(True)
-        eulerButton.setVisible(True)
-    else:                                                   # Basic Mode
-        calculatorModeButton.setText('∞')
-        openBracketButton.setVisible(False)
-        closeBracketButton.setVisible(False)
-        sineButton.setVisible(False)
-        cosineButton.setVisible(False)
-        tangentButton.setVisible(False)
-        sineInverseButton.setVisible(False)
-        cosineInverseButton.setVisible(False)
-        tangentInverseButton.setVisible(False)
-        angleButton.setVisible(False)
-        angleButton.setChecked(False)
-        baseTenLogButton.setVisible(False)
-        baseTwoLogButton.setVisible(False)
-        naturalLogButton.setVisible(False)
-        powerTenButton.setVisible(False)
-        powerTwoButton.setVisible(False)
-        powerEulerButton.setVisible(False)
-        inverseButton.setVisible(False)
-        inverseButton.setChecked(False)
-        squareButton.setVisible(False)
-        exponentButton.setVisible(False)
-        piButton.setVisible(False)
-        eulerButton.setVisible(False)
-calculatorModeButton.clicked.connect(calculatorMode)
-# Number Pad
-def createCalculatorDigitButtons(calculatorDigitsParent):
-    calculatorDigitButtons = {}
-    calculatorDigitPositions = {
-        '7': (120, 480), '8': (210, 480), '9': (300, 480),
-        '4': (120, 570), '5': (210, 570), '6': (300, 570),
-        '1': (120, 660), '2': (210, 660), '3': (300, 660),
-        '0': (210, 750)
-    }
+class calculatorPage:
+    def __init__(self):
+        self.stackedWidget = stackedWidget
+        self.parentWidget = calculatorWidget
 
-    for calculatorDigit, calculatorDigitPosition in calculatorDigitPositions.items():
-        calculatorDigitButton = QPushButton(calculatorDigit, calculatorDigitsParent)
-        calculatorDigitButton.setFixedSize(90, 90)
-        calculatorDigitButton.move(*calculatorDigitPosition)
-        calculatorDigitButton.setFont(QFont(calculatorDigitButton.font().family(), 27, QFont.Weight.Bold))
-        calculatorDigitButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
-        calculatorDigitButton.clicked.connect(
-            lambda calD = calculatorDigit: addCalculatorDigit(calD)
-        )
-        calculatorDigitButtons[calculatorDigit] = calculatorDigitButton
-    return calculatorDigitButtons
-def addCalculatorDigit(calculatorDigit):
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + calculatorDigit)
-    calculatorInput += calculatorDigit
-calculatorDigits = createCalculatorDigitButtons(calculatorWidget)
-# Point [.]
-calculatorPointButton = QPushButton('.', calculatorWidget)
-calculatorPointButton.setFixedSize(90, 90)
-calculatorPointButton.move(300, 840)
-calculatorPointButton.setFont(QFont(calculatorPointButton.font().family(), 27, QFont.Weight.Bold))
-calculatorPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
-def calculatorPoint():
-    global calculatorInput
-    if calculatorInputField.text():
-        calculatorInputField.setText(calculatorInputField.text() + '.')
-        calculatorInput += '.'
-    else:
-        calculatorInputField.setText(calculatorInputField.text() + '0.')
-        calculatorInput += '0.'
-calculatorPointButton.clicked.connect(calculatorPoint)
-# Deletion
-# All Clear
-calculatorAllClearButton = QPushButton('AC', calculatorWidget)
-calculatorAllClearButton.setFixedSize(90, 90)
-calculatorAllClearButton.move(390, 480)
-calculatorAllClearButton.setFont(operatorButtonFont)
-calculatorAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
-def calculatorAllClear():
-    global calculatorInput
-    calculatorInputField.setText('')
-    calculatorOutputField.setText('')
-    calculatorInput = ''
-calculatorAllClearButton.clicked.connect(calculatorAllClear)
-# Clear [Backspace]
-calculatorClearButton = QPushButton('C', calculatorWidget)
-calculatorClearButton.setFixedSize(90, 90)
-calculatorClearButton.move(480, 480)
-calculatorClearButton.setFont(operatorButtonFont)
-calculatorClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
-def calculatorClear():
-    global calculatorInput
-    if calculatorInputField.text():
-        if calculatorInputField.text().endswith('sin('):
-            calculatorInputField.setText(calculatorInputField.text().replace('sin(', ''))
-            calculatorInput = calculatorInput.replace('sin(', '')
-        elif calculatorInputField.text().endswith('cos('):
-            calculatorInputField.setText(calculatorInputField.text().replace('cos(', ''))
-            calculatorInput = calculatorInput.replace('cos(', '')
-        elif calculatorInputField.text().endswith('tan('):
-            calculatorInputField.setText(calculatorInputField.text().replace('tan(', ''))
-            calculatorInput = calculatorInput.replace('tan(', '')
-        elif calculatorInputField.text().endswith('sin⁻¹('):
-            calculatorInputField.setText(calculatorInputField.text().replace('sin⁻¹(', ''))
-            calculatorInput = calculatorInput.replace('atan(', '')
-        elif calculatorInputField.text().endswith('log⏨('):
-            calculatorInputField.setText(calculatorInputField.text().replace('log⏨(', ''))
-            calculatorInput = calculatorInput.replace('log10(', '')
-        elif calculatorInputField.text().endswith('log₂('):
-            calculatorInputField.setText(calculatorInputField.text().replace('log₂(', ''))
-            calculatorInput = calculatorInput.replace('log2(', '')
-        elif calculatorInputField.text().endswith('ln('):
-            calculatorInputField.setText(calculatorInputField.text().replace('ln(', ''))
-            calculatorInput = calculatorInput.replace('log(', '')
-        elif calculatorInputField.text().endswith('10^'):
-            calculatorInputField.setText(calculatorInputField.text().replace('10^', ''))
-            calculatorInput = calculatorInput.replace('10**', '')
-        elif calculatorInputField.text().endswith('2^'):
-            calculatorInputField.setText(calculatorInputField.text().replace('2^', ''))
-            calculatorInput = calculatorInput.replace('2**', '')
-        elif calculatorInputField.text().endswith('e^'):
-            calculatorInputField.setText(calculatorInputField.text().replace('e^', ''))
-            calculatorInput = calculatorInput.replace('e**', '')
-        elif calculatorInputField.text().endswith('²'):
-            calculatorInputField.setText(calculatorInputField.text().replace('²', ''))
-            calculatorInput = calculatorInput.replace('**(2)', '')
-        elif calculatorInputField.text().endswith('^'):
-            calculatorInputField.setText(calculatorInputField.text().replace('^', ''))
-            calculatorInput = calculatorInput.replace('**', '')
+        self.calculatorInputValue = ''
+
+        self.widget = QWidget()
+
+        self.createCalculatorPageHeader()
+        self.createCalculatorTextFields()
+        self.createCalculatorPasteButton()
+        self.createCalculatorNumberPad()
+        self.createCalculatorOperationButtons()
+        self.createCalculatorControlButtons()
+        self.createCalculatorModeButton()
+        self.createCalculatorBracketButtons()
+        self.createCalculatorTrigonometryButtons()
+        self.createCalculatorAngleButton()
+        self.createCalculatorLogarithmButtons()
+        self.createCalculatorExponentButtons()
+        self.createCalculatorConstantButtons()
+        self.createCalculatorInverseButton()
+
+    def createCalculatorPageHeader(self):
+        # Switch to Conversions Button
+        self.switchToConversionsButton = QPushButton('⇄', self.parentWidget)
+        self.switchToConversionsButton.setGeometry(510, 30, 60, 60)
+        self.switchToConversionsButton.setFont(QFont(self.switchToConversionsButton.font().family(), 39, QFont.Weight.Bold))
+        self.switchToConversionsButton.clicked.connect(self.switchToConversions)
+        # Page Label
+        self.calculatorLabel = QLabel('CALCULATOR', self.parentWidget)
+        self.calculatorLabel.setGeometry(30, 120, 540, 60)
+        self.calculatorLabel.setFont(QFont(self.calculatorLabel.font().family(), 39, QFont.Weight.Bold))
+        self.calculatorLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+    def createCalculatorTextFields(self):
+        # Input Field
+        self.calculatorInputField = QLineEdit(self.parentWidget)
+        self.calculatorInputField.setPlaceholderText('Input')
+        self.calculatorInputField.setGeometry(30, 210, 540, 60)
+        self.calculatorInputField.setFont(QFont(self.calculatorInputField.font().family(), 21, QFont.Weight.Bold))
+        self.calculatorInputField.setAlignment(Qt.AlignmentFlag.AlignRight)
+        self.calculatorInputField.setStyleSheet('border: 2px solid; padding-right: 15px')
+        self.calculatorInputField.setReadOnly(True)
+        # Output Field
+        self.calculatorOutputField = QLineEdit(self.parentWidget)
+        self.calculatorOutputField.setGeometry(30, 300, 540, 60)
+        self.calculatorOutputField.setFont(QFont(self.calculatorOutputField.font().family(), 21, QFont.Weight.Bold))
+        self.calculatorOutputField.setAlignment(Qt.AlignmentFlag.AlignRight)
+        self.calculatorOutputField.setStyleSheet('border: 2px solid; padding-right: 15px')
+        self.calculatorOutputField.setPlaceholderText('Output')
+        self.calculatorOutputField.setReadOnly(True)
+
+    def createCalculatorPasteButton(self):
+        self.calculatorPasteButton = QPushButton('↑', self.parentWidget)
+        self.calculatorPasteButton.setGeometry(540, 270, 30, 30)
+        self.calculatorPasteButton.setFont(QFont(self.calculatorPasteButton.font().family(), 15, QFont.Weight.Bold))
+        self.calculatorPasteButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 0)')
+        self.calculatorPasteButton.clicked.connect(self.calculatorPaste)
+
+    def createCalculatorNumberPad(self):
+        # Point [.]
+        self.calculatorPointButton = QPushButton('.', self.parentWidget)
+        self.calculatorPointButton.setGeometry(300, 840, 90, 90)
+        self.calculatorPointButton.setFont(QFont(self.calculatorPointButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorPointButton.setStyleSheet('border: 2px solid; background-color: rgb(177, 156, 217)')
+        self.calculatorPointButton.clicked.connect(self.calculatorPoint)
+        # Digits
+        self.calculatorDigitButtons = {}
+        calculatorDigitPositions = {
+            '7': (120, 570), '8': (210, 570), '9': (300, 570),
+            '4': (120, 660), '5': (210, 660), '6': (300, 660),
+            '1': (120, 750), '2': (210, 750), '3': (300, 750),
+            '0': (210, 840)
+        }
+        for calculatorDigit, calculatorDigitPosition in calculatorDigitPositions.items():
+            calculatorDigitButton = QPushButton(calculatorDigit, self.parentWidget)
+            calculatorDigitButton.setFixedSize(90, 90)
+            calculatorDigitButton.move(*calculatorDigitPosition)
+            calculatorDigitButton.setFont(QFont(calculatorDigitButton.font().family(), 27, QFont.Weight.Bold))
+            calculatorDigitButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
+            calculatorDigitButton.clicked.connect(
+                lambda _, calD = calculatorDigit: self.addCalculatorDigit(calD)
+            )
+            self.calculatorDigitButtons[calculatorDigit] = calculatorDigitButton
+
+    def createCalculatorOperationButtons(self):
+        self.calculatorOperationButtons = {}
+        calculatorOperationFunctions = {
+            '+': '+', '-': '-',
+            '×': '*', '÷': '/',
+            '%': '/100'
+        }
+        calculatorOperationPositions = {
+            '+': (390, 660), '-': (480, 660),
+            '×': (390, 750), '÷': (480, 750),
+            '%': (30, 570)
+        }
+
+        for calculatorOperation, calculatorOperationPosition in calculatorOperationPositions.items():
+            calculatorOperationButton = QPushButton(calculatorOperation, self.parentWidget)
+            calculatorOperationButton.setFixedSize(90, 90)
+            calculatorOperationButton.move(*calculatorOperationPosition)
+            calculatorOperationButton.setFont(QFont(calculatorOperationButton.font().family(), 33, QFont.Weight.Bold))
+            calculatorOperationButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
+
+            calculatorOperationButton.clicked.connect(
+                lambda _, displayOp = calculatorOperation,
+                functionOp = calculatorOperationFunctions[calculatorOperation]: self.addCalculatorOperation(displayOp, functionOp)
+            )
+            self.calculatorOperationButtons[calculatorOperation] = calculatorOperationButton
+
+    def createCalculatorModeButton(self):
+        self.calculatorModeButton = QPushButton('∞', self.parentWidget)
+        self.calculatorModeButton.setGeometry(30, 390, 90, 90)
+        self.calculatorModeButton.setFont(QFont(self.calculatorModeButton.font().family(), 36, QFont.Weight.Bold))
+        self.calculatorModeButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 255)')
+        self.calculatorModeButton.setCheckable(True)
+        self.calculatorModeButton.clicked.connect(self.calculatorMode)
+
+    def createCalculatorBracketButtons(self):
+        # Open Bracket [(]
+        self.openBracketButton = QPushButton('(', self.parentWidget)
+        self.openBracketButton.setGeometry(390, 570, 90, 90)
+        self.openBracketButton.setFont(QFont(self.openBracketButton.font().family(), 33, QFont.Weight.Bold))
+        self.openBracketButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 191)')
+        self.openBracketButton.setVisible(False)
+        self.openBracketButton.clicked.connect(self.openBracket)
+        # Close Bracket [)]
+        self.closeBracketButton = QPushButton(')', self.parentWidget)
+        self.closeBracketButton.setGeometry(480, 570, 90, 90)
+        self.closeBracketButton.setFont(QFont(self.closeBracketButton.font().family(), 33, QFont.Weight.Bold))
+        self.closeBracketButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 191)')
+        self.closeBracketButton.setVisible(False)
+        self.closeBracketButton.clicked.connect(self.closeBracket)
+
+    def createCalculatorTrigonometryButtons(self):
+        # Sine
+        self.calculatorSineButton = QPushButton('sin', self.parentWidget)
+        self.calculatorSineButton.setGeometry(120, 390, 90, 90)
+        self.calculatorSineButton.setFont(QFont(self.calculatorSineButton.font().family(), 18, QFont.Weight.Bold))
+        self.calculatorSineButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+        self.calculatorSineButton.setVisible(False)
+        self.calculatorSineButton.clicked.connect(self.calculatorSine)
+        # Cosine
+        self.calculatorCosineButton = QPushButton('cos', self.parentWidget)
+        self.calculatorCosineButton.setGeometry(210, 390, 90, 90)
+        self.calculatorCosineButton.setFont(QFont(self.calculatorCosineButton.font().family(), 18, QFont.Weight.Bold))
+        self.calculatorCosineButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+        self.calculatorCosineButton.setVisible(False)
+        self.calculatorCosineButton.clicked.connect(self.calculatorCosine)
+        # Tangent
+        self.calculatorTangentButton = QPushButton('tan', self.parentWidget)
+        self.calculatorTangentButton.setGeometry(300, 390, 90, 90)
+        self.calculatorTangentButton.setFont(QFont(self.calculatorTangentButton.font().family(), 18, QFont.Weight.Bold))
+        self.calculatorTangentButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+        self.calculatorTangentButton.setVisible(False)
+        self.calculatorTangentButton.clicked.connect(self.calculatorTangent)
+        # Sine Inverse
+        self.calculatorSineInverseButton = QPushButton('sin⁻¹', self.parentWidget)
+        self.calculatorSineInverseButton.setGeometry(120, 390, 90, 90)
+        self.calculatorSineInverseButton.setFont(QFont(self.calculatorSineInverseButton.font().family(), 18, QFont.Weight.Bold))
+        self.calculatorSineInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+        self.calculatorSineInverseButton.setVisible(False)
+        self.calculatorSineInverseButton.clicked.connect(self.calculatorSineInverse)
+        # Cosine Inverse
+        self.calculatorCosineInverseButton = QPushButton('cos⁻¹', self.parentWidget)
+        self.calculatorCosineInverseButton.setGeometry(210, 390, 90, 90)
+        self.calculatorCosineInverseButton.setFont(QFont(self.calculatorCosineInverseButton.font().family(), 18, QFont.Weight.Bold))
+        self.calculatorCosineInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+        self.calculatorCosineInverseButton.setVisible(False)
+        self.calculatorCosineInverseButton.clicked.connect(self.calculatorCosineInverse)
+        # Tangent Inverse
+        self.calculatorTangentInverseButton = QPushButton('tan⁻¹', self.parentWidget)
+        self.calculatorTangentInverseButton.setGeometry(300, 390, 90, 90)
+        self.calculatorTangentInverseButton.setFont(QFont(self.calculatorTangentInverseButton.font().family(), 18, QFont.Weight.Bold))
+        self.calculatorTangentInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
+        self.calculatorTangentInverseButton.setVisible(False)
+        self.calculatorTangentInverseButton.clicked.connect(self.calculatorTangentInverse)
+
+    def createCalculatorAngleButton(self):
+        self.calculatorAngleButton = QPushButton('RAD', self.parentWidget)
+        self.calculatorAngleButton.setGeometry(390, 390, 180, 90)
+        self.calculatorAngleButton.setFont(QFont(self.calculatorAngleButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorAngleButton.setStyleSheet('border: 2px solid; background-color: rgb(200, 180, 160)')
+        self.calculatorAngleButton.setVisible(False)
+        self.calculatorAngleButton.setCheckable(True)
+        self.calculatorAngleButton.clicked.connect(self.calculatorAngle)
+
+    def createCalculatorLogarithmButtons(self):
+        # Logarithm
+        # Base 10 Log
+        self.calculatorBaseTenLogButton = QPushButton('log⏨', self.parentWidget)
+        self.calculatorBaseTenLogButton.setGeometry(120, 480, 90, 90)
+        self.calculatorBaseTenLogButton.setFont(QFont(self.calculatorBaseTenLogButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorBaseTenLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+        self.calculatorBaseTenLogButton.setVisible(False)
+        self.calculatorBaseTenLogButton.clicked.connect(self.calculatorBaseTenLog)
+        # Base 2 Log
+        self.calculatorBaseTwoLogButton = QPushButton('log₂', self.parentWidget)
+        self.calculatorBaseTwoLogButton.setGeometry(210, 480, 90, 90)
+        self.calculatorBaseTwoLogButton.setFont(QFont(self.calculatorBaseTwoLogButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorBaseTwoLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+        self.calculatorBaseTwoLogButton.setVisible(False)
+        self.calculatorBaseTwoLogButton.clicked.connect(self.calculatorBaseTwoLog)
+        # Natural Log
+        self.calculatorNaturalLogButton = QPushButton('ln', self.parentWidget)
+        self.calculatorNaturalLogButton.setGeometry(300, 480, 90, 90)
+        self.calculatorNaturalLogButton.setFont(QFont(self.calculatorNaturalLogButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorNaturalLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+        self.calculatorNaturalLogButton.setVisible(False)
+        self.calculatorNaturalLogButton.clicked.connect(self.calculatorNaturalLog)
+        # Logarithm Buttons Inverse
+        # Exponents of 10
+        self.calculatorPowerTenButton = QPushButton('10ˣ', self.parentWidget)
+        self.calculatorPowerTenButton.setGeometry(120, 480, 90, 90)
+        self.calculatorPowerTenButton.setFont(QFont(self.calculatorPowerTenButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorPowerTenButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+        self.calculatorPowerTenButton.setVisible(False)
+        self.calculatorPowerTenButton.clicked.connect(self.calculatorPowerTen)
+        # Exponent of 2
+        self.calculatorPowerTwoButton = QPushButton('2ˣ', self.parentWidget)
+        self.calculatorPowerTwoButton.setGeometry(210, 480, 90, 90)
+        self.calculatorPowerTwoButton.setFont(QFont(self.calculatorPowerTwoButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorPowerTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+        self.calculatorPowerTwoButton.setVisible(False)
+        self.calculatorPowerTwoButton.clicked.connect(self.calculatorPowerTwo)
+        # Exponents of e
+        self.calculatorPowerEulerButton = QPushButton('eˣ', self.parentWidget)
+        self.calculatorPowerEulerButton.setGeometry(300, 480, 90, 90)
+        self.calculatorPowerEulerButton.setFont(QFont(self.calculatorPowerEulerButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorPowerEulerButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
+        self.calculatorPowerEulerButton.setVisible(False)
+        self.calculatorPowerEulerButton.clicked.connect(self.calculatorPowerEuler)
+
+    def createCalculatorExponentButtons(self):
+        # Square [x²]
+        self.calculatorSquareButton = QPushButton('x²', self.parentWidget)
+        self.calculatorSquareButton.setGeometry(30, 660, 90, 90)
+        self.calculatorSquareButton.setFont(QFont(self.calculatorSquareButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorSquareButton.setStyleSheet('border: 2px solid; background-color: rgb(191, 255, 0)')
+        self.calculatorSquareButton.setVisible(False)
+        self.calculatorSquareButton.clicked.connect(self.calculatorSquare)
+        # Exponent
+        self.calculatorExponentButton = QPushButton('^', self.parentWidget)
+        self.calculatorExponentButton.setGeometry(30, 750, 90, 90)
+        self.calculatorExponentButton.setFont(QFont(self.calculatorExponentButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorExponentButton.setStyleSheet('border: 2px solid; background-color: rgb(191, 255, 0)')
+        self.calculatorExponentButton.setVisible(False)
+        self.calculatorExponentButton.clicked.connect(self.calculatorExponent)
+
+    def createCalculatorConstantButtons(self):
+        # pi [π]
+        self.calculatorPiButton = QPushButton('π', self.parentWidget)
+        self.calculatorPiButton.setGeometry(30, 840, 90, 90)
+        self.calculatorPiButton.setFont(QFont(self.calculatorPiButton.font().family(), 27, QFont.Weight.Bold, True))
+        self.calculatorPiButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 180)')
+        self.calculatorPiButton.setVisible(False)
+        self.calculatorPiButton.clicked.connect(self.calculatorPiCharacter)
+        # Euler's Number [e]
+        self.calculatorEulerButton = QPushButton('e', self.parentWidget)
+        self.calculatorEulerButton.setGeometry(120, 840, 90, 90)
+        self.calculatorEulerButton.setFont(QFont(self.calculatorEulerButton.font().family(), 27, QFont.Weight.Bold, True))
+        self.calculatorEulerButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 180)')
+        self.calculatorEulerButton.setVisible(False)
+        self.calculatorEulerButton.clicked.connect(self.calculatorEulerNumber)
+
+    def createCalculatorInverseButton(self):
+        self.calculatorInverseButton = QPushButton('INV', self.parentWidget)
+        self.calculatorInverseButton.setGeometry(30, 480, 90, 90)
+        self.calculatorInverseButton.setFont(QFont(self.calculatorInverseButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(128, 128, 128)')
+        self.calculatorInverseButton.setVisible(False)
+        self.calculatorInverseButton.setCheckable(True)
+        self.calculatorInverseButton.clicked.connect(self.calculatorInverse)
+
+    def createCalculatorControlButtons(self):
+        # All Clear
+        self.calculatorAllClearButton = QPushButton('AC', self.parentWidget)
+        self.calculatorAllClearButton.setGeometry(390, 480, 90, 90)
+        self.calculatorAllClearButton.setFont(QFont(self.calculatorAllClearButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorAllClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+        self.calculatorAllClearButton.clicked.connect(self.calculatorAllClear)
+        # Clear [Backspace]
+        self.calculatorClearButton = QPushButton('C', self.parentWidget)
+        self.calculatorClearButton.setGeometry(480, 480, 90, 90)
+        self.calculatorClearButton.setFont(QFont(self.calculatorClearButton.font().family(), 27, QFont.Weight.Bold))
+        self.calculatorClearButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 255)')
+        self.calculatorClearButton.clicked.connect(self.calculatorClear)
+        # Result [=]
+        self.calculatorResultButton = QPushButton('=', self.parentWidget)
+        self.calculatorResultButton.setGeometry(390, 840, 180, 90)
+        self.calculatorResultButton.setFont(QFont(self.calculatorResultButton.font().family(), 33, QFont.Weight.Bold))
+        self.calculatorResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
+        self.calculatorResultButton.clicked.connect(self.calculatorResult)
+
+    def switchToConversions(self):
+        self.stackedWidget.setCurrentWidget(conversionsWidget)
+
+    def addCalculatorDigit(self, calculatorDigit):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + calculatorDigit)
+        self.calculatorInputValue += calculatorDigit
+
+    def calculatorPoint(self):
+        if self.calculatorInputField.text():
+            self.calculatorInputField.setText(self.calculatorInputField.text() + '.')
+            self.calculatorInputValue += '.'
         else:
-            calculatorInputFieldText = calculatorInputField.text()
-            calculatorInputFieldText = calculatorInputFieldText[:-1]
-            calculatorInputField.setText(calculatorInputFieldText)
-            calculatorInput = calculatorInput[:-1]
-calculatorClearButton.clicked.connect(calculatorClear)
-# Operators [+ | - | × | ÷ | %]
-def createCalculatorOperationButtons(calculatorOperationsParent):
-    calculatorOperationButtons = {}
-    calculatorOperationFunctions = {
-        '+': '+', '-': '-',
-        '×': '*', '÷': '/',
-        '%': '/100'
-    }
-    calculatorOperationPositions = {
-        '+': (390, 660), '-': (480, 660),
-        '×': (390, 750), '÷': (480, 750),
-        '%': (30, 570)
-    }
+            self.calculatorInputField.setText(self.calculatorInputField.text() + '0.')
+            self.calculatorInputValue += '0.'
 
-    for calculatorOperation, calculatorOperationPosition in calculatorOperationPositions.items():
-        calculatorOperationButton = QPushButton(calculatorOperation, calculatorOperationsParent)
-        calculatorOperationButton.setFixedSize(90, 90)
-        calculatorOperationButton.move(*calculatorOperationPosition)
-        calculatorOperationButton.setFont(QFont(calculatorOperationButton.font().family(), 33, QFont.Weight.Bold))
-        calculatorOperationButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
+    def addCalculatorOperation(self, displayOperation, functionOperation):
+        if self.calculatorInputField.text():
+            self.calculatorInputField.setText(self.calculatorInputField.text() + displayOperation)
+            self.calculatorInputValue += functionOperation
 
-        calculatorOperationButton.clicked.connect(
-            lambda displayOp = calculatorOperation,
-            functionOp = calculatorOperationFunctions[calculatorOperation]: addCalculatorOperation(displayOp, functionOp)
-        )
-        calculatorOperationButtons[calculatorOperation] = calculatorOperationButton
-    return calculatorOperationButtons
-def addCalculatorOperation(displayOperation, functionOperation):
-    global calculatorInput
-    if calculatorInputField.text():
-        calculatorInputField.setText(calculatorInputField.text() + displayOperation)
-        calculatorInput += functionOperation
-calculatorOperations = createCalculatorOperationButtons(calculatorWidget)
+    def openBracket(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + '(')
+        self.calculatorInputValue += '('
 
-# Brackets
-# Open Bracket [(]
-openBracketButton = QPushButton('(', calculatorWidget)
-openBracketButton.setFixedSize(90, 90)
-openBracketButton.move(390, 570)
-openBracketButton.setFont(operatorButtonFont)
-openBracketButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 191)')
-openBracketButton.setVisible(False)
-def openBracket():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '(')
-    calculatorInput += '('
-openBracketButton.clicked.connect(openBracket)
-# Close Bracket [)]
-closeBracketButton = QPushButton(')', calculatorWidget)
-closeBracketButton.setFixedSize(90, 90)
-closeBracketButton.move(480, 570)
-closeBracketButton.setFont(operatorButtonFont)
-closeBracketButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 255, 191)')
-closeBracketButton.setVisible(False)
-def closeBracket():
-    global calculatorInput
-    if calculatorInputField.text():
-        calculatorInputField.setText(calculatorInputField.text() + ')')
-        if angleButton.isChecked():
-            calculatorInput += '))'
+    def closeBracket(self):
+        if self.calculatorInputField.text():
+            self.calculatorInputField.setText(self.calculatorInputField.text() + ')')
+            if self.calculatorAngleButton.isChecked():
+                self.calculatorInputValue += '))'
+            else:
+                self.calculatorInputValue += ')'
+
+    def calculatorSine(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'sin(')
+        if self.calculatorAngleButton.isChecked():
+            self.calculatorInputValue += 'sin(radians('
         else:
-            calculatorInput += ')'
-closeBracketButton.clicked.connect(closeBracket)
-# Trigonometry
-# Sine
-sineButton = QPushButton('sin', calculatorWidget)
-sineButton.setFixedSize(90, 90)
-sineButton.move(120, 390)
-sineButton.setFont(trigonometryButtonFont)
-sineButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
-sineButton.setVisible(False)
-def sine():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'sin(')
-    if angleButton.isChecked():
-        calculatorInput += 'sin(radians('
-    else:
-        calculatorInput += 'sin('
-sineButton.clicked.connect(sine)
-# Cosine
-cosineButton = QPushButton('cos', calculatorWidget)
-cosineButton.setFixedSize(90, 90)
-cosineButton.move(210, 390)
-cosineButton.setFont(trigonometryButtonFont)
-cosineButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
-cosineButton.setVisible(False)
-def cosine():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'cos(')
-    if angleButton.isChecked():
-        calculatorInput += 'cos(radians('
-    else:
-        calculatorInput += 'cos('
-cosineButton.clicked.connect(cosine)
-# Tangent
-tangentButton = QPushButton('tan', calculatorWidget)
-tangentButton.setFixedSize(90, 90)
-tangentButton.move(300, 390)
-tangentButton.setFont(trigonometryButtonFont)
-tangentButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
-tangentButton.setVisible(False)
-def tangent():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'tan(')
-    if angleButton.isChecked():
-        calculatorInput += 'tan(radians('
-    else:
-        calculatorInput += 'tan('
-tangentButton.clicked.connect(tangent)
-# Sine Inverse
-sineInverseButton = QPushButton('sin⁻¹', calculatorWidget)
-sineInverseButton.setFixedSize(90, 90)
-sineInverseButton.move(120, 390)
-sineInverseButton.setFont(trigonometryButtonFont)
-sineInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
-sineInverseButton.setVisible(False)
-def sineInverse():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'sin⁻¹(')
-    if angleButton.isChecked():
-        calculatorInput += 'asin(radians('
-    else:
-        calculatorInput += 'asin('
-sineInverseButton.clicked.connect(sineInverse)
-# Cosine Inverse
-cosineInverseButton = QPushButton('cos⁻¹', calculatorWidget)
-cosineInverseButton.setFixedSize(90, 90)
-cosineInverseButton.move(210, 390)
-cosineInverseButton.setFont(trigonometryButtonFont)
-cosineInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
-cosineInverseButton.setVisible(False)
-def cosineInverse():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'cos⁻¹(')
-    if angleButton.isChecked():
-        calculatorInput += 'acos(radians('
-    else:
-        calculatorInput += 'acos('
-cosineInverseButton.clicked.connect(cosineInverse)
-# Tangent Inverse
-tangentInverseButton = QPushButton('tan⁻¹', calculatorWidget)
-tangentInverseButton.setFixedSize(90, 90)
-tangentInverseButton.move(300, 390)
-tangentInverseButton.setFont(trigonometryButtonFont)
-tangentInverseButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 165, 0)')
-tangentInverseButton.setVisible(False)
-def tangentInverse():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'tan⁻¹(')
-    if angleButton.isChecked():
-        calculatorInput += 'atan(radians('
-    else:
-        calculatorInput += 'atan('
-tangentInverseButton.clicked.connect(tangentInverse)
-# Angle Button
-angleButton = QPushButton('RAD', calculatorWidget)
-angleButton.setFixedSize(180, 90)
-angleButton.move(390, 390)
-angleButton.setFont(numberPadFont)
-angleButton.setStyleSheet('border: 2px solid; background-color: rgb(200, 180, 160)')
-angleButton.setVisible(False)
-angleButton.setCheckable(True)
-def angle():
-    if angleButton.isChecked():
-        angleButton.setText('DEG')
-    else:
-        angleButton.setText('RAD')
-angleButton.clicked.connect(angle)
-# Logarithm
-# Base 10 Log
-baseTenLogButton = QPushButton('log⏨', calculatorWidget)
-baseTenLogButton.setFixedSize(90, 90)
-baseTenLogButton.move(120, 480)
-baseTenLogButton.setFont(numberPadFont)
-baseTenLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
-baseTenLogButton.setVisible(False)
-def baseTenLog():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'log⏨(')
-    calculatorInput += 'log10('
-baseTenLogButton.clicked.connect(baseTenLog)
-# Base 2 Log
-baseTwoLogButton = QPushButton('log₂', calculatorWidget)
-baseTwoLogButton.setFixedSize(90, 90)
-baseTwoLogButton.move(210, 480)
-baseTwoLogButton.setFont(numberPadFont)
-baseTwoLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
-baseTwoLogButton.setVisible(False)
-def baseTwoLog():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'log₂(')
-    calculatorInput += 'log2('
-baseTwoLogButton.clicked.connect(baseTwoLog)
-# Natural Log
-naturalLogButton = QPushButton('ln', calculatorWidget)
-naturalLogButton.setFixedSize(90, 90)
-naturalLogButton.move(300, 480)
-naturalLogButton.setFont(numberPadFont)
-naturalLogButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
-naturalLogButton.setVisible(False)
-def naturalLog():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'ln(')
-    calculatorInput += 'log('
-naturalLogButton.clicked.connect(naturalLog)
-# Logarithm Buttons Inverse
-# Exponents of 10
-powerTenButton = QPushButton('10ˣ', calculatorWidget)
-powerTenButton.setFixedSize(90, 90)
-powerTenButton.move(120, 480)
-powerTenButton.setFont(numberPadFont)
-powerTenButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
-powerTenButton.setVisible(False)
-def powerTen():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '10^')
-    calculatorInput += '10**'
-powerTenButton.clicked.connect(powerTen)
-# Exponent of 2
-powerTwoButton = QPushButton('2ˣ', calculatorWidget)
-powerTwoButton.setFixedSize(90, 90)
-powerTwoButton.move(210, 480)
-powerTwoButton.setFont(numberPadFont)
-powerTwoButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
-powerTwoButton.setVisible(False)
-def powerTwo():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + '2^')
-    calculatorInput += '2**'
-powerTwoButton.clicked.connect(powerTwo)
-# Exponents of e
-powerEulerButton = QPushButton('eˣ', calculatorWidget)
-powerEulerButton.setFixedSize(90, 90)
-powerEulerButton.move(300, 480)
-powerEulerButton.setFont(numberPadFont)
-powerEulerButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 192, 203)')
-powerEulerButton.setVisible(False)
-def powerEuler():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'e^')
-    calculatorInput += 'e**'
-powerEulerButton.clicked.connect(powerEuler)
-# Inverse Button
-inverseButton = QPushButton('INV', calculatorWidget)
-inverseButton.setFixedSize(90, 90)
-inverseButton.move(30, 480)
-inverseButton.setFont(numberPadFont)
-inverseButton.setStyleSheet('border: 2px solid; background-color: rgb(128, 128, 128)')
-inverseButton.setVisible(False)
-inverseButton.setCheckable(True)
-def inverse():
-    if inverseButton.isChecked():
-        sineButton.setVisible(False)
-        cosineButton.setVisible(False)
-        tangentButton.setVisible(False)
-        baseTenLogButton.setVisible(False)
-        baseTwoLogButton.setVisible(False)
-        naturalLogButton.setVisible(False)
-        sineInverseButton.setVisible(True)
-        cosineInverseButton.setVisible(True)
-        tangentInverseButton.setVisible(True)
-        powerTenButton.setVisible(True)
-        powerTwoButton.setVisible(True)
-        powerEulerButton.setVisible(True)
-    else:
-        sineButton.setVisible(True)
-        cosineButton.setVisible(True)
-        tangentButton.setVisible(True)
-        baseTenLogButton.setVisible(True)
-        baseTwoLogButton.setVisible(True)
-        naturalLogButton.setVisible(True)
-        sineInverseButton.setVisible(False)
-        cosineInverseButton.setVisible(False)
-        tangentInverseButton.setVisible(False)
-        powerTenButton.setVisible(False)
-        powerTwoButton.setVisible(False)
-        powerEulerButton.setVisible(False)
-inverseButton.clicked.connect(inverse)
-# Square [x²]
-squareButton = QPushButton('x²', calculatorWidget)
-squareButton.setFixedSize(90, 90)
-squareButton.move(30, 660)
-squareButton.setFont(numberPadFont)
-squareButton.setStyleSheet('border: 2px solid; background-color: rgb(191, 255, 0)')
-squareButton.setVisible(False)
-def square():
-    global calculatorInput
-    if calculatorInputField.text():
-        calculatorInputField.setText(calculatorInputField.text() + '²')
-        calculatorInput += '**(2)'
-squareButton.clicked.connect(square)
-# Exponent
-exponentButton = QPushButton('^', calculatorWidget)
-exponentButton.setFixedSize(90, 90)
-exponentButton.move(30, 750)
-exponentButton.setFont(numberPadFont)
-exponentButton.setStyleSheet('border: 2px solid; background-color: rgb(191, 255, 0)')
-exponentButton.setVisible(False)
-def exponent():
-    global calculatorInput
-    if calculatorInputField.text():
-        calculatorInputField.setText(calculatorInputField.text() + '^')
-        calculatorInput += '**'
-exponentButton.clicked.connect(exponent)
-# Constants [π | e]
-# pi [π]
-piButton = QPushButton('π', calculatorWidget)
-piButton.setFixedSize(90, 90)
-piButton.move(30, 840)
-piButton.setFont(constantButtonFont)
-piButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 180)')
-piButton.setVisible(False)
-def piCharacter():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'π')
-    calculatorInput += 'pi'
-piButton.clicked.connect(piCharacter)
-# Euler's Number [e]
-eulerButton = QPushButton('e', calculatorWidget)
-eulerButton.setFixedSize(90, 90)
-eulerButton.move(120, 840)
-eulerButton.setFont(constantButtonFont)
-eulerButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 0, 180)')
-eulerButton.setVisible(False)
-def eulerNumber():
-    global calculatorInput
-    calculatorInputField.setText(calculatorInputField.text() + 'e')
-    calculatorInput += 'e'
-eulerButton.clicked.connect(eulerNumber)
-# Result [=]
-calculatorResultButton = QPushButton('=', calculatorWidget)
-calculatorResultButton.setFixedSize(180, 90)
-calculatorResultButton.move(390, 840)
-calculatorResultButton.setFont(resultButtonsFont)
-calculatorResultButton.setStyleSheet('border: 2px solid; background-color: rgb(255, 0, 0)')
-def calculatorResult():
-    global calculatorInput
-    try:
-        if calculatorInputField.text():
-            if calculatorInputField.text().endswith('.'):
-                calculatorInputField.setText(calculatorInputField.text().replace('.', ''))
-                calculatorInput = calculatorInput.replace('.', '')
-            calculatorOutputField.setText(str(eval(calculatorInput)))
-    except Exception as err:
-        errorMessage = str(err)
-        errorMessage = errorMessage.replace('(<string>, line 1)', '')
-        errorMessageBox.critical(calculatorWidget, 'Error', f'An error occurred: {errorMessage}\nScript: {calculatorInput}')
-calculatorResultButton.clicked.connect(calculatorResult)
+            self.calculatorInputValue += 'sin('
+
+    def calculatorCosine(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'cos(')
+        if self.calculatorAngleButton.isChecked():
+            self.calculatorInputValue += 'cos(radians('
+        else:
+            self.calculatorInputValue += 'cos('
+
+    def calculatorTangent(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'tan(')
+        if self.calculatorAngleButton.isChecked():
+            self.calculatorInputValue += 'tan(radians('
+        else:
+            self.calculatorInputValue += 'tan('
+
+    def calculatorSineInverse(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'sin⁻¹(')
+        if self.calculatorAngleButton.isChecked():
+            self.calculatorInputValue += 'asin(radians('
+        else:
+            self.calculatorInputValue += 'asin('
+
+    def calculatorCosineInverse(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'cos⁻¹(')
+        if self.calculatorAngleButton.isChecked():
+            self.calculatorInputValue += 'acos(radians('
+        else:
+            self.calculatorInputValue += 'acos('
+
+    def calculatorTangentInverse(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'tan⁻¹(')
+        if self.calculatorAngleButton.isChecked():
+            self.calculatorInputValue += 'atan(radians('
+        else:
+            self.calculatorInputValue += 'atan('
+
+    def calculatorAngle(self):
+        if self.calculatorAngleButton.isChecked():
+            self.calculatorAngleButton.setText('DEG')
+        else:
+            self.calculatorAngleButton.setText('RAD')
+
+    def calculatorBaseTenLog(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'log⏨(')
+        self.calculatorInputValue += 'log10('
+
+    def calculatorBaseTwoLog(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'log₂(')
+        self.calculatorInputValue += 'log2('
+
+    def calculatorNaturalLog(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'ln(')
+        self.calculatorInputValue += 'log('
+
+    def calculatorPowerTen(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + '10^')
+        self.calculatorInputValue += '10**'
+
+    def calculatorPowerTwo(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + '2^')
+        self.calculatorInputValue += '2**'
+
+    def calculatorPowerEuler(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'e^')
+        self.calculatorInputValue += 'e**'
+
+    def calculatorSquare(self):
+        if self.calculatorInputField.text():
+            self.calculatorInputField.setText(self.calculatorInputField.text() + '²')
+            self.calculatorInputValue += '**(2)'
+
+    def calculatorExponent(self):
+        if self.calculatorInputField.text():
+            self.calculatorInputField.setText(self.calculatorInputField.text() + '^')
+            self.calculatorInputValue += '**'
+
+    def calculatorPiCharacter(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'π')
+        self.calculatorInputValue += 'pi'
+
+    def calculatorEulerNumber(self):
+        self.calculatorInputField.setText(self.calculatorInputField.text() + 'e')
+        self.calculatorInputValue += 'e'
+
+    def calculatorInverse(self):
+        if self.calculatorInverseButton.isChecked():
+            self.calculatorSineButton.setVisible(False)
+            self.calculatorCosineButton.setVisible(False)
+            self.calculatorTangentButton.setVisible(False)
+            self.calculatorBaseTenLogButton.setVisible(False)
+            self.calculatorBaseTwoLogButton.setVisible(False)
+            self.calculatorNaturalLogButton.setVisible(False)
+            self.calculatorSineInverseButton.setVisible(True)
+            self.calculatorCosineInverseButton.setVisible(True)
+            self.calculatorTangentInverseButton.setVisible(True)
+            self.calculatorPowerTenButton.setVisible(True)
+            self.calculatorPowerTwoButton.setVisible(True)
+            self.calculatorPowerEulerButton.setVisible(True)
+        else:
+            self.calculatorSineButton.setVisible(True)
+            self.calculatorCosineButton.setVisible(True)
+            self.calculatorTangentButton.setVisible(True)
+            self.calculatorBaseTenLogButton.setVisible(True)
+            self.calculatorBaseTwoLogButton.setVisible(True)
+            self.calculatorNaturalLogButton.setVisible(True)
+            self.calculatorSineInverseButton.setVisible(False)
+            self.calculatorCosineInverseButton.setVisible(False)
+            self.calculatorTangentInverseButton.setVisible(False)
+            self.calculatorPowerTenButton.setVisible(False)
+            self.calculatorPowerTwoButton.setVisible(False)
+            self.calculatorPowerEulerButton.setVisible(False)
+
+    def calculatorPaste(self):
+        if self.calculatorOutputField.text():
+            self.calculatorInputField.setText(self.calculatorOutputField.text())
+            self.calculatorInputValue = str(self.calculatorOutputField.text())
+            self.calculatorOutputField.setText('')
+
+    def calculatorAllClear(self):
+        self.calculatorInputField.setText('')
+        self.calculatorOutputField.setText('')
+        self.calculatorInputValue = ''
+    
+    def calculatorClear(self):
+        if self.calculatorInputField.text():
+            if self.calculatorInputField.text().endswith('sin('):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('sin(', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('sin(', '')
+            elif self.calculatorInputField.text().endswith('cos('):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('cos(', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('cos(', '')
+            elif self.calculatorInputField.text().endswith('tan('):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('tan(', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('tan(', '')
+            elif self.calculatorInputField.text().endswith('sin⁻¹('):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('sin⁻¹(', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('atan(', '')
+            elif self.calculatorInputField.text().endswith('log⏨('):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('log⏨(', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('log10(', '')
+            elif self.calculatorInputField.text().endswith('log₂('):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('log₂(', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('log2(', '')
+            elif self.calculatorInputField.text().endswith('ln('):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('ln(', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('log(', '')
+            elif self.calculatorInputField.text().endswith('10^'):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('10^', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('10**', '')
+            elif self.calculatorInputField.text().endswith('2^'):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('2^', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('2**', '')
+            elif self.calculatorInputField.text().endswith('e^'):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('e^', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('e**', '')
+            elif self.calculatorInputField.text().endswith('²'):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('²', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('**(2)', '')
+            elif self.calculatorInputField.text().endswith('^'):
+                self.calculatorInputField.setText(self.calculatorInputField.text().replace('^', ''))
+                self.calculatorInputValue = self.calculatorInputValue.replace('**', '')
+            else:
+                self.calculatorInputFieldText = self.calculatorInputField.text()
+                self.calculatorInputFieldText = self.calculatorInputFieldText[:-1]
+                self.calculatorInputField.setText(self.calculatorInputFieldText)
+                self.calculatorInputValue = self.calculatorInputValue[:-1]
+
+    def calculatorMode(self):
+        if self.calculatorModeButton.isChecked():                    # Advanced Mode
+            self.calculatorModeButton.setText('±')
+            self.openBracketButton.setVisible(True)
+            self.closeBracketButton.setVisible(True)
+            self.calculatorSineButton.setVisible(True)
+            self.calculatorCosineButton.setVisible(True)
+            self.calculatorTangentButton.setVisible(True)
+            self.calculatorAngleButton.setVisible(True)
+            self.calculatorBaseTenLogButton.setVisible(True)
+            self.calculatorBaseTwoLogButton.setVisible(True)
+            self.calculatorNaturalLogButton.setVisible(True)
+            self.calculatorInverseButton.setVisible(True)
+            self.calculatorSquareButton.setVisible(True)
+            self.calculatorExponentButton.setVisible(True)
+            self.calculatorPiButton.setVisible(True)
+            self.calculatorEulerButton.setVisible(True)
+        else:                                                       # Basic Mode
+            self.calculatorModeButton.setText('∞')
+            self.openBracketButton.setVisible(False)
+            self.closeBracketButton.setVisible(False)
+            self.calculatorSineButton.setVisible(False)
+            self.calculatorCosineButton.setVisible(False)
+            self.calculatorTangentButton.setVisible(False)
+            self.calculatorSineInverseButton.setVisible(False)
+            self.calculatorCosineInverseButton.setVisible(False)
+            self.calculatorTangentInverseButton.setVisible(False)
+            self.calculatorAngleButton.setVisible(False)
+            self.calculatorAngleButton.setChecked(False)
+            self.calculatorBaseTenLogButton.setVisible(False)
+            self.calculatorBaseTwoLogButton.setVisible(False)
+            self.calculatorNaturalLogButton.setVisible(False)
+            self.calculatorPowerTenButton.setVisible(False)
+            self.calculatorPowerTwoButton.setVisible(False)
+            self.calculatorPowerEulerButton.setVisible(False)
+            self.calculatorInverseButton.setVisible(False)
+            self.calculatorInverseButton.setChecked(False)
+            self.calculatorSquareButton.setVisible(False)
+            self.calculatorExponentButton.setVisible(False)
+            self.calculatorPiButton.setVisible(False)
+            self.calculatorEulerButton.setVisible(False)
+
+    def calculatorResult(self):
+        try:
+            if self.calculatorInputField.text():
+                if self.calculatorInputField.text().endswith('.'):
+                    self.calculatorInputField.setText(self.calculatorInputField.text().replace('.', ''))
+                    self.calculatorInputValue = self.calculatorInputValue.replace('.', '')
+                self.calculatorOutputField.setText(str(eval(self.calculatorInputValue)))
+        except Exception as err:
+            errorMessage = str(err)
+            errorMessage = errorMessage.replace('(<string>, line 1)', '')
+            errorMessageBox.critical(self.widget, 'Error', f'An error occurred: {errorMessage}\nScript: {self.calculatorInputValue}')
+calculator = calculatorPage()
 
 # Conversions Page
-# Conversions Widget
 conversionsWidget = QWidget()
 stackedWidget.addWidget(conversionsWidget)
 # Switch to Calculator Button
 conversionsSwitchToCalculatorButton = QPushButton('⇄', conversionsWidget)
-conversionsSwitchToCalculatorButton.setFixedSize(60, 60)
-conversionsSwitchToCalculatorButton.move(510, 30)
+conversionsSwitchToCalculatorButton.setGeometry(510, 30, 60, 60)
 conversionsSwitchToCalculatorButton.setFont(QFont(conversionsSwitchToCalculatorButton.font().family(), 39, QFont.Weight.Bold))
 def conversionsSwitchToCalculator():
     stackedWidget.setCurrentWidget(calculatorWidget)
 conversionsSwitchToCalculatorButton.clicked.connect(conversionsSwitchToCalculator)
 # Conversions Page Main Label
 conversionsLabel = QLabel('CONVERSIONS', conversionsWidget)
-conversionsLabel.setFixedSize(540, 60)
-conversionsLabel.move(30, 120)
+conversionsLabel.setGeometry(30, 120, 540, 60)
 conversionsLabel.setFont(QFont(conversionsLabel.font().family(), 39, QFont.Weight.Bold))
 conversionsLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 # Conversion Page Buttons
@@ -760,13 +708,6 @@ noteLabel.move(30, 900)
 noteLabel.setFont(QFont(noteLabel.font().family(), 15))
 noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-# # Note for Currency Conversion
-# noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', currencyConversionWidget)
-# noteLabel.setFixedSize(540, 30)
-# noteLabel.move(30, 900)
-# noteLabel.setFont(QFont(noteLabel.font().family(), 15))
-# noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
 # Conversion Pages
 class conversionPage:
     def __init__(self, name, units, conversionFactors):
@@ -782,14 +723,14 @@ class conversionPage:
         self.widget = QWidget()
         self.stackedWidget.addWidget(self.widget)
 
-        self.createHeader()
+        self.createConversionPageHeader()
         self.createComboBoxes()
         self.createConversionTextFields()
         self.createConversionPasteButton()
         self.createConversionNumberPad()
         self.createConversionControlButtons()
 
-    def createHeader(self):
+    def createConversionPageHeader(self):
         # Back Button
         self.backButton = QPushButton('←', self.widget)
         self.backButton.setGeometry(30, 30, 60, 60)
@@ -803,7 +744,7 @@ class conversionPage:
         # Page Label
         self.pageLabel = QLabel(f'{self.label} Conversion', self.widget)
         self.pageLabel.setGeometry(30, 120, 540, 60)
-        self.pageLabel.setFont(QFont(self.pageLabel.font().family(), 39, QFont.Weight.Bold))
+        self.pageLabel.setFont(QFont(self.pageLabel.font().family(), 30, QFont.Weight.Bold))
         self.pageLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
     def createComboBoxes(self):
@@ -1191,6 +1132,11 @@ currencyUnits = [
 ]
 currencyConversionFactors = {}
 currencyConversion = conversionPage('Currency', currencyUnits, currencyConversionFactors)
+# Note for Currency Conversion
+noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', currencyConversion.widget)
+noteLabel.setGeometry(30, 900, 540, 30)
+noteLabel.setFont(QFont(noteLabel.font().family(), 15))
+noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 # Length Conversion
 lengthUnits = [
     'Metre (m)',
