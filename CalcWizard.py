@@ -161,8 +161,7 @@ class calculatorPage:
         }
         for calculatorDigit, calculatorDigitPosition in calculatorDigitPositions.items():
             calculatorDigitButton = QPushButton(calculatorDigit, self.parentWidget)
-            calculatorDigitButton.setFixedSize(90, 90)
-            calculatorDigitButton.move(*calculatorDigitPosition)
+            calculatorDigitButton.setGeometry(*calculatorDigitPosition, 90, 90)
             calculatorDigitButton.setFont(QFont(calculatorDigitButton.font().family(), 27, QFont.Weight.Bold))
             calculatorDigitButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
             calculatorDigitButton.clicked.connect(
@@ -185,8 +184,7 @@ class calculatorPage:
 
         for calculatorOperation, calculatorOperationPosition in calculatorOperationPositions.items():
             calculatorOperationButton = QPushButton(calculatorOperation, self.parentWidget)
-            calculatorOperationButton.setFixedSize(90, 90)
-            calculatorOperationButton.move(*calculatorOperationPosition)
+            calculatorOperationButton.setGeometry(*calculatorOperationPosition, 90, 90)
             calculatorOperationButton.setFont(QFont(calculatorOperationButton.font().family(), 33, QFont.Weight.Bold))
             calculatorOperationButton.setStyleSheet('border: 2px solid; background-color: rgb(0, 255, 0)')
 
@@ -540,7 +538,7 @@ class calculatorPage:
         self.calculatorInputField.setText('')
         self.calculatorOutputField.setText('')
         self.calculatorInputValue = ''
-    
+
     def calculatorClear(self):
         if self.calculatorInputField.text():
             if self.calculatorInputField.text().endswith('sin('):
@@ -640,6 +638,13 @@ class calculatorPage:
             errorMessageBox.critical(self.widget, 'Error', f'An error occurred: {errorMessage}\nScript: {self.calculatorInputValue}')
 calculator = calculatorPage()
 
+# Note Label
+def createNoteLabel(parent):
+    noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', parent)
+    noteLabel.setGeometry(30, 900, 540, 30)
+    noteLabel.setFont(QFont(noteLabel.font().family(), 15))
+    noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
 # Conversions Page
 conversionsWidget = QWidget()
 stackedWidget.addWidget(conversionsWidget)
@@ -671,8 +676,7 @@ def createGoToConversionCombos(goToConversionsParent):
 
     for goToConversionB, goToConversionButtonPosition in goToConversionButtonPositions.items():
         goToConversionButton = QPushButton(goToConversionB, goToConversionsParent)
-        goToConversionButton.setFixedSize(120, 120)
-        goToConversionButton.move(*goToConversionButtonPosition)
+        goToConversionButton.setGeometry(*goToConversionButtonPosition, 120, 120)
         goToConversionButton.setFont(QFont(goToConversionButton.font().family(), 60, QFont.Weight.Bold))
         goToConversionButton.setStyleSheet('border: 2px solid; background-color: rgb(217, 190, 240)')
 
@@ -689,8 +693,7 @@ def createGoToConversionCombos(goToConversionsParent):
 
     for goToConversionL, goToConversionLabelPosition in goToConversionLabelPositions.items():
         goToConversionLabel = QLabel(goToConversionL, goToConversionsParent)
-        goToConversionLabel.setFixedSize(120, 30)
-        goToConversionLabel.move(*goToConversionLabelPosition)
+        goToConversionLabel.setGeometry(*goToConversionLabelPosition, 120, 30)
         goToConversionLabel.setFont(QFont(goToConversionLabel.font().family(), 15, QFont.Weight.Bold))
         goToConversionLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         goToConversionLabels[goToConversionL] = goToConversionLabel
@@ -702,11 +705,7 @@ def addGoToConversion(goToConversionDestination):
     stackedWidget.setCurrentWidget(conversionObject.widget)
 goToConversionCombos = createGoToConversionCombos(conversionsWidget)
 # Note for Currency Conversion
-noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', conversionsWidget)
-noteLabel.setFixedSize(540, 30)
-noteLabel.move(30, 900)
-noteLabel.setFont(QFont(noteLabel.font().family(), 15))
-noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+conversionsPageNoteLabel = createNoteLabel(conversionsWidget)
 
 # Conversion Pages
 class conversionPage:
@@ -803,8 +802,7 @@ class conversionPage:
         }
         for conversionDigit, conversionDigitPosition in conversionDigitPositions.items():
             conversionDigitButton = QPushButton(conversionDigit, self.widget)
-            conversionDigitButton.setFixedSize(90, 90)
-            conversionDigitButton.move(*conversionDigitPosition)
+            conversionDigitButton.setGeometry(*conversionDigitPosition, 90, 90)
             conversionDigitButton.setFont(QFont(conversionDigitButton.font().family(), 27, QFont.Weight.Bold))
             conversionDigitButton.setStyleSheet('border: 2px solid; background-color: rgb(185, 195, 205)')
             conversionDigitButton.clicked.connect(
@@ -934,7 +932,7 @@ class conversionPage:
             return result
         elif fromIndex == 1 and toIndex == 1:
             result = value
-            self.conversionOutputField.setText(result)
+            return result
         elif fromIndex == 1 and toIndex == 2:
             result = ((float(value) - 32) / 1.8) + 273.15
             return result
@@ -949,7 +947,7 @@ class conversionPage:
             return result
         elif fromIndex == 2 and toIndex == 2:
             result = value
-            self.conversionOutputField.setText(result)
+            return result
         elif fromIndex == 2 and toIndex == 3:
             result = float(value) * 1.8
             return result
@@ -1133,10 +1131,7 @@ currencyUnits = [
 currencyConversionFactors = {}
 currencyConversion = conversionPage('Currency', currencyUnits, currencyConversionFactors)
 # Note for Currency Conversion
-noteLabel = QLabel('<b>⚠️ NOTE:</b> Currency Conversion requires Internet Connection', currencyConversion.widget)
-noteLabel.setGeometry(30, 900, 540, 30)
-noteLabel.setFont(QFont(noteLabel.font().family(), 15))
-noteLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+currencyConversionNoteLabel = createNoteLabel(currencyConversion.widget)
 # Length Conversion
 lengthUnits = [
     'Metre (m)',
