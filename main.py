@@ -11,12 +11,15 @@ import sys
 from os.path import dirname, abspath, join
 # API Key Check
 from os import environ
+# Conversion Essentials
+from conversionUnits import currencyUnits, lengthUnits, areaUnits, volumeUnits, weightUnits, temperatureUnits, speedUnits, pressureUnits, powerUnits
+from conversionFactors import currencyConversionFactors, lengthConversionFactors, areaConversionFactors, volumeConversionFactors, weightConversionFactors, temperatureConversionFactors, speedConversionFactors, pressureConversionFactors, powerConversionFactors
 
 if getattr(sys, 'frozen', False):
     baseDir = sys._MEIPASS # type: ignore
 else:
     baseDir = dirname(abspath(__file__))
-iconPath = join(baseDir, 'CalcWizardIcon.ico')
+iconPath = join(baseDir, 'icon.ico')
 
 API_KEY = environ.get('CW_CURRENCY_API_KEY')
 
@@ -707,7 +710,7 @@ goToConversionCombos = createGoToConversionCombos(conversionsWidget)
 # Note for Currency Conversion
 conversionsPageNoteLabel = createNoteLabel(conversionsWidget)
 
-# Conversion Pages
+# Conversion Page
 class conversionPage:
     def __init__(self, name, units, conversionFactors):
         self.label = name
@@ -966,398 +969,24 @@ class conversionPage:
             result = value
             return result
 
-# Currency Conversion
-currencyUnits = [
-    'AED - UAE Dirham (United Arab Emirates)',
-    'AFN - Afghan Afghani (Afghanistan)',
-    'ALL - Albanian Lek (Albania)',
-    'AMD - Armenian Dram (Armenia)',
-    'ANG - Netherlands Antillian Guilder (Netherlands Antilles)',
-    'AOA - Angolan Kwanza (Angola)',
-    'ARS - Argentine Peso (Argentina)',
-    'AUD - Australian Dollar (Australia)',
-    'AWG - Aruban Florin (Aruba)',
-    'AZN - Azerbaijani Manat (Azerbaijan)',
-    'BAM - Bosnia and Herzegovina Mark (Bosnia and Herzegovina)',
-    'BBD - Barbados Dollar (Barbados)',
-    'BDT - Bangladeshi Taka (Bangladesh)',
-    'BGN - Bulgarian Lev (Bulgaria)',
-    'BHD - Bahraini Dinar (Bahrain)',
-    'BIF - Burundian Franc (Burundi)',
-    'BMD - Bermudian Dollar (Bermuda)',
-    'BND - Brunei Dollar (Brunei)',
-    'BOB - Bolivian Boliviano (Bolivia)',
-    'BRL - Brazilian Real (Brazil)',
-    'BSD - Bahamian Dollar (Bahamas)',
-    'BTN - Bhutanese Ngultrum (Bhutan)',
-    'BWP - Botswana Pula (Botswana)',
-    'BYN - Belarusian Ruble (Belarus)',
-    'BZD - Belize Dollar (Belize)',
-    'CAD - Canadian Dollar (Canada)',
-    'CDF - Congolese Franc (Democratic Republic of the Congo)',
-    'CHF - Swiss Franc (Switzerland)',
-    'CLP - Chilean Peso (Chile)',
-    'CNY - Chinese Renminbi (China)',
-    'COP - Colombian Peso (Colombia)',
-    'CRC - Costa Rican Colon (Costa Rica)',
-    'CUP - Cuban Peso (Cuba)',
-    'CVE - Cape Verdean Escudo (Cape Verde)',
-    'CZK - Czech Koruna (Czech Republic)',
-    'DJF - Djiboutian Franc (Djibouti)',
-    'DKK - Danish Krone (Denmark)',
-    'DOP - Dominican Peso (Dominican Republic)',
-    'DZD - Algerian Dinar (Algeria)',
-    'EGP - Egyptian Pound (Egypt)',
-    'ERN - Eritrean Nakfa (Eritrea)',
-    'ETB - Ethiopian Birr (Ethiopia)',
-    'EUR - Euro (European Union)',
-    'FJD - Fiji Dollar (Fiji)',
-    'FKP - Falkland Islands Pound (Falkland Islands)',
-    'FOK - Faroese Króna (Faroe Islands)',
-    'GBP - Pound Sterling (United Kingdom)',
-    'GEL - Georgian Lari (Georgia)',
-    'GGP - Guernsey Pound (Guernsey)',
-    'GHS - Ghanaian Cedi (Ghana)',
-    'GIP - Gibraltar Pound (Gibraltar)',
-    'GMD - Gambian Dalasi The (Gambia)',
-    'GNF - Guinean Franc (Guinea)',
-    'GTQ - Guatemalan Quetzal (Guatemala)',
-    'GYD - Guyanese Dollar (Guyana)',
-    'HKD - Hong Kong Dollar (Hong Kong)',
-    'HNL - Honduran Lempira (Honduras)',
-    'HRK - Croatian Kuna (Croatia)',
-    'HTG - Haitian Gourde (Haiti)',
-    'HUF - Hungarian Forint (Hungary)',
-    'IDR - Indonesian Rupiah (Indonesia)',
-    'ILS - Israeli New Shekel (Israel)',
-    'IMP - Manx Pound (Isle of Man)',
-    'INR - Indian Rupee (India)',
-    'IQD - Iraqi Dinar (Iraq)',
-    'IRR - Iranian Rial (Iran)',
-    'ISK - Icelandic Króna (Iceland)',
-    'JEP - Jersey Pound (Jersey)',
-    'JMD - Jamaican Dollar (Jamaica)',
-    'JOD - Jordanian Dinar (Jordan)',
-    'JPY - Japanese Yen (Japan)',
-    'KES - Kenyan Shilling (Kenya)',
-    'KGS - Kyrgyzstani Som (Kyrgyzstan)',
-    'KHR - Cambodian Riel (Cambodia)',
-    'KID - Kiribati Dollar (Kiribati)',
-    'KMF - Comorian Franc (Comoros)',
-    'KRW - South Korean Won (South Korea)',
-    'KWD - Kuwaiti Dinar (Kuwait)',
-    'KYD - Cayman Islands Dollar (Cayman Islands)',
-    'KZT - Kazakhstani Tenge (Kazakhstan)',
-    'LAK - Lao Kip (Laos)',
-    'LBP - Lebanese Pound (Lebanon)',
-    'LKR - Sri Lanka Rupee (Sri Lanka)',
-    'LRD - Liberian Dollar (Liberia)',
-    'LSL - Lesotho Loti (Lesotho)',
-    'LYD - Libyan Dinar (Libya)',
-    'MAD - Moroccan Dirham (Morocco)',
-    'MDL - Moldovan Leu (Moldova)',
-    'MGA - Malagasy Ariary (Madagascar)',
-    'MKD - Macedonian Denar (North Macedonia)',
-    'MMK - Burmese Kyat (Myanmar)',
-    'MNT - Mongolian Tögrög (Mongolia)',
-    'MOP - Macanese Pataca (Macau)',
-    'MRU - Mauritanian Ouguiya (Mauritania)',
-    'MUR - Mauritian Rupee (Mauritius)',
-    'MVR - Maldivian Rufiyaa (Maldives)',
-    'MWK - Malawian Kwacha (Malawi)',
-    'MXN - Mexican Peso (Mexico)',
-    'MYR - Malaysian Ringgit (Malaysia)',
-    'MZN - Mozambican Metical (Mozambique)',
-    'NAD - Namibian Dollar (Namibia)',
-    'NGN - Nigerian Naira (Nigeria)',
-    'NIO - Nicaraguan Córdoba (Nicaragua)',
-    'NOK - Norwegian Krone (Norway)',
-    'NPR - Nepalese Rupee (Nepal)',
-    'NZD - New Zealand Dollar (New Zealand)',
-    'OMR - Omani Rial (Oman)',
-    'PAB - Panamanian Balboa (Panama)',
-    'PEN - Peruvian Sol (Peru)',
-    'PGK - Papua New Guinean Kina (Papua New Guinea)',
-    'PHP - Philippine Peso (Philippines)',
-    'PKR - Pakistani Rupee (Pakistan)',
-    'PLN - Polish Złoty (Poland)',
-    'PYG - Paraguayan Guaraní (Paraguay)',
-    'QAR - Qatari Riyal (Qatar)',
-    'RON - Romanian Leu (Romania)',
-    'RSD - Serbian Dinar (Serbia)',
-    'RUB - Russian Ruble (Russia)',
-    'RWF - Rwandan Franc (Rwanda)',
-    'SAR - Saudi Riyal (Saudi Arabia)',
-    'SBD - Solomon Islands Dollar (Solomon Islands)',
-    'SCR - Seychellois Rupee (Seychelles)',
-    'SDG - Sudanese Pound (Sudan)',
-    'SEK - Swedish Krona (Sweden)',
-    'SGD - Singapore Dollar (Singapore)',
-    'SHP - Saint Helena Pound (Saint Helena)',
-    'SLE - Sierra Leonean Leone (Sierra Leone)',
-    'SOS - Somali Shilling (Somalia)',
-    'SRD - Surinamese Dollar (Suriname)',
-    'SSP - South Sudanese Pound (South Sudan)',
-    'STN - São Tomé and Príncipe Dobra (São Tomé and Príncipe)',
-    'SYP - Syrian Pound (Syria)',
-    'SZL - Eswatini Lilangeni (Eswatini)',
-    'THB - Thai Baht (Thailand)',
-    'TJS - Tajikistani Somoni (Tajikistan)',
-    'TMT - Turkmenistan Manat (Turkmenistan)',
-    'TND - Tunisian Dinar (Tunisia)',
-    'TOP - Tongan Paʻanga (Tonga)',
-    'TRY - Turkish Lira (Turkey)',
-    'TTD - Trinidad and Tobago Dollar (Trinidad and Tobago)',
-    'TVD - Tuvaluan Dollar (Tuvalu)',
-    'TWD - New Taiwan Dollar (Taiwan)',
-    'TZS - Tanzanian Shilling (Tanzania)',
-    'UAH - Ukrainian Hryvnia (Ukraine)',
-    'UGX - Ugandan Shilling (Uganda)',
-    'USD - United States Dollar (United States)',
-    'UYU - Uruguayan Peso (Uruguay)',
-    'UZS - Uzbekistani So\'m (Uzbekistan)',
-    'VES - Venezuelan Bolívar Soberano (Venezuela)',
-    'VND - Vietnamese Đồng (Vietnam)',
-    'VUV - Vanuatu Vatu (Vanuatu)',
-    'WST - Samoan Tālā (Samoa)',
-    'XAF - Central African CFA Franc (CEMAC)',
-    'XCD - East Caribbean Dollar (Organisation of Eastern Caribbean States)',
-    'XDR - Special Drawing Rights (International Monetary Fund)',
-    'XOF - West African CFA franc (CFA)',
-    'XPF - CFP Franc (Collectivités d\'Outre-Mer)',
-    'YER - Yemeni Rial (Yemen)',
-    'ZAR - South African Rand (South Africa)',
-    'ZMW - Zambian Kwacha (Zambia)',
-    'ZWL - Zimbabwean Dollar (Zimbabwe)'
-]
-currencyConversionFactors = {}
+# Individual Conversion Pages
 currencyConversion = conversionPage('Currency', currencyUnits, currencyConversionFactors)
-# Note for Currency Conversion
 currencyConversionNoteLabel = createNoteLabel(currencyConversion.widget)
-# Length Conversion
-lengthUnits = [
-    'Metre (m)',
-    'Millimetre (mm)',
-    'Centimetre (cm)',
-    'Decimetre (dm)',
-    'Kilometre (km)',
-    'Micrometre (μm)',
-    'Nanometre (nm)',
-    'Picometre (pm)',
-    'Inch (in)',
-    'Foot (ft)',
-    'Yard (yd)',
-    'Mile (mi)',
-    'Nautical Mile (nmi)'
-]
-lengthConversionFactors = {
-    # Metre (m)
-    (0, 0): 1, (0, 1): 1000, (0, 2): 100, (0, 3): 10, (0, 4): 0.001, (0, 5): 1000000, (0, 6): 1000000000, (0, 7): 1000000000000, (0, 8): (5000 / 127), (0, 9): (1250 / 381), (0, 10): (1250 / 1143), (0, 11): (125 / 201168), (0, 12): (1 / 1852),
-    # Millimetre (mm)
-    (1, 0): 0.001, (1, 1): 1, (1, 2): 0.1, (1, 3): 0.01, (1, 4): 0.000001, (1, 5): 1000, (1, 6): 1000000, (1, 7): 1000000000, (1, 8): (5 / 127), (1, 9): (5 / 1524), (1, 10): (5 / 4572), (1, 11): (1 / 1609344), (1, 12): (1 / 1852000),
-    # Centimetre (cm)
-    (2, 0): 0.01, (2, 1): 10, (2, 2): 1, (2, 3): 0.1, (2, 4): 0.00001, (2, 5): 10000, (2, 6): 10000000, (2, 7): 10000000000, (2, 8): (50 / 127), (2, 9): (25 / 762), (2, 10): (25 / 2286), (2, 11): (5 / 804672), (2, 12): (1 / 185200),
-    # Decimetre (dm)
-    (3, 0): 0.1, (3, 1): 100, (3, 2): 10, (3, 3): 1, (3, 4): 0.0001, (3, 5): 100000, (3, 6): 100000000, (3, 7): 100000000000, (3, 8): (500 / 127), (3, 9): (125 / 381), (3, 10): (125 / 1143), (3, 11): (25 / 402336), (3, 12): (1 / 18520),
-    # Kilometre (km)
-    (4, 0): 1000, (4, 1): 1000000, (4, 2): 100000, (4, 3): 10000, (4, 4): 1, (4, 5): 1000000000, (4, 6): 1000000000000, (4, 7): 1000000000000000, (4, 8): (5000000 / 127), (4, 9): (1250000 / 381), (4, 10): (1250000 / 1143), (4, 11): (15625 / 25146), (4, 12): (250 / 463),
-    # Micrometre (μm)
-    (5, 0): 0.000001, (5, 1): 0.001, (5, 2): 0.0001, (5, 3): 0.00001, (5, 4): 0.000000001, (5, 5): 1, (5, 6): 1000, (5, 7): 1000000, (5, 8): (1 / 25400), (5, 9): (1 / 304800), (5, 10): (1 / 914400), (5, 11): (1 / 1609344000), (5, 12): (1 / 1852000000),
-    # Nanometre (nm)
-    (6, 0): 0.000000001, (6, 1): 0.000001, (6, 2): 0.0000001, (6, 3): 0.00000001, (6, 4): 0.000000000001, (6, 5): 0.001, (6, 6): 1, (6, 7): 1000, (6, 8): (1 / 25400000), (6, 9): (1 / 304800000), (6, 10): (1 / 914400000), (6, 11): (1 / 1609344000000), (6, 12): (1 / 1852000000000),
-    # Picometre (pm)
-    (7, 0): 0.000000000001, (7, 1): 0.000000001, (7, 2): 0.0000000001, (7, 3): 0.00000000001, (7, 4): 0.000000000000001, (7, 5): 0.000001, (7, 6): 0.001, (7, 7): 1, (7, 8): (1 / 25400000000), (7, 9): (1 / 304800000000), (7, 10): (7 / 914400000000), (7, 11): (1 / 1609344000000000), (7, 12): (1 / 1852000000000000),
-    # Inch (in)
-    (8, 0): 0.0254, (8, 1): 25.4, (8, 2): 2.54, (8, 3): 0.254, (8, 4): 0.0000254, (8, 5): 25400, (8, 6): 25400000, (8, 7): 25400000000, (8, 8): 1, (8, 9): (1 / 12), (8, 10): (1 / 36), (8, 11): (3 / 1760), (8, 12): (9260000 / 127),
-    # Foot (ft)
-    (9, 0): 0.3048, (9, 1): 304.8, (9, 2): 30.48, (9, 3): 3.048, (9, 4): 0.0003048, (9, 5): 304800, (9, 6): 304800000, (9, 7): 304800000000, (9, 8): 12, (9, 9): 1, (9, 10): (1 / 3), (9, 11): (3 / 1760), (9, 12): (2315000 / 381),
-    # Yard (yd)
-    (10, 0): 0.9144, (10, 1): 914.4, (10, 2): 91.44, (10, 3): 9.144, (10, 4): 0.0009144, (10, 5): 914400, (10, 6): 914400000, (10, 7): 914400000000, (10, 8): 36, (10, 9): 3, (10, 10): 1, (10, 11): (1 / 1760), (10, 12): (2315000 / 1143),
-    # Mile (mi)
-    (11, 0): 1609.344, (11, 1): 1609344, (11, 2): 160934.4, (11, 3): 16093.44, (11, 4): 1.609344, (11, 5): 1609344000, (11, 6): 1609344000000, (11, 7): 1609344000000000, (11, 8): (440 / 9), (11, 9): (1760 / 3), (11, 10): 1760, (11, 11): 1, (11, 12): (57875 / 50292),
-    # Nautical Mile (nmi)
-    (12, 0): 1852, (12, 1): 1852000, (12, 2): 18520000, (12, 3): 185200000, (12, 4): 1.852, (12, 5): 1852000000, (12, 6): 1852000000000, (12, 7): 1852000000000000, (12, 8): (127 / 9260000), (12, 9): (381 / 2315000), (12, 10): (1143 / 2315000), (12, 11): (50292 / 57875), (12, 12): 1
-}
+
 lengthConversion = conversionPage('Length', lengthUnits, lengthConversionFactors)
-# Area Conversion
-areaUnits = [
-    'Square Metre (m²)',
-    'Square Millimetre (mm²)',
-    'Square Centimetre (cm²)',
-    'Square Decimetre (dm²)',
-    'Square Kilometre (km²)',
-    'Hectare (ha)',
-    'Acre (ac)',
-    'Square Micrometre (μm²)',
-    'Square Nanometre (nm²)',
-    'Square Picometre (pm²)',
-    'Are (a)'
-]
-areaConversionFactors = {
-    # Square Metre (m²)
-    (0, 0): 1, (0, 1): 100, (0, 2): 10000, (0, 3): 1000000, (0, 4): 0.000001, (0, 5): 1550.0031, (0, 6): (5166677 / 480000), (0, 7): (5166677 / 13381632000000), (0, 8): (5166677 / 20908800000), (0, 9): 0.0001,
-    # Square Decimetre (dm²)
-    (1, 0): 0.01, (1, 1): 1, (1, 2): 100, (1, 3): 10000, (1, 4): 0.00000001, (1, 5): 15.500031, (1, 6): (5166677 / 48000000), (1, 7): (5166677 / 1338163200000000), (1, 8): (5166677 / 2090880000000), (1, 9): 0.000001,
-    # Square Centimetre (cm²)
-    (2, 0): 0.0001, (2, 1): 0.01, (2, 2): 1, (2, 3): 100, (2, 4): 0.0000000001, (2, 5): 0.5166677, (2, 6): (5166677 / 4800000000), (2, 7): (5166677 / 133816320000000000), (2, 8): (5166677 / 209088000000000), (2, 9): 0.00000001,
-    # Square Millimetre (mm²)
-    (3, 0): 0.000001, (3, 1): 0.0001, (3, 2): 0.01, (3, 3): 1, (3, 4): 0.000000000001, (3, 5): 0.005166677, (3, 6): (5166677 / 480000000000), (3, 7): (5166677 / 13381632000000000000), (3, 8): (5166677 / 20908800000000000), (3, 9): 0.0000000001,
-    # Square Kilometre (km²)
-    (4, 0): 1000000, (4, 1): 100000000, (4, 2): 10000000000, (4, 3): 1000000000000, (4, 4): 1, (4, 5): 516667700, (4, 6): (5166677 / 48), (4, 7): (5166677 / 13381632), (4, 8): (51666770 / 209088), (4, 9): 100,
-    # Square Inch (in²)
-    (5, 0): (10000 / 5166677), (5, 1): (1000000 / 5166677), (5, 2): (100000000 / 5166677), (5, 3): (10000000000 / 5166677), (5, 4): (1 / 516667700), (5, 5): 1, (5, 6): (1 / 144), (5, 7): (1 / 1338163200), (5, 8): (1 / 2090880), (5, 9): (1 / 5166677),
-    # Square Foot (ft²)
-    (6, 0): (480000 / 5166677), (6, 1): (48000000 / 5166677), (6, 2): (4800000000 / 5166677), (6, 3): (480000000000 / 5166677), (6, 4): (48 / 516667700), (6, 5): 144, (6, 6): 1, (6, 7): (1 / 27878400), (6, 8): (1 / 43560), (6, 9): (48 / 5166677),
-    # Square Mile (mi²)
-    (7, 0): (13381632000000 / 5166677), (7, 1): (1338163200000000 / 5166677), (7, 2): (133816320000000000 / 5166677), (7, 3): (13381632000000000000 / 5166677), (7, 4): (13381632 / 5166677), (7, 5): 1338163200, (7, 6): 27878400, (7, 7): 1, (7, 8): 640, (7, 9): (1338163200 / 5166677),
-    # Acre (ac)
-    (8, 0): (20908800000 / 5166677), (8, 1): (2090880000000 / 5166677), (8, 2): (209088000000000 / 5166677), (8, 3): (20908800000000000 / 5166677), (8, 4): (209088 / 51666770), (8, 5): 2090880, (8, 6): 43560, (8, 7): (1 / 640), (8, 8): 1, (8, 9): (2090880 / 5166677),
-    # Hectare (ha)
-    (9, 0): 10000, (9, 1): 1000000, (9, 2): 100000000, (9, 3): 10000000000, (9, 4): 0.01, (9, 5): 5166677, (9, 6): (5166677 / 48), (9, 7): (5166677 / 1338163200), (9, 8): (5166677 / 2090880), (9, 9): 1
-}
+
 areaConversion = conversionPage('Area', areaUnits, areaConversionFactors)
-# Volume Conversion
-volumeUnits = [
-    'Cubic Metre (m³)',
-    'Cubic Centimetre (cm³)',
-    'Millilitre (mL)',
-    'Litre (L)',
-    'Cubic Inch (in³)',
-    'Cubic Foot (ft³)',
-    'Cubic Yard (yd³)',
-    'Gallon (US) (gal)',
-    'Gallon (UK) (gal)'
-]
-volumeConversionFactors = {
-    # Cubic Metre (m³)
-    (0, 0): 1, (0, 1): 1000, (0, 2): 1000000, (0, 3): 1000000000, (0, 4): 1000, (0, 5): 1000000, (0, 6): (125000000000 / 2048383), (0, 7): (1953125000 / 55306341), (0, 8): (16000000000 / 454609), (0, 9): (100000000 / 454609),
-    # Cubic Decimetre (dm³)
-    (1, 0): 0.001, (1, 1): 1, (1, 2): 1000, (1, 3): 1000000, (1, 4): 1, (1, 5): 1000, (1, 6): (125000000 / 2048383), (1, 7): (1953125 / 55306341), (1, 8): (16000000 / 454609), (1, 9): (100000 / 454609),
-    # Cubic Centimetre (cm³)
-    (2, 0): 0.000001, (2, 1): 0.001, (2, 2): 1, (2, 3): 1000, (2, 4): 0.001, (2, 5): 1, (2, 6): (125000 / 2048383), (2, 7): (15625 / 442450728), (2, 8): (16000 / 454609), (2, 9): (100 / 454609),
-    # Cubic Millimetre (mm³)
-    (3, 0): 0.000000001, (3, 1): 0.000001, (3, 2): 0.001, (3, 3): 1, (3, 4): 0.000001, (3, 5): 0.001, (3, 6): (125 / 2048383), (3, 7): (125 / 3539605824), (3, 8): (16 / 454609), (3, 9): (1 / 4546090),
-    # Litre (L)
-    (4, 0): 0.001, (4, 1): 1, (4, 2): 1000, (4, 3): 1000000, (4, 4): 1, (4, 5): 1000, (4, 6): (125000000 / 2048383), (4, 7): (1953125 / 55306341), (4, 8): (16000000 / 454609), (4, 9): (100000 / 454609),
-    # Millilitre (mL)
-    (5, 0): 0.000001, (5, 1): 0.001, (5, 2): 1, (5, 3): 1000, (5, 4): 0.001, (5, 5): 1, (5, 6): (125000 / 2048383), (5, 7): (15625 / 442450728), (5, 8): (16000 / 454609), (5, 9): (100 / 454609),
-    # Cubic Inch (in³)
-    (6, 0): 0.000016387064, (6, 1): 0.016387064, (6, 2): 016.387064, (6, 3): 016387.064, (6, 4): 0.016387064, (6, 5): 016.387064, (6, 6): 1, (6, 7): (1/ 1728), (6, 8): (32774128 / 56826125), (6, 9): (2048383 / 568261250),
-    # Cubic Foot (ft³)
-    (7, 0): 0.028316846592, (7, 1): 28.316846592, (7, 2): 28316.846592, (7, 3): 28316846.592, (7, 4): 28.316846592, (7, 5): 28316.846592, (7, 6): 1728, (7, 7): 1, (7, 8): (56633693184 / 56826125), (7, 9): (1769802912 / 284130625),
-    # Fluid Ounce (fl. oz)
-    (8, 0): 0.0000284130625, (8, 1): 0.0284130625, (8, 2): 28.4130625, (8, 3): 28413.0625, (8, 4): 0.0284130625, (8, 5): 28.4130625, (8, 6): (56826125 / 32774128), (8, 7): (56826125 / 56633693184), (8, 8): 1, (8, 9): 0.00625,
-    # Gallon (gal)
-    (9, 0): 0.00454609, (9, 1): 4.54609, (9, 2): 4546.09, (9, 3): 4546090, (9, 4): 4.54609, (9, 5): 4546.09, (9, 6): (568261250 / 2048383), (9, 7): (284130625 / 1769802912), (9, 8): 160, (9, 9): 1
-}
+
 volumeConversion = conversionPage('Volume', volumeUnits, volumeConversionFactors)
-# Weight Conversion
-weightUnits = [
-    'Gram (g)',
-    'Kilogram (kg)',
-    'Milligram (mg)',
-    'Tonne (t)',
-    'Quintal (q)',
-    'Carat (ct)',
-    'Ounce (oz)',
-    'Pound (lb)',
-    'Stone (st)'
-]
-weightConversionFactors = {
-    # Gram (g)
-    (0, 0): 1, (0, 1): 0.001, (0, 2): 1000, (0, 3): 0.000001, (0, 4): 0.00001, (0, 5): 5, (0, 6): (1600000 / 45359237), (0, 7): (100000 / 45359237), (0, 8): (700000 / 317514659),
-    # Kilogram (kg)
-    (1, 0): 1000, (1, 1): 1, (1, 2): 1000000, (1, 3): 0.001, (1, 4): 0.01, (1, 5): 5000, (1, 6): (1600000000 / 45359237), (1, 7): (100000000 / 45359237), (1, 8): (700000000 / 317514659),
-    # Milligram (mg)
-    (2, 0): 0.001, (2, 1): 0.000001, (2, 2): 1, (2, 3): 0.000000001, (2, 4): 0.00000001, (2, 5): 0.0005, (2, 6): (1600 / 45359237), (2, 7): (100 / 45359237), (2, 8): (700 / 317514659),
-    # Tonne (t)
-    (3, 0): 1000000, (3, 1): 1000, (3, 2): 1000000000, (3, 3): 1, (3, 4): 10, (3, 5): 5000000, (3, 6): (1600000000000 / 45359237), (3, 7): (100000000000 / 45359237), (3, 8): (700000000000 / 317514659),
-    # Quintal (q)
-    (4, 0): 100000, (4, 1): 100, (4, 2): 100000000, (4, 3): 0.1, (4, 4): 1, (4, 5): 500000, (4, 6): (160000000000 / 45359237), (4, 7): (10000000000 / 45359237), (4, 8): (70000000000 / 317514659),
-    # Carat (ct)
-    (5, 0): 0.2, (5, 1): 0.0002, (5, 2): 200, (5, 3): 0.0000002, (5, 4): 0.000002, (5, 5): 1, (5, 6): (320000 / 45359237), (5, 7): (20000 / 45359237), (5, 8): (140000 / 317514659),
-    # Ounce (oz)
-    (6, 0): 28.349523125, (6, 1): 0.028349523125, (6, 2): 28349.523125, (6, 3): 0.000028349523125, (6, 4): 0.00028349523125, (6, 5): (45359237 / 320000), (6, 6): 1, (6, 7): (1 / 16), (6, 8): (1 / 224),
-    # Pound (lb)
-    (7, 0): 453.59237, (7, 1): 0.45359237, (7, 2): 453592.37, (7, 3): 0.00045359237, (7, 4): 0.0045359237, (7, 5): 2267.96185, (7, 6): 16, (7, 7): 1, (7, 8): (1 / 14),
-    # Stone (st)
-    (8, 0): (317514659 / 700000), (8, 1): (317514659 / 700000000), (8, 2): (317514659 / 700), (8, 3): (317514659 / 700000000000), (8, 4): (317514659 / 70000000000), (8, 5): (317514659 / 140000), (8, 6): 224, (8, 7): 14, (8, 8): 1
-}
+
 weightConversion = conversionPage('Weight', weightUnits, weightConversionFactors)
-# Temperature Conversion
-temperatureUnits = [
-    'Celsius (°C)',
-    'Fahrenheit (°F)',
-    'Kelvin (K)',
-    'Rankine (°Ra)'
-]
-temperatureConversionFactors = {}
+
 temperatureConversion = conversionPage('Temperature', temperatureUnits, temperatureConversionFactors)
-# Speed Conversion
-speedUnits = [
-    'Metres per second (m/s)',
-    'Kilometres per hour (km/h)',
-    'Miles per hour (mph)',
-    'Mach (Ma)',
-    'Speed of Light (c)'
-]
-speedConversionFactors = {
-    # Metres per second (m/s)
-    (0, 0): 1, (0, 1): 3.6, (0, 2): (3125 / 1397), (0, 3): (5 / 1718), (0, 4): (1 / 299792458),
-    # Kilometres per hour (km/h)
-    (1, 0): (5 / 18), (1, 1): 1, (1, 2): (15625 / 25146), (1, 3): (25 / 30924), (1, 4): (5 / 5396264244),
-    # Miles per hour (mph)
-    (2, 0): (1397 / 3125), (2, 1): 1.609344, (2, 2): 1, (2, 3): (1397 / 1073750), (2, 4): (1397 / 936851431250),
-    # Mach (Ma)
-    (3, 0): 343.6, (3, 1): 1236.96, (3, 2): (1073750 / 1397), (3, 3): 1, (3, 4): (859 / 749481145),
-    # Speed of Light (c)
-    (4, 0): 299792458, (4, 1): 1079252848.8, (4, 2): (936851431250 / 1397), (4, 3): (749481145 / 859), (4, 4): 1
-}
+
 speedConversion = conversionPage('Speed', speedUnits, speedConversionFactors)
-# Pressure Conversion
-pressureUnits = [
-    'Atmosphere (atm)',
-    'Bar (Bar)',
-    'Millibar (mBar)',
-    'Pounds per square inch (psi)',
-    'Pascal (Pa) | Newtons per square metre (N/m²)',
-    'Millimetres of H₂O [Water] (mmH₂O)',
-    'Millimetres of Hg [Mercury] (mmHg)'
-]
-pressureConversionFactors = {
-    # Atmosphere (atm)
-    (0, 0): 1, (0, 1): 1.01325, (0, 2): 1013.25, (0, 3): (506625 / 34474), (0, 4): 101325, (0, 5): (506625000 /  49033), (0, 6): 760,
-    # Bar (Bar)
-    (1, 0): (4000 / 4053), (1, 1): 1, (1, 2): 1000, (1, 3): (250000 / 17237), (1, 4): 100000, (1, 5): (500000000 / 49033), (1, 6): (3040000 / 4053),
-    # Millibar (mBar)
-    (2, 0): (4 / 4053), (2, 1): 0.001, (2, 2): 1, (2, 3): (250 / 17237), (2, 4): 100, (2, 5): (500000 / 49033), (2, 6): (3040 / 4053),
-    # Pounds per square inch (psi)
-    (3, 0): (34474 / 506625), (3, 1): 0.068948, (3, 2): 68.948, (3, 3): 1, (3, 4): 6894.8, (3, 5): (34474000 / 49033), (3, 6): (436634756250000 / 45680466691),
-    # Pascal (Pa) | Newtons per square metre (N/m²)
-    (4, 0): (1 / 101325), (4, 1): 0.00001, (4, 2): 0.01, (4, 3): (5 / 34474), (4, 4): 1, (4, 5): (5000 / 49033), (4, 6): (152 / 20265),
-    # Millimetres of H₂O [Water] (mmH₂O)
-    (5, 0): (49033 / 506625000), (5, 1): 0.000098066, (5, 2): 0.098066, (5, 3): (49033 / 34474000), (5, 4): 9.8066, (5, 5): 1, (5, 6): (12665625 / 931627),
-    # Millimetres of Hg [Mercury] (mmHg)
-    (6, 0): (1 / 760), (6, 1): (4053 / 3040000), (6, 2): (4053 / 3040), (6, 3): (45680466691 / 436634756250000), (6, 4): (20265 / 152), (6, 5): (931627 / 12665625), (6, 6): 1
-}
+
 pressureConversion = conversionPage('Pressure', pressureUnits, pressureConversionFactors)
-# Power Conversion
-powerUnits = [
-    'Watt (W) | Joules per second (J/s) | Newton-metres per second (N∙m/s)',
-    'Foot-pounds per second (ft∙lb/s)',
-    'Kilocalories per second (kcal/s)',
-    'Horsepower (HP)'
-]
-powerConversionFactors = {
-    # Watt (W) | Joules per second (J/s) | Newton-metres per second (N∙m/s)
-    (0, 0): 1, (0, 1): (12500000000000 / 16953513780357), (0, 2): (1 / 4184), (0, 3): (250000000000 / 186488651583927),
-    # Foot-pounds per second (ft∙lb/s)
-    (1, 0): 1.35628110242856, (1, 1): 1, (1, 2): (16953513780357 / 52300000000000000), (1, 3): 550,
-    # Kilocalories per second (kcal/s)
-    (2, 0): 4184, (2, 1): (52300000000000000 / 16953513780357), (2, 2): 1, (2, 3): (28765000000000000000 / 16953513780357),
-    # Horsepower (HP)
-    (3, 0): 745.954606335708, (3, 1): (1 / 550), (3, 2): (16953513780357 / 28765000000000000000), (3, 3): 1
-}
+
 powerConversion = conversionPage('Power', powerUnits, powerConversionFactors)
 
 window.show()
