@@ -854,6 +854,8 @@ class conversionPage:
         self.fromComboBox.setCurrentIndex(toIndex)
         self.toComboBox.setCurrentIndex(fromIndex)
         if self.conversionInputField.text():
+            self.conversionInputField.setText(self.conversionOutputField.text())
+            self.conversionInputValue = str(self.conversionOutputField.text())
             self.conversionResult()
 
     def conversionAllClear(self):
