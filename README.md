@@ -37,7 +37,8 @@
 - Run PyInstaller with the following command:
 
   ```shell
-  pyinstaller --onefile --windowed --icon="CalcWizardIcon.ico" --add-data="CalcWizardIcon.ico;." CalcWizard.py
+  pyinstaller --onefile --windowed --icon="icon.ico" --add-data="icon.ico;." --add-data="conversionUnits.py;." --add-data="conversionFactors.py;." --name=CalcWizard main.py
+
   ```
 
 - Explanation of flags:
@@ -45,6 +46,7 @@
   - `windowed`: Build the app without opening a terminal/console window.
   - `icon`: Embed the custom application icon.
   - `add-data`: Includes the icon file in the build and places it in the current directory (.) inside the executable.
+  - `name`: Specify the file name for the executable.
 
 - The executable will be found in the `dist/` folder.
 
